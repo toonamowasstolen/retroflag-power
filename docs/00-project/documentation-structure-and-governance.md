@@ -690,6 +690,9 @@ Root files are foundational identity and entry-point documents.
 
 The public project entry point.
 
+`README.md` is the deliberate exception to the metadata header standard. It
+should begin with the project title so GitHub presents a clean front door.
+
 Should contain:
 
 - short project description
