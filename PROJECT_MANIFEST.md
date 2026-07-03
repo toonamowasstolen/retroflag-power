@@ -82,7 +82,7 @@ They should not dominate the experience.
 
 The ideal experience is:
 
-```text
+```
 Power Switch ON
       │
       ▼
@@ -170,7 +170,7 @@ The current experience is functional but imperfect.
 
 The stock system relies on:
 
-```text
+```
 /etc/rc.local
       │
       ▼
@@ -193,7 +193,7 @@ This works, but it has limits:
 
 RetroFlag Power replaces this with a modern service-oriented approach:
 
-```text
+```
 systemd
    │
    ▼
@@ -234,7 +234,7 @@ On the next boot, the system resumes the previous game automatically or presents
 
 Possible flow:
 
-```text
+```
 Power Switch ON
       │
       ▼
@@ -293,13 +293,13 @@ The software should understand capabilities, not just models.
 
 Instead of asking:
 
-```text
+```
 Am I running on a GPi Case 2?
 ```
 
 the system should ask:
 
-```text
+```
 Does this hardware provide a Power Switch?
 Does this hardware provide a Reset Button?
 Does this hardware expose battery information?
