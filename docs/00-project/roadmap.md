@@ -67,13 +67,13 @@ Each phase should have a clear stopping point.
 Current phase:
 
 ```
-Milestone 0 — Dreaming
+Milestone 1 — Awakening
 ```
 
 Current status:
 
 ```
-The project is defining its identity, language, product vision, and implementation path before production code begins.
+The first daemon breathes locally and is gaining the small tools needed for future field validation.
 ```
 
 Artifacts already created or planned in this stage include:
@@ -101,7 +101,17 @@ The project now has:
 - a path
 - a horizon
 
-The next goal is to finish only the minimum useful foundation needed to begin implementation confidently.
+## Current Awakening Checkpoint
+
+The daemon nameplate is complete:
+
+- `retroflag-powerd --version` reports `retroflag-powerd 0.1.0-dev`.
+- Startup logging includes the daemon name and version.
+- Tests, build, version output, and runtime signal handling passed.
+- `make check` passed.
+
+The checkpoint does not expand the daemon into GPIO, shutdown, resume, or state
+behavior.
 
 ---
 

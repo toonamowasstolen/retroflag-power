@@ -454,6 +454,17 @@ Minimum validation:
 - [ ] code does not import GPIO libraries
 - [ ] code does not require Raspberry Pi hardware
 
+## Nameplate Checkpoint
+
+The first-breath daemon now identifies itself without expanding its role:
+
+- `retroflag-powerd --version` prints `retroflag-powerd 0.1.0-dev`.
+- The startup log includes the daemon name and version.
+- Tests, build, version output, and the Ctrl+C runtime lifecycle passed.
+- `make check` passed.
+
+This is an Awakening progress note, not a new hardware or service capability.
+
 ---
 
 # 12. First Breath Design Notes

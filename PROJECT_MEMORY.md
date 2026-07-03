@@ -241,6 +241,18 @@ Primary artifacts:
 - Graceful signal handling
 - systemd service
 
+#### Nameplate checkpoint
+
+Completed during Awakening:
+
+- `retroflag-powerd --version` prints `retroflag-powerd 0.1.0-dev`.
+- Normal startup logs include the daemon name and version.
+- Tests, build, version output, and the Ctrl+C runtime lifecycle passed.
+- `make check` passed.
+
+This checkpoint adds identity only. It does not add hardware, shutdown, resume,
+or state behavior.
+
 ### Milestone 2 — Heartbeat
 
 The daemon becomes a real supervised service.
