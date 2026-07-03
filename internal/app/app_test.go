@@ -5,6 +5,8 @@ import (
 	"context"
 	"log"
 	"testing"
+
+	"github.com/toonamowasstolen/retroflag-power/internal/config"
 )
 
 func TestRunLogsLifecycle(t *testing.T) {
@@ -13,9 +15,9 @@ func TestRunLogsLifecycle(t *testing.T) {
 	ctx, cancel := context.WithCancel(context.Background())
 	cancel()
 
-	New(logger).Run(ctx)
+	New(logger, config.Default()).Run(ctx)
 
-	const want = `retroflag-powerd 0.1.0-dev starting
+	const want = `retroflag-powerd 0.1.0-dev starting dry_run=true
 retroflag-powerd ready
 shutdown signal received
 retroflag-powerd stopped
