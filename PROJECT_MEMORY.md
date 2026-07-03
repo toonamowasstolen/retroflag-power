@@ -273,6 +273,21 @@ The satchel is defaults-only. It does not load config files or environment
 variables, and it adds no new CLI flags, GPIO, shutdown execution, service
 activation, resume, or state storage.
 
+#### Event charms checkpoint
+
+The daemon now has a minimal internal lifecycle event model:
+
+- `Event` contains only `Type` and `Message`.
+- Four lifecycle types describe daemon starting, daemon ready, shutdown signal
+  received, and daemon stopped.
+- The app logs its lifecycle through these events.
+- `--version` remains unchanged, startup still includes name, version, and
+  `dry_run=true`, the Ctrl+C lifecycle exits cleanly, and `make check` passed.
+
+These charms are synchronous descriptions only. No event bus, channels, async
+processing, persistence, or third-party dependencies were added. They introduce
+no GPIO, shutdown execution, service activation, resume, or state storage.
+
 ### Milestone 2 — Heartbeat
 
 The daemon becomes a real supervised service.

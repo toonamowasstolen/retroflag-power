@@ -132,6 +132,22 @@ The daemon now carries a defaults-only internal config:
 No config files, environment variables, or new CLI flags are loaded. No GPIO,
 shutdown execution, service activation, resume, or state storage was added.
 
+### Event Charms Checkpoint
+
+The daemon now describes lifecycle moments with a tiny internal `Event`:
+
+- fields: `Type` and `Message`
+- types: `daemon.starting`, `daemon.ready`, `shutdown.signal_received`, and
+  `daemon.stopped`
+- app lifecycle logging flows through the event model
+- `--version`, startup identity with `dry_run=true`, and clean Ctrl+C behavior
+  remain intact
+- `make check` passed
+
+No event bus, channels, async processing, persistence, third-party dependencies,
+GPIO, shutdown execution, service activation, resume, or state storage were
+added.
+
 ---
 
 # 3. Near-Term Route

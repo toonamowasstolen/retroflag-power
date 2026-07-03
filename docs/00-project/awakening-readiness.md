@@ -485,6 +485,22 @@ The daemon does not load config files or environment variables and has no new
 CLI flags. This checkpoint adds no GPIO, shutdown execution, service activation,
 resume, or state storage.
 
+## Event Charms Checkpoint
+
+Awakening now includes a minimal internal lifecycle event model:
+
+- `Event` has `Type` and `Message` fields.
+- Lifecycle types cover daemon starting, daemon ready, shutdown signal received,
+  and daemon stopped.
+- The app logs lifecycle messages through the event model.
+- `--version` is unchanged.
+- Startup still logs name, version, and `dry_run=true`.
+- The Ctrl+C lifecycle exits cleanly and `make check` passed.
+
+This is not an event bus. It adds no channels, async processing, persistence,
+third-party dependencies, GPIO, shutdown execution, service activation, resume,
+or state storage.
+
 ---
 
 # 12. First Breath Design Notes
