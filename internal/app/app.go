@@ -2,9 +2,11 @@ package app
 
 import (
 	"context"
+	"fmt"
 	"log"
 
 	"github.com/toonamowasstolen/retroflag-power/internal/config"
+	"github.com/toonamowasstolen/retroflag-power/internal/events"
 )
 
 type App struct {
@@ -20,11 +22,27 @@ func New(logger *log.Logger, cfg config.Config) *App {
 }
 
 func (a *App) Run(ctx context.Context) {
-	a.logger.Printf("%s %s starting dry_run=%t", a.config.AppName, a.config.Version, a.config.DryRun)
-	a.logger.Printf("%s ready", a.config.AppName)
+	a.logEvent(events.Event{
+		Type:    events.TypeDaemonStarting,
+		Message: fmt.Sprintf("%s %s starting dry_run=%t", a.config.AppName, a.config.Version, a.config.DryRun),
+	})
+	a.logEvent(events.Event{
+		Type:    events.TypeDaemonReady,
+		Message: fmt.Sprintf("%s ready", a.config.AppName),
+	})
 
 	<-ctx.Done()
 
-	a.logger.Println("shutdown signal received")
-	a.logger.Printf("%s stopped", a.config.AppName)
+	a.logEvent(events.Event{
+		Type:    events.TypeShutdownSignalReceived,
+		Message: "shutdown signal received",
+	})
+	a.logEvent(events.Event{
+		Type:    events.TypeDaemonStopped,
+		Message: fmt.Sprintf("%s stopped", a.config.AppName),
+	})
+}
+
+func (a *App) logEvent(event events.Event) {
+	a.logger.Println(event.Message)
 }
