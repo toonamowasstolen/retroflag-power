@@ -1277,6 +1277,23 @@ It should support:
 
 # 27. Nice Future Ideas
 
+## Future EDC project expansion
+
+These are later ideas and are not part of Milestone 1 — Awakening.
+
+- [ ] Create `docs/00-project/edc-project-structure.md` to generalize the
+  RetroFlag Power documentation and project structure into a reusable EDC
+  structure guide that older projects can adopt.
+- [ ] Create or extract an `edc-project-template/` starter for future and legacy
+  projects. It should include root documents, metadata conventions, folder
+  structure, ADR and RFC templates, project memory, roadmap, requirements, and
+  AI collaboration guidance.
+
+Do not create the guide or template until this work is deliberately promoted
+into future scope.
+
+## Product and experience ideas
+
 - Battery percentage overlay if available.
 - Graceful shutdown countdown when battery is critically low.
 - Multiple resume slots.

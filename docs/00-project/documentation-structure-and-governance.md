@@ -2262,6 +2262,19 @@ Possible goal:
 - archive or supersede duplicates
 - update links
 
+## Future EDC extraction
+
+Later, outside Milestone 1 — Awakening:
+
+- create `docs/00-project/edc-project-structure.md` as a reusable guide for
+  applying this documentation and project structure to older projects
+- create or extract an `edc-project-template/` with the reusable root documents,
+  metadata conventions, folder structure, ADR/RFC templates, project memory,
+  roadmap, requirements, and AI collaboration guidance
+
+These are TODO captures only. Do not create either artifact as part of the
+current cleanup quest.
+
 ---
 
 # 40. Closing Rule
