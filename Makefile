@@ -12,7 +12,7 @@ help:
 		'  make version  Show daemon name and version' \
 		'  make run      Run the daemon locally' \
 		'  make clean    Remove the built binary' \
-		'  make check    Run tests and build'
+		'  make check    Run tests, build, and version'
 
 build:
 	go build -o ./$(BINARY) ./cmd/retroflag-powerd
@@ -29,4 +29,4 @@ run:
 clean:
 	rm -f ./$(BINARY)
 
-check: test build
+check: test build version
