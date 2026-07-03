@@ -30,8 +30,12 @@ last_updated: 2026-07-03
 
 Draft
 
-This is a future validation quest. It is not active and does not authorize
-systemd changes on the reference platform yet.
+This is a future validation quest. It must remain Draft and inactive until the
+project is ready to test deliberately on the GPi Case 2 reference platform.
+
+Operating rule:
+
+> Prepare and observe only. Do not replace the current shutdown path.
 
 ## Milestone
 
