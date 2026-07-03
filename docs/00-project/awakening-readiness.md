@@ -501,6 +501,20 @@ This is not an event bus. It adds no channels, async processing, persistence,
 third-party dependencies, GPIO, shutdown execution, service activation, resume,
 or state storage.
 
+## Dry-Run Action Charm Checkpoint
+
+Awakening now includes a standalone internal action model:
+
+- `Action` has `Type`, `Message`, and `DryRun` fields.
+- `TypeNoop` exists.
+- `NewDryRunNoop` creates a noop action with `DryRun: true`.
+- The action model has no execution path and is not wired into the lifecycle.
+- `--version` remains unchanged and `make check` passed.
+
+This charm adds no GPIO, shutdown execution, command runner, shell execution,
+action queue, channels, async processing, persistence, packaging changes,
+service activation, resume, or state storage.
+
 ---
 
 # 12. First Breath Design Notes

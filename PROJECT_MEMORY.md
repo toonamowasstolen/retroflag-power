@@ -288,6 +288,20 @@ These charms are synchronous descriptions only. No event bus, channels, async
 processing, persistence, or third-party dependencies were added. They introduce
 no GPIO, shutdown execution, service activation, resume, or state storage.
 
+#### Dry-run action charm checkpoint
+
+The daemon now has a standalone internal action model:
+
+- `Action` contains `Type`, `Message`, and `DryRun`.
+- `TypeNoop` represents a no-operation action.
+- `NewDryRunNoop` creates a noop action with `DryRun: true`.
+- No execution path or lifecycle wiring was added.
+- `--version` remains unchanged and `make check` passed.
+
+The charm cannot run anything. It adds no GPIO, shutdown execution, command
+runner, shell execution, action queue, channels, async processing, persistence,
+packaging changes, service activation, resume, or state storage.
+
 ### Milestone 2 — Heartbeat
 
 The daemon becomes a real supervised service.

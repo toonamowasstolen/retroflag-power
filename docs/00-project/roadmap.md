@@ -148,6 +148,20 @@ No event bus, channels, async processing, persistence, third-party dependencies,
 GPIO, shutdown execution, service activation, resume, or state storage were
 added.
 
+### Dry-Run Action Charm Checkpoint
+
+The daemon now has a standalone internal `Action` model:
+
+- fields: `Type`, `Message`, and `DryRun`
+- `TypeNoop` identifies a no-operation action
+- `NewDryRunNoop` creates noop actions with `DryRun: true`
+- no execution path or lifecycle wiring exists
+- `--version` remains unchanged and `make check` passed
+
+No GPIO, shutdown execution, command runner, shell execution, action queue,
+channels, async processing, persistence, packaging changes, service activation,
+resume, or state storage were added.
+
 ---
 
 # 3. Near-Term Route
