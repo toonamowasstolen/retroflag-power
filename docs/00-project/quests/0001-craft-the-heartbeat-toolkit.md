@@ -1,6 +1,6 @@
 ---
 id: QUEST-0001
-title: Prepare the Heartbeat Harness
+title: Craft the Heartbeat Toolkit
 version: 0.1.0
 status: Draft
 owner: Joshua Taft
@@ -20,9 +20,9 @@ related:
 last_updated: 2026-07-03
 ---
 
-# QUEST-0001 — Prepare the Heartbeat Harness
+# QUEST-0001 — Craft the Heartbeat Toolkit
 
-> The dream breathes. Now prepare the harness that will one day let it keep breathing after boot.
+> The dream breathes. Now craft the toolkit that will one day help it keep breathing after boot.
 
 ## Quest Status
 
@@ -77,7 +77,7 @@ The goal is to make sure the future Heartbeat path is understandable, safe, docu
 
 # 2. Quest Objective
 
-Prepare the systemd heartbeat harness for future validation.
+Prepare the systemd heartbeat toolkit for future validation.
 
 The service and install script should be reviewed for:
 
@@ -95,7 +95,7 @@ The service and install script should be reviewed for:
 
 This quest does not make the daemon a production service yet.
 
-It prepares the harness.
+It prepares the toolkit.
 
 ---
 
@@ -173,7 +173,7 @@ No resume.
 No state storage.
 ```
 
-The service harness may be prepared.
+The service toolkit may be prepared.
 
 The service must not take control of power behavior yet.
 
@@ -225,10 +225,10 @@ docs/00-project/awakening-readiness.md
 Use this prompt for Codex:
 
 ```
-Milestone 1 — Awakening / Quest 0001: Prepare the Heartbeat Harness.
+Milestone 1 — Awakening / Quest 0001: Craft the Heartbeat Toolkit.
 
 Goal:
-Review and safely refine the future systemd service harness for retroflag-powerd without activating it or expanding daemon behavior.
+Review and safely refine the future systemd service toolkit for retroflag-powerd without activating it or expanding daemon behavior.
 
 Primary files:
 - packaging/retroflag-power.service
@@ -270,13 +270,13 @@ Show the diff before committing.
 Commit title:
 
 ```
-Prepare the heartbeat harness.
+Craft the heartbeat toolkit.
 ```
 
 Commit body:
 
 ```
-Review and refine the future systemd service harness for RetroFlag Power.
+Review and refine the future systemd service toolkit for RetroFlag Power.
 
 Align the service and install script with the current retroflag-powerd daemon while keeping the quest limited to safe preparation.
 
@@ -331,7 +331,7 @@ Before committing, confirm:
 Completing this quest earns:
 
 ```
-Heartbeat Harness Prepared
+Heartbeat Toolkit Crafted
 ```
 
 This does not complete Milestone 2.
@@ -344,12 +344,12 @@ It opens the gate toward Milestone 2.
 
 The first quest is not to seize power.
 
-The first quest is to prepare the harness safely.
+The first quest is to craft the toolkit safely.
 
 A daemon that breathes is alive.
 
 A daemon that survives service supervision will have a heartbeat.
 
-Prepare the harness.
+Prepare the toolkit.
 
 Do not pull the lever yet.
