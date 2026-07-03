@@ -15,7 +15,7 @@ func TestRunLogsLifecycle(t *testing.T) {
 
 	New(logger).Run(ctx)
 
-	const want = `retroflag-powerd starting
+	const want = `retroflag-powerd 0.1.0-dev starting
 retroflag-powerd ready
 shutdown signal received
 retroflag-powerd stopped

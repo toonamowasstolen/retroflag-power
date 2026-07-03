@@ -3,6 +3,8 @@ package app
 import (
 	"context"
 	"log"
+
+	"github.com/toonamowasstolen/retroflag-power/internal/version"
 )
 
 type App struct {
@@ -14,7 +16,7 @@ func New(logger *log.Logger) *App {
 }
 
 func (a *App) Run(ctx context.Context) {
-	a.logger.Println("retroflag-powerd starting")
+	a.logger.Printf("%s starting", version.String())
 	a.logger.Println("retroflag-powerd ready")
 
 	<-ctx.Done()
