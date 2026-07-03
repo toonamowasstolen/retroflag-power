@@ -1,8 +1,8 @@
 ---
 id: QUEST-0001
 title: Craft the Heartbeat Toolkit
-version: 0.1.0
-status: Draft
+version: 0.2.0
+status: Implemented
 owner: Joshua Taft
 audience:
   - Project Maintainers
@@ -26,7 +26,7 @@ last_updated: 2026-07-03
 
 ## Quest Status
 
-Draft
+Implemented
 
 ## Milestone
 
@@ -183,17 +183,17 @@ The service must not take control of power behavior yet.
 
 This quest is complete when:
 
-- [ ] `packaging/retroflag-power.service` has been reviewed.
-- [ ] `packaging/install.sh` has been reviewed.
-- [ ] Service name and binary path expectations are clear.
-- [ ] The service file does not imply shutdown behavior exists yet.
-- [ ] The install script does not disable the original shutdown path.
-- [ ] The install script does not edit rc.local.
-- [ ] The install script does not start or enable the service unless explicitly designed as a later gated step.
-- [ ] Any changes are small and focused.
-- [ ] `make check` passes.
-- [ ] No production daemon behavior changes are made unless required for naming/path alignment.
-- [ ] The diff is reviewed before commit.
+- [x] `packaging/retroflag-power.service` has been reviewed.
+- [x] `packaging/install.sh` has been reviewed.
+- [x] Service name and binary path expectations are clear.
+- [x] The service file does not imply shutdown behavior exists yet.
+- [x] The install script does not disable the original shutdown path.
+- [x] The install script does not edit rc.local.
+- [x] The install script does not start or enable the service unless explicitly designed as a later gated step.
+- [x] Any changes are small and focused.
+- [x] `make check` passes.
+- [x] No production daemon behavior changes are made unless required for naming/path alignment.
+- [x] The diff is reviewed before commit.
 
 ---
 
@@ -314,19 +314,46 @@ Do not install shellcheck just for this quest unless the maintainer chooses to a
 
 Before committing, confirm:
 
-- [ ] Diff does not touch GPIO.
-- [ ] Diff does not touch shutdown execution.
-- [ ] Diff does not edit rc.local.
-- [ ] Diff does not disable SafeShutdown.py.
-- [ ] Diff does not activate systemd service.
-- [ ] Diff does not add resume or state behavior.
-- [ ] Diff keeps install behavior honest.
-- [ ] Diff makes future systemd validation easier.
-- [ ] `make check` passes.
+- [x] Diff does not touch GPIO.
+- [x] Diff does not touch shutdown execution.
+- [x] Diff does not edit rc.local.
+- [x] Diff does not disable SafeShutdown.py.
+- [x] Diff does not activate systemd service.
+- [x] Diff does not add resume or state behavior.
+- [x] Diff keeps install behavior honest.
+- [x] Diff makes future systemd validation easier.
+- [x] `make check` passes.
 
 ---
 
-# 12. Quest Reward
+# 12. Outcome
+
+The Heartbeat Toolkit packaging preparation is implemented:
+
+- `packaging/retroflag-power.service` was refined into an explicitly labeled
+  preview unit for future Heartbeat validation.
+- `packaging/install.sh` was refined to validate and copy the built daemon and
+  preview unit without activating systemd.
+- The installer no longer calls `systemctl daemon-reload`, `systemctl enable`,
+  `systemctl restart`, or `systemctl start`.
+- No production daemon behavior changed.
+
+Validation completed:
+
+- `make check` passed.
+- `sh -n packaging/install.sh` passed.
+- `git diff --check` passed.
+- The packaging safety scan passed.
+- ShellCheck was unavailable and skipped.
+- `systemd-analyze` was unavailable and skipped.
+
+This quest is **Implemented**, not **Verified**. The packaging changes exist and
+local validation passes, but the service has not yet been tested under systemd
+on the reference platform.
+
+---
+
+# 13. Quest Reward
 
 Completing this quest earns:
 
