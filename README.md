@@ -1,6 +1,15 @@
-# retroflag-power
+# RetroFlag Power
 
-Modern Go replacement for RetroFlag SafeShutdown.py.
+RetroFlag Power is a modern Go daemon project for evolving RetroFlag power
+management safely and deliberately.
+
+## Current Status
+
+The project is in Milestone 1 — Awakening. The daemon can build, run, log its
+lifecycle, wait for SIGINT or SIGTERM, and exit cleanly.
+
+It does not yet control GPIO, execute shutdown, replace `SafeShutdown.py`, or
+activate a systemd service.
 
 ## Goals
 
@@ -10,6 +19,20 @@ Modern Go replacement for RetroFlag SafeShutdown.py.
 - Event-driven architecture
 - Cross-platform development
 
-## Roadmap
+## Development
 
-See `docs/roadmap.md`.
+Workshop is the local development companion:
+
+```sh
+make help
+make check
+make run
+```
+
+## Project Documentation
+
+- [Why RetroFlag Power exists](WHY.md)
+- [Project roadmap](docs/00-project/roadmap.md)
+- [Project requirements](docs/00-project/requirements.md)
+- [System overview](docs/04-architecture/system-overview.md)
+- [AI collaboration guide](docs/05-development/ai-collaboration.md)
