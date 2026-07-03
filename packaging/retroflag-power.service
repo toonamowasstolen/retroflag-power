@@ -1,0 +1,13 @@
+[Unit]
+Description=RetroFlag Power Manager
+After=local-fs.target
+
+[Service]
+ExecStart=/usr/local/bin/retroflag-powerd
+Restart=on-failure
+RestartSec=2
+User=root
+SyslogIdentifier=retroflag-power
+
+[Install]
+WantedBy=multi-user.target
