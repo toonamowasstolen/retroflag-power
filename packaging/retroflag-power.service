@@ -1,11 +1,15 @@
+# Preview unit for future Heartbeat validation.
+# Do not enable or start this service during Milestone 1 — Awakening.
+
 [Unit]
-Description=RetroFlag Power Manager
+Description=RetroFlag Power Daemon (Preview)
 After=local-fs.target
 
 [Service]
 ExecStart=/usr/local/bin/retroflag-powerd
 Restart=on-failure
 RestartSec=2
+# The service user and privilege model must be reviewed before activation.
 User=root
 SyslogIdentifier=retroflag-power
 
