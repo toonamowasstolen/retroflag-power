@@ -460,6 +460,10 @@ The first-breath daemon now identifies itself without expanding its role:
 
 - `retroflag-powerd --version` prints `retroflag-powerd 0.1.0-dev`.
 - The startup log includes the daemon name and version.
+- `make version` runs the identity command through Workshop.
+- The VS Code task `Workshop: version` runs `make version`.
+- `make check` runs tests, build, and version validation.
+- CI/Forge receives the same identity validation by running `make check`.
 - Tests, build, version output, and the Ctrl+C runtime lifecycle passed.
 - `make check` passed.
 

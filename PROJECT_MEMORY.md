@@ -247,6 +247,10 @@ Completed during Awakening:
 
 - `retroflag-powerd --version` prints `retroflag-powerd 0.1.0-dev`.
 - Normal startup logs include the daemon name and version.
+- `make version` runs the daemon version command through Workshop.
+- The VS Code task `Workshop: version` runs `make version`.
+- `make check` runs tests, build, and version validation.
+- GitHub Actions Forge inherits the name check because CI runs `make check`.
 - Tests, build, version output, and the Ctrl+C runtime lifecycle passed.
 - `make check` passed.
 

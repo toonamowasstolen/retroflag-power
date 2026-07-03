@@ -107,6 +107,10 @@ The daemon nameplate is complete:
 
 - `retroflag-powerd --version` reports `retroflag-powerd 0.1.0-dev`.
 - Startup logging includes the daemon name and version.
+- Workshop exposes the same identity path through `make version`.
+- The VS Code task `Workshop: version` delegates to `make version`.
+- `make check` validates tests, build, and version.
+- CI/Forge runs `make check`, so remote validation includes the daemon name.
 - Tests, build, version output, and runtime signal handling passed.
 - `make check` passed.
 
