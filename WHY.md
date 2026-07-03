@@ -1,3 +1,23 @@
+---
+id: WHY-001
+title: Why
+version: 0.1.0
+status: Draft
+owner: Joshua Taft
+audience:
+  - Everyone
+  - Project Maintainers
+  - Contributors
+  - AI Assistants
+purpose: Explain why RetroFlag Power exists and preserve the emotional spark behind the project before implementation begins.
+related:
+  - PROJECT_MEMORY.md
+  - ENGINEERING_MANIFESTO.md
+  - PROJECT_MANIFEST.md
+  - PROJECT_CHARTER.md
+last_updated: 2026-07-03
+---
+
 # Why
 
 > *"Never lose today's excitement in tomorrow's implementation."*
