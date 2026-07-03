@@ -257,6 +257,22 @@ Completed during Awakening:
 This checkpoint adds identity only. It does not add hardware, shutdown, resume,
 or state behavior.
 
+#### Config satchel checkpoint
+
+The daemon now has a minimal internal configuration boundary with safe defaults:
+
+- `AppName` defaults to `retroflag-powerd`.
+- `Version` defaults to `0.1.0-dev` from the version package.
+- `DryRun` defaults to `true`.
+- The app receives the config and logs name, version, and `dry_run=true` at
+  startup.
+- `--version` output remains unchanged, the lifecycle remains clean, and
+  `make check` passed.
+
+The satchel is defaults-only. It does not load config files or environment
+variables, and it adds no new CLI flags, GPIO, shutdown execution, service
+activation, resume, or state storage.
+
 ### Milestone 2 — Heartbeat
 
 The daemon becomes a real supervised service.

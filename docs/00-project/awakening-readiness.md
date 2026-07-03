@@ -469,6 +469,22 @@ The first-breath daemon now identifies itself without expanding its role:
 
 This is an Awakening progress note, not a new hardware or service capability.
 
+## Config Satchel Checkpoint
+
+Awakening now includes a tiny defaults-only configuration boundary:
+
+- `AppName` is `retroflag-powerd`.
+- `Version` is `0.1.0-dev`, sourced from the version package.
+- `DryRun` is `true`.
+- The app receives the config.
+- Startup logging includes name, version, and `dry_run=true`.
+- `--version` output remains unchanged.
+- Lifecycle validation and `make check` passed.
+
+The daemon does not load config files or environment variables and has no new
+CLI flags. This checkpoint adds no GPIO, shutdown execution, service activation,
+resume, or state storage.
+
 ---
 
 # 12. First Breath Design Notes

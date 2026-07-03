@@ -117,6 +117,21 @@ The daemon nameplate is complete:
 The checkpoint does not expand the daemon into GPIO, shutdown, resume, or state
 behavior.
 
+### Config Satchel Checkpoint
+
+The daemon now carries a defaults-only internal config:
+
+- `AppName: retroflag-powerd`
+- `Version: 0.1.0-dev`, sourced from the version package
+- `DryRun: true`
+- config is passed into the app
+- startup logs name, version, and `dry_run=true`
+- `--version` remains unchanged, lifecycle validation stays clean, and
+  `make check` passed
+
+No config files, environment variables, or new CLI flags are loaded. No GPIO,
+shutdown execution, service activation, resume, or state storage was added.
+
 ---
 
 # 3. Near-Term Route
