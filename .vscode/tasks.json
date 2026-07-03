@@ -1,0 +1,50 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Workshop: help",
+      "type": "shell",
+      "command": "make",
+      "args": ["help"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Workshop: test",
+      "type": "shell",
+      "command": "make",
+      "args": ["test"],
+      "group": "test",
+      "problemMatcher": "$go"
+    },
+    {
+      "label": "Workshop: build",
+      "type": "shell",
+      "command": "make",
+      "args": ["build"],
+      "group": "build",
+      "problemMatcher": "$go"
+    },
+    {
+      "label": "Workshop: check",
+      "type": "shell",
+      "command": "make",
+      "args": ["check"],
+      "group": "build",
+      "problemMatcher": "$go"
+    },
+    {
+      "label": "Workshop: run",
+      "type": "shell",
+      "command": "make",
+      "args": ["run"],
+      "problemMatcher": "$go"
+    },
+    {
+      "label": "Workshop: clean",
+      "type": "shell",
+      "command": "make",
+      "args": ["clean"],
+      "problemMatcher": []
+    }
+  ]
+}
