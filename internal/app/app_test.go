@@ -70,6 +70,20 @@ func TestNewHasNoExecutionStatus(t *testing.T) {
 	}
 }
 
+func TestNewHasNoRuntimeSnapshotSummaries(t *testing.T) {
+	var output bytes.Buffer
+	logger := log.New(&output, "", 0)
+
+	got := New(logger, config.Default()).RuntimeSnapshot()
+	want := RuntimeSnapshot{
+		Status: status.New(config.Default(), status.StateStarting),
+	}
+
+	if got != want {
+		t.Fatalf("RuntimeSnapshot() = %#v, want %#v", got, want)
+	}
+}
+
 func TestRunLogsLifecycle(t *testing.T) {
 	var output bytes.Buffer
 	logger := log.New(&output, "", 0)
@@ -162,10 +176,30 @@ func TestRunPreparesDryRunPlanAndReachesLifecycleStatuses(t *testing.T) {
 		t.Fatalf("ExecutionStatus() = %#v, want %#v", executionStatus, wantExecutionStatus)
 	}
 
+	readySnapshot := app.RuntimeSnapshot()
+	wantReadySnapshot := RuntimeSnapshot{
+		Status:              status.New(config.Default(), status.StateReady),
+		HasPlanSummary:      true,
+		PlanSummary:         wantSummary,
+		ExecutionStatus:     wantExecutionStatus,
+		HasExecutionSummary: true,
+		ExecutionSummary:    wantExecutionSummary,
+	}
+	if readySnapshot != wantReadySnapshot {
+		t.Fatalf("RuntimeSnapshot() after startup = %#v, want %#v", readySnapshot, wantReadySnapshot)
+	}
+
 	cancel()
 	assertLogAndStatus(t, logged, checked, "shutdown signal received", status.StateStopping, app)
 	assertLogAndStatus(t, logged, checked, "stopped", status.StateStopped, app)
 	<-done
+
+	stoppedSnapshot := app.RuntimeSnapshot()
+	wantStoppedSnapshot := wantReadySnapshot
+	wantStoppedSnapshot.Status = status.New(config.Default(), status.StateStopped)
+	if stoppedSnapshot != wantStoppedSnapshot {
+		t.Fatalf("RuntimeSnapshot() after shutdown = %#v, want %#v", stoppedSnapshot, wantStoppedSnapshot)
+	}
 }
 
 func TestExecutionStatusReportsCapturedExecutionError(t *testing.T) {

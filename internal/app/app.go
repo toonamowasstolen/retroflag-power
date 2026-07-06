@@ -31,6 +31,15 @@ type ExecutionStatus struct {
 	ErrorMessage  string
 }
 
+type RuntimeSnapshot struct {
+	Status              status.Status
+	HasPlanSummary      bool
+	PlanSummary         planner.PlanSummary
+	ExecutionStatus     ExecutionStatus
+	HasExecutionSummary bool
+	ExecutionSummary    executor.ResultSummary
+}
+
 func New(logger *log.Logger, cfg config.Config) *App {
 	return &App{
 		logger:   logger,
@@ -86,12 +95,34 @@ func (a *App) Plan() (planner.Plan, bool) {
 	return a.plan, a.hasPlan
 }
 
+func (a *App) PlanSummary() (planner.PlanSummary, bool) {
+	if !a.hasPlan {
+		return planner.PlanSummary{}, false
+	}
+
+	return a.plan.Summary(), true
+}
+
 func (a *App) ExecutionSummary() (executor.ResultSummary, bool) {
 	if !a.hasExecution {
 		return executor.ResultSummary{}, false
 	}
 
 	return a.executionResult.Summary(), true
+}
+
+func (a *App) RuntimeSnapshot() RuntimeSnapshot {
+	planSummary, hasPlanSummary := a.PlanSummary()
+	executionSummary, hasExecutionSummary := a.ExecutionSummary()
+
+	return RuntimeSnapshot{
+		Status:              a.Status(),
+		HasPlanSummary:      hasPlanSummary,
+		PlanSummary:         planSummary,
+		ExecutionStatus:     a.ExecutionStatus(),
+		HasExecutionSummary: hasExecutionSummary,
+		ExecutionSummary:    executionSummary,
+	}
 }
 
 func (a *App) ExecutionStatus() ExecutionStatus {
