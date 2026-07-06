@@ -58,6 +58,18 @@ func TestNewHasNoExecutionSummary(t *testing.T) {
 	}
 }
 
+func TestNewHasNoExecutionStatus(t *testing.T) {
+	var output bytes.Buffer
+	logger := log.New(&output, "", 0)
+
+	got := New(logger, config.Default()).ExecutionStatus()
+	want := ExecutionStatus{}
+
+	if got != want {
+		t.Fatalf("ExecutionStatus() = %#v, want %#v", got, want)
+	}
+}
+
 func TestRunLogsLifecycle(t *testing.T) {
 	var output bytes.Buffer
 	logger := log.New(&output, "", 0)
@@ -140,10 +152,37 @@ func TestRunPreparesDryRunPlanAndReachesLifecycleStatuses(t *testing.T) {
 		t.Fatalf("ExecutionSummary() = %#v, want %#v", executionSummary, wantExecutionSummary)
 	}
 
+	executionStatus := app.ExecutionStatus()
+	wantExecutionStatus := ExecutionStatus{
+		Completed:     true,
+		ErrorCaptured: false,
+	}
+	if executionStatus != wantExecutionStatus {
+		t.Fatalf("ExecutionStatus() = %#v, want %#v", executionStatus, wantExecutionStatus)
+	}
+
 	cancel()
 	assertLogAndStatus(t, logged, checked, "shutdown signal received", status.StateStopping, app)
 	assertLogAndStatus(t, logged, checked, "stopped", status.StateStopped, app)
 	<-done
+}
+
+func TestExecutionStatusReportsCapturedExecutionError(t *testing.T) {
+	var output bytes.Buffer
+	logger := log.New(&output, "", 0)
+	app := New(logger, config.Default())
+	app.hasExecution = true
+	app.executionErr = executor.ErrUnsupportedPlan
+
+	got := app.ExecutionStatus()
+	want := ExecutionStatus{
+		Completed:     true,
+		ErrorCaptured: true,
+	}
+
+	if got != want {
+		t.Fatalf("ExecutionStatus() = %#v, want %#v", got, want)
+	}
 }
 
 func TestPlanReturnsSnapshot(t *testing.T) {

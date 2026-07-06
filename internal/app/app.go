@@ -20,8 +20,14 @@ type App struct {
 	plan            planner.Plan
 	hasPlan         bool
 	executionResult executor.Result
+	executionErr    error
 	hasExecution    bool
 	status          status.Status
+}
+
+type ExecutionStatus struct {
+	Completed     bool
+	ErrorCaptured bool
 }
 
 func New(logger *log.Logger, cfg config.Config) *App {
@@ -43,7 +49,7 @@ func (a *App) Run(ctx context.Context) {
 
 	a.plan = a.planner.NewDryRunPlan("daemon startup")
 	a.hasPlan = true
-	a.executionResult, _ = a.executor.Execute(a.plan)
+	a.executionResult, a.executionErr = a.executor.Execute(a.plan)
 	a.hasExecution = true
 
 	a.setStatus(status.StateReady)
@@ -85,6 +91,13 @@ func (a *App) ExecutionSummary() (executor.ResultSummary, bool) {
 	}
 
 	return a.executionResult.Summary(), true
+}
+
+func (a *App) ExecutionStatus() ExecutionStatus {
+	return ExecutionStatus{
+		Completed:     a.hasExecution,
+		ErrorCaptured: a.executionErr != nil,
+	}
 }
 
 func (a *App) setStatus(state status.State) {
