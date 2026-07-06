@@ -39,6 +39,15 @@ func TestNewStartsWithStartingStatus(t *testing.T) {
 	}
 }
 
+func TestNewHasNoPreparedPlan(t *testing.T) {
+	var output bytes.Buffer
+	logger := log.New(&output, "", 0)
+
+	if plan, ok := New(logger, config.Default()).Plan(); ok {
+		t.Fatalf("Plan() = %#v, true; want no prepared plan", plan)
+	}
+}
+
 func TestRunLogsLifecycle(t *testing.T) {
 	var output bytes.Buffer
 	logger := log.New(&output, "", 0)
@@ -90,7 +99,10 @@ func TestRunPreparesDryRunPlanAndReachesLifecycleStatuses(t *testing.T) {
 	assertLogAndStatus(t, logged, checked, "starting dry_run=true", status.StateStarting, app)
 	assertLogAndStatus(t, logged, checked, "ready", status.StateReady, app)
 
-	plan := app.Plan()
+	plan, ok := app.Plan()
+	if !ok {
+		t.Fatal("Plan() reports no prepared plan after startup")
+	}
 	if plan.Action != planner.ActionNoop {
 		t.Fatalf("Plan().Action = %q, want %q", plan.Action, planner.ActionNoop)
 	}
@@ -102,6 +114,33 @@ func TestRunPreparesDryRunPlanAndReachesLifecycleStatuses(t *testing.T) {
 	assertLogAndStatus(t, logged, checked, "shutdown signal received", status.StateStopping, app)
 	assertLogAndStatus(t, logged, checked, "stopped", status.StateStopped, app)
 	<-done
+}
+
+func TestPlanReturnsSnapshot(t *testing.T) {
+	var output bytes.Buffer
+	logger := log.New(&output, "", 0)
+	ctx, cancel := context.WithCancel(context.Background())
+	cancel()
+	app := New(logger, config.Default())
+	app.Run(ctx)
+
+	snapshot, ok := app.Plan()
+	if !ok {
+		t.Fatal("Plan() reports no prepared plan after startup")
+	}
+	snapshot.Action = "changed"
+	snapshot.Reason = "changed"
+
+	got, ok := app.Plan()
+	if !ok {
+		t.Fatal("Plan() reports no prepared plan after snapshot mutation")
+	}
+	if got.Action != planner.ActionNoop {
+		t.Fatalf("Plan().Action = %q after snapshot mutation, want %q", got.Action, planner.ActionNoop)
+	}
+	if got.Reason != "daemon startup" {
+		t.Fatalf("Plan().Reason = %q after snapshot mutation, want %q", got.Reason, "daemon startup")
+	}
 }
 
 type checkingWriter struct {

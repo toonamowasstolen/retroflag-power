@@ -16,6 +16,7 @@ type App struct {
 	config  config.Config
 	planner *planner.Planner
 	plan    planner.Plan
+	hasPlan bool
 	status  status.Status
 }
 
@@ -36,6 +37,7 @@ func (a *App) Run(ctx context.Context) {
 	})
 
 	a.plan = a.planner.NewDryRunPlan("daemon startup")
+	a.hasPlan = true
 
 	a.setStatus(status.StateReady)
 	a.logEvent(events.Event{
@@ -66,8 +68,8 @@ func (a *App) Planner() *planner.Planner {
 	return a.planner
 }
 
-func (a *App) Plan() planner.Plan {
-	return a.plan
+func (a *App) Plan() (planner.Plan, bool) {
+	return a.plan, a.hasPlan
 }
 
 func (a *App) setStatus(state status.State) {
