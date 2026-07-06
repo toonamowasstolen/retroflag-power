@@ -15,6 +15,7 @@ type App struct {
 	logger  *log.Logger
 	config  config.Config
 	planner *planner.Planner
+	plan    planner.Plan
 	status  status.Status
 }
 
@@ -33,6 +34,8 @@ func (a *App) Run(ctx context.Context) {
 		Type:    events.TypeDaemonStarting,
 		Message: fmt.Sprintf("%s %s starting dry_run=%t", a.config.AppName, a.config.Version, a.config.DryRun),
 	})
+
+	a.plan = a.planner.NewDryRunPlan("daemon startup")
 
 	a.setStatus(status.StateReady)
 	a.logEvent(events.Event{
@@ -61,6 +64,10 @@ func (a *App) Status() status.Status {
 
 func (a *App) Planner() *planner.Planner {
 	return a.planner
+}
+
+func (a *App) Plan() planner.Plan {
+	return a.plan
 }
 
 func (a *App) setStatus(state status.State) {

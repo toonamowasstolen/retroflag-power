@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	"log"
+	"strings"
 	"testing"
 
 	"github.com/toonamowasstolen/retroflag-power/internal/config"
@@ -71,4 +72,64 @@ func TestRunStopsWithStoppedStatus(t *testing.T) {
 	if got != want {
 		t.Fatalf("Status() = %#v, want %#v", got, want)
 	}
+}
+
+func TestRunPreparesDryRunPlanAndReachesLifecycleStatuses(t *testing.T) {
+	logged := make(chan string)
+	checked := make(chan struct{})
+	logger := log.New(&checkingWriter{logged: logged, checked: checked}, "", 0)
+	ctx, cancel := context.WithCancel(context.Background())
+	app := New(logger, config.Default())
+	done := make(chan struct{})
+
+	go func() {
+		app.Run(ctx)
+		close(done)
+	}()
+
+	assertLogAndStatus(t, logged, checked, "starting dry_run=true", status.StateStarting, app)
+	assertLogAndStatus(t, logged, checked, "ready", status.StateReady, app)
+
+	plan := app.Plan()
+	if plan.Action != planner.ActionNoop {
+		t.Fatalf("Plan().Action = %q, want %q", plan.Action, planner.ActionNoop)
+	}
+	if plan.Reason == "" {
+		t.Fatal("Plan().Reason is empty, want startup reason")
+	}
+
+	cancel()
+	assertLogAndStatus(t, logged, checked, "shutdown signal received", status.StateStopping, app)
+	assertLogAndStatus(t, logged, checked, "stopped", status.StateStopped, app)
+	<-done
+}
+
+type checkingWriter struct {
+	logged  chan<- string
+	checked <-chan struct{}
+}
+
+func (w *checkingWriter) Write(p []byte) (int, error) {
+	w.logged <- string(p)
+	<-w.checked
+	return len(p), nil
+}
+
+func assertLogAndStatus(
+	t *testing.T,
+	logged <-chan string,
+	checked chan<- struct{},
+	logPart string,
+	wantState status.State,
+	app *App,
+) {
+	t.Helper()
+
+	if got := <-logged; !strings.Contains(got, logPart) {
+		t.Fatalf("log = %q, want it to contain %q", got, logPart)
+	}
+	if got := app.Status().State; got != wantState {
+		t.Fatalf("Status().State = %q after %q log, want %q", got, logPart, wantState)
+	}
+	checked <- struct{}{}
 }
