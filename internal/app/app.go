@@ -40,6 +40,15 @@ type RuntimeSnapshot struct {
 	ExecutionSummary    executor.ResultSummary
 }
 
+type RuntimeSnapshotSummary struct {
+	State                  status.State
+	HasPlan                bool
+	ExecutionComplete      bool
+	ExecutionSucceeded     bool
+	ExecutionErrorCaptured bool
+	DryRunNoopOnly         bool
+}
+
 func New(logger *log.Logger, cfg config.Config) *App {
 	return &App{
 		logger:   logger,
@@ -123,6 +132,28 @@ func (a *App) RuntimeSnapshot() RuntimeSnapshot {
 		HasExecutionSummary: hasExecutionSummary,
 		ExecutionSummary:    executionSummary,
 	}
+}
+
+func (s RuntimeSnapshot) Summary() RuntimeSnapshotSummary {
+	summary := RuntimeSnapshotSummary{
+		State:                  s.Status.State,
+		HasPlan:                s.HasPlanSummary,
+		ExecutionComplete:      s.ExecutionStatus.Completed,
+		ExecutionErrorCaptured: s.ExecutionStatus.ErrorCaptured,
+	}
+
+	if s.HasExecutionSummary {
+		summary.ExecutionSucceeded = s.ExecutionSummary.Succeeded
+	}
+
+	if s.HasPlanSummary && s.HasExecutionSummary {
+		summary.DryRunNoopOnly = s.PlanSummary.DryRun &&
+			s.PlanSummary.NoopOnly &&
+			s.ExecutionSummary.DryRun &&
+			s.ExecutionSummary.NoopOnly
+	}
+
+	return summary
 }
 
 func (a *App) ExecutionStatus() ExecutionStatus {
