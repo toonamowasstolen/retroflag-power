@@ -146,6 +146,10 @@ func (a *App) RuntimeSnapshot() RuntimeSnapshot {
 	}
 }
 
+func (a *App) RuntimeSummary() RuntimeSnapshotSummary {
+	return a.RuntimeSnapshot().Summary()
+}
+
 func (s RuntimeSnapshot) Summary() RuntimeSnapshotSummary {
 	summary := RuntimeSnapshotSummary{
 		State:                  s.Status.State,

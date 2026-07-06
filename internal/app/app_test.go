@@ -88,7 +88,8 @@ func TestRuntimeSnapshotSummaryBeforeStartup(t *testing.T) {
 	var output bytes.Buffer
 	logger := log.New(&output, "", 0)
 
-	got := New(logger, config.Default()).RuntimeSnapshot().Summary()
+	app := New(logger, config.Default())
+	got := app.RuntimeSnapshot().Summary()
 	want := RuntimeSnapshotSummary{
 		State: status.StateStarting,
 	}
@@ -100,6 +101,19 @@ func TestRuntimeSnapshotSummaryBeforeStartup(t *testing.T) {
 	const wantString = "state=starting plan_present=false execution_complete=false execution_success=false execution_error_captured=false dry_run_noop_only=false"
 	if gotString := got.String(); gotString != wantString {
 		t.Fatalf("RuntimeSnapshot().Summary().String() before startup = %q, want %q", gotString, wantString)
+	}
+}
+
+func TestRuntimeSummaryBeforeStartupMatchesRuntimeSnapshotSummary(t *testing.T) {
+	var output bytes.Buffer
+	logger := log.New(&output, "", 0)
+	app := New(logger, config.Default())
+
+	got := app.RuntimeSummary()
+	want := app.RuntimeSnapshot().Summary()
+
+	if got != want {
+		t.Fatalf("RuntimeSummary() before startup = %#v, want RuntimeSnapshot().Summary() %#v", got, want)
 	}
 }
 
@@ -177,6 +191,35 @@ func TestRuntimeSnapshotSummaryAfterStartup(t *testing.T) {
 	<-done
 }
 
+func TestRuntimeSummaryAfterStartupMatchesRuntimeSnapshotSummary(t *testing.T) {
+	logged := make(chan string)
+	checked := make(chan struct{})
+	logger := log.New(&checkingWriter{logged: logged, checked: checked}, "", 0)
+	ctx, cancel := context.WithCancel(context.Background())
+	app := New(logger, config.Default())
+	done := make(chan struct{})
+
+	go func() {
+		app.Run(ctx)
+		close(done)
+	}()
+
+	assertLogAndStatus(t, logged, checked, "starting dry_run=true", status.StateStarting, app)
+	assertLogAndStatus(t, logged, checked, "ready", status.StateReady, app)
+
+	got := app.RuntimeSummary()
+	want := app.RuntimeSnapshot().Summary()
+
+	if got != want {
+		t.Fatalf("RuntimeSummary() after startup = %#v, want RuntimeSnapshot().Summary() %#v", got, want)
+	}
+
+	cancel()
+	assertLogAndStatus(t, logged, checked, "shutdown signal received", status.StateStopping, app)
+	assertLogAndStatus(t, logged, checked, "stopped", status.StateStopped, app)
+	<-done
+}
+
 func TestRuntimeSnapshotSummaryAfterShutdown(t *testing.T) {
 	var output bytes.Buffer
 	logger := log.New(&output, "", 0)
@@ -201,6 +244,22 @@ func TestRuntimeSnapshotSummaryAfterShutdown(t *testing.T) {
 	const wantString = "state=stopped plan_present=true execution_complete=true execution_success=true execution_error_captured=false dry_run_noop_only=true"
 	if gotString := got.String(); gotString != wantString {
 		t.Fatalf("RuntimeSnapshot().Summary().String() after shutdown = %q, want %q", gotString, wantString)
+	}
+}
+
+func TestRuntimeSummaryAfterShutdownMatchesRuntimeSnapshotSummary(t *testing.T) {
+	var output bytes.Buffer
+	logger := log.New(&output, "", 0)
+	ctx, cancel := context.WithCancel(context.Background())
+	cancel()
+	app := New(logger, config.Default())
+	app.Run(ctx)
+
+	got := app.RuntimeSummary()
+	want := app.RuntimeSnapshot().Summary()
+
+	if got != want {
+		t.Fatalf("RuntimeSummary() after shutdown = %#v, want RuntimeSnapshot().Summary() %#v", got, want)
 	}
 }
 
