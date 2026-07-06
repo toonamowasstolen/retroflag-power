@@ -22,7 +22,7 @@ related:
   - docs/01-product/vision.md
   - docs/13-reference/terminology.md
   - docs/13-reference/glossary.md
-last_updated: 2026-07-03
+last_updated: 2026-07-06
 ---
 
 # System Overview
@@ -585,6 +585,14 @@ gpiochip0 line 17 falling edge detected.
 ```
 
 Low-level details belong in debug logs or diagnostics.
+
+`RuntimeSnapshotSummary.String()` is a stable internal diagnostic charm. It
+should stay compact, deterministic, test-friendly, and machine-ish so future
+tests and diagnostic lanterns can compare it without ceremony.
+
+Future user-facing diagnostics should get a separate friendly formatter instead
+of changing that stable string. Do not wire the runtime summary string to CLI
+output or daemon logs until a later quest deliberately chooses that path.
 
 ## Rule 4 — Platform-specific code stays isolated
 
