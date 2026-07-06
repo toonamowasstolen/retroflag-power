@@ -117,6 +117,22 @@ func TestRuntimeSummaryBeforeStartupMatchesRuntimeSnapshotSummary(t *testing.T) 
 	}
 }
 
+func TestRuntimeDiagnosticBeforeStartupMatchesRuntimeSummary(t *testing.T) {
+	var output bytes.Buffer
+	logger := log.New(&output, "", 0)
+	app := New(logger, config.Default())
+
+	got := app.RuntimeDiagnostic()
+	wantSummary := app.RuntimeSummary()
+
+	if got.Summary != wantSummary {
+		t.Fatalf("RuntimeDiagnostic().Summary before startup = %#v, want RuntimeSummary() %#v", got.Summary, wantSummary)
+	}
+	if gotString, wantString := got.String(), wantSummary.String(); gotString != wantString {
+		t.Fatalf("RuntimeDiagnostic().String() before startup = %q, want RuntimeSummary().String() %q", gotString, wantString)
+	}
+}
+
 func TestRunLogsLifecycle(t *testing.T) {
 	var output bytes.Buffer
 	logger := log.New(&output, "", 0)
@@ -260,6 +276,25 @@ func TestRuntimeSummaryAfterShutdownMatchesRuntimeSnapshotSummary(t *testing.T) 
 
 	if got != want {
 		t.Fatalf("RuntimeSummary() after shutdown = %#v, want RuntimeSnapshot().Summary() %#v", got, want)
+	}
+}
+
+func TestRuntimeDiagnosticAfterShutdownMatchesRuntimeSummary(t *testing.T) {
+	var output bytes.Buffer
+	logger := log.New(&output, "", 0)
+	ctx, cancel := context.WithCancel(context.Background())
+	cancel()
+	app := New(logger, config.Default())
+	app.Run(ctx)
+
+	got := app.RuntimeDiagnostic()
+	wantSummary := app.RuntimeSummary()
+
+	if got.Summary != wantSummary {
+		t.Fatalf("RuntimeDiagnostic().Summary after shutdown = %#v, want RuntimeSummary() %#v", got.Summary, wantSummary)
+	}
+	if gotString, wantString := got.String(), wantSummary.String(); gotString != wantString {
+		t.Fatalf("RuntimeDiagnostic().String() after shutdown = %q, want RuntimeSummary().String() %q", gotString, wantString)
 	}
 }
 
