@@ -1,7 +1,7 @@
 ---
 id: MILESTONES-001
 title: Verified Milestone Ledger
-version: 0.3.0
+version: 0.4.0
 status: Active
 owner: Joshua Taft
 audience:
@@ -15,6 +15,7 @@ related:
   - docs/00-project/roadmap.md
   - docs/00-project/quests/
   - docs/00-project/quests/0006-gather-the-checkpoints-into-one-ledger.md
+  - docs/00-project/quests/0007-add-the-link-lantern.md
   - docs/adr/0003-adopt-epoch-milestone-quest-model.md
   - docs/13-reference/terminology.md
 supersedes:
@@ -295,3 +296,48 @@ no-operation action without executing it.
 ### Quest
 
 No dedicated Quest record exists for this small checkpoint.
+
+---
+
+<a id="m-0005"></a>
+## M-0005 — Link Lantern
+
+Epoch: Awakening
+
+Status: Verified
+
+Verified on: 2026-07-06
+
+### Summary
+
+The project has a local Markdown link checker exposed through
+`make check-links`. It verifies internal Markdown links and explicit stable
+anchors, including `m-0001` through `m-0004`, using Python 3 with no third-party
+dependencies. The standard `make check` workflow remains unchanged.
+
+### Verified
+
+- `make check-links` passed.
+- `make check` passed.
+- `git status --short` was clean before the Milestone ledger update.
+
+### Not included
+
+- production Go changes
+- packaging changes
+- systemd activation
+- GPIO
+- shutdown execution
+- `SafeShutdown.py` replacement
+- `rc.local` edits
+- resume
+- state storage
+- Node or npm dependencies
+
+### Evidence
+
+- Revision `a664052` — Add the Link Lantern.
+
+### Quest
+
+- [QUEST-0007 — Add the Link Lantern](quests/0007-add-the-link-lantern.md)
