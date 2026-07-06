@@ -9,6 +9,16 @@ type Plan struct {
 	Reason string
 }
 
+type Planner struct{}
+
+func New() *Planner {
+	return &Planner{}
+}
+
+func (p *Planner) NewDryRunPlan(reason string) Plan {
+	return NewDryRunPlan(reason)
+}
+
 func NewDryRunPlan(reason string) Plan {
 	return Plan{
 		Action: ActionNoop,

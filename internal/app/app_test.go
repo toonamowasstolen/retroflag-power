@@ -7,8 +7,24 @@ import (
 	"testing"
 
 	"github.com/toonamowasstolen/retroflag-power/internal/config"
+	"github.com/toonamowasstolen/retroflag-power/internal/planner"
 	"github.com/toonamowasstolen/retroflag-power/internal/status"
 )
+
+func TestNewHasPlanner(t *testing.T) {
+	var output bytes.Buffer
+	logger := log.New(&output, "", 0)
+
+	got := New(logger, config.Default()).Planner()
+
+	if got == nil {
+		t.Fatal("Planner() = nil, want app-owned planner")
+	}
+
+	if plan := got.NewDryRunPlan("app lifecycle"); plan.Action != planner.ActionNoop {
+		t.Fatalf("Planner().NewDryRunPlan() Action = %q, want %q", plan.Action, planner.ActionNoop)
+	}
+}
 
 func TestNewStartsWithStartingStatus(t *testing.T) {
 	var output bytes.Buffer

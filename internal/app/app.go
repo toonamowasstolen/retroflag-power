@@ -7,20 +7,23 @@ import (
 
 	"github.com/toonamowasstolen/retroflag-power/internal/config"
 	"github.com/toonamowasstolen/retroflag-power/internal/events"
+	"github.com/toonamowasstolen/retroflag-power/internal/planner"
 	"github.com/toonamowasstolen/retroflag-power/internal/status"
 )
 
 type App struct {
-	logger *log.Logger
-	config config.Config
-	status status.Status
+	logger  *log.Logger
+	config  config.Config
+	planner *planner.Planner
+	status  status.Status
 }
 
 func New(logger *log.Logger, cfg config.Config) *App {
 	return &App{
-		logger: logger,
-		config: cfg,
-		status: status.New(cfg, status.StateStarting),
+		logger:  logger,
+		config:  cfg,
+		planner: planner.New(),
+		status:  status.New(cfg, status.StateStarting),
 	}
 }
 
@@ -54,6 +57,10 @@ func (a *App) Run(ctx context.Context) {
 
 func (a *App) Status() status.Status {
 	return a.status
+}
+
+func (a *App) Planner() *planner.Planner {
+	return a.planner
 }
 
 func (a *App) setStatus(state status.State) {
