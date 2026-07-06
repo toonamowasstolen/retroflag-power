@@ -1,7 +1,7 @@
 ---
 id: MILESTONES-001
 title: Verified Milestone Ledger
-version: 0.4.0
+version: 0.5.0
 status: Active
 owner: Joshua Taft
 audience:
@@ -341,3 +341,59 @@ dependencies. The standard `make check` workflow remains unchanged.
 ### Quest
 
 - [QUEST-0007 — Add the Link Lantern](quests/0007-add-the-link-lantern.md)
+
+---
+
+<a id="m-0006"></a>
+## M-0006 — Status Badge
+
+Epoch: Awakening
+
+Status: Verified
+
+Verified on: 2026-07-06
+
+### Summary
+
+The daemon has an `internal/status` package with a small `Status` model
+containing `AppName`, `Version`, `DryRun`, and `State`. Its lifecycle states are
+starting, ready, stopping, and stopped. A `New(config, state)` helper and focused
+unit tests describe the model without adding runtime wiring or an external
+status interface.
+
+### Verified
+
+- `gofmt` passed.
+- `go test ./...` passed.
+- `go build ./cmd/retroflag-powerd` passed.
+- `retroflag-powerd --version` remained exactly
+  `retroflag-powerd 0.1.0-dev`.
+- `make check-links` passed.
+- `make check` passed.
+
+### Not included
+
+- runtime wiring
+- HTTP
+- status server
+- persistence
+- channels
+- async processing
+- GPIO
+- shutdown execution
+- command runner
+- shell execution
+- packaging changes
+- service activation
+- `SafeShutdown.py` replacement
+- `rc.local` edits
+- resume
+- state storage
+
+### Evidence
+
+- Revision `aa277a3` — Give the daemon a status badge.
+
+### Quest
+
+No dedicated Quest record exists for this small checkpoint.
