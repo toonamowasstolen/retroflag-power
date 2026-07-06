@@ -236,6 +236,38 @@ func TestRuntimeSummaryAfterStartupMatchesRuntimeSnapshotSummary(t *testing.T) {
 	<-done
 }
 
+func TestRuntimeDiagnosticAfterStartupMatchesRuntimeSummary(t *testing.T) {
+	logged := make(chan string)
+	checked := make(chan struct{})
+	logger := log.New(&checkingWriter{logged: logged, checked: checked}, "", 0)
+	ctx, cancel := context.WithCancel(context.Background())
+	app := New(logger, config.Default())
+	done := make(chan struct{})
+
+	go func() {
+		app.Run(ctx)
+		close(done)
+	}()
+
+	assertLogAndStatus(t, logged, checked, "starting dry_run=true", status.StateStarting, app)
+	assertLogAndStatus(t, logged, checked, "ready", status.StateReady, app)
+
+	got := app.RuntimeDiagnostic()
+	wantSummary := app.RuntimeSummary()
+
+	if got.Summary != wantSummary {
+		t.Fatalf("RuntimeDiagnostic().Summary after startup = %#v, want RuntimeSummary() %#v", got.Summary, wantSummary)
+	}
+	if gotString, wantString := got.String(), wantSummary.String(); gotString != wantString {
+		t.Fatalf("RuntimeDiagnostic().String() after startup = %q, want RuntimeSummary().String() %q", gotString, wantString)
+	}
+
+	cancel()
+	assertLogAndStatus(t, logged, checked, "shutdown signal received", status.StateStopping, app)
+	assertLogAndStatus(t, logged, checked, "stopped", status.StateStopped, app)
+	<-done
+}
+
 func TestRuntimeSnapshotSummaryAfterShutdown(t *testing.T) {
 	var output bytes.Buffer
 	logger := log.New(&output, "", 0)
