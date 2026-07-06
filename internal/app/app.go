@@ -28,6 +28,7 @@ type App struct {
 type ExecutionStatus struct {
 	Completed     bool
 	ErrorCaptured bool
+	ErrorMessage  string
 }
 
 func New(logger *log.Logger, cfg config.Config) *App {
@@ -94,10 +95,15 @@ func (a *App) ExecutionSummary() (executor.ResultSummary, bool) {
 }
 
 func (a *App) ExecutionStatus() ExecutionStatus {
-	return ExecutionStatus{
+	executionStatus := ExecutionStatus{
 		Completed:     a.hasExecution,
 		ErrorCaptured: a.executionErr != nil,
 	}
+	if a.executionErr != nil {
+		executionStatus.ErrorMessage = a.executionErr.Error()
+	}
+
+	return executionStatus
 }
 
 func (a *App) setStatus(state status.State) {

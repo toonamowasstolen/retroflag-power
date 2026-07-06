@@ -156,6 +156,7 @@ func TestRunPreparesDryRunPlanAndReachesLifecycleStatuses(t *testing.T) {
 	wantExecutionStatus := ExecutionStatus{
 		Completed:     true,
 		ErrorCaptured: false,
+		ErrorMessage:  "",
 	}
 	if executionStatus != wantExecutionStatus {
 		t.Fatalf("ExecutionStatus() = %#v, want %#v", executionStatus, wantExecutionStatus)
@@ -178,6 +179,7 @@ func TestExecutionStatusReportsCapturedExecutionError(t *testing.T) {
 	want := ExecutionStatus{
 		Completed:     true,
 		ErrorCaptured: true,
+		ErrorMessage:  executor.ErrUnsupportedPlan.Error(),
 	}
 
 	if got != want {
