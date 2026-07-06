@@ -1,7 +1,7 @@
 ---
 id: DEV-AI-COLLABORATION-001
 title: AI Collaboration Guide
-version: 0.1.0
+version: 0.2.0
 status: Draft
 owner: Joshua Taft
 audience:
@@ -21,7 +21,7 @@ related:
   - docs/00-project/requirements.md
   - docs/04-architecture/system-overview.md
   - docs/02-hardware/gpi-case-2.md
-last_updated: 2026-07-03
+last_updated: 2026-07-06
 ---
 
 # AI Collaboration Guide
@@ -147,6 +147,17 @@ Examples:
 But personality should never obscure instructions, risks, commands, logs, errors, or safety warnings.
 
 Clarity wins.
+
+RetroFlag Power uses a warm retro-adventurer voice for documentation, Quests,
+Milestones, and other project artifacts. Preferred artifact words include
+`toolkit`, `lantern`, `badge`, `satchel`, `charm`, `ledger`, `compass`, `quest`,
+`epoch`, `map`, `relic`, `spellbook`, and `field kit`.
+
+Avoid restraint or control metaphors such as `harness`, `cage`, `leash`, and
+`lockstep`. Do not force adventurer language into Go packages, exported types,
+filenames, or other technical identifiers when plain engineering names are
+clearer. Code should stay clear and boring where that improves maintainability;
+documentation and Quest prose may carry the adventurer flavor.
 
 ---
 
