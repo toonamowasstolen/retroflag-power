@@ -454,66 +454,18 @@ Minimum validation:
 - [ ] code does not import GPIO libraries
 - [ ] code does not require Raspberry Pi hardware
 
-## Nameplate Checkpoint
+## Verified Awakening Milestone Evidence
 
-The first-breath daemon now identifies itself without expanding its role:
+The following verified Milestones support this first-breath readiness record:
 
-- `retroflag-powerd --version` prints `retroflag-powerd 0.1.0-dev`.
-- The startup log includes the daemon name and version.
-- `make version` runs the identity command through Workshop.
-- The VS Code task `Workshop: version` runs `make version`.
-- `make check` runs tests, build, and version validation.
-- CI/Forge receives the same identity validation by running `make check`.
-- Tests, build, version output, and the Ctrl+C runtime lifecycle passed.
-- `make check` passed.
+- [M-0001 — Daemon Nameplate](milestones.md#m-0001)
+- [M-0002 — Config Satchel](milestones.md#m-0002)
+- [M-0003 — Event Charms](milestones.md#m-0003)
+- [M-0004 — Dry-Run Action Charm](milestones.md#m-0004)
 
-This is an Awakening progress note, not a new hardware or service capability.
-
-## Config Satchel Checkpoint
-
-Awakening now includes a tiny defaults-only configuration boundary:
-
-- `AppName` is `retroflag-powerd`.
-- `Version` is `0.1.0-dev`, sourced from the version package.
-- `DryRun` is `true`.
-- The app receives the config.
-- Startup logging includes name, version, and `dry_run=true`.
-- `--version` output remains unchanged.
-- Lifecycle validation and `make check` passed.
-
-The daemon does not load config files or environment variables and has no new
-CLI flags. This checkpoint adds no GPIO, shutdown execution, service activation,
-resume, or state storage.
-
-## Event Charms Checkpoint
-
-Awakening now includes a minimal internal lifecycle event model:
-
-- `Event` has `Type` and `Message` fields.
-- Lifecycle types cover daemon starting, daemon ready, shutdown signal received,
-  and daemon stopped.
-- The app logs lifecycle messages through the event model.
-- `--version` is unchanged.
-- Startup still logs name, version, and `dry_run=true`.
-- The Ctrl+C lifecycle exits cleanly and `make check` passed.
-
-This is not an event bus. It adds no channels, async processing, persistence,
-third-party dependencies, GPIO, shutdown execution, service activation, resume,
-or state storage.
-
-## Dry-Run Action Charm Checkpoint
-
-Awakening now includes a standalone internal action model:
-
-- `Action` has `Type`, `Message`, and `DryRun` fields.
-- `TypeNoop` exists.
-- `NewDryRunNoop` creates a noop action with `DryRun: true`.
-- The action model has no execution path and is not wired into the lifecycle.
-- `--version` remains unchanged and `make check` passed.
-
-This charm adds no GPIO, shutdown execution, command runner, shell execution,
-action queue, channels, async processing, persistence, packaging changes,
-service activation, resume, or state storage.
+The canonical Milestone ledger owns the detailed evidence and exclusions. This
+readiness document retains the safety framing: these checkpoints add no GPIO,
+shutdown execution, service activation, resume, or state storage.
 
 ---
 

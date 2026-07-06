@@ -106,70 +106,18 @@ The project now has:
 - a path
 - a horizon
 
-## Current Awakening Checkpoint
+## Verified Awakening Milestones
 
-The checkpoint summaries in this section remain temporarily until QUEST-0006
-gathers verified facts into the canonical Milestone ledger. They are not stable
-Milestone citations.
+Current verified progress:
 
-The daemon nameplate is complete:
+- [M-0001 — Daemon Nameplate](milestones.md#m-0001)
+- [M-0002 — Config Satchel](milestones.md#m-0002)
+- [M-0003 — Event Charms](milestones.md#m-0003)
+- [M-0004 — Dry-Run Action Charm](milestones.md#m-0004)
 
-- `retroflag-powerd --version` reports `retroflag-powerd 0.1.0-dev`.
-- Startup logging includes the daemon name and version.
-- Workshop exposes the same identity path through `make version`.
-- The VS Code task `Workshop: version` delegates to `make version`.
-- `make check` validates tests, build, and version.
-- CI/Forge runs `make check`, so remote validation includes the daemon name.
-- Tests, build, version output, and runtime signal handling passed.
-- `make check` passed.
-
-The checkpoint does not expand the daemon into GPIO, shutdown, resume, or state
-behavior.
-
-### Config Satchel Checkpoint
-
-The daemon now carries a defaults-only internal config:
-
-- `AppName: retroflag-powerd`
-- `Version: 0.1.0-dev`, sourced from the version package
-- `DryRun: true`
-- config is passed into the app
-- startup logs name, version, and `dry_run=true`
-- `--version` remains unchanged, lifecycle validation stays clean, and
-  `make check` passed
-
-No config files, environment variables, or new CLI flags are loaded. No GPIO,
-shutdown execution, service activation, resume, or state storage was added.
-
-### Event Charms Checkpoint
-
-The daemon now describes lifecycle moments with a tiny internal `Event`:
-
-- fields: `Type` and `Message`
-- types: `daemon.starting`, `daemon.ready`, `shutdown.signal_received`, and
-  `daemon.stopped`
-- app lifecycle logging flows through the event model
-- `--version`, startup identity with `dry_run=true`, and clean Ctrl+C behavior
-  remain intact
-- `make check` passed
-
-No event bus, channels, async processing, persistence, third-party dependencies,
-GPIO, shutdown execution, service activation, resume, or state storage were
-added.
-
-### Dry-Run Action Charm Checkpoint
-
-The daemon now has a standalone internal `Action` model:
-
-- fields: `Type`, `Message`, and `DryRun`
-- `TypeNoop` identifies a no-operation action
-- `NewDryRunNoop` creates noop actions with `DryRun: true`
-- no execution path or lifecycle wiring exists
-- `--version` remains unchanged and `make check` passed
-
-No GPIO, shutdown execution, command runner, shell execution, action queue,
-channels, async processing, persistence, packaging changes, service activation,
-resume, or state storage were added.
+The canonical Milestone ledger owns the detailed evidence and exclusions. The
+current direction remains small internal boundaries before hardware behavior,
+shutdown execution, or service activation.
 
 ---
 

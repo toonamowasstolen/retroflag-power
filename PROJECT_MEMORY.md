@@ -250,69 +250,17 @@ Primary artifacts:
 - Graceful signal handling
 - systemd service
 
-The checkpoint summaries below remain temporarily for historical continuity.
-They are not canonical Milestone records and will be gathered by QUEST-0006.
+Verified Awakening progress is recorded in the canonical Milestone ledger:
 
-#### Nameplate checkpoint
+- [M-0001 — Daemon Nameplate](docs/00-project/milestones.md#m-0001)
+- [M-0002 — Config Satchel](docs/00-project/milestones.md#m-0002)
+- [M-0003 — Event Charms](docs/00-project/milestones.md#m-0003)
+- [M-0004 — Dry-Run Action Charm](docs/00-project/milestones.md#m-0004)
 
-Completed during Awakening:
-
-- `retroflag-powerd --version` prints `retroflag-powerd 0.1.0-dev`.
-- Normal startup logs include the daemon name and version.
-- `make version` runs the daemon version command through Workshop.
-- The VS Code task `Workshop: version` runs `make version`.
-- `make check` runs tests, build, and version validation.
-- GitHub Actions Forge inherits the name check because CI runs `make check`.
-- Tests, build, version output, and the Ctrl+C runtime lifecycle passed.
-- `make check` passed.
-
-This checkpoint adds identity only. It does not add hardware, shutdown, resume,
-or state behavior.
-
-#### Config satchel checkpoint
-
-The daemon now has a minimal internal configuration boundary with safe defaults:
-
-- `AppName` defaults to `retroflag-powerd`.
-- `Version` defaults to `0.1.0-dev` from the version package.
-- `DryRun` defaults to `true`.
-- The app receives the config and logs name, version, and `dry_run=true` at
-  startup.
-- `--version` output remains unchanged, the lifecycle remains clean, and
-  `make check` passed.
-
-The satchel is defaults-only. It does not load config files or environment
-variables, and it adds no new CLI flags, GPIO, shutdown execution, service
-activation, resume, or state storage.
-
-#### Event charms checkpoint
-
-The daemon now has a minimal internal lifecycle event model:
-
-- `Event` contains only `Type` and `Message`.
-- Four lifecycle types describe daemon starting, daemon ready, shutdown signal
-  received, and daemon stopped.
-- The app logs its lifecycle through these events.
-- `--version` remains unchanged, startup still includes name, version, and
-  `dry_run=true`, the Ctrl+C lifecycle exits cleanly, and `make check` passed.
-
-These charms are synchronous descriptions only. No event bus, channels, async
-processing, persistence, or third-party dependencies were added. They introduce
-no GPIO, shutdown execution, service activation, resume, or state storage.
-
-#### Dry-run action charm checkpoint
-
-The daemon now has a standalone internal action model:
-
-- `Action` contains `Type`, `Message`, and `DryRun`.
-- `TypeNoop` represents a no-operation action.
-- `NewDryRunNoop` creates a noop action with `DryRun: true`.
-- No execution path or lifecycle wiring was added.
-- `--version` remains unchanged and `make check` passed.
-
-The charm cannot run anything. It adds no GPIO, shutdown execution, command
-runner, shell execution, action queue, channels, async processing, persistence,
-packaging changes, service activation, resume, or state storage.
+The ledger preserves verification evidence and explicit exclusions. Project
+Memory retains the broader safety boundary: no hardware control, shutdown
+execution, service activation, resume, or state storage belongs in these
+Awakening checkpoints.
 
 ### Epoch 2 — Heartbeat
 

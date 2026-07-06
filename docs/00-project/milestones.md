@@ -1,7 +1,7 @@
 ---
 id: MILESTONES-001
 title: Verified Milestone Ledger
-version: 0.2.0
+version: 0.3.0
 status: Active
 owner: Joshua Taft
 audience:
@@ -14,6 +14,7 @@ related:
   - PROJECT_MEMORY.md
   - docs/00-project/roadmap.md
   - docs/00-project/quests/
+  - docs/00-project/quests/0006-gather-the-checkpoints-into-one-ledger.md
   - docs/adr/0003-adopt-epoch-milestone-quest-model.md
   - docs/13-reference/terminology.md
 supersedes:
@@ -27,9 +28,8 @@ last_updated: 2026-07-06
 
 This is the canonical source for numbered, verified project checkpoints.
 
-No Milestones are created by this vocabulary migration. QUEST-0006 will gather
-existing checkpoint evidence, define the first entries, and remove duplicated
-checkpoint prose only after review.
+QUEST-0006 gathered the first four verified Awakening checkpoints into this
+ledger without changing their historical evidence.
 
 ---
 
@@ -70,7 +70,7 @@ Each entry must include:
 Every entry uses an explicit anchor:
 
 ```html
-<a id="m-0001"></a>
+<a id="m-NNNN"></a>
 ```
 
 followed by:
@@ -119,7 +119,179 @@ Related:
 
 # Verified Milestones
 
-No entries yet.
+<a id="m-0001"></a>
+## M-0001 — Daemon Nameplate
 
-QUEST-0006 — Gather the Checkpoints into One Ledger will propose the initial
-entries without changing their historical evidence.
+Epoch: Awakening
+
+Status: Verified
+
+Verified on: 2026-07-03
+
+### Summary
+
+The daemon can identify itself consistently during local runs and standard
+validation.
+
+### Verified
+
+- `retroflag-powerd --version` prints `retroflag-powerd 0.1.0-dev`.
+- Version is `0.1.0-dev`.
+- Startup logs include the daemon name and version.
+- `make check` passed.
+
+### Not included
+
+- GPIO
+- shutdown execution
+- service activation
+- resume
+- state storage
+
+### Evidence
+
+- Revision `939c3a9` — Teach the daemon to say its name.
+- Revision `81c3a3e` — Teach Workshop to ask the daemon its name.
+- Revision `66a044c` — Teach Workshop check to verify the daemon name.
+
+### Quest
+
+No dedicated Quest record exists for this small checkpoint.
+
+---
+
+<a id="m-0002"></a>
+## M-0002 — Config Satchel
+
+Epoch: Awakening
+
+Status: Verified
+
+Verified on: 2026-07-03
+
+### Summary
+
+The daemon has a minimal internal configuration boundary with safe,
+defaults-only identity and dry-run settings.
+
+### Verified
+
+- An internal config boundary exists.
+- `AppName` defaults to `retroflag-powerd`.
+- `Version` defaults to `0.1.0-dev`.
+- `DryRun` defaults to `true`.
+- The app receives config.
+- Startup logs name, version, and `dry_run=true`.
+- `make check` passed.
+
+### Not included
+
+- config file loading
+- environment variable loading
+- new CLI flags
+- GPIO
+- shutdown execution
+- service activation
+- resume
+- state storage
+
+### Evidence
+
+- Revision `486c15d` — Give the daemon a config satchel.
+
+### Quest
+
+No dedicated Quest record exists for this small checkpoint.
+
+---
+
+<a id="m-0003"></a>
+## M-0003 — Event Charms
+
+Epoch: Awakening
+
+Status: Verified
+
+Verified on: 2026-07-03
+
+### Summary
+
+The daemon has a minimal internal model for describing lifecycle events.
+
+### Verified
+
+- `Event` has `Type` and `Message`.
+- Lifecycle event types exist for daemon starting, daemon ready, shutdown signal
+  received, and daemon stopped.
+- The app logs lifecycle messages through the event model.
+- `make check` passed.
+
+### Not included
+
+- event bus
+- channels
+- async processing
+- persistence
+- third-party dependencies
+- GPIO
+- shutdown execution
+- service activation
+- resume
+- state storage
+
+### Evidence
+
+- Revision `ee463bb` — Give the daemon event charms.
+
+### Quest
+
+No dedicated Quest record exists for this small checkpoint.
+
+---
+
+<a id="m-0004"></a>
+## M-0004 — Dry-Run Action Charm
+
+Epoch: Awakening
+
+Status: Verified
+
+Verified on: 2026-07-03
+
+### Summary
+
+The daemon has a standalone dry-run action model that can describe a planned
+no-operation action without executing it.
+
+### Verified
+
+- `Action` has `Type`, `Message`, and `DryRun`.
+- `TypeNoop` exists.
+- A dry-run noop helper exists.
+- The noop action has `DryRun: true`.
+- No execution path exists.
+- No lifecycle wiring exists.
+- `make check` passed.
+
+### Not included
+
+- command runner
+- shell execution
+- action queue
+- channels
+- async processing
+- persistence
+- packaging changes
+- GPIO
+- shutdown execution
+- service activation
+- resume
+- state storage
+
+### Evidence
+
+- Revision `5ed148f` — Give the daemon a dry-run action charm.
+
+### Quest
+
+No dedicated Quest record exists for this small checkpoint.
