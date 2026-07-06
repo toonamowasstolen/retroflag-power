@@ -8,6 +8,7 @@ import (
 	"testing"
 
 	"github.com/toonamowasstolen/retroflag-power/internal/config"
+	"github.com/toonamowasstolen/retroflag-power/internal/executor"
 	"github.com/toonamowasstolen/retroflag-power/internal/planner"
 	"github.com/toonamowasstolen/retroflag-power/internal/status"
 )
@@ -45,6 +46,15 @@ func TestNewHasNoPreparedPlan(t *testing.T) {
 
 	if plan, ok := New(logger, config.Default()).Plan(); ok {
 		t.Fatalf("Plan() = %#v, true; want no prepared plan", plan)
+	}
+}
+
+func TestNewHasNoExecutionSummary(t *testing.T) {
+	var output bytes.Buffer
+	logger := log.New(&output, "", 0)
+
+	if summary, ok := New(logger, config.Default()).ExecutionSummary(); ok {
+		t.Fatalf("ExecutionSummary() = %#v, true; want no execution summary", summary)
 	}
 }
 
@@ -114,6 +124,20 @@ func TestRunPreparesDryRunPlanAndReachesLifecycleStatuses(t *testing.T) {
 	}
 	if plan.Reason == "" {
 		t.Fatal("Plan().Reason is empty, want startup reason")
+	}
+
+	executionSummary, ok := app.ExecutionSummary()
+	if !ok {
+		t.Fatal("ExecutionSummary() reports no execution after startup")
+	}
+	wantExecutionSummary := executor.ResultSummary{
+		DryRun:         true,
+		NoopOnly:       true,
+		ActionsHandled: 1,
+		Succeeded:      true,
+	}
+	if executionSummary != wantExecutionSummary {
+		t.Fatalf("ExecutionSummary() = %#v, want %#v", executionSummary, wantExecutionSummary)
 	}
 
 	cancel()

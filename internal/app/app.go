@@ -7,25 +7,30 @@ import (
 
 	"github.com/toonamowasstolen/retroflag-power/internal/config"
 	"github.com/toonamowasstolen/retroflag-power/internal/events"
+	"github.com/toonamowasstolen/retroflag-power/internal/executor"
 	"github.com/toonamowasstolen/retroflag-power/internal/planner"
 	"github.com/toonamowasstolen/retroflag-power/internal/status"
 )
 
 type App struct {
-	logger  *log.Logger
-	config  config.Config
-	planner *planner.Planner
-	plan    planner.Plan
-	hasPlan bool
-	status  status.Status
+	logger          *log.Logger
+	config          config.Config
+	planner         *planner.Planner
+	executor        *executor.Executor
+	plan            planner.Plan
+	hasPlan         bool
+	executionResult executor.Result
+	hasExecution    bool
+	status          status.Status
 }
 
 func New(logger *log.Logger, cfg config.Config) *App {
 	return &App{
-		logger:  logger,
-		config:  cfg,
-		planner: planner.New(),
-		status:  status.New(cfg, status.StateStarting),
+		logger:   logger,
+		config:   cfg,
+		planner:  planner.New(),
+		executor: executor.New(),
+		status:   status.New(cfg, status.StateStarting),
 	}
 }
 
@@ -38,6 +43,8 @@ func (a *App) Run(ctx context.Context) {
 
 	a.plan = a.planner.NewDryRunPlan("daemon startup")
 	a.hasPlan = true
+	a.executionResult, _ = a.executor.Execute(a.plan)
+	a.hasExecution = true
 
 	a.setStatus(status.StateReady)
 	a.logEvent(events.Event{
@@ -70,6 +77,14 @@ func (a *App) Planner() *planner.Planner {
 
 func (a *App) Plan() (planner.Plan, bool) {
 	return a.plan, a.hasPlan
+}
+
+func (a *App) ExecutionSummary() (executor.ResultSummary, bool) {
+	if !a.hasExecution {
+		return executor.ResultSummary{}, false
+	}
+
+	return a.executionResult.Summary(), true
 }
 
 func (a *App) setStatus(state status.State) {
