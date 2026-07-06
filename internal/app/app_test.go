@@ -325,6 +325,9 @@ func TestRuntimeDiagnosticAfterShutdownMatchesRuntimeSummary(t *testing.T) {
 	if got.Summary != wantSummary {
 		t.Fatalf("RuntimeDiagnostic().Summary after shutdown = %#v, want RuntimeSummary() %#v", got.Summary, wantSummary)
 	}
+	if got.Summary.State != status.StateStopped {
+		t.Fatalf("RuntimeDiagnostic().Summary.State after shutdown = %q, want %q", got.Summary.State, status.StateStopped)
+	}
 	if gotString, wantString := got.String(), wantSummary.String(); gotString != wantString {
 		t.Fatalf("RuntimeDiagnostic().String() after shutdown = %q, want RuntimeSummary().String() %q", gotString, wantString)
 	}
