@@ -7,7 +7,20 @@ import (
 	"testing"
 
 	"github.com/toonamowasstolen/retroflag-power/internal/config"
+	"github.com/toonamowasstolen/retroflag-power/internal/status"
 )
+
+func TestNewStartsWithStartingStatus(t *testing.T) {
+	var output bytes.Buffer
+	logger := log.New(&output, "", 0)
+
+	got := New(logger, config.Default()).Status()
+	want := status.New(config.Default(), status.StateStarting)
+
+	if got != want {
+		t.Fatalf("Status() = %#v, want %#v", got, want)
+	}
+}
 
 func TestRunLogsLifecycle(t *testing.T) {
 	var output bytes.Buffer
@@ -24,5 +37,22 @@ retroflag-powerd stopped
 `
 	if got := output.String(); got != want {
 		t.Fatalf("Run() logs:\n%q\nwant:\n%q", got, want)
+	}
+}
+
+func TestRunStopsWithStoppedStatus(t *testing.T) {
+	var output bytes.Buffer
+	logger := log.New(&output, "", 0)
+	ctx, cancel := context.WithCancel(context.Background())
+	cancel()
+
+	app := New(logger, config.Default())
+	app.Run(ctx)
+
+	got := app.Status()
+	want := status.New(config.Default(), status.StateStopped)
+
+	if got != want {
+		t.Fatalf("Status() = %#v, want %#v", got, want)
 	}
 }
