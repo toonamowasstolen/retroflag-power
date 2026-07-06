@@ -14,6 +14,26 @@ type Result struct {
 	DryRun         bool
 	NoopOnly       bool
 	ActionsHandled int
+	Succeeded      bool
+	Unsupported    bool
+}
+
+type ResultSummary struct {
+	DryRun         bool
+	NoopOnly       bool
+	ActionsHandled int
+	Succeeded      bool
+	Unsupported    bool
+}
+
+func (r Result) Summary() ResultSummary {
+	return ResultSummary{
+		DryRun:         r.DryRun,
+		NoopOnly:       r.NoopOnly,
+		ActionsHandled: r.ActionsHandled,
+		Succeeded:      r.Succeeded,
+		Unsupported:    r.Unsupported,
+	}
 }
 
 func New() *Executor {
@@ -28,9 +48,11 @@ func (e *Executor) Execute(plan planner.Plan) (Result, error) {
 	}
 
 	if !summary.DryRun || !summary.NoopOnly {
+		result.Unsupported = true
 		return result, ErrUnsupportedPlan
 	}
 
 	result.ActionsHandled = summary.ActionCount
+	result.Succeeded = true
 	return result, nil
 }

@@ -19,6 +19,7 @@ func TestExecuteDryRunNoopPlan(t *testing.T) {
 		DryRun:         true,
 		NoopOnly:       true,
 		ActionsHandled: 1,
+		Succeeded:      true,
 	}
 	if got != want {
 		t.Fatalf("Execute() = %#v, want %#v", got, want)
@@ -37,10 +38,47 @@ func TestExecuteUnsupportedPlan(t *testing.T) {
 	}
 
 	want := Result{
-		DryRun:   false,
-		NoopOnly: false,
+		DryRun:      false,
+		NoopOnly:    false,
+		Unsupported: true,
 	}
 	if got != want {
 		t.Fatalf("Execute() = %#v, want %#v", got, want)
+	}
+}
+
+func TestSuccessfulResultSummary(t *testing.T) {
+	result := Result{
+		DryRun:         true,
+		NoopOnly:       true,
+		ActionsHandled: 1,
+		Succeeded:      true,
+	}
+
+	got := result.Summary()
+	want := ResultSummary{
+		DryRun:         true,
+		NoopOnly:       true,
+		ActionsHandled: 1,
+		Succeeded:      true,
+	}
+
+	if got != want {
+		t.Fatalf("Summary() = %#v, want %#v", got, want)
+	}
+}
+
+func TestUnsupportedResultSummary(t *testing.T) {
+	result := Result{
+		Unsupported: true,
+	}
+
+	got := result.Summary()
+	want := ResultSummary{
+		Unsupported: true,
+	}
+
+	if got != want {
+		t.Fatalf("Summary() = %#v, want %#v", got, want)
 	}
 }
