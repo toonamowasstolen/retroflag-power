@@ -103,8 +103,14 @@ func TestRunPreparesDryRunPlanAndReachesLifecycleStatuses(t *testing.T) {
 	if !ok {
 		t.Fatal("Plan() reports no prepared plan after startup")
 	}
-	if plan.Action != planner.ActionNoop {
-		t.Fatalf("Plan().Action = %q, want %q", plan.Action, planner.ActionNoop)
+	summary := plan.Summary()
+	wantSummary := planner.PlanSummary{
+		DryRun:      true,
+		ActionCount: 1,
+		NoopOnly:    true,
+	}
+	if summary != wantSummary {
+		t.Fatalf("Plan().Summary() = %#v, want %#v", summary, wantSummary)
 	}
 	if plan.Reason == "" {
 		t.Fatal("Plan().Reason is empty, want startup reason")
