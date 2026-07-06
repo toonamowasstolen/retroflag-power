@@ -1,7 +1,7 @@
 ---
 id: ROADMAP-001
 title: Project Roadmap
-version: 0.1.0
+version: 0.2.0
 status: Draft
 owner: Joshua Taft
 audience:
@@ -9,25 +9,30 @@ audience:
   - Contributors
   - AI Assistants
   - Future Maintainers
-purpose: Provide a practical near-term roadmap from Milestone 0 documentation through the first running daemon, safe shutdown replacement, resume foundation, and public release path.
+purpose: Record RetroFlag Power's current Epoch, canonical seven-Epoch ladder, practical route, next gates, and future direction.
 related:
   - WHY.md
   - PROJECT_MEMORY.md
   - PROJECT_MANIFEST.md
   - PROJECT_CHARTER.md
   - docs/00-project/milestones.md
+  - docs/adr/0003-adopt-epoch-milestone-quest-model.md
   - docs/01-product/vision.md
   - docs/13-reference/terminology.md
-last_updated: 2026-07-03
+last_updated: 2026-07-06
 ---
 
 # Project Roadmap
 
-> A milestone is the chapter. A roadmap is the next road sign.
+> An Epoch is the chapter. A Milestone proves how far we traveled. The Roadmap
+> points toward the next road sign.
 
-This roadmap translates the larger milestone story into a practical build path.
+This Roadmap owns current state and future direction.
 
-The milestone document explains the full journey.
+The seven-Epoch ladder defines the large project journey.
+
+The verified Milestone ledger records numbered checkpoints after evidence proves
+them.
 
 This roadmap answers:
 
@@ -67,7 +72,7 @@ Each phase should have a clear stopping point.
 Current phase:
 
 ```
-Milestone 1 — Awakening
+Epoch 1 — Awakening
 ```
 
 Current status:
@@ -102,6 +107,10 @@ The project now has:
 - a horizon
 
 ## Current Awakening Checkpoint
+
+The checkpoint summaries in this section remain temporarily until QUEST-0006
+gathers verified facts into the canonical Milestone ledger. They are not stable
+Milestone citations.
 
 The daemon nameplate is complete:
 
@@ -187,15 +196,15 @@ Development / AI Guidance
 ADR + RFC Templates
       │
       ▼
-Milestone 1 Entry
+Epoch 1 Entry
       │
       ▼
 First Daemon
 ```
 
-Milestone 0 should end when implementation can begin without inventing the project from scratch.
+Epoch 0 should end when implementation can begin without inventing the project from scratch.
 
-Milestone 0 should not attempt to fully document every future feature.
+Epoch 0 should not attempt to fully document every future feature.
 
 ---
 
@@ -295,7 +304,7 @@ Hardware-specific GPIO details shall not leak into core services.
 
 - Requirements have stable IDs.
 - Critical requirements are identified.
-- Milestone 1 requirements are clear.
+- Epoch 1 requirements are clear.
 - Requirements are not so detailed that they block starting the daemon.
 
 ## Risk
@@ -368,7 +377,7 @@ Designing a perfect architecture before behavior exists.
 
 ## Guardrail
 
-The overview should guide Milestone 1 only deeply enough to build the daemon skeleton.
+The overview should guide Epoch 1 only deeply enough to build the daemon skeleton.
 
 ---
 
@@ -535,15 +544,15 @@ Use ADRs/RFCs for meaningful decisions, not every tiny change.
 
 ---
 
-# 10. Phase G — Milestone 1 Entry
+# 10. Phase G — Epoch 1 Entry
 
 ## Goal
 
-Stop documenting and start the first implementation milestone.
+Stop documenting and start the first implementation Epoch.
 
-## Entry criteria for Milestone 1 — Awakening
+## Entry criteria for Epoch 1 — Awakening
 
-Milestone 1 can begin when:
+Epoch 1 can begin when:
 
 - [ ] WHY.md exists.
 - [ ] PROJECT_MEMORY.md exists.
@@ -552,7 +561,7 @@ Milestone 1 can begin when:
 - [ ] PROJECT_CHARTER.md exists.
 - [ ] Terminology guide exists.
 - [ ] Glossary exists.
-- [ ] Milestones exist.
+- [ ] The verified Milestone ledger exists.
 - [ ] Product vision exists.
 - [ ] Roadmap exists.
 - [ ] Requirements exist.
@@ -566,7 +575,7 @@ This is enough.
 
 Not everything needs to be perfect.
 
-Milestone 1 should begin after this even if future docs remain incomplete.
+Epoch 1 should begin after this even if future docs remain incomplete.
 
 ## First implementation goal
 
@@ -592,49 +601,49 @@ The first daemon exists to prove the project can breathe.
 
 ---
 
-# 11. Medium-Term Roadmap
+# 11. Canonical Epoch Ladder
 
-After Milestone 1 begins, the practical path is:
+RetroFlag Power follows one seven-Epoch journey:
 
-## Milestone 1 — Awakening
+## Epoch 0 — Dreaming
 
-Build the first daemon skeleton.
+Capture purpose, principles, language, safety boundaries, and the first
+implementation path.
 
-## Milestone 2 — Heartbeat
+## Epoch 1 — Awakening
 
-Run reliably under systemd with useful logs and status.
+Build the first daemon skeleton and establish small, testable internal
+boundaries.
 
-## Milestone 3 — Power
+## Epoch 2 — Heartbeat
 
-Replace SafeShutdown.py behavior with event-driven Power Switch handling.
+Run reliably under systemd with useful logs and status. Power work—including the
+event-driven replacement path for `SafeShutdown.py`—is a major route theme
+within this Epoch, not a separate Epoch.
 
-## Milestone 4 — Memory
+## Epoch 3 — Memory
 
-Record session state safely.
+Record session state safely and develop the Resume route theme needed to restore
+a previous game session.
 
-## Milestone 5 — Resume
-
-Restore a previous game session.
-
-## Milestone 6 — Momentum
+## Epoch 4 — Momentum
 
 Measure and improve boot-to-resume performance.
 
-## Milestone 7 — Polish
+## Epoch 5 — Adventure
 
-Improve CLI, diagnostics, terminal UX, and splash/resume experience.
+Shape the player and contributor experience. Polish, diagnostics, terminal UX,
+hardware expansion, and community portability are route themes within this
+Epoch.
 
-## Milestone 8 — Expansion
+## Epoch 6 — Launch
 
-Prepare hardware profiles and community portability.
+Prepare release artifacts, documentation, public beta, and the stable v1.0
+reference-platform launch.
 
-## Milestone 9 — Release
-
-Package, document, and prepare public beta.
-
-## Milestone 10 — Launch
-
-Stable v1.0 for the reference platform.
+The former eleven-stage journey is preserved for historical detail in
+`docs/99-archive/project-milestones-pre-edc.md`. It is not a competing canonical
+ladder.
 
 ---
 
@@ -708,9 +717,9 @@ They are not needed before the first daemon breathes.
 
 ---
 
-# 14. When to Stop Milestone 0
+# 14. When to Stop Epoch 0
 
-Milestone 0 should stop when the project has enough clarity to build the first daemon.
+Epoch 0 should stop when the project has enough clarity to build the first daemon.
 
 Do not wait until:
 
@@ -738,7 +747,7 @@ Recommended next artifacts after this roadmap:
 4. `docs/05-development/ai-collaboration.md`
 5. `docs/10-decisions/adr-template.md` and `docs/11-rfc/rfc-template.md`
 
-After these, strongly consider entering Milestone 1.
+After these, strongly consider entering Epoch 1.
 
 ---
 
@@ -771,8 +780,8 @@ The first breath should be simple.
 
 This roadmap should be reviewed:
 
-- at the end of Milestone 0
-- before Milestone 1 begins
+- at the end of Epoch 0
+- before Epoch 1 begins
 - after the first daemon runs
 - before GPIO implementation begins
 - before resume implementation begins

@@ -1,7 +1,7 @@
 ---
 id: TERM-001
 title: Terminology Guide
-version: 0.1.0
+version: 0.2.0
 status: Draft
 owner: Joshua Taft
 audience:
@@ -16,7 +16,10 @@ related:
   - ENGINEERING_MANIFESTO.md
   - PROJECT_MANIFEST.md
   - PROJECT_CHARTER.md
-last_updated: 2026-07-03
+  - docs/00-project/milestones.md
+  - docs/00-project/roadmap.md
+  - docs/adr/0003-adopt-epoch-milestone-quest-model.md
+last_updated: 2026-07-06
 ---
 
 # Terminology Guide
@@ -178,7 +181,67 @@ Do not rely on Nintendo, Sega, Valve, RetroPie, or other protected branding as p
 
 ---
 
-# 3. Hardware Terms
+# 3. EDC Project Terms
+
+## Epoch
+
+A large project life stage.
+
+Canonical Epoch names:
+
+```text
+Dreaming
+Awakening
+Heartbeat
+Memory
+Momentum
+Adventure
+Launch
+```
+
+Use the Roadmap for the current Epoch and future direction.
+
+## Milestone
+
+A numbered, verified checkpoint.
+
+Use stable IDs and anchors:
+
+```text
+M-0001
+M-0002
+M-0003
+```
+
+Verified Milestone facts belong in `docs/00-project/milestones.md`. Cite the
+canonical entry instead of duplicating its evidence.
+
+## Quest
+
+A task or work record.
+
+A Quest defines a focused mission, scope, safety boundaries, acceptance
+criteria, outcome, and validation. Quests live in `docs/00-project/quests/`.
+
+## Roadmap
+
+The current state and future direction of the project.
+
+The Roadmap records the current Epoch, next useful work, upcoming gates, route
+themes, and deferred scope. It may summarize verified Milestones but should link
+to their ledger entries.
+
+## Project Memory
+
+The project's origin, principles, safety net, important unresolved ideas, and
+durable context.
+
+`PROJECT_MEMORY.md` is not the current progress log or verified Milestone
+ledger.
+
+---
+
+# 4. Hardware Terms
 
 ## Power Switch
 
@@ -350,7 +413,7 @@ Use ALSA, PulseAudio, or PipeWire only when referring to the actual software sta
 
 ---
 
-# 4. State and Event Terms
+# 5. State and Event Terms
 
 ## State
 
@@ -435,7 +498,7 @@ Adapters isolate external assumptions from core services.
 
 ---
 
-# 5. Software Terms
+# 6. Software Terms
 
 ## Daemon
 
@@ -526,11 +589,11 @@ The internal service responsible for loading and validating configuration.
 
 Configuration should not be added before it is needed.
 
-Hardcoded defaults are acceptable in early milestones.
+Hardcoded defaults are acceptable during early implementation.
 
 ---
 
-# 6. Gaming and Resume Terms
+# 7. Gaming and Resume Terms
 
 ## Session
 
@@ -599,7 +662,8 @@ Do not use `Save Point` when discussing exact emulator implementation.
 
 A friendly user-facing concept for restored progress.
 
-Use for success messages, progress reports, or milestone language.
+Use for success messages and informal progress language. Use `Milestone` only
+for numbered, verified project checkpoints.
 
 Do not use as the technical name for save-state files.
 
@@ -629,7 +693,7 @@ Use `core` only when specifically discussing RetroArch behavior.
 
 ---
 
-# 7. Platform Terms
+# 8. Platform Terms
 
 ## Reference Platform
 
@@ -692,7 +756,7 @@ Use this term when discussing the broader hardware landscape.
 
 ---
 
-# 8. User-Facing Tone
+# 9. User-Facing Tone
 
 ## Success
 
@@ -767,7 +831,7 @@ Result: Excellent
 
 ---
 
-# 9. Terms to Prefer
+# 10. Terms to Prefer
 
 | Prefer | Avoid | Reason |
 |---|---|---|
@@ -788,7 +852,7 @@ Result: Excellent
 
 ---
 
-# 10. Terms That Need Care
+# 11. Terms That Need Care
 
 ## Safe Shutdown
 
@@ -837,7 +901,7 @@ Battery research
 
 ---
 
-# 11. Naming Patterns for Future Code
+# 12. Naming Patterns for Future Code
 
 These are not final APIs, but they show the preferred naming model.
 
@@ -917,7 +981,7 @@ systemd
 
 ---
 
-# 12. Documentation Language
+# 13. Documentation Language
 
 Documentation should distinguish between:
 
@@ -975,7 +1039,7 @@ Keeping these separate helps the project stay honest.
 
 ---
 
-# 13. Glossary Seeds
+# 14. Glossary Seeds
 
 These terms should eventually be promoted into a full glossary.
 
@@ -1022,7 +1086,7 @@ These terms should eventually be promoted into a full glossary.
 
 ---
 
-# 14. Review Rules
+# 15. Review Rules
 
 This terminology guide should be reviewed whenever:
 

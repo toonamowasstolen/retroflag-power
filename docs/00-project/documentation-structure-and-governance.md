@@ -1,7 +1,7 @@
 ---
 id: DOCS-GOVERNANCE-001
 title: Documentation Structure and Governance Guide
-version: 0.1.0
+version: 0.2.0
 status: Draft
 owner: Joshua Taft
 audience:
@@ -20,7 +20,8 @@ related:
   - docs/05-development/ai-collaboration.md
   - docs/10-decisions/adr-template.md
   - docs/11-rfc/rfc-template.md
-last_updated: 2026-07-03
+  - docs/adr/0003-adopt-epoch-milestone-quest-model.md
+last_updated: 2026-07-06
 ---
 
 # Documentation Structure and Governance Guide
@@ -105,6 +106,19 @@ Separate:
 
 Do not present guesses as validated hardware behavior.
 
+## 1.6 Give each scale of progress one name
+
+RetroFlag Power uses the EDC model defined by ADR-0003:
+
+- **Epoch** — a large project life stage
+- **Milestone** — a numbered, verified checkpoint
+- **Quest** — a task or work record
+- **Roadmap** — current state and future direction
+- **Project Memory** — origin, principles, safety net, and important memory;
+  not the progress log
+
+Do not use these terms interchangeably.
+
 ---
 
 # 2. Metadata Header Standard
@@ -159,6 +173,7 @@ Use `id` to help people and AI assistants refer to the document without dependin
 PROJECT-*
 VISION-*
 ROADMAP-*
+EPOCH-*
 MILESTONES-*
 REQUIREMENTS-*
 ARCH-*
@@ -476,7 +491,7 @@ Good candidates:
 - PROJECT_MEMORY.md
 - roadmap.md
 - current quest docs
-- current milestone notes
+- current Epoch notes
 - active research index
 
 Use `Active` when:
@@ -556,7 +571,7 @@ Use when a document is no longer active but remains useful as history.
 Good candidates:
 
 - old research notes
-- old milestone notes
+- old Epoch notes
 - abandoned plans
 - old quest records
 
@@ -603,7 +618,7 @@ PROJECT_CHARTER.md
   Draft → Accepted
 
 docs/00-project/milestones.md
-  Draft → Active or Accepted
+  Active
 
 docs/00-project/roadmap.md
   Active
@@ -799,27 +814,35 @@ Use for documents that guide the project as a project.
 
 ### `docs/00-project/milestones.md`
 
-The major project phases.
+The canonical ledger of numbered, verified checkpoints.
 
 Should contain:
 
-- milestone names
-- purpose
-- included work
-- excluded work
-- exit criteria
-- risks
-- victory conditions
+- stable IDs such as `M-0001`
+- explicit anchors such as `<a id="m-0001"></a>`
+- verified facts
+- verification dates
+- evidence
+- related Quests
+- related commits or revisions when available
+- related ADRs when implementation reasoning needs durable explanation
 
-Should not contain daily task tracking.
+Other documents should cite Milestone entries instead of duplicating their
+verified prose.
+
+If a future contributor would reasonably ask why a Milestone was implemented
+that way, create an ADR in `docs/adr/` and cross-link it with the Milestone.
 
 ### `docs/00-project/roadmap.md`
 
-The practical route through upcoming work.
+The canonical current state, seven-Epoch ladder, and practical route through
+upcoming work.
 
 Should contain:
 
 - near-term sequence
+- current Epoch
+- future direction
 - next gates
 - what should wait
 - when to stop planning and start coding
@@ -836,7 +859,7 @@ Should contain:
 - requirement text
 - priority
 - status
-- milestone
+- Epoch or Milestone traceability as appropriate
 - rationale
 - related docs
 
@@ -844,7 +867,7 @@ Should not become an implementation log.
 
 ### `docs/00-project/awakening-readiness.md`
 
-The readiness check for entering Milestone 1.
+The readiness check for entering Epoch 1.
 
 Should contain:
 
@@ -855,13 +878,14 @@ Should contain:
 - non-requirements
 - test plan
 
-Can be marked `Verified` after Milestone 1 entry criteria are met and validated.
+Can be marked `Verified` after Epoch 1 entry criteria are met and validated.
 
 ### `docs/00-project/quests/`
 
 Focused work items.
 
-A quest is bigger than a TODO but smaller than a milestone.
+A Quest is a task or work record. It may produce evidence for zero, one, or
+several Milestones.
 
 Use quests for:
 
@@ -1040,7 +1064,7 @@ Should contain:
 - boundaries
 - event flow
 - package direction
-- milestone-specific architecture
+- Epoch-specific architecture
 - decision points
 
 ### Future architecture docs
@@ -1345,7 +1369,7 @@ Use for:
 
 - old research
 - old plans
-- old milestone summaries
+- old Epoch or Milestone summaries
 - superseded drafts that should not clutter active folders
 
 Do not use archive as a dumping ground.
@@ -1368,9 +1392,13 @@ New ADR example:
 
 ```
 docs/adr/0002-use-small-context-driven-daemon-lifecycle.md
+docs/adr/0003-adopt-epoch-milestone-quest-model.md
 ```
 
 Use `docs/adr/` for decisions that have been made or are being considered as decisions.
+
+Actual ADRs live in `docs/adr/`. The ADR template lives in
+`docs/10-decisions/`.
 
 File naming:
 
@@ -1394,6 +1422,8 @@ Rejected ADRs are possible but less common. If a topic is still being debated, p
 Actual Request for Comments documents.
 
 Use this folder for major proposals before they become decisions.
+
+Actual RFCs live in `docs/rfc/`. The RFC template lives in `docs/11-rfc/`.
 
 File naming:
 
@@ -1589,7 +1619,39 @@ ADRs decide.
 
 Progress should be tracked at multiple levels.
 
-## 27.1 Milestones
+## 27.1 Epochs
+
+Use:
+
+```
+docs/00-project/roadmap.md
+```
+
+For large project life stages:
+
+- Dreaming
+- Awakening
+- Heartbeat
+- Memory
+- Momentum
+- Adventure
+- Launch
+
+Epochs answer:
+
+```
+What phase are we in?
+What kind of journey are we making now?
+What broad outcome moves us to the next life stage?
+```
+
+Update the Epoch ladder only when:
+
+- a large life stage changes
+- an Epoch is added, removed, or renamed
+- the narrative journey changes materially
+
+## 27.2 Milestones
 
 Use:
 
@@ -1597,36 +1659,43 @@ Use:
 docs/00-project/milestones.md
 ```
 
-For large phases:
-
-- Dreaming
-- Awakening
-- Heartbeat
-- Power
-- Memory
-- Resume
-- Momentum
-- Polish
-- Expansion
-- Release
-- Launch
+For numbered, verified checkpoints.
 
 Milestones answer:
 
 ```
-What phase are we in?
-What does done mean?
-What should not be included?
+What has been proven?
+What evidence verifies it?
+Which Quest or decision produced it?
 ```
 
-Update milestones when:
+Milestone IDs use:
 
-- exit criteria change
-- a milestone is completed
-- a new milestone is added
-- scope boundaries need clarification
+```text
+M-0001
+M-0002
+M-0003
+```
 
-## 27.2 Roadmap
+Every Milestone entry must eventually include an explicit stable anchor:
+
+```html
+<a id="m-0001"></a>
+```
+
+followed by:
+
+```markdown
+## M-0001 — Example Title
+```
+
+Verified checkpoint facts belong in this ledger. Other documents cite the
+Milestone instead of duplicating its evidence or completion prose.
+
+If a future contributor would reasonably ask why a Milestone was implemented
+that way, create an ADR in `docs/adr/` and cross-link the ADR and Milestone.
+
+## 27.3 Roadmap
 
 Use:
 
@@ -1639,9 +1708,11 @@ For the practical route.
 Roadmap answers:
 
 ```
+What Epoch are we in?
+What is the current state?
 What comes next?
 What should wait?
-When do we stop planning?
+What direction are we taking?
 ```
 
 Update roadmap when:
@@ -1651,7 +1722,7 @@ Update roadmap when:
 - a route is no longer accurate
 - implementation changes the sequence
 
-## 27.3 Requirements
+## 27.4 Requirements
 
 Use:
 
@@ -1681,7 +1752,7 @@ Recommended requirement status flow:
 Draft → Accepted → Implemented → Verified
 ```
 
-## 27.4 Quests
+## 27.5 Quests
 
 Use:
 
@@ -1711,7 +1782,7 @@ Update quest docs when:
 - scope changes
 - quest is abandoned or replaced
 
-## 27.5 GitHub Issues
+## 27.6 GitHub Issues
 
 Use GitHub Issues when external tracking becomes useful.
 
@@ -1726,7 +1797,7 @@ Good issue types:
 
 If GitHub Issues are used, docs should link to them with `related_issues`.
 
-## 27.6 Pull Requests
+## 27.7 Pull Requests
 
 Use PRs when multiple contributors or review workflows become useful.
 
@@ -1940,7 +2011,7 @@ Add a short note:
 ```
 ## Current Position
 
-Milestone 1 — Awakening
+Epoch 1 — Awakening
 
 Completed:
 - first daemon
@@ -1984,7 +2055,7 @@ When an AI assistant works in this repository, it should:
 1. Read this guide.
 2. Read PROJECT_MEMORY.md.
 3. Read the current roadmap.
-4. Read current milestone docs.
+4. Read the current Epoch, Roadmap, and Milestone ledger.
 5. Check existing folder structure before creating files.
 6. Use metadata headers.
 7. Put files in the right folder.
@@ -2046,7 +2117,10 @@ Use these canonical locations unless an ADR changes them.
 Project roadmap:
   docs/00-project/roadmap.md
 
-Milestones:
+Epoch ladder and current direction:
+  docs/00-project/roadmap.md
+
+Verified Milestones:
   docs/00-project/milestones.md
 
 Requirements:
@@ -2267,7 +2341,7 @@ Possible goal:
 
 ## Future EDC extraction
 
-Later, outside Milestone 1 — Awakening:
+Later, outside Epoch 1 — Awakening:
 
 - create `docs/00-project/edc-project-structure.md` as a reusable guide for
   applying this documentation and project structure to older projects
@@ -2300,8 +2374,14 @@ Project memory?
 Plan?
   docs/00-project/roadmap.md
 
-Phase?
+Epoch?
+  docs/00-project/roadmap.md
+
+Verified checkpoint?
   docs/00-project/milestones.md
+
+Route and current state?
+  docs/00-project/roadmap.md
 
 Requirement?
   docs/00-project/requirements.md

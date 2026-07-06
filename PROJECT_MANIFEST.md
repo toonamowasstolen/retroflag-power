@@ -1,7 +1,7 @@
 ---
 id: MANIFEST-001
 title: Project Manifest
-version: 0.1.0
+version: 0.2.0
 status: Draft
 owner: Joshua Taft
 audience:
@@ -15,8 +15,11 @@ related:
   - PROJECT_MEMORY.md
   - ENGINEERING_MANIFESTO.md
   - PROJECT_CHARTER.md
+  - docs/00-project/roadmap.md
+  - docs/00-project/milestones.md
+  - docs/adr/0003-adopt-epoch-milestone-quest-model.md
   - docs/13-reference/terminology.md
-last_updated: 2026-07-03
+last_updated: 2026-07-06
 ---
 
 # Project Manifest
@@ -138,6 +141,20 @@ A persistent condition is a State.
 A change in condition is an Event.
 
 The language of the project should help people understand the hardware and software before they read the implementation.
+
+## Progress needs a compass
+
+RetroFlag Power uses distinct names for distinct scales of work:
+
+- An Epoch is a large project life stage.
+- A Milestone is a numbered, verified checkpoint.
+- A Quest is a task or work record.
+- The Roadmap owns current state and future direction.
+- Project Memory preserves origin, principles, safety context, and important
+  memory; it is not the progress log.
+
+Verified Milestone facts belong in `docs/00-project/milestones.md`. Other
+documents should cite them instead of copying their evidence.
 
 ## Momentum matters
 

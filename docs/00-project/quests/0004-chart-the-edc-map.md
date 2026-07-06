@@ -18,6 +18,7 @@ related:
   - docs/00-project/roadmap.md
   - docs/00-project/awakening-readiness.md
   - docs/00-project/quests/
+  - docs/adr/0003-adopt-epoch-milestone-quest-model.md
 last_updated: 2026-07-06
 ---
 
@@ -51,6 +52,10 @@ This quest does not:
 - change packaging
 
 The findings below describe the repository as it exists on 2026-07-06.
+
+Follow-up note: QUEST-0005 and ADR-0003 adopted the corrected model later that
+day. The old terminology below is retained as audit evidence, not current
+guidance.
 
 ---
 
@@ -417,7 +422,8 @@ The audit found:
 - citation patterns that resolve files but not stable semantic records
 
 This quest is Implemented because the audit and recommendations are recorded.
-The EDC correction itself remains future work.
+QUEST-0005 adopted the correction through ADR-0003. QUEST-0006 remains future
+work for gathering verified checkpoints into the canonical ledger.
 
 ---
 

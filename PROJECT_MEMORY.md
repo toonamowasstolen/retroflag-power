@@ -1,7 +1,7 @@
 ---
 id: MEMORY-001
 title: Project Memory and Blueprint Capture
-version: 0.1.0
+version: 0.2.0
 status: Draft
 owner: Joshua Taft
 audience:
@@ -14,8 +14,11 @@ related:
   - PROJECT_MANIFEST.md
   - PROJECT_CHARTER.md
   - ENGINEERING_MANIFESTO.md
+  - docs/00-project/roadmap.md
+  - docs/00-project/milestones.md
+  - docs/adr/0003-adopt-epoch-milestone-quest-model.md
   - docs/13-reference/terminology.md
-last_updated: 2026-07-03
+last_updated: 2026-07-06
 ---
 
 # Project Memory and Blueprint Capture
@@ -31,6 +34,9 @@ This file captures the full working memory of the project so that important idea
 This is a living document.
 
 It should be updated whenever a meaningful idea is discovered that has not yet been promoted into a dedicated artifact.
+
+Project Memory is the project's origin, principles, safety net, and durable
+memory. It is not the current progress log or verified Milestone ledger.
 
 ---
 
@@ -204,15 +210,18 @@ over:
 
 ---
 
-# 5. Narrative Milestones
+# 5. Project Epochs
 
-The project should use milestone names that tell a story.
+The project uses Epoch names that tell a story.
 
-These names should remain meaningful engineering phases, not empty branding.
+Epochs are large project life stages. They should remain meaningful engineering
+phases, not empty branding.
 
-## Proposed milestone story
+The Roadmap is the canonical source for the current Epoch and future direction.
 
-### Milestone 0 — Dreaming
+## Canonical Epoch story
+
+### Epoch 0 — Dreaming
 
 The project has no production code yet.
 
@@ -228,7 +237,7 @@ Primary artifacts:
 - Terminology
 - Architecture drafts
 
-### Milestone 1 — Awakening
+### Epoch 1 — Awakening
 
 The first executable compiles.
 
@@ -240,6 +249,9 @@ Primary artifacts:
 - Structured logging
 - Graceful signal handling
 - systemd service
+
+The checkpoint summaries below remain temporarily for historical continuity.
+They are not canonical Milestone records and will be gathered by QUEST-0006.
 
 #### Nameplate checkpoint
 
@@ -302,7 +314,7 @@ The charm cannot run anything. It adds no GPIO, shutdown execution, command
 runner, shell execution, action queue, channels, async processing, persistence,
 packaging changes, service activation, resume, or state storage.
 
-### Milestone 2 — Heartbeat
+### Epoch 2 — Heartbeat
 
 The daemon becomes a real supervised service.
 
@@ -314,7 +326,7 @@ Primary artifacts:
 - restart behavior
 - first status output
 
-### Milestone 3 — Memory
+### Epoch 3 — Memory
 
 Resume and state management begin.
 
@@ -325,7 +337,7 @@ Primary artifacts:
 - save-state integration
 - restore flow
 
-### Milestone 4 — Momentum
+### Epoch 4 — Momentum
 
 Performance and boot experience become measurable.
 
@@ -336,7 +348,7 @@ Primary artifacts:
 - benchmark CLI
 - optimization research
 
-### Milestone 5 — Adventure
+### Epoch 5 — Adventure
 
 The project becomes usable by others.
 
@@ -348,7 +360,7 @@ Primary artifacts:
 - hardware validation
 - public beta
 
-### Milestone 6 — Launch
+### Epoch 6 — Launch
 
 The project reaches a stable public release.
 
@@ -1340,7 +1352,7 @@ It should support:
 
 ## Future EDC project expansion
 
-These are later ideas and are not part of Milestone 1 — Awakening.
+These are later ideas and are not part of Epoch 1 — Awakening.
 
 - [ ] Create `docs/00-project/edc-project-structure.md` to generalize the
   RetroFlag Power documentation and project structure into a reusable EDC

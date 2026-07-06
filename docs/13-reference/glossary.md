@@ -1,7 +1,7 @@
 ---
 id: GLOSSARY-001
 title: Glossary
-version: 0.1.0
+version: 0.2.0
 status: Draft
 owner: Joshua Taft
 audience:
@@ -16,7 +16,10 @@ related:
   - PROJECT_MEMORY.md
   - PROJECT_CHARTER.md
   - PROJECT_MANIFEST.md
-last_updated: 2026-07-03
+  - docs/00-project/milestones.md
+  - docs/00-project/roadmap.md
+  - docs/adr/0003-adopt-epoch-milestone-quest-model.md
+last_updated: 2026-07-06
 ---
 
 # Glossary
@@ -46,9 +49,17 @@ Examples:
 
 ## Adventure
 
-A project voice term used to describe the player experience of continuing a game.
+Epoch 5 and a project voice term used to describe the player experience of
+continuing a game.
 
 Use in user-facing or celebratory language, not as a technical object.
+
+## Awakening
+
+Epoch 1.
+
+The life stage where the first daemon begins to build, run, identify itself,
+describe its lifecycle, and stop cleanly without controlling hardware.
 
 ## AI Assistant
 
@@ -159,9 +170,10 @@ PROJECT_CHARTER.md
 
 ## Checkpoint
 
-A friendly user-facing concept for restored progress.
+A friendly or informal concept for restored or completed progress.
 
-Use for terminal UX, status messages, or milestone language.
+Use for terminal UX and status messages. A verified project checkpoint becomes
+a numbered `Milestone` with evidence.
 
 Do not use as the technical name for emulator save-state files.
 
@@ -266,13 +278,25 @@ retroflag-power doctor
 
 ## Dreaming
 
-Milestone 0.
+Epoch 0.
 
 The stage where the project captures purpose, philosophy, terminology, scope, architecture direction, and first implementation path before production code begins.
 
 ---
 
 # E
+
+## Epoch
+
+A large project life stage.
+
+The canonical Epoch ladder is:
+
+```text
+Dreaming → Awakening → Heartbeat → Memory → Momentum → Adventure → Launch
+```
+
+The Roadmap records the current Epoch and future direction.
 
 ## EEPROM
 
@@ -415,7 +439,7 @@ The internal service responsible for loading hardware profiles and exposing capa
 
 ## Heartbeat
 
-Milestone 2.
+Epoch 2.
 
 The stage where the daemon becomes a reliable supervised service with health, logs, and operational visibility.
 
@@ -481,9 +505,10 @@ Use only in technical performance or graphics documentation.
 
 ## Launch
 
-A milestone name and general product concept.
+Epoch 6 and a general product concept.
 
-As a milestone, `Launch` means a stable public release for the reference platform.
+As an Epoch, `Launch` leads through release preparation to a stable public
+release for the reference platform.
 
 As a product concept, launching means moving from startup into playable state.
 
@@ -529,6 +554,13 @@ Primary document:
 PROJECT_MANIFEST.md
 ```
 
+## Memory
+
+Epoch 3.
+
+The life stage where the project records durable session context and develops
+the route toward restoring a previous game safely.
+
 ## Metrics
 
 Measured operational or performance data.
@@ -547,13 +579,15 @@ The internal service responsible for collecting, storing, or reporting metrics.
 
 ## Milestone
 
-A meaningful project phase with purpose, scope, exit criteria, risks, and victory conditions.
+A numbered, verified project checkpoint.
 
 Primary document:
 
 ```
 docs/00-project/milestones.md
 ```
+
+Milestones use stable IDs such as `M-0001` and cite verification evidence.
 
 ## Modular Monolith
 
@@ -563,7 +597,7 @@ RetroFlag Power should begin this way to avoid unnecessary IPC and process compl
 
 ## Momentum
 
-The force created by small completed victories.
+Epoch 4 and the force created by small completed victories.
 
 Momentum is protected by committing coherent artifacts and avoiding endless planning.
 
@@ -582,7 +616,7 @@ Examples:
 - not a full operating system
 - not a replacement for RetroPie
 - not a cloud service
-- not a GUI dashboard in early milestones
+- not a GUI dashboard in early Epochs
 
 ---
 
@@ -629,7 +663,7 @@ The player should experience simplicity, reliability, and fast return to play.
 
 ## Polish
 
-Milestone 7.
+An Adventure Epoch route theme.
 
 The stage where terminal UX, diagnostics, splash presentation, and documentation quality become intentionally crafted.
 
@@ -668,6 +702,19 @@ A user who tweaks settings, reads logs, runs diagnostics, and wants control.
 
 A document or idea describing the desired user experience and long-term product direction.
 
+## Project Memory
+
+The project's origin, principles, safety net, important unresolved ideas, and
+durable context.
+
+Primary document:
+
+```text
+PROJECT_MEMORY.md
+```
+
+Project Memory is not the current progress log or verified Milestone ledger.
+
 ## Profile
 
 See `Hardware Profile`.
@@ -678,9 +725,14 @@ See `Hardware Profile`.
 
 ## Quest
 
-A playful project voice term for a meaningful path of work.
+A task or work record with focused scope, guardrails, acceptance criteria,
+outcome, and validation.
 
-Use sparingly in celebratory or internal milestone language.
+Canonical location:
+
+```text
+docs/00-project/quests/
+```
 
 ---
 
@@ -773,9 +825,11 @@ Risks should be recorded and mitigated.
 
 ## Roadmap
 
-A practical route through upcoming work.
+A record of current project state and future direction.
 
-A roadmap is shorter and more tactical than the full milestone document.
+The Roadmap owns the current Epoch, near-term route, upcoming gates, route
+themes, and deferred scope. It cites verified Milestones rather than duplicating
+their evidence.
 
 ---
 
