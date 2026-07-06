@@ -96,6 +96,11 @@ func TestRuntimeSnapshotSummaryBeforeStartup(t *testing.T) {
 	if got != want {
 		t.Fatalf("RuntimeSnapshot().Summary() before startup = %#v, want %#v", got, want)
 	}
+
+	const wantString = "state=starting plan_present=false execution_complete=false execution_success=false execution_error_captured=false dry_run_noop_only=false"
+	if gotString := got.String(); gotString != wantString {
+		t.Fatalf("RuntimeSnapshot().Summary().String() before startup = %q, want %q", gotString, wantString)
+	}
 }
 
 func TestRunLogsLifecycle(t *testing.T) {
@@ -161,6 +166,10 @@ func TestRuntimeSnapshotSummaryAfterStartup(t *testing.T) {
 	if got != want {
 		t.Fatalf("RuntimeSnapshot().Summary() after startup = %#v, want %#v", got, want)
 	}
+	const wantString = "state=ready plan_present=true execution_complete=true execution_success=true execution_error_captured=false dry_run_noop_only=true"
+	if gotString := got.String(); gotString != wantString {
+		t.Fatalf("RuntimeSnapshot().Summary().String() after startup = %q, want %q", gotString, wantString)
+	}
 
 	cancel()
 	assertLogAndStatus(t, logged, checked, "shutdown signal received", status.StateStopping, app)
@@ -187,6 +196,11 @@ func TestRuntimeSnapshotSummaryAfterShutdown(t *testing.T) {
 	}
 	if got != want {
 		t.Fatalf("RuntimeSnapshot().Summary() after shutdown = %#v, want %#v", got, want)
+	}
+
+	const wantString = "state=stopped plan_present=true execution_complete=true execution_success=true execution_error_captured=false dry_run_noop_only=true"
+	if gotString := got.String(); gotString != wantString {
+		t.Fatalf("RuntimeSnapshot().Summary().String() after shutdown = %q, want %q", gotString, wantString)
 	}
 }
 

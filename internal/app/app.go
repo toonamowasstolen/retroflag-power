@@ -49,6 +49,18 @@ type RuntimeSnapshotSummary struct {
 	DryRunNoopOnly         bool
 }
 
+func (s RuntimeSnapshotSummary) String() string {
+	return fmt.Sprintf(
+		"state=%s plan_present=%t execution_complete=%t execution_success=%t execution_error_captured=%t dry_run_noop_only=%t",
+		s.State,
+		s.HasPlan,
+		s.ExecutionComplete,
+		s.ExecutionSucceeded,
+		s.ExecutionErrorCaptured,
+		s.DryRunNoopOnly,
+	)
+}
+
 func New(logger *log.Logger, cfg config.Config) *App {
 	return &App{
 		logger:   logger,
