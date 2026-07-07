@@ -135,6 +135,76 @@ Known or inferred case resources:
 
 Current legacy scripts are not KMS-aware.
 
+### GPi Case 2 Power Latch Trap
+
+Treat the GPi Case 2 power path like a discovered dungeon hazard: the side
+switch looks like a familiar hard power switch, but the verified behavior says
+it is part of a latched power-control ritual.
+
+Verified behavior:
+
+- The GPi Case 2 side power switch does not directly cut battery power.
+- The side switch appears to signal a GPIO watched by
+  `/opt/RetroFlag/SafeShutdown.py`.
+- If the RetroFlag script is disabled, the side switch may no longer trigger
+  shutdown.
+- The top power-save/resume button toggles sleep/wake behavior and is not a
+  hard power or reset button.
+- In sleep/power-save, Wi-Fi may go down. If that happens, the SSH recovery path
+  can vanish while the handheld is still alive in the dark.
+
+Observed process shape from the stock script:
+
+```text
+sudo python /opt/RetroFlag/SafeShutdown.py
+└─ python /opt/RetroFlag/SafeShutdown.py
+   ├─ python /opt/RetroFlag/SafeShutdown.py
+   └─ python /opt/RetroFlag/SafeShutdown.py
+```
+
+The process tree matches the script's use of `multiprocessing.Process` to spawn
+separate workers: one for `poweroff()` and one for `lcdrun()`.
+
+Key verified script signs:
+
+```python
+import RPi.GPIO as GPIO
+from multiprocessing import Process
+
+GPIO.setup(powerPin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.wait_for_edge(powerPin, GPIO.FALLING)
+# shutdown -h now
+
+GPIO.setup(powerenPin, GPIO.OUT)
+GPIO.output(powerenPin, GPIO.HIGH)
+
+powerProcess = Process(target = poweroff)
+lcdrunProcess = Process(target = lcdrun)
+```
+
+Interpretation:
+
+- `powerPin` is the side-switch shutdown signal path, observed as BCM GPIO26.
+- `powerenPin` is the power-enable latch path, observed as BCM GPIO27.
+- The script drives the power-enable GPIO HIGH at startup, likely keeping the
+  case power latch enabled.
+- `poweroff()` watches the side switch and eventually calls `shutdown -h now`.
+- `lcdrun()` participates in LCD/power-save/resume behavior and currently calls
+  the old RetroFlag LCD scripts.
+
+Warning:
+
+Do not disable the RetroFlag `SafeShutdown.py` script on real GPi Case 2
+hardware until `retroflag-powerd` has a verified replacement for the power
+latch, shutdown switch, and power-save/resume behavior.
+
+Safe replacement requires `retroflag-powerd` to own all three parts of the
+trapdoor mechanism:
+
+1. Power-enable latch behavior.
+2. Side-switch shutdown detection.
+3. Power-save/resume behavior currently handled by `lcdrun()`.
+
 ### `/etc/rc.local`
 
 Previously started:
@@ -310,6 +380,8 @@ Goal:
 - Replace legacy `SafeShutdown.py` with a systemd service.
 - Hold GPIO27 high if required by the power board.
 - Watch GPIO26 for switch-off.
+- Preserve the top-button power-save/resume behavior currently guarded by the
+  old `lcdrun()` path.
 - Cleanly shut down EmulationStation and Linux.
 - Never run `lcdnext.sh`.
 - Never rewrite `/boot/config.txt`.

@@ -49,9 +49,18 @@ Documentation
 - Documented that `audremap` conflicts with KMS DPI by claiming GPIO12/13.
 - Documented that legacy `SafeShutdown.py` uses GPIO26 for the shutdown switch,
   GPIO27 for power enable, and still calls `lcdnext.sh` unless replaced.
+- Documented the GPi Case 2 power latch trap: the side switch does not directly
+  cut battery power, the stock script drives the power-enable latch HIGH, and
+  disabling the script can remove the side-switch shutdown path.
+- Preserved the verified `SafeShutdown.py` process tree and its
+  `multiprocessing.Process` workers for `poweroff()` and `lcdrun()`.
 - Captured the observed GPi Case 2 power-save behavior: the screen turns off,
   the power indicator flashes, SSH stays alive, and the top button wakes the
   case.
+- Warned that sleep/power-save can take Wi-Fi down and strand the SSH recovery
+  path.
+- Recorded that a safe `retroflag-powerd` replacement must own the latch,
+  side-switch shutdown detection, and the `lcdrun()` power-save/resume behavior.
 - Captured the input-map clue that one extra button above Select and left of
   the RetroFlag logo was not detected during EmulationStation Xbox 360 gamepad
   mapping.
