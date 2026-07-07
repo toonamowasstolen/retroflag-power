@@ -143,6 +143,22 @@ func TestStartupDiagnosticBeforeStartupIsUnavailable(t *testing.T) {
 	}
 }
 
+func TestStartupResultBeforeStartupIsZero(t *testing.T) {
+	var output bytes.Buffer
+	logger := log.New(&output, "", 0)
+	app := New(logger, config.Default())
+
+	got := app.StartupResult()
+	want := StartupResult{}
+
+	if got != want {
+		t.Fatalf("StartupResult() before startup = %#v, want %#v", got, want)
+	}
+	if app.StartupSucceeded() != got.Succeeded {
+		t.Fatalf("StartupSucceeded() before startup = %t, want StartupResult().Succeeded %t", app.StartupSucceeded(), got.Succeeded)
+	}
+}
+
 func TestStartupSucceededBeforeStartupIsFalse(t *testing.T) {
 	var output bytes.Buffer
 	logger := log.New(&output, "", 0)
@@ -219,6 +235,40 @@ func TestRuntimeSnapshotSummaryAfterStartup(t *testing.T) {
 	const wantString = "state=ready plan_present=true execution_complete=true execution_success=true execution_error_captured=false dry_run_noop_only=true"
 	if gotString := got.String(); gotString != wantString {
 		t.Fatalf("RuntimeSnapshot().Summary().String() after startup = %q, want %q", gotString, wantString)
+	}
+
+	cancel()
+	assertLogAndStatus(t, logged, checked, "shutdown signal received", status.StateStopping, app)
+	assertLogAndStatus(t, logged, checked, "stopped", status.StateStopped, app)
+	<-done
+}
+
+func TestStartupResultAfterStartupIsSuccessful(t *testing.T) {
+	logged := make(chan string)
+	checked := make(chan struct{})
+	logger := log.New(&checkingWriter{logged: logged, checked: checked}, "", 0)
+	ctx, cancel := context.WithCancel(context.Background())
+	app := New(logger, config.Default())
+	done := make(chan struct{})
+
+	go func() {
+		app.Run(ctx)
+		close(done)
+	}()
+
+	assertLogAndStatus(t, logged, checked, "starting dry_run=true", status.StateStarting, app)
+	assertLogAndStatus(t, logged, checked, "ready", status.StateReady, app)
+
+	got := app.StartupResult()
+	want := StartupResult{
+		Completed: true,
+		Succeeded: true,
+	}
+	if got != want {
+		t.Fatalf("StartupResult() after startup = %#v, want %#v", got, want)
+	}
+	if app.StartupSucceeded() != got.Succeeded {
+		t.Fatalf("StartupSucceeded() after startup = %t, want StartupResult().Succeeded %t", app.StartupSucceeded(), got.Succeeded)
 	}
 
 	cancel()
@@ -443,6 +493,28 @@ func TestStartupDiagnosticAfterShutdownKeepsStartupSnapshot(t *testing.T) {
 	}
 	if got == current {
 		t.Fatalf("StartupDiagnostic() after shutdown = current RuntimeDiagnostic() %#v; want preserved startup snapshot", got)
+	}
+}
+
+func TestStartupResultAfterShutdownRemainsSuccessful(t *testing.T) {
+	var output bytes.Buffer
+	logger := log.New(&output, "", 0)
+	ctx, cancel := context.WithCancel(context.Background())
+	cancel()
+	app := New(logger, config.Default())
+	app.Run(ctx)
+
+	got := app.StartupResult()
+	want := StartupResult{
+		Completed: true,
+		Succeeded: true,
+	}
+
+	if got != want {
+		t.Fatalf("StartupResult() after shutdown = %#v, want %#v", got, want)
+	}
+	if app.StartupSucceeded() != got.Succeeded {
+		t.Fatalf("StartupSucceeded() after shutdown = %t, want StartupResult().Succeeded %t", app.StartupSucceeded(), got.Succeeded)
 	}
 }
 

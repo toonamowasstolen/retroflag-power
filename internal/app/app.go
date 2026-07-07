@@ -22,6 +22,7 @@ type App struct {
 	executionResult      executor.Result
 	executionErr         error
 	hasExecution         bool
+	startupResult        StartupResult
 	startupDiagnostic    RuntimeDiagnostic
 	hasStartupDiagnostic bool
 	status               status.Status
@@ -53,6 +54,11 @@ type RuntimeSnapshotSummary struct {
 
 type RuntimeDiagnostic struct {
 	Summary RuntimeSnapshotSummary
+}
+
+type StartupResult struct {
+	Completed bool
+	Succeeded bool
 }
 
 func (s RuntimeSnapshotSummary) String() string {
@@ -94,6 +100,10 @@ func (a *App) Run(ctx context.Context) {
 	a.hasExecution = true
 
 	a.setStatus(status.StateReady)
+	a.startupResult = StartupResult{
+		Completed: true,
+		Succeeded: true,
+	}
 	a.startupDiagnostic = a.RuntimeDiagnostic()
 	a.hasStartupDiagnostic = true
 	a.logEvent(events.Event{
@@ -176,8 +186,12 @@ func (a *App) StartupDiagnostic() (RuntimeDiagnostic, bool) {
 	return a.startupDiagnostic, true
 }
 
+func (a *App) StartupResult() StartupResult {
+	return a.startupResult
+}
+
 func (a *App) StartupSucceeded() bool {
-	return a.hasStartupDiagnostic
+	return a.StartupResult().Succeeded
 }
 
 func (s RuntimeSnapshot) Summary() RuntimeSnapshotSummary {
