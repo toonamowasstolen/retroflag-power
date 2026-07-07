@@ -9,6 +9,7 @@ import (
 	"github.com/toonamowasstolen/retroflag-power/internal/events"
 	"github.com/toonamowasstolen/retroflag-power/internal/executor"
 	"github.com/toonamowasstolen/retroflag-power/internal/planner"
+	"github.com/toonamowasstolen/retroflag-power/internal/power"
 	"github.com/toonamowasstolen/retroflag-power/internal/status"
 )
 
@@ -144,6 +145,15 @@ func (a *App) PlanSummary() (planner.PlanSummary, bool) {
 	}
 
 	return a.plan.Summary(), true
+}
+
+func (a *App) ProcessPowerIntent(intent power.Intent) (executor.Result, error) {
+	a.plan = a.planner.NewDryRunPowerIntentPlan(intent)
+	a.hasPlan = true
+	a.executionResult, a.executionErr = a.executor.Execute(a.plan)
+	a.hasExecution = true
+
+	return a.executionResult, a.executionErr
 }
 
 func (a *App) ExecutionSummary() (executor.ResultSummary, bool) {

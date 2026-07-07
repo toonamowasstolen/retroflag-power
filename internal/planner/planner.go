@@ -1,13 +1,16 @@
 package planner
 
+import "github.com/toonamowasstolen/retroflag-power/internal/power"
+
 type Action string
 
 const ActionNoop Action = "noop"
 
 type Plan struct {
-	Action Action
-	Reason string
-	dryRun bool
+	Action      Action
+	Reason      string
+	PowerIntent power.Intent
+	dryRun      bool
 }
 
 type PlanSummary struct {
@@ -39,10 +42,23 @@ func (p *Planner) NewDryRunPlan(reason string) Plan {
 	return NewDryRunPlan(reason)
 }
 
+func (p *Planner) NewDryRunPowerIntentPlan(intent power.Intent) Plan {
+	return NewDryRunPowerIntentPlan(intent)
+}
+
 func NewDryRunPlan(reason string) Plan {
 	return Plan{
 		Action: ActionNoop,
 		Reason: reason,
 		dryRun: true,
+	}
+}
+
+func NewDryRunPowerIntentPlan(intent power.Intent) Plan {
+	return Plan{
+		Action:      ActionNoop,
+		Reason:      "dry-run power intent: " + intent.String(),
+		PowerIntent: intent,
+		dryRun:      true,
 	}
 }

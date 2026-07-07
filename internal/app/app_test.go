@@ -10,6 +10,7 @@ import (
 	"github.com/toonamowasstolen/retroflag-power/internal/config"
 	"github.com/toonamowasstolen/retroflag-power/internal/executor"
 	"github.com/toonamowasstolen/retroflag-power/internal/planner"
+	"github.com/toonamowasstolen/retroflag-power/internal/power"
 	"github.com/toonamowasstolen/retroflag-power/internal/status"
 )
 
@@ -611,6 +612,64 @@ func TestRunPreparesDryRunPlanAndReachesLifecycleStatuses(t *testing.T) {
 	wantStoppedSnapshot.Status = status.New(config.Default(), status.StateStopped)
 	if stoppedSnapshot != wantStoppedSnapshot {
 		t.Fatalf("RuntimeSnapshot() after shutdown = %#v, want %#v", stoppedSnapshot, wantStoppedSnapshot)
+	}
+}
+
+func TestProcessPowerIntentPlansAndExecutesDryRunNoop(t *testing.T) {
+	var output bytes.Buffer
+	logger := log.New(&output, "", 0)
+	app := New(logger, config.Default())
+
+	got, err := app.ProcessPowerIntent(power.IntentPowerButtonPressed)
+	if err != nil {
+		t.Fatalf("ProcessPowerIntent() error = %v, want nil", err)
+	}
+
+	wantResult := executor.Result{
+		DryRun:         true,
+		NoopOnly:       true,
+		ActionsHandled: 1,
+		Succeeded:      true,
+	}
+	if got != wantResult {
+		t.Fatalf("ProcessPowerIntent() result = %#v, want %#v", got, wantResult)
+	}
+
+	plan, ok := app.Plan()
+	if !ok {
+		t.Fatal("Plan() reports no prepared plan after power intent")
+	}
+	wantPlan := planner.Plan{
+		Action:      planner.ActionNoop,
+		Reason:      "dry-run power intent: power_button_pressed",
+		PowerIntent: power.IntentPowerButtonPressed,
+	}
+	if plan.Action != wantPlan.Action || plan.Reason != wantPlan.Reason || plan.PowerIntent != wantPlan.PowerIntent {
+		t.Fatalf("Plan() = %#v, want deterministic dry-run power intent plan matching %#v", plan, wantPlan)
+	}
+
+	summary := plan.Summary()
+	wantPlanSummary := planner.PlanSummary{
+		DryRun:      true,
+		ActionCount: 1,
+		NoopOnly:    true,
+	}
+	if summary != wantPlanSummary {
+		t.Fatalf("Plan().Summary() = %#v, want %#v", summary, wantPlanSummary)
+	}
+
+	executionSummary, ok := app.ExecutionSummary()
+	if !ok {
+		t.Fatal("ExecutionSummary() reports no execution after power intent")
+	}
+	wantExecutionSummary := executor.ResultSummary{
+		DryRun:         true,
+		NoopOnly:       true,
+		ActionsHandled: 1,
+		Succeeded:      true,
+	}
+	if executionSummary != wantExecutionSummary {
+		t.Fatalf("ExecutionSummary() = %#v, want %#v", executionSummary, wantExecutionSummary)
 	}
 }
 

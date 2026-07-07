@@ -5,10 +5,30 @@ import (
 	"testing"
 
 	"github.com/toonamowasstolen/retroflag-power/internal/planner"
+	"github.com/toonamowasstolen/retroflag-power/internal/power"
 )
 
 func TestExecuteDryRunNoopPlan(t *testing.T) {
 	plan := planner.NewDryRunPlan("executor test")
+
+	got, err := New().Execute(plan)
+	if err != nil {
+		t.Fatalf("Execute() error = %v, want nil", err)
+	}
+
+	want := Result{
+		DryRun:         true,
+		NoopOnly:       true,
+		ActionsHandled: 1,
+		Succeeded:      true,
+	}
+	if got != want {
+		t.Fatalf("Execute() = %#v, want %#v", got, want)
+	}
+}
+
+func TestExecuteDryRunPowerIntentPlanRemainsNoopOnly(t *testing.T) {
+	plan := planner.NewDryRunPowerIntentPlan(power.IntentPowerButtonPressed)
 
 	got, err := New().Execute(plan)
 	if err != nil {

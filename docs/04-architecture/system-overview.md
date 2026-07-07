@@ -19,10 +19,11 @@ related:
   - docs/00-project/milestones.md
   - docs/00-project/roadmap.md
   - docs/00-project/requirements.md
+  - docs/00-project/quests/0035-add-a-dry-run-power-intent-path.md
   - docs/01-product/vision.md
   - docs/13-reference/terminology.md
   - docs/13-reference/glossary.md
-last_updated: 2026-07-06
+last_updated: 2026-07-07
 ---
 
 # System Overview
@@ -290,7 +291,15 @@ System shutdown
 
 Milestone 1 focus:
 
-Not implemented beyond placeholder structure.
+The first safe power-intent path exists as dry-run/noop behavior only. The app
+can accept an internal `PowerButtonPressed` intent, ask the planner for a
+deterministic dry-run plan, and send that plan through the executor. The planned
+action remains `noop`, and executor results remain dry-run/noop only.
+
+This is a lantern on the future power trail, not real hardware control. It does
+not read GPIO, run shutdown commands, activate systemd services, replace
+`rc.local`, replace `SafeShutdown.py`, resume sessions, or store persistent
+state.
 
 Milestone 3 focus:
 
