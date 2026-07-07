@@ -17,7 +17,9 @@ related:
   - docs/04-architecture/arcadia-runtime-migration-path.md
   - docs/04-architecture/system-overview.md
   - docs/03-operations/safeshutdown-replacement-boundary-map.md
+  - docs/03-operations/local-diagnostics-bundle-map.md
   - docs/00-project/quests/0049-record-the-save-room-tech-and-arcadia-runtime-direction.md
+  - docs/00-project/quests/0051-map-the-local-diagnostics-bundle.md
 last_updated: 2026-07-07
 ---
 
@@ -37,6 +39,11 @@ is tracked in
 [Arcadia Runtime Migration Path](../04-architecture/arcadia-runtime-migration-path.md).
 That map keeps the current GPi Case 2 work separate from future rename,
 installer, diagnostics, and field-kit questions.
+
+The privacy-first support satchel is mapped in
+[Local Diagnostics Bundle Map](../03-operations/local-diagnostics-bundle-map.md).
+It keeps future diagnostics local, redacted, previewable, and user-controlled
+before any optional Lantern Dispatch trail exists.
 
 ## Current Project State
 

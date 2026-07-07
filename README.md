@@ -99,6 +99,9 @@ On unsupported platforms or uncertain GPIO access, it reports
 - [Arcadia Runtime migration path](docs/04-architecture/arcadia-runtime-migration-path.md):
   the staged compass for growing from the current GPi Case 2 prototype toward
   the broader runtime direction without premature renames or behavior changes.
+- [Local diagnostics bundle map](docs/03-operations/local-diagnostics-bundle-map.md):
+  the privacy-first compass for future local, redacted, previewable support
+  bundles before any optional Lantern Dispatch trail exists.
 - [Project roadmap](docs/00-project/roadmap.md)
 - [Project requirements](docs/00-project/requirements.md)
 - [GPi Case GPIO probe field ledger](docs/03-operations/gpi-case-gpio-probe-ledger.md)

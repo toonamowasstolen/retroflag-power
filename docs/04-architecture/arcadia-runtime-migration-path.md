@@ -17,7 +17,9 @@ related:
   - docs/00-project/project-direction-save-room-arcadia.md
   - docs/04-architecture/system-overview.md
   - docs/03-operations/safeshutdown-replacement-boundary-map.md
+  - docs/03-operations/local-diagnostics-bundle-map.md
   - docs/00-project/quests/0050-map-the-arcadia-runtime-migration-path.md
+  - docs/00-project/quests/0051-map-the-local-diagnostics-bundle.md
 last_updated: 2026-07-07
 ---
 
@@ -90,6 +92,11 @@ If the project earns that step, Arcadia Runtime may eventually own:
 This future phase should remain grounded in verified ledgers. Arcadia Runtime
 should not become a brand, package name, daemon name, or public release promise
 until the rename gates in this map are satisfied.
+
+The local-first diagnostics compass lives in
+[Local Diagnostics Bundle Map](../03-operations/local-diagnostics-bundle-map.md).
+That map keeps future support bundles redacted, previewable, and useful before
+any optional Lantern Dispatch path exists.
 
 ## Device Profile Model: Relics
 

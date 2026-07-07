@@ -16,7 +16,9 @@ related:
   - docs/03-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
   - docs/03-operations/gpio-read-only-plan.md
   - docs/03-operations/gpi-case-gpio-probe-ledger.md
+  - docs/03-operations/local-diagnostics-bundle-map.md
   - docs/00-project/quests/0048-map-the-safeshutdown-replacement-boundaries.md
+  - docs/00-project/quests/0051-map-the-local-diagnostics-bundle.md
 last_updated: 2026-07-07
 ---
 
@@ -39,6 +41,11 @@ The staged migration compass toward the broader future engine lives in
 [Arcadia Runtime Migration Path](../04-architecture/arcadia-runtime-migration-path.md).
 It treats this SafeShutdown boundary map as one prerequisite ledger, not as
 permission to replace the stock script.
+
+The future local support satchel is mapped in
+[Local Diagnostics Bundle Map](local-diagnostics-bundle-map.md). That
+diagnostics compass may summarize this boundary ledger later, but it does not
+collect files, upload data, or replace any part of the stock script.
 
 ## What SafeShutdown.py Currently Owns
 
