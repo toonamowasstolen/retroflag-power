@@ -14,6 +14,7 @@ purpose: Record the long-term naming, platform, privacy, and migration direction
 related:
   - README.md
   - PROJECT_MANIFEST.md
+  - docs/00-project/edc-quest-operating-rules.md
   - docs/04-architecture/arcadia-runtime-migration-path.md
   - docs/04-architecture/system-overview.md
   - docs/03-operations/safeshutdown-replacement-boundary-map.md
@@ -51,6 +52,11 @@ The reversible install trail is mapped in
 [Installer and Migration Toolkit Map](../03-operations/installer-migration-toolkit-map.md).
 It keeps future field kits focused on inspection, backup, preview, explicit
 confirmation, uninstall, and restore before any device mutation exists.
+
+The quest operating ritual is mapped in
+[EDC Quest Operating Rules](edc-quest-operating-rules.md). Future agents should
+use it before editing this direction record or any related EDC source-of-truth
+map.
 
 ## Current Project State
 

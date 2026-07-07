@@ -15,6 +15,7 @@ related:
   - PROJECT_MEMORY.md
   - ENGINEERING_MANIFESTO.md
   - PROJECT_CHARTER.md
+  - docs/00-project/edc-quest-operating-rules.md
   - docs/00-project/project-direction-save-room-arcadia.md
   - docs/04-architecture/arcadia-runtime-migration-path.md
   - docs/00-project/roadmap.md
@@ -48,6 +49,12 @@ The staged migration compass lives in
 [Arcadia Runtime Migration Path](docs/04-architecture/arcadia-runtime-migration-path.md):
 it explains how this prototype can grow toward that wider runtime without
 premature repo, module, package, binary, service, or behavior changes.
+
+The quest operating compass lives in
+[EDC Quest Operating Rules](docs/00-project/edc-quest-operating-rules.md):
+future agents should read the relevant EDC docs, name the source-of-truth
+files, keep quests small, record discoveries, and stop when the implementation
+and EDC disagree.
 
 It is about shortening the distance between power and play.
 

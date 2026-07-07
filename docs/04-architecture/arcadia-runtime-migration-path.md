@@ -14,6 +14,7 @@ purpose: Map the cautious staged path from the current RetroFlag Power GPi Case 
 related:
   - README.md
   - PROJECT_MANIFEST.md
+  - docs/00-project/edc-quest-operating-rules.md
   - docs/00-project/project-direction-save-room-arcadia.md
   - docs/04-architecture/system-overview.md
   - docs/03-operations/safeshutdown-replacement-boundary-map.md
@@ -42,6 +43,12 @@ write GPIO, or execute shutdown.
 RetroFlag Power remains the current working repository, prototype name, and GPi
 Case 2-focused field kit. Arcadia Runtime is the favored future engine
 direction, not an active rename.
+
+Future agents should follow the
+[EDC Quest Operating Rules](../00-project/edc-quest-operating-rules.md) before
+editing this map: read the relevant EDC docs, name the source-of-truth files,
+keep the quest small, record discoveries, and stop when docs and implementation
+disagree.
 
 ## Why Migration Is Staged
 
