@@ -95,5 +95,6 @@ On unsupported platforms or uncertain GPIO access, it reports
   Power's working style, quest rhythm, hardware caution, and project voice.
 - [Project roadmap](docs/00-project/roadmap.md)
 - [Project requirements](docs/00-project/requirements.md)
+- [GPi Case GPIO probe field ledger](docs/03-operations/gpi-case-gpio-probe-ledger.md)
 - [System overview](docs/04-architecture/system-overview.md)
 - [AI collaboration guide](docs/05-development/ai-collaboration.md)

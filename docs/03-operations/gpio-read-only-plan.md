@@ -16,6 +16,7 @@ related:
   - docs/00-project/quests/0042-separate-raw-signals-from-interpreted-inputs.md
   - docs/00-project/quests/0043-add-a-latching-power-switch-interpreter.md
   - docs/00-project/quests/0045-add-a-hardware-read-only-gpio-probe-command.md
+  - docs/03-operations/gpi-case-gpio-probe-ledger.md
   - internal/input
 last_updated: 2026-07-07
 ---
@@ -157,8 +158,10 @@ the same supervised observation session:
 ```
 
 Record the command, pin number, case control position, and raw result exactly as
-printed. Treat `SignalLow` and `SignalHigh` as electrical observations only, not
-as power-switch meaning.
+printed in the
+[GPi Case GPIO probe field ledger](gpi-case-gpio-probe-ledger.md). Treat
+`SignalLow` and `SignalHigh` as electrical observations only, not as
+power-switch meaning.
 
 ## Device Facts Still Needed
 
