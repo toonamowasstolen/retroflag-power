@@ -6,6 +6,7 @@ type EventType string
 
 const (
 	EventTypeSignal             EventType = "signal"
+	EventTypePowerSwitch        EventType = "power_switch"
 	EventTypePowerButtonPressed EventType = "power_button_pressed"
 )
 
@@ -46,6 +47,7 @@ type Event struct {
 	Type        EventType
 	Name        string
 	SignalState SignalState
+	SwitchState SwitchState
 }
 
 func SignalEvent(name string, state SignalState) Event {
@@ -58,6 +60,13 @@ func SignalEvent(name string, state SignalState) Event {
 
 func PowerButtonPressedEvent() Event {
 	return Event{Type: EventTypePowerButtonPressed}
+}
+
+func PowerSwitchEvent(state SwitchState) Event {
+	return Event{
+		Type:        EventTypePowerSwitch,
+		SwitchState: state,
+	}
 }
 
 type Observer interface {

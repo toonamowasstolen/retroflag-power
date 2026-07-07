@@ -23,6 +23,7 @@ related:
   - docs/00-project/quests/0036-add-a-dry-run-power-intent-cli-flag.md
   - docs/00-project/quests/0038-add-a-configurable-dry-run-power-policy.md
   - docs/00-project/quests/0039-add-a-gpio-observer-interface.md
+  - docs/00-project/quests/0043-add-a-latching-power-switch-interpreter.md
   - docs/01-product/vision.md
   - docs/13-reference/terminology.md
   - docs/13-reference/glossary.md
@@ -309,9 +310,9 @@ The GPIO path now has a layered vocabulary for the next hardware lantern:
 ```text
 raw signal
   ->
-configured interpretation
+configured latching switch interpretation
   ->
-latching switch or momentary button event
+power switch event
   ->
 power intent
   ->
@@ -325,9 +326,17 @@ breadcrumbs
 ```
 
 `SignalLow`, `SignalHigh`, and `SignalUnverified` describe only the observed
-wire or logical input. `SwitchOn`, `SwitchOff`, and `SwitchUnknown` are reserved
-for interpreted latching switch meaning. `ButtonPressed`, `ButtonReleased`, and
-`ButtonUnknown` are reserved for interpreted momentary button meaning.
+wire or logical input. The latching power switch interpreter accepts explicit
+configuration: `active_signal` is `low` or `high`, and `active_switch_state` is
+`off` or `on`. That map turns raw low/high observations into `SwitchOn` or
+`SwitchOff`; `SignalUnverified` becomes `SwitchUnknown`. `ButtonPressed`,
+`ButtonReleased`, and `ButtonUnknown` remain reserved for a later momentary
+button interpreter.
+
+An interpreted `PowerSwitchEvent(SwitchOff)` now reaches the same dry-run/noop
+power intent pipeline as the fake power-button event. It is still only a
+configured interpretation layer, not a full latching-switch transition state
+machine.
 
 This is a lantern on the future power trail, not real hardware control. It does
 not read GPIO, run shutdown commands, activate systemd services, replace
@@ -396,10 +405,13 @@ Status LED
 Milestone 1 focus:
 
 The daemon now has a safe input observer seam before real hardware input. The
-`internal/input` observer interface reports project-level input events rather
-than GPIO pins. Its fake observer can emit a power-button-style event for tests,
-which then travels through the existing config policy, planner, executor, and
-event breadcrumb flow.
+`internal/input` observer interface can report raw signal observations and
+interpreted project-level input events rather than GPIO pins. Its fake observer
+can emit a power-button-style event for tests, which then travels through the
+existing config policy, planner, executor, and event breadcrumb flow. The first
+latching switch interpreter can also map raw `SignalLow` or `SignalHigh`
+through explicit polarity options into `PowerSwitchEvent(SwitchOff)` or
+`PowerSwitchEvent(SwitchOn)`.
 
 The fake observer is also available from the daemon command line as a workshop
 field-kit command:
@@ -413,16 +425,16 @@ path, the current noop power policy is honored, stdout records the result and
 breadcrumb ledger, and stderr keeps the usual lifecycle logs.
 
 The next real GPi Case input step is planned as read-only observation. Future
-GPIO-backed observers should return the same project-level
-`power_button_pressed` event as the fake observer, then let the existing app,
-policy, planner, executor, and breadcrumb path handle it. See the
-[GPIO read-only plan](../03-operations/gpio-read-only-plan.md) for the hardware
-field-kit boundaries and acceptance criteria.
+GPIO-backed observers should first return raw signal events, then use explicit
+configuration to interpret those observations into power switch or button
+events before the existing app, policy, planner, executor, and breadcrumb path
+handle them. See the [GPIO read-only plan](../03-operations/gpio-read-only-plan.md)
+for the hardware field-kit boundaries and acceptance criteria.
 
 This observer is intentionally a tiny field kit. It does not use Raspberry Pi
-GPIO libraries, read real pins, debounce edges, model latching switches, run
-shutdown commands, touch systemd, replace `rc.local`, replace `SafeShutdown.py`,
-resume sessions, or persist state.
+GPIO libraries, read real pins, debounce edges, implement a full latching-switch
+transition state machine, run shutdown commands, touch systemd, replace
+`rc.local`, replace `SafeShutdown.py`, resume sessions, or persist state.
 
 Milestone 3 focus:
 
@@ -677,10 +689,16 @@ GPIO17 went low.
 Hardware-specific code is responsible for converting raw hardware behavior into project events.
 
 ```
-GPIO edge
+GPIO observation
   │
   ▼
 GPIO Adapter
+  │
+  ▼
+raw signal
+  │
+  ▼
+configured interpretation
   │
   ▼
 Hardware Service

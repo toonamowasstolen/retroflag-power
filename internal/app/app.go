@@ -185,6 +185,12 @@ func (a *App) ProcessInputEvent(event input.Event) (executor.Result, error) {
 	switch event.Type {
 	case input.EventTypePowerButtonPressed:
 		return a.ProcessPowerIntent(power.IntentPowerButtonPressed)
+	case input.EventTypePowerSwitch:
+		if event.SwitchState == input.SwitchOff {
+			return a.ProcessPowerIntent(power.IntentPowerButtonPressed)
+		}
+
+		return executor.Result{}, fmt.Errorf("unsupported power switch state %q", event.SwitchState)
 	default:
 		return executor.Result{}, fmt.Errorf("unsupported input event %q", event.Type)
 	}

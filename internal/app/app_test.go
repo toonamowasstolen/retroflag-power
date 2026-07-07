@@ -814,6 +814,54 @@ func TestProcessInputEventMapsPowerButtonPressedToPowerIntent(t *testing.T) {
 	}
 }
 
+func TestProcessInputEventMapsPowerSwitchOffToPowerIntent(t *testing.T) {
+	var output bytes.Buffer
+	logger := log.New(&output, "", 0)
+	app := New(logger, config.Default())
+
+	got, err := app.ProcessInputEvent(input.PowerSwitchEvent(input.SwitchOff))
+	if err != nil {
+		t.Fatalf("ProcessInputEvent(PowerSwitchEvent(SwitchOff)) error = %v, want nil", err)
+	}
+
+	wantResult := executor.Result{
+		DryRun:         true,
+		NoopOnly:       true,
+		ActionsHandled: 1,
+		Succeeded:      true,
+	}
+	if got != wantResult {
+		t.Fatalf("ProcessInputEvent(PowerSwitchEvent(SwitchOff)) result = %#v, want %#v", got, wantResult)
+	}
+
+	plan, ok := app.Plan()
+	if !ok {
+		t.Fatal("Plan() reports no prepared plan after power switch event")
+	}
+	if plan.PowerIntent != power.IntentPowerButtonPressed {
+		t.Fatalf("Plan().PowerIntent = %q, want %q", plan.PowerIntent, power.IntentPowerButtonPressed)
+	}
+	if plan.Action != planner.ActionNoop {
+		t.Fatalf("Plan().Action = %q, want %q", plan.Action, planner.ActionNoop)
+	}
+}
+
+func TestProcessInputEventRejectsUnsupportedPowerSwitchStateClearly(t *testing.T) {
+	var output bytes.Buffer
+	logger := log.New(&output, "", 0)
+	app := New(logger, config.Default())
+
+	_, err := app.ProcessInputEvent(input.PowerSwitchEvent(input.SwitchUnknown))
+	if err == nil {
+		t.Fatal("ProcessInputEvent(PowerSwitchEvent(SwitchUnknown)) error = nil, want unsupported state error")
+	}
+
+	const want = `unsupported power switch state "unknown"`
+	if err.Error() != want {
+		t.Fatalf("ProcessInputEvent(PowerSwitchEvent(SwitchUnknown)) error = %q, want %q", err.Error(), want)
+	}
+}
+
 func TestProcessNextInputEventUsesFakeObserverAndHonorsPolicy(t *testing.T) {
 	var output bytes.Buffer
 	logger := log.New(&output, "", 0)

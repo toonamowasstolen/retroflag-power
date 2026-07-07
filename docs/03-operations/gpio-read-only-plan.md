@@ -14,6 +14,7 @@ related:
   - docs/04-architecture/system-overview.md
   - docs/00-project/quests/0041-plan-the-gpio-read-only-path.md
   - docs/00-project/quests/0042-separate-raw-signals-from-interpreted-inputs.md
+  - docs/00-project/quests/0043-add-a-latching-power-switch-interpreter.md
   - internal/input
 last_updated: 2026-07-07
 ---
@@ -32,8 +33,8 @@ observer event:
 CLI fake observer
   -> input observer
   -> raw signal
-  -> configured interpretation
-  -> latching switch or momentary button event
+  -> configured latching switch interpretation
+  -> power switch event
   -> power intent
   -> config policy
   -> deterministic plan
@@ -57,14 +58,20 @@ should first report raw observations with `input.SignalEvent(name, state)`,
 where `state` is `SignalLow`, `SignalHigh`, or `SignalUnverified`. Those names
 mean only what the wire or logical input appears to be doing.
 
-A later interpretation layer should use configuration to decide whether a raw
-signal means a latching switch state such as `SwitchOn`, `SwitchOff`, or
-`SwitchUnknown`, or a momentary button state such as `ButtonPressed`,
-`ButtonReleased`, or `ButtonUnknown`. Only after that interpretation should the
-app receive project-level meaning such as `input.PowerButtonPressedEvent()` and
-turn it into a power intent. Core app, planner, config, and executor code
-should continue to receive interpreted input events and power intents, not GPIO
-chips, line offsets, edge names, or electrical polarity.
+The first interpretation layer is deliberately configured. A latching power
+switch interpreter accepts an explicit `active_signal` of `low` or `high` and an
+explicit `active_switch_state` of `off` or `on`. It maps raw `SignalLow` and
+`SignalHigh` observations to `SwitchOff` or `SwitchOn` only by that declared
+map. `SignalUnverified` becomes `SwitchUnknown`, keeping the lantern honest
+when the raw observation has not earned meaning yet.
+
+Only after that interpretation should the app receive project-level meaning
+such as `input.PowerSwitchEvent(input.SwitchOff)` and turn it into a power
+intent. The current dry-run/noop route maps interpreted `SwitchOff` to the same
+safe power intent path already used by the fake power-button observer. Core
+app, planner, config, and executor code should continue to receive interpreted
+input events and power intents, not GPIO chips, line offsets, edge names, or
+electrical polarity.
 
 ## Why Read-Only Comes Next
 
@@ -123,6 +130,8 @@ trusted:
 - Whether each control behaves like a latching switch or a momentary button.
 - Which configured interpretation maps each raw signal state to a switch or
   button meaning.
+- Which latching power switch config is correct: `active_signal` low or high,
+  and `active_switch_state` off or on.
 - Bounce, duplicate edge, or noise observations during normal presses and
   toggles.
 - Whether observed behavior changes across boot, shutdown, suspend-like states,
@@ -151,6 +160,9 @@ The first real hardware-read-only quest is complete only when:
 - A configured interpretation step maps trusted raw observations into either a
   latching switch event or a momentary button event before any power intent is
   produced.
+- The latching power switch interpretation remains explicit and deterministic:
+  raw signal, configured latching switch interpretation, power switch event,
+  power intent, policy, plan, noop execution, and breadcrumbs.
 - Candidate pins, polarity, latching or momentary behavior, and bounce/noise
   notes are documented with device context.
 - The resulting plan and execution remain deterministic and noop-only.

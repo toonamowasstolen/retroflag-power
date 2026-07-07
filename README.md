@@ -53,6 +53,11 @@ This starts the daemon app, emits one fake power-button observer event, routes i
 through the same input observer path used by tests, prints the noop result and a
 small deterministic event breadcrumb ledger, then exits cleanly.
 
+The input lantern now also has a configured latching power switch interpreter:
+raw `SignalLow` or `SignalHigh` can become `SwitchOff` or `SwitchOn` only when
+`active_signal` and `active_switch_state` are explicit. `SignalUnverified`
+becomes `SwitchUnknown`.
+
 Unsupported policy values fail clearly before a plan is prepared. The path
 remains noop-only: no GPIO is read, no shutdown command runs, and no hardware
 action is taken.

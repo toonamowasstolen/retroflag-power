@@ -81,6 +81,18 @@ func TestPowerButtonPressedEventNamesObserverEvent(t *testing.T) {
 	}
 }
 
+func TestPowerSwitchEventNamesInterpretedSwitchState(t *testing.T) {
+	got := PowerSwitchEvent(SwitchOff)
+	want := Event{
+		Type:        EventTypePowerSwitch,
+		SwitchState: SwitchOff,
+	}
+
+	if got != want {
+		t.Fatalf("PowerSwitchEvent() = %#v, want %#v", got, want)
+	}
+}
+
 func TestFakeObserverCopiesEvents(t *testing.T) {
 	events := []Event{{Type: EventTypePowerButtonPressed}}
 	observer := NewFakeObserver(events...)
