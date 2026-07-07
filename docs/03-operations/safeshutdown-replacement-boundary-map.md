@@ -11,6 +11,7 @@ audience:
   - Hardware Porters
 purpose: Map the behavior retroflag-powerd must preserve before it can safely replace the stock RetroFlag SafeShutdown.py path on GPi Case 2 hardware.
 related:
+  - docs/00-project/project-direction-save-room-arcadia.md
   - docs/03-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
   - docs/03-operations/gpio-read-only-plan.md
   - docs/03-operations/gpi-case-gpio-probe-ledger.md
@@ -27,6 +28,11 @@ last_updated: 2026-07-07
 This document is documentation only. It does not authorize service install,
 daemon activation, GPIO writes, shutdown execution, `rc.local` edits, or
 replacement of `/opt/RetroFlag/SafeShutdown.py`.
+
+The larger naming and platform compass lives in
+[Save Room Tech and Arcadia Runtime Direction](../00-project/project-direction-save-room-arcadia.md).
+This boundary map remains focused on the current RetroFlag Power prototype and
+the GPi Case 2 SafeShutdown replacement trail.
 
 ## What SafeShutdown.py Currently Owns
 

@@ -16,6 +16,7 @@ related:
   - PROJECT_MEMORY.md
   - PROJECT_MANIFEST.md
   - PROJECT_CHARTER.md
+  - docs/00-project/project-direction-save-room-arcadia.md
   - docs/00-project/milestones.md
   - docs/00-project/roadmap.md
   - docs/00-project/requirements.md
@@ -39,6 +40,12 @@ This document defines the high-level architecture for RetroFlag Power.
 It is not the final design for every package, interface, or command.
 
 It is the first courthouse: the place where the project requirements, product vision, hardware reality, and implementation path can meet without chaos.
+
+The wider naming and platform direction is tracked separately in
+[Save Room Tech and Arcadia Runtime Direction](../00-project/project-direction-save-room-arcadia.md).
+That map keeps RetroFlag Power as the current GPi Case-focused prototype while
+recording Save Room Tech as the future umbrella and Arcadia Runtime as the
+favored broader runtime direction.
 
 The goal is to give Milestone 1 enough structure to begin implementation while keeping future milestones visible.
 

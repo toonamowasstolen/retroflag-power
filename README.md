@@ -93,6 +93,9 @@ On unsupported platforms or uncertain GPIO access, it reports
 - [Why RetroFlag Power exists](WHY.md)
 - [Project Charter](PROJECT_CHARTER.md): the campfire compass for RetroFlag
   Power's working style, quest rhythm, hardware caution, and project voice.
+- [Save Room Tech and Arcadia Runtime direction](docs/00-project/project-direction-save-room-arcadia.md):
+  the north-star map for the current RetroFlag Power prototype, the future
+  Save Room Tech umbrella, and the favored Arcadia Runtime path.
 - [Project roadmap](docs/00-project/roadmap.md)
 - [Project requirements](docs/00-project/requirements.md)
 - [GPi Case GPIO probe field ledger](docs/03-operations/gpi-case-gpio-probe-ledger.md)

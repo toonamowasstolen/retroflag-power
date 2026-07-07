@@ -15,6 +15,7 @@ related:
   - PROJECT_MEMORY.md
   - ENGINEERING_MANIFESTO.md
   - PROJECT_CHARTER.md
+  - docs/00-project/project-direction-save-room-arcadia.md
   - docs/00-project/roadmap.md
   - docs/00-project/milestones.md
   - docs/adr/0003-adopt-epoch-milestone-quest-model.md
@@ -35,6 +36,12 @@ That need still matters.
 But the project has grown into something larger.
 
 This project is about making Raspberry Pi based retro handhelds feel less like small Linux computers and more like purpose-built gaming devices.
+
+The broader naming compass now lives in
+[Save Room Tech and Arcadia Runtime Direction](docs/00-project/project-direction-save-room-arcadia.md):
+RetroFlag Power remains the current GPi Case-focused prototype, Save Room Tech
+is the favored future hobby/community umbrella, and Arcadia Runtime is the
+favored future runtime direction pending proper public-release clearance.
 
 It is about shortening the distance between power and play.
 
