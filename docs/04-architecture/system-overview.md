@@ -594,6 +594,18 @@ Future user-facing diagnostics should get a separate friendly formatter instead
 of changing that stable string. Do not wire the runtime summary string to CLI
 output or daemon logs until a later quest deliberately chooses that path.
 
+Runtime and startup diagnostics are related, but they answer different
+questions. `App.RuntimeDiagnostic()` reports the current runtime state whenever
+it is called. `App.StartupDiagnostic()` returns the diagnostic captured when
+startup completed, and that startup diagnostic remains the startup-complete
+snapshot even after shutdown changes the current runtime badge to stopped.
+
+Neither diagnostic is wired to daemon logs or CLI output yet. Future log and
+CLI lanterns should choose deliberately between the current runtime state and
+the captured startup snapshot, then format any user-facing output through a
+separate friendly formatter rather than changing
+`RuntimeSnapshotSummary.String()`.
+
 ## Rule 4 — Platform-specific code stays isolated
 
 Raspberry Pi specific behavior must not become a global assumption.
