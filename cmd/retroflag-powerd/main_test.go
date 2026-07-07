@@ -83,3 +83,73 @@ func TestRunDryRunPowerButtonRejectsUnsupportedPolicy(t *testing.T) {
 		t.Fatalf("run(--dry-run-power-button --power-button-action shutdown) stderr = %q, want it to contain %q", stderr.String(), wantError)
 	}
 }
+
+func TestRunFakePowerButtonObserverProcessesEventAndExits(t *testing.T) {
+	var stdout bytes.Buffer
+	var stderr bytes.Buffer
+
+	got := run(context.Background(), []string{"--fake-power-button-observer"}, &stdout, &stderr)
+
+	if got != 0 {
+		t.Fatalf("run(--fake-power-button-observer) exit = %d, want 0; stderr = %q", got, stderr.String())
+	}
+
+	wantLines := []string{
+		"fake_power_button_observer event=power_button_pressed processed=true execution_success=true dry_run=true noop_only=true actions_handled=1 real_shutdown=false hardware_action=false",
+		`event_breadcrumb index=0 type=daemon.starting message="retroflag-powerd 0.1.0-dev starting dry_run=true"`,
+		`event_breadcrumb index=1 type=daemon.ready message="retroflag-powerd ready"`,
+		`event_breadcrumb index=2 type=power.intent_received message="power intent received intent=power_button_pressed"`,
+		`event_breadcrumb index=3 type=power.dry_run_plan_prepared message="dry-run plan prepared intent=power_button_pressed action=noop"`,
+		`event_breadcrumb index=4 type=power.noop_execution_completed message="noop execution completed intent=power_button_pressed actions_handled=1"`,
+	}
+	gotLines := strings.Split(strings.TrimSpace(stdout.String()), "\n")
+	if len(gotLines) != len(wantLines) {
+		t.Fatalf("run(--fake-power-button-observer) stdout lines = %#v, want %#v", gotLines, wantLines)
+	}
+	for i, want := range wantLines {
+		if gotLines[i] != want {
+			t.Fatalf("run(--fake-power-button-observer) stdout line %d = %q, want %q", i, gotLines[i], want)
+		}
+	}
+
+	for _, wantLog := range []string{
+		"retroflag-powerd 0.1.0-dev starting dry_run=true",
+		"retroflag-powerd ready",
+		"shutdown signal received",
+		"retroflag-powerd stopped",
+	} {
+		if !strings.Contains(stderr.String(), wantLog) {
+			t.Fatalf("run(--fake-power-button-observer) stderr = %q, want it to contain %q", stderr.String(), wantLog)
+		}
+	}
+}
+
+func TestRunFakePowerButtonObserverRejectsUnsupportedPolicy(t *testing.T) {
+	var stdout bytes.Buffer
+	var stderr bytes.Buffer
+
+	got := run(context.Background(), []string{"--fake-power-button-observer", "--power-button-action", "shutdown"}, &stdout, &stderr)
+
+	if got != 1 {
+		t.Fatalf("run(--fake-power-button-observer --power-button-action shutdown) exit = %d, want 1", got)
+	}
+	wantLines := []string{
+		"fake_power_button_observer event=power_button_pressed processed=false execution_success=false dry_run=false noop_only=false actions_handled=0 real_shutdown=false hardware_action=false",
+		`event_breadcrumb index=0 type=daemon.starting message="retroflag-powerd 0.1.0-dev starting dry_run=true"`,
+		`event_breadcrumb index=1 type=daemon.ready message="retroflag-powerd ready"`,
+		`event_breadcrumb index=2 type=power.intent_received message="power intent received intent=power_button_pressed"`,
+	}
+	gotLines := strings.Split(strings.TrimSpace(stdout.String()), "\n")
+	if len(gotLines) != len(wantLines) {
+		t.Fatalf("run(--fake-power-button-observer --power-button-action shutdown) stdout lines = %#v, want %#v", gotLines, wantLines)
+	}
+	for i, want := range wantLines {
+		if gotLines[i] != want {
+			t.Fatalf("run(--fake-power-button-observer --power-button-action shutdown) stdout line %d = %q, want %q", i, gotLines[i], want)
+		}
+	}
+	const wantError = `fake power button observer failed: unsupported power_button_action "shutdown" (supported: noop)`
+	if !strings.Contains(stderr.String(), wantError) {
+		t.Fatalf("run(--fake-power-button-observer --power-button-action shutdown) stderr = %q, want it to contain %q", stderr.String(), wantError)
+	}
+}

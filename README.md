@@ -43,6 +43,16 @@ only `noop`, including the explicit CLI form:
 go run ./cmd/retroflag-powerd --dry-run-power-button --power-button-action noop
 ```
 
+Safe fake observer lantern:
+
+```sh
+go run ./cmd/retroflag-powerd --fake-power-button-observer
+```
+
+This starts the daemon app, emits one fake power-button observer event, routes it
+through the same input observer path used by tests, prints the noop result and a
+small deterministic event breadcrumb ledger, then exits cleanly.
+
 Unsupported policy values fail clearly before a plan is prepared. The path
 remains noop-only: no GPIO is read, no shutdown command runs, and no hardware
 action is taken.

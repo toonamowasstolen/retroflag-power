@@ -324,6 +324,17 @@ The explicit policy form is also safe:
 go run ./cmd/retroflag-powerd --dry-run-power-button --power-button-action noop
 ```
 
+Developers can also exercise the input observer seam without real GPIO:
+
+```sh
+go run ./cmd/retroflag-powerd --fake-power-button-observer
+```
+
+That command starts the same app lifecycle, emits one fake
+`power_button_pressed` observer event, routes it through the app input
+processing path, prints a compact noop result, includes deterministic event
+breadcrumbs, and exits cleanly.
+
 Unsupported values fail before plan preparation with a deterministic
 `power_button_action` error.
 
@@ -364,6 +375,17 @@ The daemon now has a safe input observer seam before real hardware input. The
 than GPIO pins. Its fake observer can emit a power-button-style event for tests,
 which then travels through the existing config policy, planner, executor, and
 event breadcrumb flow.
+
+The fake observer is also available from the daemon command line as a workshop
+field-kit command:
+
+```sh
+go run ./cmd/retroflag-powerd --fake-power-button-observer
+```
+
+The command is intentionally deterministic: one fake event enters the observer
+path, the current noop power policy is honored, stdout records the result and
+breadcrumb ledger, and stderr keeps the usual lifecycle logs.
 
 This observer is intentionally a tiny field kit. It does not use Raspberry Pi
 GPIO libraries, read real pins, debounce edges, model latching switches, run
