@@ -32,6 +32,8 @@ make run
 ## Project Documentation
 
 - [Why RetroFlag Power exists](WHY.md)
+- [Project Charter](PROJECT_CHARTER.md): the campfire compass for RetroFlag
+  Power's working style, quest rhythm, hardware caution, and project voice.
 - [Project roadmap](docs/00-project/roadmap.md)
 - [Project requirements](docs/00-project/requirements.md)
 - [System overview](docs/04-architecture/system-overview.md)

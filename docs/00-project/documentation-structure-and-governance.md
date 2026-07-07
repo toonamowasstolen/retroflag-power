@@ -2117,6 +2117,11 @@ Use these canonical locations unless an ADR changes them.
 Project roadmap:
   docs/00-project/roadmap.md
 
+Project Charter:
+  PROJECT_CHARTER.md
+  The campfire compass for RetroFlag Power's working style, quest rhythm,
+  hardware caution, and project voice.
+
 Epoch ladder and current direction:
   docs/00-project/roadmap.md
 
