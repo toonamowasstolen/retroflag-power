@@ -41,6 +41,8 @@ Verified GPi Case 2 findings:
   and `lcdrun()`.
 - The top power-save/resume behavior is currently part of the legacy
   `lcdrun()` path.
+- The RetroFlag legacy script path also appears to participate in docking
+  behavior, including switching between the built-in LCD and HDMI when docked.
 - Sleep or power-save can make SSH recovery harder if Wi-Fi goes down.
 
 Observed ownership from the legacy script:
@@ -51,10 +53,11 @@ Observed ownership from the legacy script:
 | Side-switch shutdown detection | `poweroff()` watches GPIO26 | The side switch signals software instead of simply cutting battery power. |
 | Shutdown sequence | `poweroff()` kills EmulationStation, waits, then calls shutdown | A replacement must preserve clean EmulationStation and Linux shutdown behavior. |
 | Top-button power-save/resume path | `lcdrun()` loop and old LCD scripts | The top button wakes the case from power-save, and that behavior cannot vanish silently. |
-| Legacy LCD/HDMI switching | `lcdrun()` calls `lcdnext.sh` | This is not KMS-safe because old scripts can rewrite display configuration. |
+| Legacy LCD/HDMI switching | `lcdrun()` calls `lcdnext.sh` | This appears to participate in docked HDMI behavior and transitions between the built-in LCD and HDMI. It is not KMS-safe because old scripts can rewrite display configuration. |
 
 The old script therefore owns more than "shutdown on button press." It is part
-of the power latch, side-switch, display/power-save, and clean-shutdown trail.
+of the power latch, side-switch, display/power-save, docking display, and
+clean-shutdown trail.
 
 ## What retroflag-powerd Already Owns
 
@@ -81,6 +84,11 @@ observe and model, but it does not yet own real GPi Case power behavior.
 - Debounce, repeat, and boot-state behavior for the side switch.
 - Top-button power-save/resume behavior.
 - KMS-safe display behavior during top-button power-save/resume.
+- Handheld built-in LCD behavior.
+- Docked HDMI behavior.
+- Transitions between the built-in LCD and HDMI.
+- Timing and ordering dependencies around KMS display setup.
+- Fully verified audio behavior after the FKMS-to-KMS update.
 - Clean EmulationStation shutdown orchestration on real hardware.
 - Linux shutdown execution.
 - systemd unit installation, enablement, restart policy, or ordering.
@@ -102,6 +110,10 @@ replacement quest begins:
 3. Top-button power-save/resume behavior.
 4. Clean EmulationStation and Linux shutdown sequencing.
 5. KMS-safe display behavior.
+6. Handheld built-in LCD behavior.
+7. Docked HDMI behavior.
+8. Transitions between the built-in LCD and HDMI.
+9. Any timing or ordering dependencies around KMS display setup.
 
 Each prerequisite needs evidence in the project ledgers:
 
@@ -112,11 +124,18 @@ Each prerequisite needs evidence in the project ledgers:
 - A hardware field checklist with rollback and recovery notes.
 - Explicit confirmation that KMS display configuration is not rewritten by old
   LCD/HDMI scripts.
+- Field evidence that handheld LCD, docked HDMI, and LCD-to-HDMI or
+  HDMI-to-LCD transitions behave correctly under the replacement plan.
 
 The power-enable latch deserves special caution. A future quest may model latch
 policy, but the first implementation steps should stay fake or dry-run until
 the team has proved when the line must be driven, when it must be released, and
 how the device behaves during boot, shutdown, power-save, and resume.
+
+Audio caution: audio after the FKMS-to-KMS update has not been fully verified
+yet. Display was the priority fix, so future field testing should include audio
+checks in both handheld and docked modes before any replacement plan is
+considered complete.
 
 ## Explicit No-Go List
 
@@ -132,6 +151,8 @@ This boundary map does not permit:
 - Daemon activation.
 - KMS display rewrites.
 - `lcdnext.sh` or `lcdfirst.sh` execution from `retroflag-powerd`.
+- Assuming handheld LCD, docked HDMI, display transitions, or audio behavior
+  are safe without field evidence.
 - Treating one raw probe result as a complete switch map.
 - Disabling the stock RetroFlag script on real GPi Case 2 hardware.
 
@@ -151,12 +172,13 @@ The conservative trail should look like this:
 4. Controlled dry-run service plan that documents process ownership,
    coexistence with `SafeShutdown.py`, startup order, and failure behavior.
 5. systemd unit draft, not installed, with ordering and rollback notes.
-6. Hardware field test checklist covering handheld/docked states, battery and
-   charger conditions, SSH recovery, KMS display status, top-button wake, side
-   switch shutdown, and power-quality observations.
+6. Hardware field test checklist covering handheld and docked states, LCD and
+   HDMI behavior, LCD-to-HDMI and HDMI-to-LCD transitions, KMS display timing,
+   audio in both modes, battery and charger conditions, SSH recovery, top-button
+   wake, side-switch shutdown, and power-quality observations.
 7. Replacement planning only after the latch, side switch, top-button
-   power-save/resume, clean shutdown, and KMS-safe display behaviors are all
-   verified.
+   power-save/resume, clean shutdown, KMS-safe display, docking display, display
+   transition, and audio-check behaviors are all verified.
 
 This map keeps the quest pointed at replacement readiness without pretending
 the relic is ready to leave the satchel today.

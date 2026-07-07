@@ -49,12 +49,19 @@ Documentation
   `poweroff()` and `lcdrun()`.
 - Marked top-button power-save/resume behavior as still part of the legacy
   `lcdrun()` path.
+- Added the verified finding that the RetroFlag legacy script path also appears
+  to participate in docking behavior, including switching between the built-in
+  LCD and HDMI when docked.
 - Called out the recovery risk that sleep or power-save can make SSH harder if
   Wi-Fi goes down.
 - Listed the replacement prerequisites: power-enable latch behavior,
   side-switch shutdown detection, top-button power-save/resume behavior, clean
   EmulationStation and Linux shutdown sequencing, and KMS-safe display
-  behavior.
+  behavior, handheld LCD behavior, docked HDMI behavior, LCD/HDMI transitions,
+  and KMS display timing or ordering dependencies.
+- Added the caution that audio after the FKMS-to-KMS update has not been fully
+  verified yet, so future field testing must include audio checks in both
+  handheld and docked modes before any replacement plan is complete.
 - Added an explicit no-go list for GPIO writes, shutdown execution, service
   install, systemd activation, `rc.local` changes, `SafeShutdown.py`
   replacement, persistent state, and daemon activation.
