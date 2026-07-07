@@ -26,6 +26,20 @@ The Engineering Documentation Codex is the source of truth for RetroFlag
 Power. Treat the EDC as part of the implementation surface, not as decorative
 prose beside the code.
 
+## Session Start Checklist
+
+Begin each quest by reporting:
+
+- Active quest or user request.
+- EDC source-of-truth docs consulted.
+- Hard safety boundaries for this quest.
+- Intended files to edit.
+- Smallest safe change.
+- Whether the quest is docs-only, code-only, or mixed.
+
+Do not edit until this checklist is complete, unless the user explicitly says
+to skip planning.
+
 ## Required Ritual
 
 Before editing:

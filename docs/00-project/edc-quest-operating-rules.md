@@ -21,6 +21,7 @@ related:
   - docs/03-operations/gpi-case-2-acceptance-checklist.md
   - docs/03-operations/gpi-case-gpio-probe-ledger.md
   - docs/00-project/quests/0054-add-the-edc-quest-operating-rules.md
+  - docs/00-project/quests/0056-add-the-claude-session-start-checklist.md
 last_updated: 2026-07-07
 ---
 
@@ -168,7 +169,7 @@ safety boundary, validation result, command, error, or implementation detail.
 Copy this into future Codex or Claude prompts when starting a quest:
 
 ```
-Before editing, read the relevant EDC docs and list the source-of-truth files you used. Keep the quest small, preserve all hard safety boundaries, update the EDC with any discoveries, and keep the RetroFlag Power warm retro/adventurer voice in docs and reports. If code and EDC disagree, stop and report the conflict.
+Before editing, read the relevant EDC docs and list the source-of-truth files you used. Start by naming the active quest or request, hard safety boundaries, intended files, smallest safe change, and whether the quest is docs-only, code-only, or mixed. Do not edit until that checklist is complete, unless the user explicitly says to skip planning. Keep the quest small, update the EDC with any discoveries, and keep the RetroFlag Power warm retro/adventurer voice in docs and reports. If code and EDC disagree, stop and report the conflict.
 ```
 
 ## Link Map

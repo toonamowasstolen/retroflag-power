@@ -36,6 +36,8 @@ Copy this into a future agent prompt when starting a quest:
 ```
 Before editing, treat the Engineering Documentation Codex as the source of truth.
 
+Start by reporting the session-start checklist: active quest or user request, EDC source-of-truth docs consulted, hard safety boundaries, intended files to edit, smallest safe change, and whether the quest is docs-only, code-only, or mixed. Do not edit until this checklist is complete, unless the user explicitly says to skip planning.
+
 Read the quest or request, then read the relevant EDC docs before changing files. Name the source-of-truth docs you consulted in your final report. Do not append everything to PROJECT_MEMORY.md; store discoveries in the most specific ledger, map, hardware note, architecture doc, operations doc, or quest record that fits.
 
 If code and docs disagree, stop and report the conflict before editing either side. Preserve the warm retro/adventurer voice in docs and reports, but keep code names plain, boring, and maintainable when clarity asks for it.
@@ -47,6 +49,8 @@ Use this when the quest is explicitly docs/configuration only:
 
 ```
 This is a documentation/configuration-only RetroFlag Power quest. Do not change Go code or runtime behavior.
+
+Start by reporting the session-start checklist: active quest or user request, EDC source-of-truth docs consulted, hard safety boundaries, intended files to edit, smallest safe change, and whether this quest is docs-only. Do not edit until this checklist is complete, unless the user explicitly says to skip planning.
 
 Before editing, read the relevant EDC docs and identify the source-of-truth files. Keep the change small and reviewable. Update the most specific EDC document for any durable discovery; do not use PROJECT_MEMORY.md as a dumping ground. If code and docs disagree, stop and report the conflict.
 
