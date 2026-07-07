@@ -27,6 +27,19 @@ func (s SignalState) Valid() bool {
 	}
 }
 
+func (s SignalState) Label() string {
+	switch s {
+	case SignalLow:
+		return "SignalLow"
+	case SignalHigh:
+		return "SignalHigh"
+	case SignalUnverified:
+		return "SignalUnverified"
+	default:
+		return "SignalUnverified"
+	}
+}
+
 type SwitchState string
 
 const (

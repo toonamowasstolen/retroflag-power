@@ -5,6 +5,8 @@ import (
 	"context"
 	"strings"
 	"testing"
+
+	"github.com/toonamowasstolen/retroflag-power/internal/input"
 )
 
 func TestRunVersionPrintsVersion(t *testing.T) {
@@ -260,6 +262,74 @@ func TestRunFakePowerSignalRejectsInvalidInputClearly(t *testing.T) {
 	const want = `fake power signal failed: unsupported signal state "floating" (supported: low, high, unverified)`
 	if !strings.Contains(stderr.String(), want) {
 		t.Fatalf("run(--fake-power-signal floating) stderr = %q, want it to contain %q", stderr.String(), want)
+	}
+}
+
+func TestRunProbeGPIOSignalReportsRawSignalOnly(t *testing.T) {
+	var stdout bytes.Buffer
+	var stderr bytes.Buffer
+	originalProbe := probeGPIOSignal
+	probeGPIOSignal = func(context.Context, int) input.SignalState {
+		return input.SignalHigh
+	}
+	defer func() {
+		probeGPIOSignal = originalProbe
+	}()
+
+	got := run(context.Background(), []string{"--probe-gpio-signal", "4"}, &stdout, &stderr)
+
+	if got != 0 {
+		t.Fatalf("run(--probe-gpio-signal 4) exit = %d, want 0; stderr = %q", got, stderr.String())
+	}
+	const want = "gpio_signal_probe pin=4 raw=SignalHigh interpreted=false processed=false real_shutdown=false hardware_action=false\n"
+	if stdout.String() != want {
+		t.Fatalf("run(--probe-gpio-signal 4) stdout = %q, want %q", stdout.String(), want)
+	}
+	if stderr.String() != "" {
+		t.Fatalf("run(--probe-gpio-signal 4) stderr = %q, want empty", stderr.String())
+	}
+	if strings.Contains(stdout.String(), "Switch") {
+		t.Fatalf("run(--probe-gpio-signal 4) stdout = %q, want no interpreted switch state", stdout.String())
+	}
+}
+
+func TestRunProbeGPIOSignalReportsUnverifiedFallback(t *testing.T) {
+	var stdout bytes.Buffer
+	var stderr bytes.Buffer
+	originalProbe := probeGPIOSignal
+	probeGPIOSignal = func(context.Context, int) input.SignalState {
+		return input.SignalUnverified
+	}
+	defer func() {
+		probeGPIOSignal = originalProbe
+	}()
+
+	got := run(context.Background(), []string{"--probe-gpio-signal", "27"}, &stdout, &stderr)
+
+	if got != 0 {
+		t.Fatalf("run(--probe-gpio-signal 27) exit = %d, want 0; stderr = %q", got, stderr.String())
+	}
+	const want = "gpio_signal_probe pin=27 raw=SignalUnverified interpreted=false processed=false real_shutdown=false hardware_action=false\n"
+	if stdout.String() != want {
+		t.Fatalf("run(--probe-gpio-signal 27) stdout = %q, want %q", stdout.String(), want)
+	}
+}
+
+func TestRunProbeGPIOSignalRejectsInvalidPin(t *testing.T) {
+	var stdout bytes.Buffer
+	var stderr bytes.Buffer
+
+	got := run(context.Background(), []string{"--probe-gpio-signal", "GPIO4"}, &stdout, &stderr)
+
+	if got != 1 {
+		t.Fatalf("run(--probe-gpio-signal GPIO4) exit = %d, want 1", got)
+	}
+	if stdout.String() != "" {
+		t.Fatalf("run(--probe-gpio-signal GPIO4) stdout = %q, want empty", stdout.String())
+	}
+	const want = `gpio signal probe failed: unsupported GPIO pin "GPIO4" (expected non-negative integer)`
+	if !strings.Contains(stderr.String(), want) {
+		t.Fatalf("run(--probe-gpio-signal GPIO4) stderr = %q, want it to contain %q", stderr.String(), want)
 	}
 }
 

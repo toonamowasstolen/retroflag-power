@@ -9,16 +9,20 @@ import (
 	"log"
 	"os"
 	"os/signal"
+	"strconv"
 	"sync"
 	"syscall"
 
 	"github.com/toonamowasstolen/retroflag-power/internal/app"
 	"github.com/toonamowasstolen/retroflag-power/internal/config"
 	"github.com/toonamowasstolen/retroflag-power/internal/events"
+	"github.com/toonamowasstolen/retroflag-power/internal/gpio"
 	"github.com/toonamowasstolen/retroflag-power/internal/input"
 	"github.com/toonamowasstolen/retroflag-power/internal/power"
 	"github.com/toonamowasstolen/retroflag-power/internal/version"
 )
+
+var probeGPIOSignal = gpio.ProbeSignal
 
 func main() {
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
@@ -36,6 +40,7 @@ func run(ctx context.Context, args []string, stdout io.Writer, stderr io.Writer)
 	dryRunPowerButton := flags.Bool("dry-run-power-button", false, "process the dry-run power button intent and exit")
 	fakePowerButtonObserver := flags.Bool("fake-power-button-observer", false, "emit a fake power button observer event and exit")
 	fakePowerSignal := flags.String("fake-power-signal", "", "interpret a fake raw power signal (low, high, unverified) and exit")
+	probeGPIOSignal := flags.String("probe-gpio-signal", "", "read a candidate GPIO pin signal and exit")
 	powerButtonAction := flags.String("power-button-action", cfg.PowerButtonAction, "dry-run power button action policy")
 	powerSwitchActiveSignal := flags.String("power-switch-active-signal", string(cfg.LatchingPowerSwitch.ActiveSignal), "latching power switch active signal (low, high)")
 	powerSwitchActiveState := flags.String("power-switch-active-state", string(cfg.LatchingPowerSwitch.ActiveSwitchState), "latching power switch active state (off, on)")
@@ -45,9 +50,13 @@ func run(ctx context.Context, args []string, stdout io.Writer, stderr io.Writer)
 	}
 
 	fakePowerSignalProvided := false
+	probeGPIOSignalProvided := false
 	flags.Visit(func(flag *flag.Flag) {
-		if flag.Name == "fake-power-signal" {
+		switch flag.Name {
+		case "fake-power-signal":
 			fakePowerSignalProvided = true
+		case "probe-gpio-signal":
+			probeGPIOSignalProvided = true
 		}
 	})
 
@@ -83,6 +92,15 @@ func run(ctx context.Context, args []string, stdout io.Writer, stderr io.Writer)
 			fmt.Fprintf(stderr, "fake power signal failed: %v\n", err)
 			return 1
 		}
+		return 0
+	}
+	if probeGPIOSignalProvided {
+		pin, err := parseGPIOPin(*probeGPIOSignal)
+		if err != nil {
+			fmt.Fprintf(stderr, "gpio signal probe failed: %v\n", err)
+			return 1
+		}
+		runProbeGPIOSignal(ctx, pin, stdout)
 		return 0
 	}
 
@@ -181,6 +199,25 @@ func parseFakePowerSignal(value string) (input.SignalState, error) {
 	}
 
 	return "", input.UnsupportedSignalStateError{State: state}
+}
+
+func runProbeGPIOSignal(ctx context.Context, pin int, stdout io.Writer) {
+	signalState := probeGPIOSignal(ctx, pin)
+	fmt.Fprintf(
+		stdout,
+		"gpio_signal_probe pin=%d raw=%s interpreted=false processed=false real_shutdown=false hardware_action=false\n",
+		pin,
+		signalState.Label(),
+	)
+}
+
+func parseGPIOPin(value string) (int, error) {
+	pin, err := strconv.Atoi(value)
+	if err != nil || pin < 0 {
+		return 0, fmt.Errorf("unsupported GPIO pin %q (expected non-negative integer)", value)
+	}
+
+	return pin, nil
 }
 
 func runAppAndProcess(ctx context.Context, cfg config.Config, stderr io.Writer, process func(*app.App) error) error {

@@ -59,6 +59,27 @@ func TestSignalStateValidRejectsUnknownStates(t *testing.T) {
 	}
 }
 
+func TestSignalStateLabelReportsRawVocabulary(t *testing.T) {
+	tests := []struct {
+		name  string
+		state SignalState
+		want  string
+	}{
+		{name: "low", state: SignalLow, want: "SignalLow"},
+		{name: "high", state: SignalHigh, want: "SignalHigh"},
+		{name: "unverified", state: SignalUnverified, want: "SignalUnverified"},
+		{name: "unsupported", state: SignalState("floating"), want: "SignalUnverified"},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := tt.state.Label(); got != tt.want {
+				t.Fatalf("%q.Label() = %q, want %q", tt.state, got, tt.want)
+			}
+		})
+	}
+}
+
 func TestFakePowerButtonObserverEmitsPowerButtonPressed(t *testing.T) {
 	observer := NewFakePowerButtonObserver()
 

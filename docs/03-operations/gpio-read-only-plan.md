@@ -15,6 +15,7 @@ related:
   - docs/00-project/quests/0041-plan-the-gpio-read-only-path.md
   - docs/00-project/quests/0042-separate-raw-signals-from-interpreted-inputs.md
   - docs/00-project/quests/0043-add-a-latching-power-switch-interpreter.md
+  - docs/00-project/quests/0045-add-a-hardware-read-only-gpio-probe-command.md
   - internal/input
 last_updated: 2026-07-07
 ---
@@ -69,6 +70,27 @@ explicit `active_switch_state` of `off` or `on`. It maps raw `SignalLow` and
 map. `SignalUnverified` becomes `SwitchUnknown`, keeping the lantern honest
 when the raw observation has not earned meaning yet.
 
+The first hardware-facing lantern is a read-only probe command:
+
+```sh
+go run ./cmd/retroflag-powerd --probe-gpio-signal 4
+```
+
+Run it on the GPi Case with a candidate BCM GPIO pin number. The command reports
+only raw signal vocabulary:
+
+```text
+SignalLow
+SignalHigh
+SignalUnverified
+```
+
+It does not map the wire to `SwitchOn`, `SwitchOff`, or `SwitchUnknown`; those
+belong to the later interpretation layer. If the platform is unsupported, the
+pin is not readable, the GPIO tools are missing, or the output cannot be trusted
+as a raw low/high value, the command reports `SignalUnverified` instead of
+guessing.
+
 Only after that interpretation should the app receive project-level meaning
 such as `input.PowerSwitchEvent(input.SwitchOff)` and turn it into a power
 intent. The current dry-run/noop route maps interpreted `SwitchOff` to the same
@@ -103,6 +125,11 @@ The first hardware-readiness quest must not add or perform:
 - Debouncing behavior beyond recorded observations.
 - Latching-switch semantics beyond recorded observations.
 
+The probe command also stays outside daemon behavior. It does not start the app
+lifecycle, execute shutdown, install services, touch `rc.local`, replace
+`SafeShutdown.py`, write GPIO, or persist state. It is a field-kit lantern for
+looking at one candidate wire.
+
 ## Later GPi Case Test Approach
 
 When hardware work begins, approach the GPi Case test as a supervised
@@ -121,6 +148,17 @@ observation session:
 
 Useful manual probes are documented in the GPi Case 2 hardware notes, including
 `gpiodetect`, `gpioinfo`, and `gpiomon` examples.
+
+With RetroFlag Power built on the device, the project probe can be used during
+the same supervised observation session:
+
+```sh
+./retroflag-powerd --probe-gpio-signal 4
+```
+
+Record the command, pin number, case control position, and raw result exactly as
+printed. Treat `SignalLow` and `SignalHigh` as electrical observations only, not
+as power-switch meaning.
 
 ## Device Facts Still Needed
 

@@ -75,6 +75,19 @@ Unsupported policy values fail clearly before a plan is prepared. The path
 remains noop-only: no GPIO is read, no shutdown command runs, and no hardware
 action is taken.
 
+Read-only GPi Case signal lantern:
+
+```sh
+go run ./cmd/retroflag-powerd --probe-gpio-signal 4
+```
+
+Run this on the GPi Case with a candidate BCM GPIO pin number. The command only
+tries to read the raw wire state and prints `SignalLow`, `SignalHigh`, or
+`SignalUnverified`. It does not interpret the result as `SwitchOn` or
+`SwitchOff`, does not start daemon processing, and does not request shutdown.
+On unsupported platforms or uncertain GPIO access, it reports
+`SignalUnverified` deterministically.
+
 ## Project Documentation
 
 - [Why RetroFlag Power exists](WHY.md)
