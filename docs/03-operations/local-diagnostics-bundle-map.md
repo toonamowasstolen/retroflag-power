@@ -81,9 +81,14 @@ share it manually without Lantern Dispatch.
 ## Future CLI Contract
 
 This section maps a possible future local diagnostics command contract. It is
-proposed design only: no CLI flags, diagnostics bundle generation, file
-writers, GPIO probes, service behavior, dispatch behavior, or upload path are
-implemented by this document.
+proposed design only: no diagnostics collection, diagnostics bundle generation,
+file writers, GPIO probes, service behavior, dispatch behavior, or upload path
+are implemented by this document.
+
+Current implementation note: `retroflag-powerd diagnostics` exists only as a
+stub doorway. It prints a local-only/read-only message, says diagnostics
+collection is not implemented yet, exits successfully, and performs no GPIO,
+shutdown, systemd, `SafeShutdown.py`, file, telemetry, or network action.
 
 Possible future command shapes:
 

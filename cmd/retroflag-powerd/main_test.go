@@ -27,6 +27,27 @@ func TestRunVersionPrintsVersion(t *testing.T) {
 	}
 }
 
+func TestRunDiagnosticsPrintsStubAndExits(t *testing.T) {
+	var stdout bytes.Buffer
+	var stderr bytes.Buffer
+
+	got := run(context.Background(), []string{"diagnostics"}, &stdout, &stderr)
+
+	if got != 0 {
+		t.Fatalf("run(diagnostics) exit = %d, want 0", got)
+	}
+	const want = "retroflag-powerd diagnostics\n" +
+		"Local diagnostics are planned but not implemented yet.\n" +
+		"This command is local-only and read-only in this build.\n" +
+		"No GPIO, shutdown, systemd, SafeShutdown, file, telemetry, or network action was performed.\n"
+	if stdout.String() != want {
+		t.Fatalf("run(diagnostics) stdout = %q, want %q", stdout.String(), want)
+	}
+	if stderr.String() != "" {
+		t.Fatalf("run(diagnostics) stderr = %q, want empty", stderr.String())
+	}
+}
+
 func TestRunDryRunPowerButtonProcessesIntentAndExits(t *testing.T) {
 	var stdout bytes.Buffer
 	var stderr bytes.Buffer

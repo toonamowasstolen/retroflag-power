@@ -32,6 +32,11 @@ func main() {
 }
 
 func run(ctx context.Context, args []string, stdout io.Writer, stderr io.Writer) int {
+	if len(args) == 1 && args[0] == "diagnostics" {
+		runDiagnosticsStub(stdout)
+		return 0
+	}
+
 	cfg := config.Default()
 	flags := flag.NewFlagSet("retroflag-powerd", flag.ContinueOnError)
 	flags.SetOutput(stderr)
@@ -106,6 +111,13 @@ func run(ctx context.Context, args []string, stdout io.Writer, stderr io.Writer)
 
 	app.New(log.New(stderr, "", log.LstdFlags), cfg).Run(ctx)
 	return 0
+}
+
+func runDiagnosticsStub(stdout io.Writer) {
+	fmt.Fprintln(stdout, "retroflag-powerd diagnostics")
+	fmt.Fprintln(stdout, "Local diagnostics are planned but not implemented yet.")
+	fmt.Fprintln(stdout, "This command is local-only and read-only in this build.")
+	fmt.Fprintln(stdout, "No GPIO, shutdown, systemd, SafeShutdown, file, telemetry, or network action was performed.")
 }
 
 func runDryRunPowerButton(ctx context.Context, cfg config.Config, stdout io.Writer, stderr io.Writer) error {
