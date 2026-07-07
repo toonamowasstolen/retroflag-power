@@ -102,6 +102,9 @@ On unsupported platforms or uncertain GPIO access, it reports
 - [Local diagnostics bundle map](docs/03-operations/local-diagnostics-bundle-map.md):
   the privacy-first compass for future local, redacted, previewable support
   bundles before any optional Lantern Dispatch trail exists.
+- [Installer and migration toolkit map](docs/03-operations/installer-migration-toolkit-map.md):
+  the reversible compass for future local install, update, uninstall, and
+  restore trails before any field kit mutates a device.
 - [Project roadmap](docs/00-project/roadmap.md)
 - [Project requirements](docs/00-project/requirements.md)
 - [GPi Case GPIO probe field ledger](docs/03-operations/gpi-case-gpio-probe-ledger.md)

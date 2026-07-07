@@ -18,8 +18,10 @@ related:
   - docs/04-architecture/system-overview.md
   - docs/03-operations/safeshutdown-replacement-boundary-map.md
   - docs/03-operations/local-diagnostics-bundle-map.md
+  - docs/03-operations/installer-migration-toolkit-map.md
   - docs/00-project/quests/0049-record-the-save-room-tech-and-arcadia-runtime-direction.md
   - docs/00-project/quests/0051-map-the-local-diagnostics-bundle.md
+  - docs/00-project/quests/0052-map-the-installer-and-migration-toolkit.md
 last_updated: 2026-07-07
 ---
 
@@ -44,6 +46,11 @@ The privacy-first support satchel is mapped in
 [Local Diagnostics Bundle Map](../03-operations/local-diagnostics-bundle-map.md).
 It keeps future diagnostics local, redacted, previewable, and user-controlled
 before any optional Lantern Dispatch trail exists.
+
+The reversible install trail is mapped in
+[Installer and Migration Toolkit Map](../03-operations/installer-migration-toolkit-map.md).
+It keeps future field kits focused on inspection, backup, preview, explicit
+confirmation, uninstall, and restore before any device mutation exists.
 
 ## Current Project State
 

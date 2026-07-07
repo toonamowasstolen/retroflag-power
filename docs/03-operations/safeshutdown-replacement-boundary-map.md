@@ -17,8 +17,10 @@ related:
   - docs/03-operations/gpio-read-only-plan.md
   - docs/03-operations/gpi-case-gpio-probe-ledger.md
   - docs/03-operations/local-diagnostics-bundle-map.md
+  - docs/03-operations/installer-migration-toolkit-map.md
   - docs/00-project/quests/0048-map-the-safeshutdown-replacement-boundaries.md
   - docs/00-project/quests/0051-map-the-local-diagnostics-bundle.md
+  - docs/00-project/quests/0052-map-the-installer-and-migration-toolkit.md
 last_updated: 2026-07-07
 ---
 
@@ -46,6 +48,11 @@ The future local support satchel is mapped in
 [Local Diagnostics Bundle Map](local-diagnostics-bundle-map.md). That
 diagnostics compass may summarize this boundary ledger later, but it does not
 collect files, upload data, or replace any part of the stock script.
+
+The future reversible installer compass is mapped in
+[Installer and Migration Toolkit Map](installer-migration-toolkit-map.md). That
+toolkit map may inspect, plan, back up, uninstall, and restore around this
+boundary later, but it does not authorize replacing the stock script.
 
 ## What SafeShutdown.py Currently Owns
 

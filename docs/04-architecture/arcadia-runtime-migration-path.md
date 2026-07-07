@@ -18,8 +18,10 @@ related:
   - docs/04-architecture/system-overview.md
   - docs/03-operations/safeshutdown-replacement-boundary-map.md
   - docs/03-operations/local-diagnostics-bundle-map.md
+  - docs/03-operations/installer-migration-toolkit-map.md
   - docs/00-project/quests/0050-map-the-arcadia-runtime-migration-path.md
   - docs/00-project/quests/0051-map-the-local-diagnostics-bundle.md
+  - docs/00-project/quests/0052-map-the-installer-and-migration-toolkit.md
 last_updated: 2026-07-07
 ---
 
@@ -97,6 +99,11 @@ The local-first diagnostics compass lives in
 [Local Diagnostics Bundle Map](../03-operations/local-diagnostics-bundle-map.md).
 That map keeps future support bundles redacted, previewable, and useful before
 any optional Lantern Dispatch path exists.
+
+The future installer compass lives in
+[Installer and Migration Toolkit Map](../03-operations/installer-migration-toolkit-map.md).
+That map keeps local install, update, uninstall, and restore behavior
+inspectable and reversible before any field kit mutates a device.
 
 ## Device Profile Model: Relics
 

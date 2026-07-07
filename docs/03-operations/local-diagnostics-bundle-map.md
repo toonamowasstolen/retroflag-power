@@ -16,7 +16,9 @@ related:
   - docs/00-project/project-direction-save-room-arcadia.md
   - docs/04-architecture/arcadia-runtime-migration-path.md
   - docs/03-operations/safeshutdown-replacement-boundary-map.md
+  - docs/03-operations/installer-migration-toolkit-map.md
   - docs/00-project/quests/0051-map-the-local-diagnostics-bundle.md
+  - docs/00-project/quests/0052-map-the-installer-and-migration-toolkit.md
 last_updated: 2026-07-07
 ---
 
@@ -34,6 +36,11 @@ mutation, daemon activation, or Lantern Dispatch.
 RetroFlag Power remains the current GPi Case 2 prototype. Arcadia Runtime
 remains the favored future runtime direction, not an active rename. Lantern
 Dispatch remains future and optional.
+
+The future installer and migration compass is mapped in
+[Installer and Migration Toolkit Map](installer-migration-toolkit-map.md). Its
+inspect and plan output may eventually feed local diagnostics, but it does not
+submit anything, call the network, or mutate a device.
 
 ## Purpose
 
