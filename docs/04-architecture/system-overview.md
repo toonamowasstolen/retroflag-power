@@ -304,6 +304,31 @@ and sends that plan through the executor. The planned action is guided by the
 records small deterministic breadcrumb events so future GPIO, shutdown, and
 service behavior has a clear ledger to follow.
 
+The GPIO path now has a layered vocabulary for the next hardware lantern:
+
+```text
+raw signal
+  ->
+configured interpretation
+  ->
+latching switch or momentary button event
+  ->
+power intent
+  ->
+policy
+  ->
+plan
+  ->
+noop execution
+  ->
+breadcrumbs
+```
+
+`SignalLow`, `SignalHigh`, and `SignalUnverified` describe only the observed
+wire or logical input. `SwitchOn`, `SwitchOff`, and `SwitchUnknown` are reserved
+for interpreted latching switch meaning. `ButtonPressed`, `ButtonReleased`, and
+`ButtonUnknown` are reserved for interpreted momentary button meaning.
+
 This is a lantern on the future power trail, not real hardware control. It does
 not read GPIO, run shutdown commands, activate systemd services, replace
 `rc.local`, replace `SafeShutdown.py`, resume sessions, or store persistent

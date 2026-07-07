@@ -13,6 +13,7 @@ related:
   - docs/02-hardware/gpi-case-2.md
   - docs/04-architecture/system-overview.md
   - docs/00-project/quests/0041-plan-the-gpio-read-only-path.md
+  - docs/00-project/quests/0042-separate-raw-signals-from-interpreted-inputs.md
   - internal/input
 last_updated: 2026-07-07
 ---
@@ -30,6 +31,9 @@ observer event:
 ```text
 CLI fake observer
   -> input observer
+  -> raw signal
+  -> configured interpretation
+  -> latching switch or momentary button event
   -> power intent
   -> config policy
   -> deterministic plan
@@ -49,10 +53,18 @@ builds a deterministic plan, executes only the noop action, and prints the
 breadcrumb ledger.
 
 The code boundary is `internal/input.Observer`. Future GPIO-backed observers
-should emit the same project-level event as the fake observer by returning
-`input.PowerButtonPressedEvent()` from `NextEvent`. Core app, planner, config,
-and executor code should continue to receive input events and power intents,
-not GPIO chips, line offsets, edge names, or electrical polarity.
+should first report raw observations with `input.SignalEvent(name, state)`,
+where `state` is `SignalLow`, `SignalHigh`, or `SignalUnverified`. Those names
+mean only what the wire or logical input appears to be doing.
+
+A later interpretation layer should use configuration to decide whether a raw
+signal means a latching switch state such as `SwitchOn`, `SwitchOff`, or
+`SwitchUnknown`, or a momentary button state such as `ButtonPressed`,
+`ButtonReleased`, or `ButtonUnknown`. Only after that interpretation should the
+app receive project-level meaning such as `input.PowerButtonPressedEvent()` and
+turn it into a power intent. Core app, planner, config, and executor code
+should continue to receive interpreted input events and power intents, not GPIO
+chips, line offsets, edge names, or electrical polarity.
 
 ## Why Read-Only Comes Next
 
@@ -109,6 +121,8 @@ trusted:
   the first input quest.
 - Active-high or active-low behavior for each candidate input.
 - Whether each control behaves like a latching switch or a momentary button.
+- Which configured interpretation maps each raw signal state to a switch or
+  button meaning.
 - Bounce, duplicate edge, or noise observations during normal presses and
   toggles.
 - Whether observed behavior changes across boot, shutdown, suspend-like states,
@@ -131,8 +145,12 @@ The first real hardware-read-only quest is complete only when:
 - Any future modern Linux GPIO dependency is chosen explicitly and remains
   read-only.
 - The fake observer CLI path still passes its existing tests.
-- The read-only observer emits the same `power_button_pressed` project event as
-  `input.PowerButtonPressedEvent()`.
+- The read-only observer can emit raw `SignalLow`, `SignalHigh`, and
+  `SignalUnverified` observations without claiming button or switch meaning too
+  early.
+- A configured interpretation step maps trusted raw observations into either a
+  latching switch event or a momentary button event before any power intent is
+  produced.
 - Candidate pins, polarity, latching or momentary behavior, and bounce/noise
   notes are documented with device context.
 - The resulting plan and execution remain deterministic and noop-only.

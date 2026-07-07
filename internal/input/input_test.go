@@ -5,6 +5,60 @@ import (
 	"testing"
 )
 
+func TestSignalEventWithSignalLowIsDeterministic(t *testing.T) {
+	got := SignalEvent("power_switch_line", SignalLow)
+	want := Event{
+		Type:        EventTypeSignal,
+		Name:        "power_switch_line",
+		SignalState: SignalLow,
+	}
+
+	if got != want {
+		t.Fatalf("SignalEvent() with SignalLow = %#v, want %#v", got, want)
+	}
+	if !got.SignalState.Valid() {
+		t.Fatalf("SignalEvent() with SignalLow has invalid state %q", got.SignalState)
+	}
+}
+
+func TestSignalEventWithSignalHighIsDeterministic(t *testing.T) {
+	got := SignalEvent("power_switch_line", SignalHigh)
+	want := Event{
+		Type:        EventTypeSignal,
+		Name:        "power_switch_line",
+		SignalState: SignalHigh,
+	}
+
+	if got != want {
+		t.Fatalf("SignalEvent() with SignalHigh = %#v, want %#v", got, want)
+	}
+	if !got.SignalState.Valid() {
+		t.Fatalf("SignalEvent() with SignalHigh has invalid state %q", got.SignalState)
+	}
+}
+
+func TestSignalEventWithSignalUnverifiedIsDeterministic(t *testing.T) {
+	got := SignalEvent("power_switch_line", SignalUnverified)
+	want := Event{
+		Type:        EventTypeSignal,
+		Name:        "power_switch_line",
+		SignalState: SignalUnverified,
+	}
+
+	if got != want {
+		t.Fatalf("SignalEvent() with SignalUnverified = %#v, want %#v", got, want)
+	}
+	if !got.SignalState.Valid() {
+		t.Fatalf("SignalEvent() with SignalUnverified has invalid state %q", got.SignalState)
+	}
+}
+
+func TestSignalStateValidRejectsUnknownStates(t *testing.T) {
+	if SignalState("floating").Valid() {
+		t.Fatal(`SignalState("floating").Valid() = true, want false`)
+	}
+}
+
 func TestFakePowerButtonObserverEmitsPowerButtonPressed(t *testing.T) {
 	observer := NewFakePowerButtonObserver()
 
