@@ -3,16 +3,19 @@ package config
 import (
 	"fmt"
 
+	"github.com/toonamowasstolen/retroflag-power/internal/input"
 	"github.com/toonamowasstolen/retroflag-power/internal/version"
 )
 
 const PowerButtonActionNoop = "noop"
 
 type Config struct {
-	AppName           string
-	Version           string
-	DryRun            bool
-	PowerButtonAction string
+	AppName             string
+	Version             string
+	DryRun              bool
+	PowerButtonAction   string
+	PowerInputName      string
+	LatchingPowerSwitch input.LatchingPowerSwitchOptions
 }
 
 type UnsupportedPowerButtonActionError struct {
@@ -29,6 +32,11 @@ func Default() Config {
 		Version:           version.Version,
 		DryRun:            true,
 		PowerButtonAction: PowerButtonActionNoop,
+		PowerInputName:    "power_switch_line",
+		LatchingPowerSwitch: input.LatchingPowerSwitchOptions{
+			ActiveSignal:      input.ActiveSignalLow,
+			ActiveSwitchState: input.ActiveSwitchStateOff,
+		},
 	}
 }
 

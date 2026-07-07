@@ -153,3 +153,141 @@ func TestRunFakePowerButtonObserverRejectsUnsupportedPolicy(t *testing.T) {
 		t.Fatalf("run(--fake-power-button-observer --power-button-action shutdown) stderr = %q, want it to contain %q", stderr.String(), wantError)
 	}
 }
+
+func TestRunFakePowerSignalLowProcessesSwitchOffAndExits(t *testing.T) {
+	var stdout bytes.Buffer
+	var stderr bytes.Buffer
+
+	got := run(context.Background(), []string{"--fake-power-signal", "low"}, &stdout, &stderr)
+
+	if got != 0 {
+		t.Fatalf("run(--fake-power-signal low) exit = %d, want 0; stderr = %q", got, stderr.String())
+	}
+
+	wantLines := []string{
+		"fake_power_signal raw=low input=power_switch_line active_signal=low active_switch_state=off interpreted=off processed=true execution_success=true dry_run=true noop_only=true actions_handled=1 real_shutdown=false hardware_action=false",
+		`event_breadcrumb index=0 type=daemon.starting message="retroflag-powerd 0.1.0-dev starting dry_run=true"`,
+		`event_breadcrumb index=1 type=daemon.ready message="retroflag-powerd ready"`,
+		`event_breadcrumb index=2 type=power.intent_received message="power intent received intent=power_button_pressed"`,
+		`event_breadcrumb index=3 type=power.dry_run_plan_prepared message="dry-run plan prepared intent=power_button_pressed action=noop"`,
+		`event_breadcrumb index=4 type=power.noop_execution_completed message="noop execution completed intent=power_button_pressed actions_handled=1"`,
+	}
+	assertLines(t, stdout.String(), wantLines)
+	assertLifecycleLogs(t, stderr.String(), "run(--fake-power-signal low)")
+}
+
+func TestRunFakePowerSignalHighReportsSwitchOnWithoutShutdownRequest(t *testing.T) {
+	var stdout bytes.Buffer
+	var stderr bytes.Buffer
+
+	got := run(context.Background(), []string{"--fake-power-signal", "high"}, &stdout, &stderr)
+
+	if got != 0 {
+		t.Fatalf("run(--fake-power-signal high) exit = %d, want 0; stderr = %q", got, stderr.String())
+	}
+
+	wantLines := []string{
+		"fake_power_signal raw=high input=power_switch_line active_signal=low active_switch_state=off interpreted=on processed=false execution_success=false dry_run=false noop_only=false actions_handled=0 real_shutdown=false hardware_action=false",
+		`event_breadcrumb index=0 type=daemon.starting message="retroflag-powerd 0.1.0-dev starting dry_run=true"`,
+		`event_breadcrumb index=1 type=daemon.ready message="retroflag-powerd ready"`,
+	}
+	assertLines(t, stdout.String(), wantLines)
+	assertLifecycleLogs(t, stderr.String(), "run(--fake-power-signal high)")
+	if strings.Contains(stdout.String(), "power intent received") {
+		t.Fatalf("run(--fake-power-signal high) stdout = %q, want no power intent breadcrumb", stdout.String())
+	}
+}
+
+func TestRunFakePowerSignalUnverifiedReportsSwitchUnknownWithoutShutdownRequest(t *testing.T) {
+	var stdout bytes.Buffer
+	var stderr bytes.Buffer
+
+	got := run(context.Background(), []string{"--fake-power-signal", "unverified"}, &stdout, &stderr)
+
+	if got != 0 {
+		t.Fatalf("run(--fake-power-signal unverified) exit = %d, want 0; stderr = %q", got, stderr.String())
+	}
+
+	wantLines := []string{
+		"fake_power_signal raw=unverified input=power_switch_line active_signal=low active_switch_state=off interpreted=unknown processed=false execution_success=false dry_run=false noop_only=false actions_handled=0 real_shutdown=false hardware_action=false",
+		`event_breadcrumb index=0 type=daemon.starting message="retroflag-powerd 0.1.0-dev starting dry_run=true"`,
+		`event_breadcrumb index=1 type=daemon.ready message="retroflag-powerd ready"`,
+	}
+	assertLines(t, stdout.String(), wantLines)
+	assertLifecycleLogs(t, stderr.String(), "run(--fake-power-signal unverified)")
+	if strings.Contains(stdout.String(), "power intent received") {
+		t.Fatalf("run(--fake-power-signal unverified) stdout = %q, want no power intent breadcrumb", stdout.String())
+	}
+}
+
+func TestRunFakePowerSignalHonorsConfiguredInterpretation(t *testing.T) {
+	var stdout bytes.Buffer
+	var stderr bytes.Buffer
+
+	got := run(context.Background(), []string{
+		"--fake-power-signal", "high",
+		"--power-switch-active-signal", "high",
+		"--power-switch-active-state", "off",
+	}, &stdout, &stderr)
+
+	if got != 0 {
+		t.Fatalf("run(--fake-power-signal high with active high config) exit = %d, want 0; stderr = %q", got, stderr.String())
+	}
+
+	wantLines := []string{
+		"fake_power_signal raw=high input=power_switch_line active_signal=high active_switch_state=off interpreted=off processed=true execution_success=true dry_run=true noop_only=true actions_handled=1 real_shutdown=false hardware_action=false",
+		`event_breadcrumb index=0 type=daemon.starting message="retroflag-powerd 0.1.0-dev starting dry_run=true"`,
+		`event_breadcrumb index=1 type=daemon.ready message="retroflag-powerd ready"`,
+		`event_breadcrumb index=2 type=power.intent_received message="power intent received intent=power_button_pressed"`,
+		`event_breadcrumb index=3 type=power.dry_run_plan_prepared message="dry-run plan prepared intent=power_button_pressed action=noop"`,
+		`event_breadcrumb index=4 type=power.noop_execution_completed message="noop execution completed intent=power_button_pressed actions_handled=1"`,
+	}
+	assertLines(t, stdout.String(), wantLines)
+}
+
+func TestRunFakePowerSignalRejectsInvalidInputClearly(t *testing.T) {
+	var stdout bytes.Buffer
+	var stderr bytes.Buffer
+
+	got := run(context.Background(), []string{"--fake-power-signal", "floating"}, &stdout, &stderr)
+
+	if got != 1 {
+		t.Fatalf("run(--fake-power-signal floating) exit = %d, want 1", got)
+	}
+	if stdout.String() != "" {
+		t.Fatalf("run(--fake-power-signal floating) stdout = %q, want empty", stdout.String())
+	}
+	const want = `fake power signal failed: unsupported signal state "floating" (supported: low, high, unverified)`
+	if !strings.Contains(stderr.String(), want) {
+		t.Fatalf("run(--fake-power-signal floating) stderr = %q, want it to contain %q", stderr.String(), want)
+	}
+}
+
+func assertLines(t *testing.T, output string, wantLines []string) {
+	t.Helper()
+
+	gotLines := strings.Split(strings.TrimSpace(output), "\n")
+	if len(gotLines) != len(wantLines) {
+		t.Fatalf("stdout lines = %#v, want %#v", gotLines, wantLines)
+	}
+	for i, want := range wantLines {
+		if gotLines[i] != want {
+			t.Fatalf("stdout line %d = %q, want %q", i, gotLines[i], want)
+		}
+	}
+}
+
+func assertLifecycleLogs(t *testing.T, logs string, command string) {
+	t.Helper()
+
+	for _, wantLog := range []string{
+		"retroflag-powerd 0.1.0-dev starting dry_run=true",
+		"retroflag-powerd ready",
+		"shutdown signal received",
+		"retroflag-powerd stopped",
+	} {
+		if !strings.Contains(logs, wantLog) {
+			t.Fatalf("%s stderr = %q, want it to contain %q", command, logs, wantLog)
+		}
+	}
+}

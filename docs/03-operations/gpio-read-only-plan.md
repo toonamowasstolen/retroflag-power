@@ -46,12 +46,16 @@ The command-line field kit is:
 
 ```sh
 go run ./cmd/retroflag-powerd --fake-power-button-observer
+go run ./cmd/retroflag-powerd --fake-power-signal low
 ```
 
-That command emits one fake `power_button_pressed` input event, maps it to the
-existing power-button intent, applies the current `power_button_action` policy,
-builds a deterministic plan, executes only the noop action, and prints the
-breadcrumb ledger.
+The fake observer command emits one fake `power_button_pressed` input event,
+maps it to the existing power-button intent, applies the current
+`power_button_action` policy, builds a deterministic plan, executes only the
+noop action, and prints the breadcrumb ledger. The fake raw signal command
+creates one configured power input signal, interprets it through the configured
+latching switch map, and only sends interpreted `SwitchOff` into that same
+noop power path.
 
 The code boundary is `internal/input.Observer`. Future GPIO-backed observers
 should first report raw observations with `input.SignalEvent(name, state)`,
@@ -154,6 +158,8 @@ The first real hardware-read-only quest is complete only when:
 - Any future modern Linux GPIO dependency is chosen explicitly and remains
   read-only.
 - The fake observer CLI path still passes its existing tests.
+- The fake raw signal CLI path can report `low`, `high`, and `unverified`
+  observations deterministically without reading GPIO.
 - The read-only observer can emit raw `SignalLow`, `SignalHigh`, and
   `SignalUnverified` observations without claiming button or switch meaning too
   early.

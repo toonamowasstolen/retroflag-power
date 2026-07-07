@@ -53,6 +53,19 @@ This starts the daemon app, emits one fake power-button observer event, routes i
 through the same input observer path used by tests, prints the noop result and a
 small deterministic event breadcrumb ledger, then exits cleanly.
 
+Safe fake raw signal lantern:
+
+```sh
+go run ./cmd/retroflag-powerd --fake-power-signal low
+```
+
+This starts the daemon app, creates one raw signal event for the configured
+power input, interprets it through the configured latching power switch map, and
+prints a compact deterministic result with event breadcrumbs. With the default
+map, `low` becomes `SwitchOff` and reaches the existing noop power path;
+`high` becomes `SwitchOn`, and `unverified` becomes `SwitchUnknown`, both
+exiting cleanly without requesting shutdown behavior.
+
 The input lantern now also has a configured latching power switch interpreter:
 raw `SignalLow` or `SignalHigh` can become `SwitchOff` or `SwitchOn` only when
 `active_signal` and `active_switch_state` are explicit. `SignalUnverified`

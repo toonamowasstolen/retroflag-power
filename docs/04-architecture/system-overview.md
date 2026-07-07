@@ -369,8 +369,22 @@ That command starts the same app lifecycle, emits one fake
 processing path, prints a compact noop result, includes deterministic event
 breadcrumbs, and exits cleanly.
 
+Developers can exercise the raw signal interpretation path directly too:
+
+```sh
+go run ./cmd/retroflag-powerd --fake-power-signal low
+```
+
+That command starts the same app lifecycle, creates a raw signal event for the
+configured power input, runs it through the configured latching power switch
+interpreter, and prints a compact deterministic interpretation result. With the
+default map, `low` becomes `SwitchOff` and enters the existing dry-run/noop
+power path. `high` becomes `SwitchOn`, and `unverified` becomes
+`SwitchUnknown`; both report the interpretation, leave only startup
+breadcrumbs, and exit cleanly without requesting shutdown behavior.
+
 Unsupported values fail before plan preparation with a deterministic
-`power_button_action` error.
+`power_button_action` or fake signal error.
 
 Milestone 3 focus:
 
@@ -423,6 +437,18 @@ go run ./cmd/retroflag-powerd --fake-power-button-observer
 The command is intentionally deterministic: one fake event enters the observer
 path, the current noop power policy is honored, stdout records the result and
 breadcrumb ledger, and stderr keeps the usual lifecycle logs.
+
+The fake raw signal command is the companion charm for the configured latching
+switch interpreter:
+
+```sh
+go run ./cmd/retroflag-powerd --fake-power-signal low
+```
+
+It creates no GPIO dependency. A fake `low`, `high`, or `unverified` raw signal
+is interpreted through the configured power switch map. Only interpreted
+`SwitchOff` continues into the dry-run/noop power intent path; interpreted
+`SwitchOn` and `SwitchUnknown` are reported and then stop cleanly.
 
 The next real GPi Case input step is planned as read-only observation. Future
 GPIO-backed observers should first return raw signal events, then use explicit

@@ -1,6 +1,10 @@
 package config
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/toonamowasstolen/retroflag-power/internal/input"
+)
 
 func TestDefault(t *testing.T) {
 	want := Config{
@@ -8,6 +12,11 @@ func TestDefault(t *testing.T) {
 		Version:           "0.1.0-dev",
 		DryRun:            true,
 		PowerButtonAction: PowerButtonActionNoop,
+		PowerInputName:    "power_switch_line",
+		LatchingPowerSwitch: input.LatchingPowerSwitchOptions{
+			ActiveSignal:      input.ActiveSignalLow,
+			ActiveSwitchState: input.ActiveSwitchStateOff,
+		},
 	}
 
 	if got := Default(); got != want {

@@ -35,11 +35,21 @@ func run(ctx context.Context, args []string, stdout io.Writer, stderr io.Writer)
 	showVersion := flags.Bool("version", false, "print version and exit")
 	dryRunPowerButton := flags.Bool("dry-run-power-button", false, "process the dry-run power button intent and exit")
 	fakePowerButtonObserver := flags.Bool("fake-power-button-observer", false, "emit a fake power button observer event and exit")
+	fakePowerSignal := flags.String("fake-power-signal", "", "interpret a fake raw power signal (low, high, unverified) and exit")
 	powerButtonAction := flags.String("power-button-action", cfg.PowerButtonAction, "dry-run power button action policy")
+	powerSwitchActiveSignal := flags.String("power-switch-active-signal", string(cfg.LatchingPowerSwitch.ActiveSignal), "latching power switch active signal (low, high)")
+	powerSwitchActiveState := flags.String("power-switch-active-state", string(cfg.LatchingPowerSwitch.ActiveSwitchState), "latching power switch active state (off, on)")
 
 	if err := flags.Parse(args); err != nil {
 		return 2
 	}
+
+	fakePowerSignalProvided := false
+	flags.Visit(func(flag *flag.Flag) {
+		if flag.Name == "fake-power-signal" {
+			fakePowerSignalProvided = true
+		}
+	})
 
 	if *showVersion {
 		fmt.Fprintln(stdout, version.String())
@@ -47,6 +57,8 @@ func run(ctx context.Context, args []string, stdout io.Writer, stderr io.Writer)
 	}
 
 	cfg.PowerButtonAction = *powerButtonAction
+	cfg.LatchingPowerSwitch.ActiveSignal = input.ActiveSignal(*powerSwitchActiveSignal)
+	cfg.LatchingPowerSwitch.ActiveSwitchState = input.ActiveSwitchState(*powerSwitchActiveState)
 	if *dryRunPowerButton {
 		if err := runDryRunPowerButton(ctx, cfg, stdout, stderr); err != nil {
 			fmt.Fprintf(stderr, "dry-run power button failed: %v\n", err)
@@ -57,6 +69,18 @@ func run(ctx context.Context, args []string, stdout io.Writer, stderr io.Writer)
 	if *fakePowerButtonObserver {
 		if err := runFakePowerButtonObserver(ctx, cfg, stdout, stderr); err != nil {
 			fmt.Fprintf(stderr, "fake power button observer failed: %v\n", err)
+			return 1
+		}
+		return 0
+	}
+	if fakePowerSignalProvided {
+		signalState, err := parseFakePowerSignal(*fakePowerSignal)
+		if err != nil {
+			fmt.Fprintf(stderr, "fake power signal failed: %v\n", err)
+			return 1
+		}
+		if err := runFakePowerSignal(ctx, cfg, signalState, stdout, stderr); err != nil {
+			fmt.Fprintf(stderr, "fake power signal failed: %v\n", err)
 			return 1
 		}
 		return 0
@@ -103,6 +127,60 @@ func runFakePowerButtonObserver(ctx context.Context, cfg config.Config, stdout i
 
 		return err
 	})
+}
+
+func runFakePowerSignal(ctx context.Context, cfg config.Config, signalState input.SignalState, stdout io.Writer, stderr io.Writer) error {
+	return runAppAndProcess(ctx, cfg, stderr, func(daemon *app.App) error {
+		rawEvent := input.SignalEvent(cfg.PowerInputName, signalState)
+		switchEvent, err := input.InterpretLatchingPowerSwitchEvent(rawEvent, cfg.LatchingPowerSwitch)
+		if err != nil {
+			return err
+		}
+
+		processed := false
+		executionSucceeded := false
+		dryRun := false
+		noopOnly := false
+		actionsHandled := 0
+
+		if switchEvent.SwitchState == input.SwitchOff {
+			result, processErr := daemon.ProcessInputEvent(switchEvent)
+			summary := result.Summary()
+			processed = processErr == nil
+			executionSucceeded = summary.Succeeded
+			dryRun = summary.DryRun
+			noopOnly = summary.NoopOnly
+			actionsHandled = summary.ActionsHandled
+			err = processErr
+		}
+
+		fmt.Fprintf(
+			stdout,
+			"fake_power_signal raw=%s input=%s active_signal=%s active_switch_state=%s interpreted=%s processed=%t execution_success=%t dry_run=%t noop_only=%t actions_handled=%d real_shutdown=false hardware_action=false\n",
+			rawEvent.SignalState,
+			rawEvent.Name,
+			cfg.LatchingPowerSwitch.ActiveSignal,
+			cfg.LatchingPowerSwitch.ActiveSwitchState,
+			switchEvent.SwitchState,
+			processed,
+			executionSucceeded,
+			dryRun,
+			noopOnly,
+			actionsHandled,
+		)
+		printEventBreadcrumbs(stdout, daemon.Events())
+
+		return err
+	})
+}
+
+func parseFakePowerSignal(value string) (input.SignalState, error) {
+	state := input.SignalState(value)
+	if state.Valid() {
+		return state, nil
+	}
+
+	return "", input.UnsupportedSignalStateError{State: state}
 }
 
 func runAppAndProcess(ctx context.Context, cfg config.Config, stderr io.Writer, process func(*app.App) error) error {
