@@ -78,21 +78,78 @@ A local bundle can later become the input to a support trail, but it must be
 useful on its own. A user should be able to save it, inspect it, edit it, and
 share it manually without Lantern Dispatch.
 
-## Future Command Shape
+## Future CLI Contract
 
-Possible command shapes, all proposed and not implemented:
+This section maps a possible future local diagnostics command contract. It is
+proposed design only: no CLI flags, diagnostics bundle generation, file
+writers, GPIO probes, service behavior, dispatch behavior, or upload path are
+implemented by this document.
+
+Possible future command shapes:
 
 ```sh
-retroflag-powerd diagnostics --local
-retroflag-powerd diagnostics --bundle
-save-room dispatch diagnostics retroflag-power --redact
+retroflag-powerd diagnostics
+retroflag-powerd diagnostics --format text
+retroflag-powerd diagnostics --format json
+retroflag-powerd diagnostics --include-gpio-observation
+retroflag-powerd diagnostics --redact
 ```
 
-These examples are only a compass for future design. They do not add CLI
-flags, binaries, dispatch behavior, file writers, upload paths, or service
-behavior.
+The expected purpose is to print or prepare a local diagnostics summary that
+helps a user and maintainer understand the current RetroFlag Power or future
+Arcadia Runtime field state. The command should be small, foreground,
+testable, local-only, read-only, and useful without Lantern Dispatch.
 
-## Candidate Bundle Contents
+Default behavior should be text output intended for terminal reading. It
+should summarize safe allowlisted facts, preserve unknowns as `Unknown`, and
+make redaction visible when private values are omitted or replaced. It should
+not write a bundle file by default unless a later implementation quest
+explicitly adds a save path.
+
+Optional JSON output should carry the same allowlisted information in a stable,
+machine-readable shape for tests, issue templates, or later local bundle
+generation. JSON output should use explicit null or `Unknown` values for
+missing facts, include section names, and keep raw observations separate from
+interpreted meanings.
+
+Redaction should be on by default where private context could appear. A future
+`--redact` flag may make the choice explicit or force redaction for every
+section, but it must not become a promise to collect broad private data safely.
+The safer contract is to avoid collecting sensitive fields in the first place.
+
+Exit codes should stay high-level and predictable:
+
+- `0` when diagnostics completed with no command failure, even if some facts
+  are `Unknown`.
+- Non-zero when the command itself cannot run, cannot parse flags, or an
+  allowlisted read fails in a way that makes the output unreliable.
+- No distinct exit code should imply hardware safety, replacement readiness, or
+  acceptance checklist success.
+
+The command must never collect these by default:
+
+- ROM names, game libraries, save data, screenshots, or emulator content.
+- Wi-Fi SSIDs, tokens, secrets, private keys, or full environment dumps.
+- Usernames, home paths, hostnames, private IPs, or network identity.
+- Broad log excerpts, arbitrary journal output, or crash dumps.
+- Raw GPIO observations that require a new probe run.
+
+These must require explicit user action:
+
+- Including raw GPIO observations, such as copied `SignalLow`, `SignalHigh`, or
+  `SignalUnverified` results from a user-run probe.
+- Adding manual GPi Case 2 field-test notes.
+- Keeping any normally redacted hostname, path, IP, or local identity detail.
+- Saving a bundle file, if a later quest implements bundle output.
+- Submitting anything through future Lantern Dispatch.
+
+Lanterns remain read-only probes and diagnostics. Lantern Dispatch remains
+future optional update, diagnostics, issue-reporting, and support-submission
+infrastructure. A local diagnostics command may eventually provide input to
+Lantern Dispatch, but it must be valuable offline and must never submit,
+upload, check for updates, or contact the network on its own.
+
+## Future Bundle Contents
 
 A future local diagnostics bundle may include allowlisted sections such as:
 
@@ -194,6 +251,22 @@ Forbidden behavior includes:
 - Running `lcdnext.sh`, `lcdfirst.sh`, or any display-switching script.
 - Rewriting KMS, FKMS, display, audio, boot, or runtime configuration.
 - Generating a diagnostics bundle before a future implementation quest exists.
+
+## Deferred Implementation Notes
+
+Implementation details are intentionally deferred until a later quest with code
+scope, tests, and acceptance criteria. Deferred notes include:
+
+- Exact flag parsing and command registration.
+- Text output layout and JSON schema names.
+- Which read-only OS, display, audio, and process facts are gathered first.
+- Whether a bundle save path exists, and what file format it uses.
+- How diagnostics output is tested without hardware.
+- How a local diagnostics result may be handed to future Lantern Dispatch.
+
+The first implementation should start smaller than this full map if needed. It
+should earn each section with tests and preserve the local-only, read-only
+contract before adding more lanterns to the satchel.
 
 ## Redaction Rules
 
