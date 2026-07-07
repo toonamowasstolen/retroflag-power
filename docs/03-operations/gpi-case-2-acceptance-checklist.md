@@ -19,6 +19,7 @@ related:
   - docs/04-architecture/arcadia-runtime-migration-path.md
   - docs/03-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
   - docs/00-project/quests/0053-add-the-gpi-case-2-acceptance-checklist.md
+  - docs/00-project/quests/0057-add-gpi-case-2-field-test-checklist-entries.md
 last_updated: 2026-07-07
 ---
 
@@ -193,6 +194,33 @@ Public readiness needs every badge below:
   release.
 
 If any gate is unknown, the public trail remains closed.
+
+## Current Field-Test Entries
+
+Use these rows as the next GPi Case 2 field-test pass. They turn the current
+unknowns into visible checkpoints without pretending the old script has been
+replaced.
+
+For GPIO and switch notes, preserve the vocabulary boundary:
+
+- `SignalLow`, `SignalHigh`, and `SignalUnverified` are raw signal
+  observations.
+- `SwitchOn`, `SwitchOff`, and `SwitchUnknown` are interpreted meanings from
+  the configured hardware profile.
+- Do not write interpreted switch meaning into a raw signal result.
+
+| Date | Mode | Field-test entry | Expected result | Observed result | Pass/Fail/Unknown | Notes |
+| --- | --- | --- | --- | --- | --- | --- |
+| YYYY-MM-DD | Handheld | Handheld audio after KMS | Built-in handheld audio path plays RetroPie game audio after KMS boot. | Unknown | Unknown | Note selected ALSA/Pulse device, volume path, emulator tested, and whether `audremap` remains disabled. |
+| YYYY-MM-DD | Docked | Docked audio after KMS | Docked HDMI or dock audio path plays RetroPie game audio after KMS boot. | Unknown | Unknown | Note HDMI device presence, dock state at boot, dock insertion order, and whether EmulationStation menu audio also works. |
+| YYYY-MM-DD | Handheld | LCD sleep/wake behavior | LCD/backlight can enter power-save and return without losing EmulationStation state. | Unknown | Unknown | Record whether SSH, Wi-Fi, controller input, and display return cleanly after wake. |
+| YYYY-MM-DD | Handheld | Top-button power-save/resume behavior | Top button triggers the observed case power-save path and wakes the LCD/backlight. | Unknown | Unknown | Treat this as case/power-board behavior unless an input event or GPIO path is proven. Record undervoltage or access-loss events. |
+| YYYY-MM-DD | Handheld | Side switch with `SafeShutdown.py` still active | Side switch behavior is observed while the stock script still owns the path. | Unknown | Unknown | Record visible side-switch position, process state, raw GPIO26 probe result if taken, and any interpreted `SwitchOn`/`SwitchOff` meaning only in a separate interpretation note. Do not disable the stock script for this row. |
+| YYYY-MM-DD | Handheld to docked | LCD to HDMI switching | Display changes from built-in LCD to docked HDMI without legacy config rewrites. | Unknown | Unknown | Record insertion order, active connector, recovery path, and whether old `lcdnext.sh` or `lcdfirst.sh` ran. |
+| YYYY-MM-DD | Docked to handheld | HDMI to LCD switching | Display returns from docked HDMI to built-in LCD without losing the session. | Unknown | Unknown | Record removal order, active connector, recovery path, and whether the KMS DPI display remains present. |
+| YYYY-MM-DD | Docked | Docking behavior | Dock attach, controller, display, and audio behavior are stable under KMS. | Unknown | Unknown | Note whether the system was booted docked or docked after boot, and record any timing dependency. |
+| YYYY-MM-DD | Handheld | Button above Select / left of RetroFlag logo | Button is identified as gamepad input, GPIO, power-board control, or still undetected. | Unknown | Unknown | During EmulationStation mapping it was not detected like the other controls. Record `/dev/input` or `evtest` evidence when available. |
+| YYYY-MM-DD | Handheld | Controller identity | Built-in controller identity is recorded before mapping assumptions are made. | Unknown | Unknown | Current field note observed Microsoft Xbox 360 gamepad / `GBA Pi Case+` / Nuvoton identity. Record exact device names from the test image. |
 
 ## Field Ledger Table
 
