@@ -27,6 +27,7 @@ type App struct {
 	startupDiagnostic    RuntimeDiagnostic
 	hasStartupDiagnostic bool
 	status               status.Status
+	events               []events.Event
 }
 
 type ExecutionStatus struct {
@@ -148,12 +149,32 @@ func (a *App) PlanSummary() (planner.PlanSummary, bool) {
 }
 
 func (a *App) ProcessPowerIntent(intent power.Intent) (executor.Result, error) {
+	a.logEvent(events.Event{
+		Type:    events.TypePowerIntentReceived,
+		Message: fmt.Sprintf("power intent received intent=%s", intent),
+	})
+
 	a.plan = a.planner.NewDryRunPowerIntentPlan(intent)
 	a.hasPlan = true
+	a.logEvent(events.Event{
+		Type:    events.TypeDryRunPlanPrepared,
+		Message: fmt.Sprintf("dry-run plan prepared intent=%s action=%s", intent, a.plan.Action),
+	})
+
 	a.executionResult, a.executionErr = a.executor.Execute(a.plan)
 	a.hasExecution = true
+	if a.executionErr == nil && a.executionResult.DryRun && a.executionResult.NoopOnly {
+		a.logEvent(events.Event{
+			Type:    events.TypeNoopExecutionCompleted,
+			Message: fmt.Sprintf("noop execution completed intent=%s actions_handled=%d", intent, a.executionResult.ActionsHandled),
+		})
+	}
 
 	return a.executionResult, a.executionErr
+}
+
+func (a *App) Events() []events.Event {
+	return append([]events.Event(nil), a.events...)
 }
 
 func (a *App) ExecutionSummary() (executor.ResultSummary, bool) {
@@ -243,5 +264,6 @@ func (a *App) setStatus(state status.State) {
 }
 
 func (a *App) logEvent(event events.Event) {
+	a.events = append(a.events, event)
 	a.logger.Println(event.Message)
 }

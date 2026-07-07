@@ -296,6 +296,8 @@ The first safe power-intent path exists as dry-run/noop behavior only. The app
 can accept an internal `PowerButtonPressed` intent, ask the planner for a
 deterministic dry-run plan, and send that plan through the executor. The planned
 action remains `noop`, and executor results remain dry-run/noop only.
+As it travels, the app records small deterministic breadcrumb events so future
+GPIO, shutdown, and service behavior has a clear ledger to follow.
 
 This is a lantern on the future power trail, not real hardware control. It does
 not read GPIO, run shutdown commands, activate systemd services, replace

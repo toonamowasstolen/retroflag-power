@@ -8,6 +8,7 @@ import (
 	"testing"
 
 	"github.com/toonamowasstolen/retroflag-power/internal/config"
+	"github.com/toonamowasstolen/retroflag-power/internal/events"
 	"github.com/toonamowasstolen/retroflag-power/internal/executor"
 	"github.com/toonamowasstolen/retroflag-power/internal/planner"
 	"github.com/toonamowasstolen/retroflag-power/internal/power"
@@ -671,6 +672,66 @@ func TestProcessPowerIntentPlansAndExecutesDryRunNoop(t *testing.T) {
 	if executionSummary != wantExecutionSummary {
 		t.Fatalf("ExecutionSummary() = %#v, want %#v", executionSummary, wantExecutionSummary)
 	}
+
+	wantEvents := []events.Event{
+		{
+			Type:    events.TypePowerIntentReceived,
+			Message: "power intent received intent=power_button_pressed",
+		},
+		{
+			Type:    events.TypeDryRunPlanPrepared,
+			Message: "dry-run plan prepared intent=power_button_pressed action=noop",
+		},
+		{
+			Type:    events.TypeNoopExecutionCompleted,
+			Message: "noop execution completed intent=power_button_pressed actions_handled=1",
+		},
+	}
+	if gotEvents := app.Events(); !equalEvents(gotEvents, wantEvents) {
+		t.Fatalf("Events() after power intent = %#v, want %#v", gotEvents, wantEvents)
+	}
+}
+
+func TestPowerIntentEventsAreDeterministic(t *testing.T) {
+	var firstOutput bytes.Buffer
+	first := New(log.New(&firstOutput, "", 0), config.Default())
+	if _, err := first.ProcessPowerIntent(power.IntentPowerButtonPressed); err != nil {
+		t.Fatalf("first ProcessPowerIntent() error = %v, want nil", err)
+	}
+
+	var secondOutput bytes.Buffer
+	second := New(log.New(&secondOutput, "", 0), config.Default())
+	if _, err := second.ProcessPowerIntent(power.IntentPowerButtonPressed); err != nil {
+		t.Fatalf("second ProcessPowerIntent() error = %v, want nil", err)
+	}
+
+	if got, want := second.Events(), first.Events(); !equalEvents(got, want) {
+		t.Fatalf("second Events() = %#v, want first Events() %#v", got, want)
+	}
+}
+
+func TestEventsReturnsSnapshot(t *testing.T) {
+	var output bytes.Buffer
+	logger := log.New(&output, "", 0)
+	app := New(logger, config.Default())
+	if _, err := app.ProcessPowerIntent(power.IntentPowerButtonPressed); err != nil {
+		t.Fatalf("ProcessPowerIntent() error = %v, want nil", err)
+	}
+
+	snapshot := app.Events()
+	snapshot[0] = events.Event{
+		Type:    "changed",
+		Message: "changed",
+	}
+
+	got := app.Events()[0]
+	want := events.Event{
+		Type:    events.TypePowerIntentReceived,
+		Message: "power intent received intent=power_button_pressed",
+	}
+	if got != want {
+		t.Fatalf("Events()[0] = %#v after snapshot mutation, want %#v", got, want)
+	}
 }
 
 func TestExecutionStatusReportsCapturedExecutionError(t *testing.T) {
@@ -747,4 +808,16 @@ func assertLogAndStatus(
 		t.Fatalf("Status().State = %q after %q log, want %q", got, logPart, wantState)
 	}
 	checked <- struct{}{}
+}
+
+func equalEvents(a []events.Event, b []events.Event) bool {
+	if len(a) != len(b) {
+		return false
+	}
+	for i := range a {
+		if a[i] != b[i] {
+			return false
+		}
+	}
+	return true
 }
