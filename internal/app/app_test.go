@@ -143,6 +143,16 @@ func TestStartupDiagnosticBeforeStartupIsUnavailable(t *testing.T) {
 	}
 }
 
+func TestStartupSucceededBeforeStartupIsFalse(t *testing.T) {
+	var output bytes.Buffer
+	logger := log.New(&output, "", 0)
+	app := New(logger, config.Default())
+
+	if app.StartupSucceeded() {
+		t.Fatal("StartupSucceeded() before startup = true, want false")
+	}
+}
+
 func TestRunLogsLifecycle(t *testing.T) {
 	var output bytes.Buffer
 	logger := log.New(&output, "", 0)
@@ -240,6 +250,32 @@ func TestStartupDiagnosticAfterStartupMatchesRuntimeDiagnostic(t *testing.T) {
 	want := app.RuntimeDiagnostic()
 	if got != want {
 		t.Fatalf("StartupDiagnostic() after startup = %#v, want RuntimeDiagnostic() %#v", got, want)
+	}
+
+	cancel()
+	assertLogAndStatus(t, logged, checked, "shutdown signal received", status.StateStopping, app)
+	assertLogAndStatus(t, logged, checked, "stopped", status.StateStopped, app)
+	<-done
+}
+
+func TestStartupSucceededAfterStartupIsTrue(t *testing.T) {
+	logged := make(chan string)
+	checked := make(chan struct{})
+	logger := log.New(&checkingWriter{logged: logged, checked: checked}, "", 0)
+	ctx, cancel := context.WithCancel(context.Background())
+	app := New(logger, config.Default())
+	done := make(chan struct{})
+
+	go func() {
+		app.Run(ctx)
+		close(done)
+	}()
+
+	assertLogAndStatus(t, logged, checked, "starting dry_run=true", status.StateStarting, app)
+	assertLogAndStatus(t, logged, checked, "ready", status.StateReady, app)
+
+	if !app.StartupSucceeded() {
+		t.Fatal("StartupSucceeded() after startup = false, want true")
 	}
 
 	cancel()
@@ -407,6 +443,19 @@ func TestStartupDiagnosticAfterShutdownKeepsStartupSnapshot(t *testing.T) {
 	}
 	if got == current {
 		t.Fatalf("StartupDiagnostic() after shutdown = current RuntimeDiagnostic() %#v; want preserved startup snapshot", got)
+	}
+}
+
+func TestStartupSucceededAfterShutdownRemainsTrue(t *testing.T) {
+	var output bytes.Buffer
+	logger := log.New(&output, "", 0)
+	ctx, cancel := context.WithCancel(context.Background())
+	cancel()
+	app := New(logger, config.Default())
+	app.Run(ctx)
+
+	if !app.StartupSucceeded() {
+		t.Fatal("StartupSucceeded() after shutdown = false, want true")
 	}
 }
 

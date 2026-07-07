@@ -176,6 +176,10 @@ func (a *App) StartupDiagnostic() (RuntimeDiagnostic, bool) {
 	return a.startupDiagnostic, true
 }
 
+func (a *App) StartupSucceeded() bool {
+	return a.hasStartupDiagnostic
+}
+
 func (s RuntimeSnapshot) Summary() RuntimeSnapshotSummary {
 	summary := RuntimeSnapshotSummary{
 		State:                  s.Status.State,
