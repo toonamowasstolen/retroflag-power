@@ -15,9 +15,10 @@ related:
   - PROJECT_MEMORY.md
   - ENGINEERING_MANIFESTO.md
   - PROJECT_MANIFEST.md
+  - docs/00-project/quests/0033-add-the-project-charter.md
   - docs/01-product/vision.md
   - docs/13-reference/terminology.md
-last_updated: 2026-07-03
+last_updated: 2026-07-07
 ---
 
 # Project Charter
@@ -29,6 +30,32 @@ This charter defines what RetroFlag Power is, why it exists, who it serves, and 
 It is not a detailed implementation plan.
 
 It is the agreement that keeps future implementation aligned with the original purpose.
+
+---
+
+# Working Spirit
+
+RetroFlag Power should feel like restoring a handheld console with a tiny
+adventurer's toolkit: careful, warm, practical, and a little magical. The work
+should protect the device, respect the player, and leave the repository easier
+to navigate for the next traveler with a lantern.
+
+These principles guide the daily craft:
+
+1. Celebrate small verified wins.
+2. Move in short quests.
+3. Keep code plain and maintainable.
+4. Keep flavor in docs, quests, milestones, and project framing, not forced into
+   low-level identifiers.
+5. Do not rush hardware behavior.
+6. Challenge weak ideas kindly.
+7. Reviews should name the victory, not only the diff.
+8. Handoffs should carry both state and spirit.
+
+The project voice belongs in the map, the ledger, the quest records, and the
+field notes. Go package names, exported types, filenames, and low-level
+technical identifiers should stay clear and ordinary when plain engineering
+language is the better compass.
 
 ---
 
