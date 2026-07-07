@@ -13,7 +13,7 @@ func NewFakeObserver(events ...Event) *FakeObserver {
 }
 
 func NewFakePowerButtonObserver() *FakeObserver {
-	return NewFakeObserver(Event{Type: EventTypePowerButtonPressed})
+	return NewFakeObserver(PowerButtonPressedEvent())
 }
 
 func (o *FakeObserver) NextEvent(ctx context.Context) (Event, error) {

@@ -19,6 +19,14 @@ func TestFakePowerButtonObserverEmitsPowerButtonPressed(t *testing.T) {
 	}
 }
 
+func TestPowerButtonPressedEventNamesObserverEvent(t *testing.T) {
+	got := PowerButtonPressedEvent()
+	want := Event{Type: EventTypePowerButtonPressed}
+	if got != want {
+		t.Fatalf("PowerButtonPressedEvent() = %#v, want %#v", got, want)
+	}
+}
+
 func TestFakeObserverCopiesEvents(t *testing.T) {
 	events := []Event{{Type: EventTypePowerButtonPressed}}
 	observer := NewFakeObserver(events...)

@@ -387,6 +387,13 @@ The command is intentionally deterministic: one fake event enters the observer
 path, the current noop power policy is honored, stdout records the result and
 breadcrumb ledger, and stderr keeps the usual lifecycle logs.
 
+The next real GPi Case input step is planned as read-only observation. Future
+GPIO-backed observers should return the same project-level
+`power_button_pressed` event as the fake observer, then let the existing app,
+policy, planner, executor, and breadcrumb path handle it. See the
+[GPIO read-only plan](../03-operations/gpio-read-only-plan.md) for the hardware
+field-kit boundaries and acceptance criteria.
+
 This observer is intentionally a tiny field kit. It does not use Raspberry Pi
 GPIO libraries, read real pins, debounce edges, model latching switches, run
 shutdown commands, touch systemd, replace `rc.local`, replace `SafeShutdown.py`,
