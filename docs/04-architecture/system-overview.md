@@ -210,18 +210,22 @@ Milestone 1 focus:
 - handle SIGINT/SIGTERM
 - stop cleanly
 
-Startup success badge:
+Startup result and diagnostic ordering:
 
-`App.StartupSucceeded()` is a simple current success badge. Today it tracks
-whether startup reached the point where the startup diagnostic snapshot was
-captured. Once that point has been reached, the badge remains true after
-shutdown; shutdown changes the current runtime state, not the fact that startup
-previously completed its diagnostic capture.
+`App.StartupResult()` is the app's small startup-completion badge. It records
+whether startup has completed and whether that completion succeeded.
+`App.StartupSucceeded()` reads `App.StartupResult().Succeeded`.
 
-This badge is not yet a detailed startup result, error taxonomy, or recovery
-report. When future quests add more startup failure paths, this accessor may
-need to be backed by an explicit startup result type instead of diagnostic
-availability.
+`App.StartupDiagnostic()` is the captured startup-complete diagnostic snapshot.
+It is taken from the runtime diagnostic path after the app reaches ready-state
+success. In the current dry-run/noop path, `StartupResult` and
+`StartupDiagnostic` are both established during the same successful startup
+completion flow.
+
+The startup result is not yet a detailed failure taxonomy or recovery report.
+If a future quest lets startup diagnostic capture fail independently, this
+ordering may need to become more explicit or carry additional result detail so
+the badge and diagnostic lantern do not blur into one signal.
 
 Related requirements:
 
