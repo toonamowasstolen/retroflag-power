@@ -210,6 +210,19 @@ Milestone 1 focus:
 - handle SIGINT/SIGTERM
 - stop cleanly
 
+Startup success badge:
+
+`App.StartupSucceeded()` is a simple current success badge. Today it tracks
+whether startup reached the point where the startup diagnostic snapshot was
+captured. Once that point has been reached, the badge remains true after
+shutdown; shutdown changes the current runtime state, not the fact that startup
+previously completed its diagnostic capture.
+
+This badge is not yet a detailed startup result, error taxonomy, or recovery
+report. When future quests add more startup failure paths, this accessor may
+need to be backed by an explicit startup result type instead of diagnostic
+availability.
+
 Related requirements:
 
 - REQ-0004
