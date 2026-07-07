@@ -13,16 +13,18 @@ import (
 )
 
 type App struct {
-	logger          *log.Logger
-	config          config.Config
-	planner         *planner.Planner
-	executor        *executor.Executor
-	plan            planner.Plan
-	hasPlan         bool
-	executionResult executor.Result
-	executionErr    error
-	hasExecution    bool
-	status          status.Status
+	logger               *log.Logger
+	config               config.Config
+	planner              *planner.Planner
+	executor             *executor.Executor
+	plan                 planner.Plan
+	hasPlan              bool
+	executionResult      executor.Result
+	executionErr         error
+	hasExecution         bool
+	startupDiagnostic    RuntimeDiagnostic
+	hasStartupDiagnostic bool
+	status               status.Status
 }
 
 type ExecutionStatus struct {
@@ -92,6 +94,8 @@ func (a *App) Run(ctx context.Context) {
 	a.hasExecution = true
 
 	a.setStatus(status.StateReady)
+	a.startupDiagnostic = a.RuntimeDiagnostic()
+	a.hasStartupDiagnostic = true
 	a.logEvent(events.Event{
 		Type:    events.TypeDaemonReady,
 		Message: fmt.Sprintf("%s ready", a.config.AppName),
@@ -162,6 +166,14 @@ func (a *App) RuntimeDiagnostic() RuntimeDiagnostic {
 	return RuntimeDiagnostic{
 		Summary: a.RuntimeSummary(),
 	}
+}
+
+func (a *App) StartupDiagnostic() (RuntimeDiagnostic, bool) {
+	if !a.hasStartupDiagnostic {
+		return RuntimeDiagnostic{}, false
+	}
+
+	return a.startupDiagnostic, true
 }
 
 func (s RuntimeSnapshot) Summary() RuntimeSnapshotSummary {

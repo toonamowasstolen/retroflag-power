@@ -133,6 +133,16 @@ func TestRuntimeDiagnosticBeforeStartupMatchesRuntimeSummary(t *testing.T) {
 	}
 }
 
+func TestStartupDiagnosticBeforeStartupIsUnavailable(t *testing.T) {
+	var output bytes.Buffer
+	logger := log.New(&output, "", 0)
+	app := New(logger, config.Default())
+
+	if diagnostic, ok := app.StartupDiagnostic(); ok {
+		t.Fatalf("StartupDiagnostic() before startup = %#v, true; want no startup diagnostic", diagnostic)
+	}
+}
+
 func TestRunLogsLifecycle(t *testing.T) {
 	var output bytes.Buffer
 	logger := log.New(&output, "", 0)
@@ -199,6 +209,37 @@ func TestRuntimeSnapshotSummaryAfterStartup(t *testing.T) {
 	const wantString = "state=ready plan_present=true execution_complete=true execution_success=true execution_error_captured=false dry_run_noop_only=true"
 	if gotString := got.String(); gotString != wantString {
 		t.Fatalf("RuntimeSnapshot().Summary().String() after startup = %q, want %q", gotString, wantString)
+	}
+
+	cancel()
+	assertLogAndStatus(t, logged, checked, "shutdown signal received", status.StateStopping, app)
+	assertLogAndStatus(t, logged, checked, "stopped", status.StateStopped, app)
+	<-done
+}
+
+func TestStartupDiagnosticAfterStartupMatchesRuntimeDiagnostic(t *testing.T) {
+	logged := make(chan string)
+	checked := make(chan struct{})
+	logger := log.New(&checkingWriter{logged: logged, checked: checked}, "", 0)
+	ctx, cancel := context.WithCancel(context.Background())
+	app := New(logger, config.Default())
+	done := make(chan struct{})
+
+	go func() {
+		app.Run(ctx)
+		close(done)
+	}()
+
+	assertLogAndStatus(t, logged, checked, "starting dry_run=true", status.StateStarting, app)
+	assertLogAndStatus(t, logged, checked, "ready", status.StateReady, app)
+
+	got, ok := app.StartupDiagnostic()
+	if !ok {
+		t.Fatal("StartupDiagnostic() after startup reports no startup diagnostic")
+	}
+	want := app.RuntimeDiagnostic()
+	if got != want {
+		t.Fatalf("StartupDiagnostic() after startup = %#v, want RuntimeDiagnostic() %#v", got, want)
 	}
 
 	cancel()
@@ -330,6 +371,42 @@ func TestRuntimeDiagnosticAfterShutdownMatchesRuntimeSummary(t *testing.T) {
 	}
 	if gotString, wantString := got.String(), wantSummary.String(); gotString != wantString {
 		t.Fatalf("RuntimeDiagnostic().String() after shutdown = %q, want RuntimeSummary().String() %q", gotString, wantString)
+	}
+}
+
+func TestStartupDiagnosticAfterShutdownKeepsStartupSnapshot(t *testing.T) {
+	var output bytes.Buffer
+	logger := log.New(&output, "", 0)
+	ctx, cancel := context.WithCancel(context.Background())
+	cancel()
+	app := New(logger, config.Default())
+	app.Run(ctx)
+
+	got, ok := app.StartupDiagnostic()
+	if !ok {
+		t.Fatal("StartupDiagnostic() after shutdown reports no startup diagnostic")
+	}
+
+	want := RuntimeDiagnostic{
+		Summary: RuntimeSnapshotSummary{
+			State:                  status.StateReady,
+			HasPlan:                true,
+			ExecutionComplete:      true,
+			ExecutionSucceeded:     true,
+			ExecutionErrorCaptured: false,
+			DryRunNoopOnly:         true,
+		},
+	}
+	if got != want {
+		t.Fatalf("StartupDiagnostic() after shutdown = %#v, want startup snapshot %#v", got, want)
+	}
+
+	current := app.RuntimeDiagnostic()
+	if current.Summary.State != status.StateStopped {
+		t.Fatalf("RuntimeDiagnostic().Summary.State after shutdown = %q, want %q", current.Summary.State, status.StateStopped)
+	}
+	if got == current {
+		t.Fatalf("StartupDiagnostic() after shutdown = current RuntimeDiagnostic() %#v; want preserved startup snapshot", got)
 	}
 }
 
