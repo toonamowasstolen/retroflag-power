@@ -12,6 +12,7 @@ audience:
 purpose: Record manual read-only GPi Case GPIO probe observations before any raw signal is interpreted as switch meaning.
 related:
   - docs/03-operations/gpio-read-only-plan.md
+  - docs/03-operations/safeshutdown-replacement-boundary-map.md
   - docs/03-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
   - docs/00-project/quests/0047-add-a-gpi-case-gpio-probe-field-ledger.md
 last_updated: 2026-07-07
@@ -29,6 +30,8 @@ reported by the probe command.
 
 This page is for raw observations only. Do not interpret `SignalLow` or
 `SignalHigh` as power on, power off, switch on, or switch off meaning here.
+The broader replacement compass lives in the
+[SafeShutdown replacement boundary map](safeshutdown-replacement-boundary-map.md).
 
 ## Safe Probe Command
 

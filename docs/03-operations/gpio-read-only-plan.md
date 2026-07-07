@@ -17,6 +17,7 @@ related:
   - docs/00-project/quests/0043-add-a-latching-power-switch-interpreter.md
   - docs/00-project/quests/0045-add-a-hardware-read-only-gpio-probe-command.md
   - docs/03-operations/gpi-case-gpio-probe-ledger.md
+  - docs/03-operations/safeshutdown-replacement-boundary-map.md
   - internal/input
 last_updated: 2026-07-07
 ---
@@ -25,6 +26,11 @@ last_updated: 2026-07-07
 
 > The next hardware lantern should only watch the trail. It should not move a
 > single stone.
+
+For the larger GPi Case 2 replacement compass, see the
+[SafeShutdown replacement boundary map](safeshutdown-replacement-boundary-map.md)
+before planning any service install, GPIO write, shutdown execution,
+`rc.local` change, or `SafeShutdown.py` replacement.
 
 ## Current Safe Input Loop
 

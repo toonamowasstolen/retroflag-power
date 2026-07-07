@@ -198,6 +198,11 @@ Do not disable the RetroFlag `SafeShutdown.py` script on real GPi Case 2
 hardware until `retroflag-powerd` has a verified replacement for the power
 latch, shutdown switch, and power-save/resume behavior.
 
+The replacement boundary is mapped in the
+[SafeShutdown replacement boundary map](../03-operations/safeshutdown-replacement-boundary-map.md).
+Use that compass before planning any service install, `rc.local` change, GPIO
+write, shutdown execution, or `SafeShutdown.py` replacement.
+
 Safe replacement requires `retroflag-powerd` to own all three parts of the
 trapdoor mechanism:
 

@@ -96,5 +96,6 @@ On unsupported platforms or uncertain GPIO access, it reports
 - [Project roadmap](docs/00-project/roadmap.md)
 - [Project requirements](docs/00-project/requirements.md)
 - [GPi Case GPIO probe field ledger](docs/03-operations/gpi-case-gpio-probe-ledger.md)
+- [SafeShutdown replacement boundary map](docs/03-operations/safeshutdown-replacement-boundary-map.md)
 - [System overview](docs/04-architecture/system-overview.md)
 - [AI collaboration guide](docs/05-development/ai-collaboration.md)
