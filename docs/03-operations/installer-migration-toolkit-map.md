@@ -17,7 +17,9 @@ related:
   - docs/04-architecture/arcadia-runtime-migration-path.md
   - docs/03-operations/local-diagnostics-bundle-map.md
   - docs/03-operations/safeshutdown-replacement-boundary-map.md
+  - docs/03-operations/gpi-case-2-acceptance-checklist.md
   - docs/00-project/quests/0052-map-the-installer-and-migration-toolkit.md
+  - docs/00-project/quests/0053-add-the-gpi-case-2-acceptance-checklist.md
 last_updated: 2026-07-07
 ---
 
@@ -137,6 +139,11 @@ The plan should show:
 The apply step should consume a visible plan and require explicit confirmation.
 If a plan cannot prove its restore path, it should stop and ask for a better
 ledger instead of pressing forward.
+
+The GPi Case 2 field gate lives in
+[GPi Case 2 Acceptance Checklist](gpi-case-2-acceptance-checklist.md). A future
+public installer should treat that checklist as a readiness badge, not as an
+optional note.
 
 ## SafeShutdown.py Replacement Gates
 

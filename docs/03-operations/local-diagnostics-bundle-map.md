@@ -17,8 +17,10 @@ related:
   - docs/04-architecture/arcadia-runtime-migration-path.md
   - docs/03-operations/safeshutdown-replacement-boundary-map.md
   - docs/03-operations/installer-migration-toolkit-map.md
+  - docs/03-operations/gpi-case-2-acceptance-checklist.md
   - docs/00-project/quests/0051-map-the-local-diagnostics-bundle.md
   - docs/00-project/quests/0052-map-the-installer-and-migration-toolkit.md
+  - docs/00-project/quests/0053-add-the-gpi-case-2-acceptance-checklist.md
 last_updated: 2026-07-07
 ---
 
@@ -41,6 +43,11 @@ The future installer and migration compass is mapped in
 [Installer and Migration Toolkit Map](installer-migration-toolkit-map.md). Its
 inspect and plan output may eventually feed local diagnostics, but it does not
 submit anything, call the network, or mutate a device.
+
+The GPi Case 2 field-test gate is tracked in
+[GPi Case 2 Acceptance Checklist](gpi-case-2-acceptance-checklist.md). Future
+diagnostics may help fill that ledger, but this map does not collect or submit
+those notes yet.
 
 ## Purpose
 

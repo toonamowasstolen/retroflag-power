@@ -18,9 +18,11 @@ related:
   - docs/03-operations/gpi-case-gpio-probe-ledger.md
   - docs/03-operations/local-diagnostics-bundle-map.md
   - docs/03-operations/installer-migration-toolkit-map.md
+  - docs/03-operations/gpi-case-2-acceptance-checklist.md
   - docs/00-project/quests/0048-map-the-safeshutdown-replacement-boundaries.md
   - docs/00-project/quests/0051-map-the-local-diagnostics-bundle.md
   - docs/00-project/quests/0052-map-the-installer-and-migration-toolkit.md
+  - docs/00-project/quests/0053-add-the-gpi-case-2-acceptance-checklist.md
 last_updated: 2026-07-07
 ---
 
@@ -53,6 +55,10 @@ The future reversible installer compass is mapped in
 [Installer and Migration Toolkit Map](installer-migration-toolkit-map.md). That
 toolkit map may inspect, plan, back up, uninstall, and restore around this
 boundary later, but it does not authorize replacing the stock script.
+
+The concrete field-test gate lives in
+[GPi Case 2 Acceptance Checklist](gpi-case-2-acceptance-checklist.md). That
+ledger must be filled before this boundary map becomes a replacement plan.
 
 ## What SafeShutdown.py Currently Owns
 

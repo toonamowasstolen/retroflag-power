@@ -19,9 +19,11 @@ related:
   - docs/03-operations/safeshutdown-replacement-boundary-map.md
   - docs/03-operations/local-diagnostics-bundle-map.md
   - docs/03-operations/installer-migration-toolkit-map.md
+  - docs/03-operations/gpi-case-2-acceptance-checklist.md
   - docs/00-project/quests/0050-map-the-arcadia-runtime-migration-path.md
   - docs/00-project/quests/0051-map-the-local-diagnostics-bundle.md
   - docs/00-project/quests/0052-map-the-installer-and-migration-toolkit.md
+  - docs/00-project/quests/0053-add-the-gpi-case-2-acceptance-checklist.md
 last_updated: 2026-07-07
 ---
 
@@ -104,6 +106,11 @@ The future installer compass lives in
 [Installer and Migration Toolkit Map](../03-operations/installer-migration-toolkit-map.md).
 That map keeps local install, update, uninstall, and restore behavior
 inspectable and reversible before any field kit mutates a device.
+
+The GPi Case 2 public-readiness gate lives in
+[GPi Case 2 Acceptance Checklist](../03-operations/gpi-case-2-acceptance-checklist.md).
+That ledger must be passed before the Arcadia Runtime trail becomes a public
+release promise.
 
 ## Device Profile Model: Relics
 
@@ -193,8 +200,8 @@ Useful future quests:
 - Add Relic profile schema map.
 - Add Lantern Dispatch privacy model.
 - Add naming/domain clearance checklist.
-- Add GPi Case 2 acceptance checklist for KMS, dock, audio, sleep/resume, and
-  shutdown.
+- Fill the GPi Case 2 acceptance checklist for KMS, dock, audio, sleep/resume,
+  shutdown, diagnostics, rollback, and public readiness.
 
 The compass for now is simple: keep the current lantern honest, keep the
 prototype safe, and let the larger Arcadia Runtime trail open only when the

@@ -105,6 +105,10 @@ On unsupported platforms or uncertain GPIO access, it reports
 - [Installer and migration toolkit map](docs/03-operations/installer-migration-toolkit-map.md):
   the reversible compass for future local install, update, uninstall, and
   restore trails before any field kit mutates a device.
+- [GPi Case 2 acceptance checklist](docs/03-operations/gpi-case-2-acceptance-checklist.md):
+  the field-test gate ledger for power, display, dock, audio, sleep/resume,
+  RetroPie, diagnostics, rollback, and public readiness before replacement or
+  migration.
 - [Project roadmap](docs/00-project/roadmap.md)
 - [Project requirements](docs/00-project/requirements.md)
 - [GPi Case GPIO probe field ledger](docs/03-operations/gpi-case-gpio-probe-ledger.md)
