@@ -35,7 +35,7 @@ func TestNewDryRunPlan(t *testing.T) {
 }
 
 func TestNewDryRunPowerIntentPlanIsDeterministic(t *testing.T) {
-	plan := New().NewDryRunPowerIntentPlan(power.IntentPowerButtonPressed)
+	plan := New().NewDryRunPowerIntentPlan(power.IntentPowerButtonPressed, ActionNoop)
 
 	want := Plan{
 		Action:      ActionNoop,
@@ -45,6 +45,14 @@ func TestNewDryRunPowerIntentPlanIsDeterministic(t *testing.T) {
 	}
 	if plan != want {
 		t.Fatalf("NewDryRunPowerIntentPlan() = %#v, want %#v", plan, want)
+	}
+}
+
+func TestNewDryRunPowerIntentPlanUsesConfiguredAction(t *testing.T) {
+	plan := NewDryRunPowerIntentPlan(power.IntentPowerButtonPressed, ActionNoop)
+
+	if plan.Action != ActionNoop {
+		t.Fatalf("NewDryRunPowerIntentPlan() Action = %q, want %q", plan.Action, ActionNoop)
 	}
 }
 

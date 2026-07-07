@@ -21,6 +21,7 @@ related:
   - docs/00-project/requirements.md
   - docs/00-project/quests/0035-add-a-dry-run-power-intent-path.md
   - docs/00-project/quests/0036-add-a-dry-run-power-intent-cli-flag.md
+  - docs/00-project/quests/0038-add-a-configurable-dry-run-power-policy.md
   - docs/01-product/vision.md
   - docs/13-reference/terminology.md
   - docs/13-reference/glossary.md
@@ -295,7 +296,8 @@ Milestone 1 focus:
 The first safe power-intent path exists as dry-run/noop behavior only. The app
 can accept an internal `PowerButtonPressed` intent, ask the planner for a
 deterministic dry-run plan, and send that plan through the executor. The planned
-action remains `noop`, and executor results remain dry-run/noop only.
+action is guided by the `power_button_action` config policy. The first supported
+policy value is `noop`, and executor results remain dry-run/noop only.
 As it travels, the app records small deterministic breadcrumb events so future
 GPIO, shutdown, and service behavior has a clear ledger to follow.
 
@@ -312,6 +314,15 @@ go run ./cmd/retroflag-powerd --dry-run-power-button
 
 The command starts the app lifecycle, processes the dry-run power-button intent,
 prints a deterministic noop result, and exits cleanly.
+
+The explicit policy form is also safe:
+
+```sh
+go run ./cmd/retroflag-powerd --dry-run-power-button --power-button-action noop
+```
+
+Unsupported values fail before plan preparation with a deterministic
+`power_button_action` error.
 
 Milestone 3 focus:
 
@@ -470,7 +481,11 @@ Milestone 1 focus:
 
 Avoid complex configuration.
 
-Early daemon behavior should prefer simple constants or minimal config until real variability appears.
+Early daemon behavior should prefer simple constants or minimal config until
+real variability appears. The dry-run power-button path now carries a tiny
+`power_button_action` policy compass; it supports only `noop` today and exists
+to mark a safe future seam without adding GPIO, shutdown, service activation,
+resume, or persistent state behavior.
 
 Related requirements:
 
@@ -997,6 +1012,7 @@ Avoid building a large config system before the project knows what actually vari
 
 Initial configuration may eventually include:
 
+- power button action policy
 - active hardware profile
 - resume enabled
 - log level

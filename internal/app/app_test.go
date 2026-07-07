@@ -692,6 +692,77 @@ func TestProcessPowerIntentPlansAndExecutesDryRunNoop(t *testing.T) {
 	}
 }
 
+func TestProcessPowerIntentUsesExplicitNoopPolicy(t *testing.T) {
+	var output bytes.Buffer
+	logger := log.New(&output, "", 0)
+	cfg := config.Default()
+	cfg.PowerButtonAction = config.PowerButtonActionNoop
+	app := New(logger, cfg)
+
+	got, err := app.ProcessPowerIntent(power.IntentPowerButtonPressed)
+	if err != nil {
+		t.Fatalf("ProcessPowerIntent() error = %v, want nil", err)
+	}
+
+	if !got.DryRun || !got.NoopOnly || !got.Succeeded || got.ActionsHandled != 1 {
+		t.Fatalf("ProcessPowerIntent() result = %#v, want successful dry-run noop-only result", got)
+	}
+
+	plan, ok := app.Plan()
+	if !ok {
+		t.Fatal("Plan() reports no prepared plan after explicit noop policy")
+	}
+	if plan.Action != planner.ActionNoop {
+		t.Fatalf("Plan().Action = %q, want %q", plan.Action, planner.ActionNoop)
+	}
+}
+
+func TestProcessPowerIntentRejectsUnsupportedPolicyClearly(t *testing.T) {
+	var output bytes.Buffer
+	logger := log.New(&output, "", 0)
+	cfg := config.Default()
+	cfg.PowerButtonAction = "shutdown"
+	app := New(logger, cfg)
+
+	got, err := app.ProcessPowerIntent(power.IntentPowerButtonPressed)
+	if err == nil {
+		t.Fatal("ProcessPowerIntent() error = nil, want unsupported policy error")
+	}
+
+	const wantError = `unsupported power_button_action "shutdown" (supported: noop)`
+	if err.Error() != wantError {
+		t.Fatalf("ProcessPowerIntent() error = %q, want %q", err.Error(), wantError)
+	}
+
+	if got != (executor.Result{}) {
+		t.Fatalf("ProcessPowerIntent() result = %#v, want zero result with no executor action", got)
+	}
+
+	if _, ok := app.Plan(); ok {
+		t.Fatal("Plan() reports prepared plan for unsupported policy, want no plan")
+	}
+
+	gotExecutionStatus := app.ExecutionStatus()
+	wantExecutionStatus := ExecutionStatus{
+		Completed:     true,
+		ErrorCaptured: true,
+		ErrorMessage:  wantError,
+	}
+	if gotExecutionStatus != wantExecutionStatus {
+		t.Fatalf("ExecutionStatus() = %#v, want %#v", gotExecutionStatus, wantExecutionStatus)
+	}
+
+	wantEvents := []events.Event{
+		{
+			Type:    events.TypePowerIntentReceived,
+			Message: "power intent received intent=power_button_pressed",
+		},
+	}
+	if gotEvents := app.Events(); !equalEvents(gotEvents, wantEvents) {
+		t.Fatalf("Events() after unsupported policy = %#v, want %#v", gotEvents, wantEvents)
+	}
+}
+
 func TestPowerIntentEventsAreDeterministic(t *testing.T) {
 	var firstOutput bytes.Buffer
 	first := New(log.New(&firstOutput, "", 0), config.Default())

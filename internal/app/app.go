@@ -154,7 +154,14 @@ func (a *App) ProcessPowerIntent(intent power.Intent) (executor.Result, error) {
 		Message: fmt.Sprintf("power intent received intent=%s", intent),
 	})
 
-	a.plan = a.planner.NewDryRunPowerIntentPlan(intent)
+	if err := a.config.ValidatePowerButtonAction(); err != nil {
+		a.executionResult = executor.Result{}
+		a.executionErr = err
+		a.hasExecution = true
+		return a.executionResult, a.executionErr
+	}
+
+	a.plan = a.planner.NewDryRunPowerIntentPlan(intent, planner.Action(a.config.PowerButtonAction))
 	a.hasPlan = true
 	a.logEvent(events.Event{
 		Type:    events.TypeDryRunPlanPrepared,

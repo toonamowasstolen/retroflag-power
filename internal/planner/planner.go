@@ -42,8 +42,8 @@ func (p *Planner) NewDryRunPlan(reason string) Plan {
 	return NewDryRunPlan(reason)
 }
 
-func (p *Planner) NewDryRunPowerIntentPlan(intent power.Intent) Plan {
-	return NewDryRunPowerIntentPlan(intent)
+func (p *Planner) NewDryRunPowerIntentPlan(intent power.Intent, action Action) Plan {
+	return NewDryRunPowerIntentPlan(intent, action)
 }
 
 func NewDryRunPlan(reason string) Plan {
@@ -54,9 +54,9 @@ func NewDryRunPlan(reason string) Plan {
 	}
 }
 
-func NewDryRunPowerIntentPlan(intent power.Intent) Plan {
+func NewDryRunPowerIntentPlan(intent power.Intent, action Action) Plan {
 	return Plan{
-		Action:      ActionNoop,
+		Action:      action,
 		Reason:      "dry-run power intent: " + intent.String(),
 		PowerIntent: intent,
 		dryRun:      true,

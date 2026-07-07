@@ -26,11 +26,13 @@ func main() {
 }
 
 func run(ctx context.Context, args []string, stdout io.Writer, stderr io.Writer) int {
+	cfg := config.Default()
 	flags := flag.NewFlagSet("retroflag-powerd", flag.ContinueOnError)
 	flags.SetOutput(stderr)
 
 	showVersion := flags.Bool("version", false, "print version and exit")
 	dryRunPowerButton := flags.Bool("dry-run-power-button", false, "process the dry-run power button intent and exit")
+	powerButtonAction := flags.String("power-button-action", cfg.PowerButtonAction, "dry-run power button action policy")
 
 	if err := flags.Parse(args); err != nil {
 		return 2
@@ -41,7 +43,7 @@ func run(ctx context.Context, args []string, stdout io.Writer, stderr io.Writer)
 		return 0
 	}
 
-	cfg := config.Default()
+	cfg.PowerButtonAction = *powerButtonAction
 	if *dryRunPowerButton {
 		if err := runDryRunPowerButton(ctx, cfg, stdout, stderr); err != nil {
 			fmt.Fprintf(stderr, "dry-run power button failed: %v\n", err)

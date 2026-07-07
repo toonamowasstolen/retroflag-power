@@ -28,7 +28,7 @@ func TestExecuteDryRunNoopPlan(t *testing.T) {
 }
 
 func TestExecuteDryRunPowerIntentPlanRemainsNoopOnly(t *testing.T) {
-	plan := planner.NewDryRunPowerIntentPlan(power.IntentPowerButtonPressed)
+	plan := planner.NewDryRunPowerIntentPlan(power.IntentPowerButtonPressed, planner.ActionNoop)
 
 	got, err := New().Execute(plan)
 	if err != nil {

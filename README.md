@@ -36,8 +36,16 @@ go run ./cmd/retroflag-powerd --dry-run-power-button
 ```
 
 This processes the dry-run `power_button_pressed` intent through the daemon app,
-planner, and executor path. It remains noop-only: no GPIO is read, no shutdown
-command runs, and no hardware action is taken.
+planner, and executor path. The current `power_button_action` policy supports
+only `noop`, including the explicit CLI form:
+
+```sh
+go run ./cmd/retroflag-powerd --dry-run-power-button --power-button-action noop
+```
+
+Unsupported policy values fail clearly before a plan is prepared. The path
+remains noop-only: no GPIO is read, no shutdown command runs, and no hardware
+action is taken.
 
 ## Project Documentation
 
