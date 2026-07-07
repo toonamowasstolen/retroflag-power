@@ -96,6 +96,9 @@ On unsupported platforms or uncertain GPIO access, it reports
 - [Save Room Tech and Arcadia Runtime direction](docs/00-project/project-direction-save-room-arcadia.md):
   the north-star map for the current RetroFlag Power prototype, the future
   Save Room Tech umbrella, and the favored Arcadia Runtime path.
+- [Arcadia Runtime migration path](docs/04-architecture/arcadia-runtime-migration-path.md):
+  the staged compass for growing from the current GPi Case 2 prototype toward
+  the broader runtime direction without premature renames or behavior changes.
 - [Project roadmap](docs/00-project/roadmap.md)
 - [Project requirements](docs/00-project/requirements.md)
 - [GPi Case GPIO probe field ledger](docs/03-operations/gpi-case-gpio-probe-ledger.md)

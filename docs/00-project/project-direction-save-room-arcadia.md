@@ -14,6 +14,7 @@ purpose: Record the long-term naming, platform, privacy, and migration direction
 related:
   - README.md
   - PROJECT_MANIFEST.md
+  - docs/04-architecture/arcadia-runtime-migration-path.md
   - docs/04-architecture/system-overview.md
   - docs/03-operations/safeshutdown-replacement-boundary-map.md
   - docs/00-project/quests/0049-record-the-save-room-tech-and-arcadia-runtime-direction.md
@@ -30,6 +31,12 @@ This document is documentation only. It does not rename the repository, rename
 packages or binaries, claim any domain, implement telemetry, make network
 calls, install services, activate daemons, mutate configuration, alter
 `rc.local`, or replace `/opt/RetroFlag/SafeShutdown.py`.
+
+The staged path from this prototype toward the favored future engine direction
+is tracked in
+[Arcadia Runtime Migration Path](../04-architecture/arcadia-runtime-migration-path.md).
+That map keeps the current GPi Case 2 work separate from future rename,
+installer, diagnostics, and field-kit questions.
 
 ## Current Project State
 

@@ -17,6 +17,7 @@ related:
   - PROJECT_MANIFEST.md
   - PROJECT_CHARTER.md
   - docs/00-project/project-direction-save-room-arcadia.md
+  - docs/04-architecture/arcadia-runtime-migration-path.md
   - docs/00-project/milestones.md
   - docs/00-project/roadmap.md
   - docs/00-project/requirements.md
@@ -46,6 +47,12 @@ The wider naming and platform direction is tracked separately in
 That map keeps RetroFlag Power as the current GPi Case-focused prototype while
 recording Save Room Tech as the future umbrella and Arcadia Runtime as the
 favored broader runtime direction.
+
+The staged migration route from this prototype toward that broader engine
+direction is tracked in
+[Arcadia Runtime Migration Path](arcadia-runtime-migration-path.md). It keeps
+rename, installer, diagnostics, and additional hardware-profile questions gated
+behind trustworthy GPi Case 2 ledgers.
 
 The goal is to give Milestone 1 enough structure to begin implementation while keeping future milestones visible.
 

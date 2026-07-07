@@ -16,6 +16,7 @@ related:
   - ENGINEERING_MANIFESTO.md
   - PROJECT_CHARTER.md
   - docs/00-project/project-direction-save-room-arcadia.md
+  - docs/04-architecture/arcadia-runtime-migration-path.md
   - docs/00-project/roadmap.md
   - docs/00-project/milestones.md
   - docs/adr/0003-adopt-epoch-milestone-quest-model.md
@@ -42,6 +43,11 @@ The broader naming compass now lives in
 RetroFlag Power remains the current GPi Case-focused prototype, Save Room Tech
 is the favored future hobby/community umbrella, and Arcadia Runtime is the
 favored future runtime direction pending proper public-release clearance.
+
+The staged migration compass lives in
+[Arcadia Runtime Migration Path](docs/04-architecture/arcadia-runtime-migration-path.md):
+it explains how this prototype can grow toward that wider runtime without
+premature repo, module, package, binary, service, or behavior changes.
 
 It is about shortening the distance between power and play.
 

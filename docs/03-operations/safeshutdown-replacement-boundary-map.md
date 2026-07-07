@@ -12,6 +12,7 @@ audience:
 purpose: Map the behavior retroflag-powerd must preserve before it can safely replace the stock RetroFlag SafeShutdown.py path on GPi Case 2 hardware.
 related:
   - docs/00-project/project-direction-save-room-arcadia.md
+  - docs/04-architecture/arcadia-runtime-migration-path.md
   - docs/03-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
   - docs/03-operations/gpio-read-only-plan.md
   - docs/03-operations/gpi-case-gpio-probe-ledger.md
@@ -33,6 +34,11 @@ The larger naming and platform compass lives in
 [Save Room Tech and Arcadia Runtime Direction](../00-project/project-direction-save-room-arcadia.md).
 This boundary map remains focused on the current RetroFlag Power prototype and
 the GPi Case 2 SafeShutdown replacement trail.
+
+The staged migration compass toward the broader future engine lives in
+[Arcadia Runtime Migration Path](../04-architecture/arcadia-runtime-migration-path.md).
+It treats this SafeShutdown boundary map as one prerequisite ledger, not as
+permission to replace the stock script.
 
 ## What SafeShutdown.py Currently Owns
 
