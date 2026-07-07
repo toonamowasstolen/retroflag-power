@@ -29,6 +29,16 @@ make check
 make run
 ```
 
+Safe dry-run power intent lantern:
+
+```sh
+go run ./cmd/retroflag-powerd --dry-run-power-button
+```
+
+This processes the dry-run `power_button_pressed` intent through the daemon app,
+planner, and executor path. It remains noop-only: no GPIO is read, no shutdown
+command runs, and no hardware action is taken.
+
 ## Project Documentation
 
 - [Why RetroFlag Power exists](WHY.md)

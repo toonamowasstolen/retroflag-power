@@ -1,28 +1,115 @@
 package main
 
 import (
+	"bytes"
 	"context"
+	"flag"
 	"fmt"
+	"io"
+	"log"
 	"os"
 	"os/signal"
+	"sync"
 	"syscall"
 
 	"github.com/toonamowasstolen/retroflag-power/internal/app"
 	"github.com/toonamowasstolen/retroflag-power/internal/config"
-	"github.com/toonamowasstolen/retroflag-power/internal/logging"
+	"github.com/toonamowasstolen/retroflag-power/internal/power"
 	"github.com/toonamowasstolen/retroflag-power/internal/version"
 )
 
 func main() {
-	cfg := config.Default()
-
-	if len(os.Args) == 2 && os.Args[1] == "--version" {
-		fmt.Println(version.String())
-		return
-	}
-
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer stop()
 
-	app.New(logging.New(), cfg).Run(ctx)
+	os.Exit(run(ctx, os.Args[1:], os.Stdout, os.Stderr))
+}
+
+func run(ctx context.Context, args []string, stdout io.Writer, stderr io.Writer) int {
+	flags := flag.NewFlagSet("retroflag-powerd", flag.ContinueOnError)
+	flags.SetOutput(stderr)
+
+	showVersion := flags.Bool("version", false, "print version and exit")
+	dryRunPowerButton := flags.Bool("dry-run-power-button", false, "process the dry-run power button intent and exit")
+
+	if err := flags.Parse(args); err != nil {
+		return 2
+	}
+
+	if *showVersion {
+		fmt.Fprintln(stdout, version.String())
+		return 0
+	}
+
+	cfg := config.Default()
+	if *dryRunPowerButton {
+		if err := runDryRunPowerButton(ctx, cfg, stdout, stderr); err != nil {
+			fmt.Fprintf(stderr, "dry-run power button failed: %v\n", err)
+			return 1
+		}
+		return 0
+	}
+
+	app.New(log.New(stderr, "", log.LstdFlags), cfg).Run(ctx)
+	return 0
+}
+
+func runDryRunPowerButton(ctx context.Context, cfg config.Config, stdout io.Writer, stderr io.Writer) error {
+	appCtx, cancel := context.WithCancel(ctx)
+	defer cancel()
+
+	ready := make(chan struct{})
+	done := make(chan struct{})
+	logger := log.New(&readySignalWriter{
+		dst:   stderr,
+		ready: ready,
+	}, "", log.LstdFlags)
+	daemon := app.New(logger, cfg)
+
+	go func() {
+		daemon.Run(appCtx)
+		close(done)
+	}()
+
+	select {
+	case <-ready:
+	case <-ctx.Done():
+		cancel()
+		<-done
+		return ctx.Err()
+	}
+
+	result, err := daemon.ProcessPowerIntent(power.IntentPowerButtonPressed)
+	summary := result.Summary()
+	fmt.Fprintf(
+		stdout,
+		"dry_run_power_button intent=%s processed=%t execution_success=%t dry_run=%t noop_only=%t actions_handled=%d real_shutdown=false hardware_action=false\n",
+		power.IntentPowerButtonPressed,
+		err == nil,
+		summary.Succeeded,
+		summary.DryRun,
+		summary.NoopOnly,
+		summary.ActionsHandled,
+	)
+
+	cancel()
+	<-done
+
+	return err
+}
+
+type readySignalWriter struct {
+	dst   io.Writer
+	ready chan<- struct{}
+	once  sync.Once
+}
+
+func (w *readySignalWriter) Write(p []byte) (int, error) {
+	if bytes.Contains(p, []byte(" ready\n")) {
+		w.once.Do(func() {
+			close(w.ready)
+		})
+	}
+
+	return w.dst.Write(p)
 }

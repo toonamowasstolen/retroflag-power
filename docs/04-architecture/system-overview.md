@@ -20,6 +20,7 @@ related:
   - docs/00-project/roadmap.md
   - docs/00-project/requirements.md
   - docs/00-project/quests/0035-add-a-dry-run-power-intent-path.md
+  - docs/00-project/quests/0036-add-a-dry-run-power-intent-cli-flag.md
   - docs/01-product/vision.md
   - docs/13-reference/terminology.md
   - docs/13-reference/glossary.md
@@ -300,6 +301,15 @@ This is a lantern on the future power trail, not real hardware control. It does
 not read GPIO, run shutdown commands, activate systemd services, replace
 `rc.local`, replace `SafeShutdown.py`, resume sessions, or store persistent
 state.
+
+Developers can invoke this first safe path from the daemon command line:
+
+```sh
+go run ./cmd/retroflag-powerd --dry-run-power-button
+```
+
+The command starts the app lifecycle, processes the dry-run power-button intent,
+prints a deterministic noop result, and exits cleanly.
 
 Milestone 3 focus:
 
