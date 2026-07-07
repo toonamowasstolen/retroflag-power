@@ -8,6 +8,7 @@ import (
 	"github.com/toonamowasstolen/retroflag-power/internal/config"
 	"github.com/toonamowasstolen/retroflag-power/internal/events"
 	"github.com/toonamowasstolen/retroflag-power/internal/executor"
+	"github.com/toonamowasstolen/retroflag-power/internal/input"
 	"github.com/toonamowasstolen/retroflag-power/internal/planner"
 	"github.com/toonamowasstolen/retroflag-power/internal/power"
 	"github.com/toonamowasstolen/retroflag-power/internal/status"
@@ -178,6 +179,24 @@ func (a *App) ProcessPowerIntent(intent power.Intent) (executor.Result, error) {
 	}
 
 	return a.executionResult, a.executionErr
+}
+
+func (a *App) ProcessInputEvent(event input.Event) (executor.Result, error) {
+	switch event.Type {
+	case input.EventTypePowerButtonPressed:
+		return a.ProcessPowerIntent(power.IntentPowerButtonPressed)
+	default:
+		return executor.Result{}, fmt.Errorf("unsupported input event %q", event.Type)
+	}
+}
+
+func (a *App) ProcessNextInputEvent(ctx context.Context, observer input.Observer) (executor.Result, error) {
+	event, err := observer.NextEvent(ctx)
+	if err != nil {
+		return executor.Result{}, err
+	}
+
+	return a.ProcessInputEvent(event)
 }
 
 func (a *App) Events() []events.Event {

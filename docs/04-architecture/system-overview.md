@@ -22,6 +22,7 @@ related:
   - docs/00-project/quests/0035-add-a-dry-run-power-intent-path.md
   - docs/00-project/quests/0036-add-a-dry-run-power-intent-cli-flag.md
   - docs/00-project/quests/0038-add-a-configurable-dry-run-power-policy.md
+  - docs/00-project/quests/0039-add-a-gpio-observer-interface.md
   - docs/01-product/vision.md
   - docs/13-reference/terminology.md
   - docs/13-reference/glossary.md
@@ -293,13 +294,15 @@ System shutdown
 
 Milestone 1 focus:
 
-The first safe power-intent path exists as dry-run/noop behavior only. The app
-can accept an internal `PowerButtonPressed` intent, ask the planner for a
-deterministic dry-run plan, and send that plan through the executor. The planned
-action is guided by the `power_button_action` config policy. The first supported
-policy value is `noop`, and executor results remain dry-run/noop only.
-As it travels, the app records small deterministic breadcrumb events so future
-GPIO, shutdown, and service behavior has a clear ledger to follow.
+The first safe power-intent path exists as dry-run/noop behavior only. A small
+internal input observer can report a `PowerButtonPressed`-style event into the
+app. The app converts that input event into the existing internal
+`PowerButtonPressed` intent, asks the planner for a deterministic dry-run plan,
+and sends that plan through the executor. The planned action is guided by the
+`power_button_action` config policy. The first supported policy value is
+`noop`, and executor results remain dry-run/noop only. As it travels, the app
+records small deterministic breadcrumb events so future GPIO, shutdown, and
+service behavior has a clear ledger to follow.
 
 This is a lantern on the future power trail, not real hardware control. It does
 not read GPIO, run shutdown commands, activate systemd services, replace
@@ -356,7 +359,16 @@ Status LED
 
 Milestone 1 focus:
 
-Architecture placeholder only.
+The daemon now has a safe input observer seam before real hardware input. The
+`internal/input` observer interface reports project-level input events rather
+than GPIO pins. Its fake observer can emit a power-button-style event for tests,
+which then travels through the existing config policy, planner, executor, and
+event breadcrumb flow.
+
+This observer is intentionally a tiny field kit. It does not use Raspberry Pi
+GPIO libraries, read real pins, debounce edges, model latching switches, run
+shutdown commands, touch systemd, replace `rc.local`, replace `SafeShutdown.py`,
+resume sessions, or persist state.
 
 Milestone 3 focus:
 

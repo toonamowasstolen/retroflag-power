@@ -10,6 +10,7 @@ import (
 	"github.com/toonamowasstolen/retroflag-power/internal/config"
 	"github.com/toonamowasstolen/retroflag-power/internal/events"
 	"github.com/toonamowasstolen/retroflag-power/internal/executor"
+	"github.com/toonamowasstolen/retroflag-power/internal/input"
 	"github.com/toonamowasstolen/retroflag-power/internal/planner"
 	"github.com/toonamowasstolen/retroflag-power/internal/power"
 	"github.com/toonamowasstolen/retroflag-power/internal/status"
@@ -778,6 +779,144 @@ func TestPowerIntentEventsAreDeterministic(t *testing.T) {
 
 	if got, want := second.Events(), first.Events(); !equalEvents(got, want) {
 		t.Fatalf("second Events() = %#v, want first Events() %#v", got, want)
+	}
+}
+
+func TestProcessInputEventMapsPowerButtonPressedToPowerIntent(t *testing.T) {
+	var output bytes.Buffer
+	logger := log.New(&output, "", 0)
+	app := New(logger, config.Default())
+
+	got, err := app.ProcessInputEvent(input.Event{Type: input.EventTypePowerButtonPressed})
+	if err != nil {
+		t.Fatalf("ProcessInputEvent() error = %v, want nil", err)
+	}
+
+	wantResult := executor.Result{
+		DryRun:         true,
+		NoopOnly:       true,
+		ActionsHandled: 1,
+		Succeeded:      true,
+	}
+	if got != wantResult {
+		t.Fatalf("ProcessInputEvent() result = %#v, want %#v", got, wantResult)
+	}
+
+	plan, ok := app.Plan()
+	if !ok {
+		t.Fatal("Plan() reports no prepared plan after input event")
+	}
+	if plan.PowerIntent != power.IntentPowerButtonPressed {
+		t.Fatalf("Plan().PowerIntent = %q, want %q", plan.PowerIntent, power.IntentPowerButtonPressed)
+	}
+	if plan.Action != planner.ActionNoop {
+		t.Fatalf("Plan().Action = %q, want %q", plan.Action, planner.ActionNoop)
+	}
+}
+
+func TestProcessNextInputEventUsesFakeObserverAndHonorsPolicy(t *testing.T) {
+	var output bytes.Buffer
+	logger := log.New(&output, "", 0)
+	cfg := config.Default()
+	cfg.PowerButtonAction = config.PowerButtonActionNoop
+	app := New(logger, cfg)
+	observer := input.NewFakePowerButtonObserver()
+
+	got, err := app.ProcessNextInputEvent(context.Background(), observer)
+	if err != nil {
+		t.Fatalf("ProcessNextInputEvent() error = %v, want nil", err)
+	}
+
+	wantResult := executor.Result{
+		DryRun:         true,
+		NoopOnly:       true,
+		ActionsHandled: 1,
+		Succeeded:      true,
+	}
+	if got != wantResult {
+		t.Fatalf("ProcessNextInputEvent() result = %#v, want %#v", got, wantResult)
+	}
+
+	plan, ok := app.Plan()
+	if !ok {
+		t.Fatal("Plan() reports no prepared plan after fake observer event")
+	}
+	wantPlan := planner.Plan{
+		Action:      planner.ActionNoop,
+		Reason:      "dry-run power intent: power_button_pressed",
+		PowerIntent: power.IntentPowerButtonPressed,
+	}
+	if plan.Action != wantPlan.Action || plan.Reason != wantPlan.Reason || plan.PowerIntent != wantPlan.PowerIntent {
+		t.Fatalf("Plan() = %#v, want deterministic dry-run power intent plan matching %#v", plan, wantPlan)
+	}
+
+	executionSummary, ok := app.ExecutionSummary()
+	if !ok {
+		t.Fatal("ExecutionSummary() reports no execution after fake observer event")
+	}
+	wantExecutionSummary := executor.ResultSummary{
+		DryRun:         true,
+		NoopOnly:       true,
+		ActionsHandled: 1,
+		Succeeded:      true,
+	}
+	if executionSummary != wantExecutionSummary {
+		t.Fatalf("ExecutionSummary() = %#v, want %#v", executionSummary, wantExecutionSummary)
+	}
+
+	wantEvents := []events.Event{
+		{
+			Type:    events.TypePowerIntentReceived,
+			Message: "power intent received intent=power_button_pressed",
+		},
+		{
+			Type:    events.TypeDryRunPlanPrepared,
+			Message: "dry-run plan prepared intent=power_button_pressed action=noop",
+		},
+		{
+			Type:    events.TypeNoopExecutionCompleted,
+			Message: "noop execution completed intent=power_button_pressed actions_handled=1",
+		},
+	}
+	if gotEvents := app.Events(); !equalEvents(gotEvents, wantEvents) {
+		t.Fatalf("Events() after fake observer event = %#v, want %#v", gotEvents, wantEvents)
+	}
+}
+
+func TestProcessNextInputEventRejectsUnsupportedPolicyBeforePlanning(t *testing.T) {
+	var output bytes.Buffer
+	logger := log.New(&output, "", 0)
+	cfg := config.Default()
+	cfg.PowerButtonAction = "shutdown"
+	app := New(logger, cfg)
+	observer := input.NewFakePowerButtonObserver()
+
+	got, err := app.ProcessNextInputEvent(context.Background(), observer)
+	if err == nil {
+		t.Fatal("ProcessNextInputEvent() error = nil, want unsupported policy error")
+	}
+
+	const wantError = `unsupported power_button_action "shutdown" (supported: noop)`
+	if err.Error() != wantError {
+		t.Fatalf("ProcessNextInputEvent() error = %q, want %q", err.Error(), wantError)
+	}
+
+	if got != (executor.Result{}) {
+		t.Fatalf("ProcessNextInputEvent() result = %#v, want zero result with no executor action", got)
+	}
+
+	if _, ok := app.Plan(); ok {
+		t.Fatal("Plan() reports prepared plan for unsupported observer policy, want no plan")
+	}
+
+	wantEvents := []events.Event{
+		{
+			Type:    events.TypePowerIntentReceived,
+			Message: "power intent received intent=power_button_pressed",
+		},
+	}
+	if gotEvents := app.Events(); !equalEvents(gotEvents, wantEvents) {
+		t.Fatalf("Events() after unsupported observer policy = %#v, want %#v", gotEvents, wantEvents)
 	}
 }
 
