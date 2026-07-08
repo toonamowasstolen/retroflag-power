@@ -144,6 +144,19 @@ No public GPi Case 2 schematic, board-level reset map, regulator-enable map,
 lithium charge-controller map, or clearly labeled test-pad map was found in
 this pass.
 
+## Public GitHub Activity Notes
+
+These notes record public Git metadata only. They do not prove current vendor
+support, hardware safety, or replacement readiness.
+
+| Repository | Public commit span checked | Commit count checked | Latest checked commit | Notes |
+| --- | --- | ---: | --- | --- |
+| <https://github.com/RetroFlag/GPiCase2-Script> | 2021-12-15 to 2023-01-14, about 1 year and 30 days | 20 | `de498e9` on 2023-01-14, `Update README.md` | The GPi Case 2 repository was added with an initial commit on 2021-12-15. The selected RetroPie GPi2 script files checked in this ledger were added on 2021-12-15 and last touched in that file set on 2021-12-30. |
+| <https://github.com/RetroFlag/retroflag-picase> | 2018-01-08 to 2021-12-28, about 3 years and 11 months | 58 | `fb69441` on 2021-12-28, `Update README.md` | This older RetroFlag safe-shutdown repository points GPi Case 2 users to the separate `GPiCase2-Script` repository. |
+
+`git ls-remote --tags` returned no public tags for either repository in this
+research pass, so this ledger does not record a release or version cadence.
+
 ## Board-Level Unknowns
 
 These unknowns must stay unknown until evidence exists:
