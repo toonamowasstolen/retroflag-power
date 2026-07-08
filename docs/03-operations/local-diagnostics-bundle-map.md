@@ -17,6 +17,7 @@ related:
   - docs/04-architecture/arcadia-runtime-migration-path.md
   - docs/03-operations/safeshutdown-replacement-boundary-map.md
   - docs/03-operations/gpi-case-2-field-lantern-capture-procedure.md
+  - docs/03-operations/gpi-case-2-boot-power-trace-lantern-map.md
   - docs/03-operations/installer-migration-toolkit-map.md
   - docs/03-operations/gpi-case-2-acceptance-checklist.md
   - docs/00-project/quests/0051-map-the-local-diagnostics-bundle.md
@@ -57,6 +58,12 @@ That Field Lantern is a documented read-only support procedure for GPi Case 2
 evidence collection. It may inform a future diagnostics bundle, but it does not
 implement `retroflag-powerd diagnostics`, create Lantern Dispatch, or upload
 anything.
+
+The future startup-specific power timing trail is mapped in
+[GPi Case 2 Boot Power Trace Lantern Map](gpi-case-2-boot-power-trace-lantern-map.md).
+That Boot Power Trace Lantern may later become an optional diagnostics bundle
+section for the first 90 seconds after boot, but this map does not implement
+that capture.
 
 ## Purpose
 
@@ -185,6 +192,9 @@ A future local diagnostics bundle may include allowlisted sections such as:
 - KMS, FKMS, display connector, and display configuration facts that can be
   collected read-only.
 - Audio device facts that can be collected read-only.
+- Optional Boot Power Trace Lantern output, when a future explicit capture
+  exists, limited to startup timing, `vcgencmd` power facts, narrow matching
+  kernel excerpts, and process milestone observations.
 - `SafeShutdown.py` presence, process, and status observations, read-only only.
 - `rc.local` or systemd startup references, read-only only.
 - Raw GPIO probe observations, only when explicitly run and included by the

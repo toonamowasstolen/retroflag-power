@@ -359,6 +359,13 @@ Undervoltage detected
 Voltage normalised
 ```
 
+The future focused startup timing pass is mapped in the
+[GPi Case 2 Boot Power Trace Lantern Map](../03-operations/gpi-case-2-boot-power-trace-lantern-map.md).
+Use that lantern to distinguish early boot, KMS/display initialization,
+USB/audio/controller initialization, EmulationStation startup, and later
+idle/power-save timing before treating KMS or any single subsystem as the
+cause.
+
 Likely causes:
 
 1. USB charger/cable cannot maintain enough voltage under load.

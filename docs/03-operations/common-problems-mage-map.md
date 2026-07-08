@@ -14,6 +14,7 @@ purpose: Map a future read-only troubleshooting helper that can classify common 
 related:
   - local-diagnostics-bundle-map.md
   - gpi-case-2-field-lantern-capture-procedure.md
+  - gpi-case-2-boot-power-trace-lantern-map.md
   - gpi-case-2-safeshutdown-script-behavior-map.md
   - safeshutdown-replacement-boundary-map.md
   - gpi-case-2-acceptance-checklist.md
@@ -46,6 +47,12 @@ The manual GPi Case 2 capture-bundle trail is documented in
 That Field Lantern can provide local evidence for future mage classifications,
 but it is not a classifier, fixer, uploader, or `retroflag-powerd diagnostics`
 implementation.
+
+The future boot-specific power timing trail is mapped in
+[GPi Case 2 Boot Power Trace Lantern Map](gpi-case-2-boot-power-trace-lantern-map.md).
+Those buckets can later help the mage distinguish early boot, KMS/display
+initialization, USB/audio/controller initialization, EmulationStation startup,
+and idle or power-save risk patterns.
 
 Power integrity evidence and read-only capture boundaries are mapped in
 [GPi Case 2 Power Integrity Investigation Notes](../03-hardware/gpi-case-2-power-integrity-investigation-notes.md).
@@ -94,6 +101,7 @@ The first GPi Case 2 issue buckets should be:
 | Bucket | Meaning | Example evidence |
 | --- | --- | --- |
 | `power-integrity-warning` | Power headroom is suspicious or needs focused follow-up. | Any undervoltage, throttling, voltage-normalized, brownout-like, or context mismatch evidence from safe captures. |
+| `boot-power-trace-bucket` | A focused boot trace suggests a timing bucket for undervoltage or throttling. | Early-boot, KMS/display init, USB/audio/controller init, EmulationStation startup, idle/power-save, or no-observed-warning buckets from a Boot Power Trace Lantern. |
 | `safeshutdown-not-running` | The stock SafeShutdown path appears absent or inactive when expected. | `/opt/RetroFlag/SafeShutdown.py` exists but no matching process or startup reference is visible. |
 | `safeshutdown-script-modified` | The local SafeShutdown script differs from the expected stock or captured baseline. | File hash, timestamp, content markers, or missing expected GPIO26/GPIO27 logic. |
 | `legacy-lcd-switching-active` | Old RetroFlag LCD/HDMI switching appears active and may rewrite display configuration. | `lcdfirst.sh`, `lcdnext.sh`, GPIO18 polling, or `rc.local` entries for old LCD scripts. |

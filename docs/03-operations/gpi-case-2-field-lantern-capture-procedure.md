@@ -14,6 +14,7 @@ purpose: Define a manual read-only GPi Case 2 Field Lantern capture bundle proce
 related:
   - common-problems-mage-map.md
   - local-diagnostics-bundle-map.md
+  - gpi-case-2-boot-power-trace-lantern-map.md
   - gpi-case-2-recovery-first-field-procedure.md
   - gpi-case-2-safeshutdown-script-behavior-map.md
   - safeshutdown-replacement-boundary-map.md
@@ -40,6 +41,13 @@ Field Lantern means this manual read-only local capture procedure. Common
 Problems Mage means a future classifier or troubleshooter. Lantern Dispatch
 means a future optional support, update, or submission layer. Lantern Dispatch
 is not implemented.
+
+The future focused startup timing trail is mapped in
+[GPi Case 2 Boot Power Trace Lantern Map](gpi-case-2-boot-power-trace-lantern-map.md).
+That Boot Power Trace Lantern is intended to capture when undervoltage or
+throttling appears during the first moments of GPi Case 2 boot. It may later
+become one optional section inside a Field Lantern bundle, but it is not
+implemented here.
 
 ## Purpose
 

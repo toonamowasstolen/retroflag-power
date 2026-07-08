@@ -14,6 +14,7 @@ purpose: Record GPi Case 2 undervoltage and throttling evidence and define a saf
 related:
   - gpi-case-2-hardware-findings-kms-power-notes.md
   - gpi-case-2-emergency-recovery-research-ledger.md
+  - ../03-operations/gpi-case-2-boot-power-trace-lantern-map.md
   - ../03-operations/gpi-case-2-recovery-first-field-procedure.md
   - ../03-operations/gpi-case-2-replacement-coverage-matrix.md
   - ../03-operations/gpi-case-2-acceptance-checklist.md
@@ -47,6 +48,11 @@ during investigation.
 This note gives future field work a focused checklist for power-integrity
 evidence before power-save, resume, side-switch, or replacement-runtime claims
 move forward.
+
+The future startup-timing capture for this evidence is mapped in
+[GPi Case 2 Boot Power Trace Lantern Map](../03-operations/gpi-case-2-boot-power-trace-lantern-map.md).
+Use that map when the next question is when the undervoltage appears during
+boot rather than whether any power warning has ever appeared.
 
 Vocabulary boundaries still apply:
 
