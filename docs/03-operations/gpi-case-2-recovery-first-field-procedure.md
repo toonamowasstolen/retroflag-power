@@ -14,6 +14,7 @@ purpose: Define a conservative recovery-first field procedure for a GPi Case 2 s
 related:
   - gpi-case-2-replacement-coverage-matrix.md
   - gpi-case-2-safeshutdown-script-behavior-map.md
+  - gpi-case-2-field-lantern-capture-procedure.md
   - gpi-case-2-acceptance-checklist.md
   - safeshutdown-replacement-boundary-map.md
   - gpi-case-gpio-probe-ledger.md
@@ -163,6 +164,13 @@ Once the device boots again, capture evidence before starting new field tests:
 Keep the first post-recovery capture read-only. Do not install, repair, replace
 scripts, enable services, or run shutdown commands during this evidence pass.
 
+For a bundle-shaped post-recovery capture that avoids long terminal pastes,
+use the manual
+[GPi Case 2 Field Lantern Capture Procedure](gpi-case-2-field-lantern-capture-procedure.md)
+after the device is booted and responsive. The Field Lantern is read-only and
+local; it does not fix the device, read or write GPIO, execute shutdown, upload
+data, or replace future `retroflag-powerd diagnostics`.
+
 ## Read-Only Log Searches After Recovery
 
 Search for RCU stalls and neighboring power/display/kernel messages:
@@ -285,6 +293,7 @@ field tests when any of these occur:
 When paused, update the relevant ledger before resuming:
 
 - [GPi Case 2 Replacement Coverage Matrix](gpi-case-2-replacement-coverage-matrix.md)
+- [GPi Case 2 Field Lantern Capture Procedure](gpi-case-2-field-lantern-capture-procedure.md)
 - [GPi Case 2 Emergency Recovery Research Ledger](../03-hardware/gpi-case-2-emergency-recovery-research-ledger.md)
 - [GPi Case 2 SafeShutdown Script Behavior Map](gpi-case-2-safeshutdown-script-behavior-map.md)
 - [GPi Case 2 Acceptance Checklist](gpi-case-2-acceptance-checklist.md)

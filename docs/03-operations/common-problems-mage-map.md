@@ -13,6 +13,7 @@ audience:
 purpose: Map a future read-only troubleshooting helper that can classify common GPi Case 2 and RetroFlag failure modes from local diagnostics.
 related:
   - local-diagnostics-bundle-map.md
+  - gpi-case-2-field-lantern-capture-procedure.md
   - gpi-case-2-safeshutdown-script-behavior-map.md
   - safeshutdown-replacement-boundary-map.md
   - gpi-case-2-acceptance-checklist.md
@@ -39,6 +40,12 @@ The future local diagnostics and bundle boundary is mapped in
 [Local Diagnostics Bundle Map](local-diagnostics-bundle-map.md). This
 troubleshooting helper should consume that kind of allowlisted local evidence,
 not broaden collection beyond it.
+
+The manual GPi Case 2 capture-bundle trail is documented in
+[GPi Case 2 Field Lantern Capture Procedure](gpi-case-2-field-lantern-capture-procedure.md).
+That Field Lantern can provide local evidence for future mage classifications,
+but it is not a classifier, fixer, uploader, or `retroflag-powerd diagnostics`
+implementation.
 
 Power integrity evidence and read-only capture boundaries are mapped in
 [GPi Case 2 Power Integrity Investigation Notes](../03-hardware/gpi-case-2-power-integrity-investigation-notes.md).
@@ -160,6 +167,10 @@ Bundle output should remain local and previewable. A future bundle should make
 the classifier result one section inside a user-controlled diagnostics bundle,
 not an automatic upload or repair report.
 
+Manual Field Lantern bundles may later become one input to the classifier, but
+the mage must treat missing sections, failed upstream downloads, and redacted
+fields as explicit uncertainty rather than proof of safety or failure.
+
 ## Explicit Non-Goals
 
 The troubleshooting helper must not:
@@ -204,6 +215,9 @@ This map depends on these existing ledgers:
 
 - [Local Diagnostics Bundle Map](local-diagnostics-bundle-map.md) for the
   allowlisted local evidence model and bundle boundaries.
+- [GPi Case 2 Field Lantern Capture Procedure](gpi-case-2-field-lantern-capture-procedure.md)
+  for the current manual read-only capture bundle used before an implemented
+  diagnostics bundle exists.
 - [GPi Case 2 SafeShutdown Script Behavior Map](gpi-case-2-safeshutdown-script-behavior-map.md)
   for the stock script, GPIO26, GPIO27, GPIO18, and legacy LCD behavior.
 - [SafeShutdown Replacement Boundary Map](safeshutdown-replacement-boundary-map.md)

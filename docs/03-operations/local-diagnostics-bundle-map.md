@@ -16,6 +16,7 @@ related:
   - docs/00-project/project-direction-save-room-arcadia.md
   - docs/04-architecture/arcadia-runtime-migration-path.md
   - docs/03-operations/safeshutdown-replacement-boundary-map.md
+  - docs/03-operations/gpi-case-2-field-lantern-capture-procedure.md
   - docs/03-operations/installer-migration-toolkit-map.md
   - docs/03-operations/gpi-case-2-acceptance-checklist.md
   - docs/00-project/quests/0051-map-the-local-diagnostics-bundle.md
@@ -49,6 +50,13 @@ The GPi Case 2 field-test gate is tracked in
 [GPi Case 2 Acceptance Checklist](gpi-case-2-acceptance-checklist.md). Future
 diagnostics may help fill that ledger, but this map does not collect or submit
 those notes yet.
+
+The current manual capture-bundle trail lives in
+[GPi Case 2 Field Lantern Capture Procedure](gpi-case-2-field-lantern-capture-procedure.md).
+That Field Lantern is a documented read-only support procedure for GPi Case 2
+evidence collection. It may inform a future diagnostics bundle, but it does not
+implement `retroflag-powerd diagnostics`, create Lantern Dispatch, or upload
+anything.
 
 ## Purpose
 
@@ -185,6 +193,13 @@ A future local diagnostics bundle may include allowlisted sections such as:
 - Audio test notes.
 - Field checklist references for GPi Case 2 testing.
 - Relevant project configuration summary.
+
+The manual GPi Case 2 Field Lantern currently captures a narrower
+hardware-support bundle: `report.txt`, local `/opt/RetroFlag` copies, boot and
+startup files, RetroFlag script hashes, upstream comparison copies, local
+diffs, kernel excerpts, input/USB/audio identity, and relevant process or
+service state. That procedure remains a field document until a future code
+quest implements bundle generation.
 
 The bundle should prefer narrow, explainable fields over broad dumps. Each
 section should say why it exists, whether it was detected automatically or
@@ -349,6 +364,9 @@ Future Lantern Dispatch ideas, explicitly not implemented here:
 Lantern Dispatch must remain future optional update, diagnostics,
 issue-reporting, and support-submission infrastructure. Local diagnostics must
 remain useful without it.
+
+Manual Field Lantern bundles follow the same rule. They are pulled and shared
+by the user, not submitted automatically.
 
 ## Relationship To Field-Kit Feature Requests
 
