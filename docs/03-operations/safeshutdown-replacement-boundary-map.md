@@ -76,6 +76,15 @@ Verified GPi Case 2 findings:
 - The RetroFlag legacy script path also appears to participate in docking
   behavior, including switching between the built-in LCD and HDMI when docked.
 - Sleep or power-save can make SSH recovery harder if Wi-Fi goes down.
+- A 2026-07-08 field incident after resume or power-save behavior showed
+  repeated Linux `rcu: INFO: rcu_preempt detected stalls on CPUs/tasks`
+  messages, loss of SSH and ping, side-switch off failing to shut down, and
+  only physical CM4 cartridge/card removal stopping the device.
+- `SafeShutdown.py` was believed to be enabled during that incident, so the
+  failure must not be treated as only a disabled stock-script path.
+- The GPi Case 2 may auto-enter display/audio power-save after roughly 15-20
+  minutes of no input, so avoiding the top power-save button may not avoid the
+  risky path.
 
 Observed ownership from the legacy script:
 
@@ -86,6 +95,7 @@ Observed ownership from the legacy script:
 | Shutdown sequence | `poweroff()` kills EmulationStation, waits, then calls shutdown | A replacement must preserve clean EmulationStation and Linux shutdown behavior. |
 | Top-button power-save/resume path | `lcdrun()` loop and old LCD scripts | The top button wakes the case from power-save, and that behavior cannot vanish silently. |
 | Legacy LCD/HDMI switching | `lcdrun()` calls `lcdnext.sh` | This appears to participate in docked HDMI behavior and transitions between the built-in LCD and HDMI. It is not KMS-safe because old scripts can rewrite display configuration. |
+| Power-save stall recovery | Unknown: kernel, hardware, display, or power-save path | A field incident suggests software shutdown paths may no longer be reliable after some power-save or resume failures. |
 
 The old script therefore owns more than "shutdown on button press." It is part
 of the power latch, side-switch, display/power-save, docking display, and
@@ -121,6 +131,9 @@ observe and model, but it does not yet own real GPi Case power behavior.
 - Transitions between the built-in LCD and HDMI.
 - Timing and ordering dependencies around KMS display setup.
 - Fully verified audio behavior after the FKMS-to-KMS update.
+- Field-tested behavior after automatic display/audio power-save around 15-20
+  minutes of no input.
+- A reversible emergency reset or safe power-cut recovery path for development.
 - Clean EmulationStation shutdown orchestration on real hardware.
 - Linux shutdown execution.
 - systemd unit installation, enablement, restart policy, or ordering.
@@ -185,6 +198,12 @@ This boundary map does not permit:
 - `lcdnext.sh` or `lcdfirst.sh` execution from `retroflag-powerd`.
 - Assuming handheld LCD, docked HDMI, display transitions, or audio behavior
   are safe without field evidence.
+- Assuming power-save, resume, or automatic power-save behavior is safe without
+  field evidence.
+- Relying on battery depletion or repeated physical CM4 cartridge/card removal
+  as a development recovery path.
+- Cutting battery leads or modifying lithium battery or charging circuitry
+  before the board is mapped.
 - Treating one raw probe result as a complete switch map.
 - Disabling the stock RetroFlag script on real GPi Case 2 hardware.
 
@@ -208,7 +227,11 @@ The conservative trail should look like this:
    HDMI behavior, LCD-to-HDMI and HDMI-to-LCD transitions, KMS display timing,
    audio in both modes, battery and charger conditions, SSH recovery, top-button
    wake, side-switch shutdown, and power-quality observations.
-7. Replacement planning only after the latch, side switch, top-button
+7. Board-recovery investigation for a reversible emergency reset or safe
+   power-cut path, including schematics, teardown photos, board labels, test
+   pads, CM4 `RUN`/`GLOBAL_EN`/reset/power-enable paths, and regulator enable
+   lines.
+8. Replacement planning only after the latch, side switch, top-button
    power-save/resume, clean shutdown, KMS-safe display, docking display, display
    transition, and audio-check behaviors are all verified.
 

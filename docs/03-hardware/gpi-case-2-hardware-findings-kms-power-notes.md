@@ -129,7 +129,7 @@ Known or inferred case resources:
 | Power enable hold | GPIO27 | `SafeShutdown.py` uses BCM GPIO27 as `powerenPin` and drives it high. |
 | Built-in controller | USB HID / Xbox 360 style | Appears as Microsoft Xbox 360 pad / GBA Pi Case+ / Nuvoton. |
 | USB audio | GeneralPlus USB Audio Device | Detected over internal USB. Potential future audio path if PWM audio remains disabled. |
-| LCD/backlight/power-save behavior | Case power board / top button | Screen can turn off while Linux and SSH stay alive. Top button wakes it. |
+| LCD/backlight/power-save behavior | Case power board / top button / possible auto timer | Screen can turn off while Linux may stay alive. Top button wakes visible state, but a later field incident reached repeated RCU stalls and lost network recovery. |
 
 ## Old RetroFlag Scripts
 
@@ -291,6 +291,58 @@ If charger/cable/headroom is marginal, the CM4 sees undervoltage.
 ```
 
 The old SafeShutdown script may not be required for the display-off event itself, but it may participate in later auto-shutdown behavior or power-state handling.
+
+## High-Priority Field Incident: Power-Save RCU Stall
+
+Unresolved field incident, recorded 2026-07-08:
+
+- After resume or power-save behavior, the screen showed repeated Linux console
+  output in the class `rcu: INFO: rcu_preempt detected stalls on CPUs/tasks`.
+- SSH became unavailable.
+- Ping became unavailable.
+- Moving the side power switch to off did not shut the device down.
+- The top sleep/resume button still toggled visible state.
+- The only observed way to stop the device was physically removing the CM4
+  cartridge/card from the GPi Case 2.
+- `SafeShutdown.py` was believed to be enabled, so this incident must not be
+  treated as only "SafeShutdown disabled."
+- A field photo exists for this incident and can be linked from the evidence
+  trail later. Do not add binary image files here unless the project rules for
+  evidence assets are explicit.
+
+Important interpretation:
+
+- This suggests a kernel, hardware, display, or power-save stall where software
+  shutdown paths may no longer be reliable.
+- The side switch is especially concerning because it did not recover the
+  device even though the stock script was believed to own the normal shutdown
+  path.
+- The top button toggling visible state does not prove the Linux userspace,
+  network stack, GPIO shutdown path, or filesystem state is healthy.
+- Waiting for battery depletion or repeatedly pulling the CM4 cartridge/card is
+  unacceptable during development because it risks filesystem or data loss.
+
+Additional field note:
+
+- The GPi Case 2 appears to auto-enter a display/audio power-save path after
+  roughly 15-20 minutes of no input.
+- Avoiding the top power-save button may therefore not avoid the risky
+  power-save or resume path.
+
+New investigation items:
+
+- Identify whether a reversible emergency reset or safe power-cut path exists
+  for development and recovery.
+- Look for schematics, teardown photos, board labels, test pads, CM4
+  `RUN`/`GLOBAL_EN`/reset/power-enable paths, and regulator enable lines.
+- Map the board before proposing any hardware intervention.
+
+Explicit caution:
+
+- Do not cut battery leads or modify lithium battery or charging circuitry
+  without mapping the board first.
+- Do not treat a physical pull of the CM4 cartridge/card as an acceptable
+  recovery procedure except as a last-resort field fact already observed.
 
 ## Power Quality Notes
 

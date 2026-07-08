@@ -71,6 +71,10 @@ The checklist is not passed.
 - No installer implementation exists.
 - No diagnostics implementation exists.
 - No daemon activation exists.
+- Power-save, resume, and automatic power-save behavior are unsafe/unverified
+  after a field incident with repeated Linux RCU stall messages, lost network
+  recovery, side-switch shutdown failure, and physical CM4 cartridge/card
+  removal as the only observed stop.
 
 Until this ledger is filled with real observations, the stock script remains
 part of the active GPi Case 2 power path.
@@ -130,12 +134,31 @@ Verify the top-button and wake trail before replacing the legacy owner:
 
 - Top-button power-save behavior.
 - Resume behavior.
+- Automatic display/audio power-save behavior after roughly 15-20 minutes of
+  no input.
 - SSH and network behavior during sleep.
 - Wake button behavior.
 - Risk notes for losing access during field tests.
+- Recovery behavior when Linux shows repeated `rcu: INFO: rcu_preempt detected
+  stalls on CPUs/tasks` messages.
 
 If sleep can drop Wi-Fi or SSH, the test note should say how the maintainer
 will recover without assuming the display or network will return.
+
+Current caution:
+
+- A 2026-07-08 field incident suggests a kernel, hardware, display, or
+  power-save stall where software shutdown paths may no longer be reliable.
+- `SafeShutdown.py` was believed to be enabled, so do not classify this as only
+  a disabled stock-script issue.
+- Waiting for battery depletion or repeatedly pulling the CM4 cartridge/card is
+  unacceptable for development because of filesystem and data-loss risk.
+- Investigate whether a reversible emergency reset or safe power-cut path
+  exists before deeper field testing.
+- Look for schematics, teardown photos, board labels, test pads, CM4
+  `RUN`/`GLOBAL_EN`/reset/power-enable paths, and regulator enable lines.
+- Do not cut battery leads or modify lithium battery or charging circuitry
+  without mapping the board first.
 
 ## Audio Checks
 
@@ -214,7 +237,9 @@ For GPIO and switch notes, preserve the vocabulary boundary:
 | YYYY-MM-DD | Handheld | Handheld audio after KMS | Built-in handheld audio path plays RetroPie game audio after KMS boot. | Unknown | Unknown | Note selected ALSA/Pulse device, volume path, emulator tested, and whether `audremap` remains disabled. |
 | YYYY-MM-DD | Docked | Docked audio after KMS | Docked HDMI or dock audio path plays RetroPie game audio after KMS boot. | Unknown | Unknown | Note HDMI device presence, dock state at boot, dock insertion order, and whether EmulationStation menu audio also works. |
 | YYYY-MM-DD | Handheld | LCD sleep/wake behavior | LCD/backlight can enter power-save and return without losing EmulationStation state. | Unknown | Unknown | Record whether SSH, Wi-Fi, controller input, and display return cleanly after wake. |
-| YYYY-MM-DD | Handheld | Top-button power-save/resume behavior | Top button triggers the observed case power-save path and wakes the LCD/backlight. | Unknown | Unknown | Treat this as case/power-board behavior unless an input event or GPIO path is proven. Record undervoltage or access-loss events. |
+| 2026-07-08 | Handheld | Power-save/resume RCU stall incident | Power-save or resume returns without kernel stalls, network loss, or loss of shutdown recovery. | Repeated Linux `rcu: INFO: rcu_preempt detected stalls on CPUs/tasks` console output; SSH unavailable; ping unavailable; side switch moved off but did not shut down; top sleep/resume button still toggled visible state; only physical CM4 cartridge/card removal stopped the device. | Fail | Unresolved high-priority field incident. `SafeShutdown.py` was believed enabled, so do not treat as only disabled stock script. A field photo exists and can be linked later if evidence-asset rules are explicit. |
+| YYYY-MM-DD | Handheld | Top-button power-save/resume behavior | Top button triggers the observed case power-save path and wakes the LCD/backlight without kernel stalls, network loss, or shutdown-path loss. | Unsafe/unverified after RCU stall incident | Fail | Treat this as case/power-board behavior unless an input event or GPIO path is proven. Record undervoltage, access-loss, RCU stall, network, side-switch, and recovery events. |
+| YYYY-MM-DD | Handheld | Automatic display/audio power-save after idle | After roughly 15-20 minutes of no input, any automatic display/audio power-save path returns without kernel stalls, network loss, or shutdown-path loss. | Unsafe/unverified after field report that the case may auto-enter power-save | Unknown | Avoiding the top power-save button may not avoid this path. Field-test only with a documented recovery plan that does not depend on SSH, ping, side-switch shutdown, battery depletion, or repeated CM4 cartridge/card removal. |
 | YYYY-MM-DD | Handheld | Side switch with `SafeShutdown.py` still active | Side switch behavior is observed while the stock script still owns the path. | Unknown | Unknown | Record visible side-switch position, process state, raw GPIO26 probe result if taken, and any interpreted `SwitchOn`/`SwitchOff` meaning only in a separate interpretation note. Do not disable the stock script for this row. |
 | YYYY-MM-DD | Handheld to docked | LCD to HDMI switching | Display changes from built-in LCD to docked HDMI without legacy config rewrites. | Unknown | Unknown | Record insertion order, active connector, recovery path, and whether old `lcdnext.sh` or `lcdfirst.sh` ran. |
 | YYYY-MM-DD | Docked to handheld | HDMI to LCD switching | Display returns from docked HDMI to built-in LCD without losing the session. | Unknown | Unknown | Record removal order, active connector, recovery path, and whether the KMS DPI display remains present. |
