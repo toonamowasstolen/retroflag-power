@@ -94,6 +94,40 @@ func TestRunDiagnosticsJSONFormatPrintsStubAndExits(t *testing.T) {
 	}
 }
 
+func TestRunDiagnosticsLongHelpPrintsUsageAndExits(t *testing.T) {
+	var stdout bytes.Buffer
+	var stderr bytes.Buffer
+
+	got := run(context.Background(), []string{"diagnostics", "--help"}, &stdout, &stderr)
+
+	if got != 0 {
+		t.Fatalf("run(diagnostics --help) exit = %d, want 0", got)
+	}
+	if stdout.String() != diagnosticsUsageText {
+		t.Fatalf("run(diagnostics --help) stdout = %q, want %q", stdout.String(), diagnosticsUsageText)
+	}
+	if stderr.String() != "" {
+		t.Fatalf("run(diagnostics --help) stderr = %q, want empty", stderr.String())
+	}
+}
+
+func TestRunDiagnosticsShortHelpPrintsUsageAndExits(t *testing.T) {
+	var stdout bytes.Buffer
+	var stderr bytes.Buffer
+
+	got := run(context.Background(), []string{"diagnostics", "-h"}, &stdout, &stderr)
+
+	if got != 0 {
+		t.Fatalf("run(diagnostics -h) exit = %d, want 0", got)
+	}
+	if stdout.String() != diagnosticsUsageText {
+		t.Fatalf("run(diagnostics -h) stdout = %q, want %q", stdout.String(), diagnosticsUsageText)
+	}
+	if stderr.String() != "" {
+		t.Fatalf("run(diagnostics -h) stderr = %q, want empty", stderr.String())
+	}
+}
+
 func TestRunDiagnosticsRejectsUnsupportedFormat(t *testing.T) {
 	var stdout bytes.Buffer
 	var stderr bytes.Buffer

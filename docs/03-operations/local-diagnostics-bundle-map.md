@@ -86,14 +86,16 @@ file writers, GPIO probes, service behavior, dispatch behavior, or upload path
 are implemented by this document.
 
 Current implementation note: `retroflag-powerd diagnostics`,
-`retroflag-powerd diagnostics --format text`, and
-`retroflag-powerd diagnostics --format json` exist only as stub doorways. The
-text output prints a local-only/read-only message. The JSON output prints a
-small deterministic object saying diagnostics collection is not implemented
-yet and no active behavior was performed. Supported stub formats exit
-successfully, and the command performs no GPIO, shutdown, systemd,
-`SafeShutdown.py`, file, telemetry, diagnostics bundle, OS fact collection, or
-network action.
+`retroflag-powerd diagnostics --format text`,
+`retroflag-powerd diagnostics --format json`,
+`retroflag-powerd diagnostics --help`, and `retroflag-powerd diagnostics -h`
+exist only as stub doorways. The text output prints a local-only/read-only
+message. The JSON output prints a small deterministic object saying
+diagnostics collection is not implemented yet and no active behavior was
+performed. The help output prints deterministic usage text for the stub
+command. Supported stub formats and help forms exit successfully, and the
+command performs no GPIO, shutdown, systemd, `SafeShutdown.py`, file,
+telemetry, diagnostics bundle, OS fact collection, or network action.
 
 Possible future command shapes:
 
@@ -101,6 +103,7 @@ Possible future command shapes:
 retroflag-powerd diagnostics
 retroflag-powerd diagnostics --format text
 retroflag-powerd diagnostics --format json
+retroflag-powerd diagnostics --help
 retroflag-powerd diagnostics --include-gpio-observation
 retroflag-powerd diagnostics --redact
 ```

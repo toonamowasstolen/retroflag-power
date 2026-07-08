@@ -29,6 +29,27 @@ const diagnosticsTextStub = "retroflag-powerd diagnostics\n" +
 	"This command is local-only and read-only in this build.\n" +
 	"No GPIO, shutdown, systemd, SafeShutdown, file, telemetry, or network action was performed.\n"
 
+const diagnosticsUsageText = "retroflag-powerd diagnostics\n" +
+	"\n" +
+	"Usage:\n" +
+	"  retroflag-powerd diagnostics [--format text|json]\n" +
+	"  retroflag-powerd diagnostics --help\n" +
+	"  retroflag-powerd diagnostics -h\n" +
+	"\n" +
+	"Status:\n" +
+	"  Diagnostics collection is planned but not implemented yet.\n" +
+	"  This command is local-only and read-only in this build.\n" +
+	"  No diagnostics bundle is generated, and no GPIO, OS, display, audio, process, SafeShutdown, file, telemetry, or network state is inspected.\n" +
+	"\n" +
+	"Supported formats:\n" +
+	"  text\n" +
+	"  json\n" +
+	"\n" +
+	"Examples:\n" +
+	"  retroflag-powerd diagnostics\n" +
+	"  retroflag-powerd diagnostics --format text\n" +
+	"  retroflag-powerd diagnostics --format json\n"
+
 const diagnosticsJSONStub = "{\n" +
 	"  \"command\": \"retroflag-powerd diagnostics\",\n" +
 	"  \"implemented\": false,\n" +
@@ -127,6 +148,11 @@ func run(ctx context.Context, args []string, stdout io.Writer, stderr io.Writer)
 }
 
 func runDiagnosticsCommand(args []string, stdout io.Writer, stderr io.Writer) int {
+	if diagnosticsHelpRequested(args) {
+		fmt.Fprint(stdout, diagnosticsUsageText)
+		return 0
+	}
+
 	flags := flag.NewFlagSet("retroflag-powerd diagnostics", flag.ContinueOnError)
 	flags.SetOutput(stderr)
 
@@ -150,6 +176,10 @@ func runDiagnosticsCommand(args []string, stdout io.Writer, stderr io.Writer) in
 	}
 
 	return 0
+}
+
+func diagnosticsHelpRequested(args []string) bool {
+	return len(args) == 1 && (args[0] == "--help" || args[0] == "-h")
 }
 
 func runDiagnosticsTextStub(stdout io.Writer) {
