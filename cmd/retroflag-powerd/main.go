@@ -24,6 +24,20 @@ import (
 
 var probeGPIOSignal = gpio.ProbeSignal
 
+const diagnosticsTextStub = "retroflag-powerd diagnostics\n" +
+	"Local diagnostics are planned but not implemented yet.\n" +
+	"This command is local-only and read-only in this build.\n" +
+	"No GPIO, shutdown, systemd, SafeShutdown, file, telemetry, or network action was performed.\n"
+
+const diagnosticsJSONStub = "{\n" +
+	"  \"command\": \"retroflag-powerd diagnostics\",\n" +
+	"  \"implemented\": false,\n" +
+	"  \"local_only\": true,\n" +
+	"  \"read_only\": true,\n" +
+	"  \"message\": \"Local diagnostics are planned but not implemented yet.\",\n" +
+	"  \"actions_performed\": []\n" +
+	"}\n"
+
 func main() {
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer stop()
@@ -32,9 +46,8 @@ func main() {
 }
 
 func run(ctx context.Context, args []string, stdout io.Writer, stderr io.Writer) int {
-	if len(args) == 1 && args[0] == "diagnostics" {
-		runDiagnosticsStub(stdout)
-		return 0
+	if len(args) > 0 && args[0] == "diagnostics" {
+		return runDiagnosticsCommand(args[1:], stdout, stderr)
 	}
 
 	cfg := config.Default()
@@ -113,11 +126,38 @@ func run(ctx context.Context, args []string, stdout io.Writer, stderr io.Writer)
 	return 0
 }
 
-func runDiagnosticsStub(stdout io.Writer) {
-	fmt.Fprintln(stdout, "retroflag-powerd diagnostics")
-	fmt.Fprintln(stdout, "Local diagnostics are planned but not implemented yet.")
-	fmt.Fprintln(stdout, "This command is local-only and read-only in this build.")
-	fmt.Fprintln(stdout, "No GPIO, shutdown, systemd, SafeShutdown, file, telemetry, or network action was performed.")
+func runDiagnosticsCommand(args []string, stdout io.Writer, stderr io.Writer) int {
+	flags := flag.NewFlagSet("retroflag-powerd diagnostics", flag.ContinueOnError)
+	flags.SetOutput(stderr)
+
+	format := flags.String("format", "text", "diagnostics output format (text, json)")
+	if err := flags.Parse(args); err != nil {
+		return 2
+	}
+	if flags.NArg() != 0 {
+		fmt.Fprintf(stderr, "diagnostics failed: unexpected argument %q\n", flags.Arg(0))
+		return 2
+	}
+
+	switch *format {
+	case "text":
+		runDiagnosticsTextStub(stdout)
+	case "json":
+		runDiagnosticsJSONStub(stdout)
+	default:
+		fmt.Fprintf(stderr, "diagnostics failed: unsupported format %q (supported: text, json)\n", *format)
+		return 2
+	}
+
+	return 0
+}
+
+func runDiagnosticsTextStub(stdout io.Writer) {
+	fmt.Fprint(stdout, diagnosticsTextStub)
+}
+
+func runDiagnosticsJSONStub(stdout io.Writer) {
+	fmt.Fprint(stdout, diagnosticsJSONStub)
 }
 
 func runDryRunPowerButton(ctx context.Context, cfg config.Config, stdout io.Writer, stderr io.Writer) error {

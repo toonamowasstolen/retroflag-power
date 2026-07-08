@@ -48,6 +48,70 @@ func TestRunDiagnosticsPrintsStubAndExits(t *testing.T) {
 	}
 }
 
+func TestRunDiagnosticsTextFormatPrintsStubAndExits(t *testing.T) {
+	var stdout bytes.Buffer
+	var stderr bytes.Buffer
+
+	got := run(context.Background(), []string{"diagnostics", "--format", "text"}, &stdout, &stderr)
+
+	if got != 0 {
+		t.Fatalf("run(diagnostics --format text) exit = %d, want 0", got)
+	}
+	const want = "retroflag-powerd diagnostics\n" +
+		"Local diagnostics are planned but not implemented yet.\n" +
+		"This command is local-only and read-only in this build.\n" +
+		"No GPIO, shutdown, systemd, SafeShutdown, file, telemetry, or network action was performed.\n"
+	if stdout.String() != want {
+		t.Fatalf("run(diagnostics --format text) stdout = %q, want %q", stdout.String(), want)
+	}
+	if stderr.String() != "" {
+		t.Fatalf("run(diagnostics --format text) stderr = %q, want empty", stderr.String())
+	}
+}
+
+func TestRunDiagnosticsJSONFormatPrintsStubAndExits(t *testing.T) {
+	var stdout bytes.Buffer
+	var stderr bytes.Buffer
+
+	got := run(context.Background(), []string{"diagnostics", "--format", "json"}, &stdout, &stderr)
+
+	if got != 0 {
+		t.Fatalf("run(diagnostics --format json) exit = %d, want 0", got)
+	}
+	const want = "{\n" +
+		"  \"command\": \"retroflag-powerd diagnostics\",\n" +
+		"  \"implemented\": false,\n" +
+		"  \"local_only\": true,\n" +
+		"  \"read_only\": true,\n" +
+		"  \"message\": \"Local diagnostics are planned but not implemented yet.\",\n" +
+		"  \"actions_performed\": []\n" +
+		"}\n"
+	if stdout.String() != want {
+		t.Fatalf("run(diagnostics --format json) stdout = %q, want %q", stdout.String(), want)
+	}
+	if stderr.String() != "" {
+		t.Fatalf("run(diagnostics --format json) stderr = %q, want empty", stderr.String())
+	}
+}
+
+func TestRunDiagnosticsRejectsUnsupportedFormat(t *testing.T) {
+	var stdout bytes.Buffer
+	var stderr bytes.Buffer
+
+	got := run(context.Background(), []string{"diagnostics", "--format", "yaml"}, &stdout, &stderr)
+
+	if got != 2 {
+		t.Fatalf("run(diagnostics --format yaml) exit = %d, want 2", got)
+	}
+	if stdout.String() != "" {
+		t.Fatalf("run(diagnostics --format yaml) stdout = %q, want empty", stdout.String())
+	}
+	const want = `diagnostics failed: unsupported format "yaml" (supported: text, json)`
+	if !strings.Contains(stderr.String(), want) {
+		t.Fatalf("run(diagnostics --format yaml) stderr = %q, want it to contain %q", stderr.String(), want)
+	}
+}
+
 func TestRunDryRunPowerButtonProcessesIntentAndExits(t *testing.T) {
 	var stdout bytes.Buffer
 	var stderr bytes.Buffer

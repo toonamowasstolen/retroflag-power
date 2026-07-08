@@ -85,10 +85,15 @@ proposed design only: no diagnostics collection, diagnostics bundle generation,
 file writers, GPIO probes, service behavior, dispatch behavior, or upload path
 are implemented by this document.
 
-Current implementation note: `retroflag-powerd diagnostics` exists only as a
-stub doorway. It prints a local-only/read-only message, says diagnostics
-collection is not implemented yet, exits successfully, and performs no GPIO,
-shutdown, systemd, `SafeShutdown.py`, file, telemetry, or network action.
+Current implementation note: `retroflag-powerd diagnostics`,
+`retroflag-powerd diagnostics --format text`, and
+`retroflag-powerd diagnostics --format json` exist only as stub doorways. The
+text output prints a local-only/read-only message. The JSON output prints a
+small deterministic object saying diagnostics collection is not implemented
+yet and no active behavior was performed. Supported stub formats exit
+successfully, and the command performs no GPIO, shutdown, systemd,
+`SafeShutdown.py`, file, telemetry, diagnostics bundle, OS fact collection, or
+network action.
 
 Possible future command shapes:
 
