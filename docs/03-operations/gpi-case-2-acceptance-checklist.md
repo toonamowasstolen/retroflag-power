@@ -18,9 +18,10 @@ related:
   - docs/03-operations/local-diagnostics-bundle-map.md
   - docs/04-architecture/arcadia-runtime-migration-path.md
   - docs/03-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
+  - docs/03-hardware/gpi-case-2-power-integrity-investigation-notes.md
   - docs/00-project/quests/0053-add-the-gpi-case-2-acceptance-checklist.md
   - docs/00-project/quests/0057-add-gpi-case-2-field-test-checklist-entries.md
-last_updated: 2026-07-07
+last_updated: 2026-07-08
 ---
 
 # GPi Case 2 Acceptance Checklist
@@ -75,6 +76,10 @@ The checklist is not passed.
   after a field incident with repeated Linux RCU stall messages, lost network
   recovery, side-switch shutdown failure, and physical CM4 cartridge/card
   removal as the only observed stop.
+- Power integrity is now an open gate after recovery diagnostics showed
+  `hwmon hwmon1: Undervoltage detected!`, later `Voltage normalised`, and
+  `vcgencmd get_throttled` returning `0x50000` while the device was being
+  treated as battery-powered.
 
 Until this ledger is filled with real observations, the stock script remains
 part of the active GPi Case 2 power path.
@@ -159,6 +164,9 @@ Current caution:
   `RUN`/`GLOBAL_EN`/reset/power-enable paths, and regulator enable lines.
 - Do not cut battery leads or modify lithium battery or charging circuitry
   without mapping the board first.
+- Use the
+  [GPi Case 2 Power Integrity Investigation Notes](../03-hardware/gpi-case-2-power-integrity-investigation-notes.md)
+  before claiming power-save or resume support.
 
 ## Audio Checks
 
@@ -240,6 +248,7 @@ For GPIO and switch notes, preserve the vocabulary boundary:
 | 2026-07-08 | Handheld | Power-save/resume RCU stall incident | Power-save or resume returns without kernel stalls, network loss, or loss of shutdown recovery. | Repeated Linux `rcu: INFO: rcu_preempt detected stalls on CPUs/tasks` console output; SSH unavailable; ping unavailable; side switch moved off but did not shut down; top sleep/resume button still toggled visible state; only physical CM4 cartridge/card removal stopped the device. | Fail | Unresolved high-priority field incident. `SafeShutdown.py` was believed enabled, so do not treat as only disabled stock script. A field photo exists and can be linked later if evidence-asset rules are explicit. |
 | YYYY-MM-DD | Handheld | Top-button power-save/resume behavior | Top button triggers the observed case power-save path and wakes the LCD/backlight without kernel stalls, network loss, or shutdown-path loss. | Unsafe/unverified after RCU stall incident | Fail | Treat this as case/power-board behavior unless an input event or GPIO path is proven. Record undervoltage, access-loss, RCU stall, network, side-switch, and recovery events. |
 | YYYY-MM-DD | Handheld | Automatic display/audio power-save after idle | After roughly 15-20 minutes of no input, any automatic display/audio power-save path returns without kernel stalls, network loss, or shutdown-path loss. | Unsafe/unverified after field report that the case may auto-enter power-save | Unknown | Avoiding the top power-save button may not avoid this path. Field-test only with a documented recovery plan that does not depend on SSH, ping, side-switch shutdown, battery depletion, or repeated CM4 cartridge/card removal. |
+| YYYY-MM-DD | Handheld | Power-integrity read-only capture | Undervoltage/throttling evidence is captured before and after boot, idle, and any later safe resume pass. | `hwmon hwmon1: Undervoltage detected!`; later `Voltage normalised`; `vcgencmd get_throttled` returned `0x50000` while treated as battery-powered. | Fail | Follow the power-integrity investigation notes. Record battery level, USB-C power state, docked vs handheld, screen state, audio activity, controller activity, time since boot, and time since idle. |
 | YYYY-MM-DD | Handheld | Side switch with `SafeShutdown.py` still active | Side switch behavior is observed while the stock script still owns the path. | Unknown | Unknown | Record visible side-switch position, process state, raw GPIO26 probe result if taken, and any interpreted `SwitchOn`/`SwitchOff` meaning only in a separate interpretation note. Do not disable the stock script for this row. |
 | YYYY-MM-DD | Handheld to docked | LCD to HDMI switching | Display changes from built-in LCD to docked HDMI without legacy config rewrites. | Unknown | Unknown | Record insertion order, active connector, recovery path, and whether old `lcdnext.sh` or `lcdfirst.sh` ran. |
 | YYYY-MM-DD | Docked to handheld | HDMI to LCD switching | Display returns from docked HDMI to built-in LCD without losing the session. | Unknown | Unknown | Record removal order, active connector, recovery path, and whether the KMS DPI display remains present. |
