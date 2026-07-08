@@ -14,6 +14,7 @@ purpose: Define a manual read-only GPi Case 2 Boot Power Trace Lantern capture p
 related:
   - gpi-case-2-boot-power-trace-lantern-map.md
   - gpi-case-2-field-lantern-capture-procedure.md
+  - ../../scripts/gpi-case2-boot-power-trace-field-lantern.sh
   - common-problems-mage-map.md
   - local-diagnostics-bundle-map.md
   - gpi-case-2-recovery-first-field-procedure.md
@@ -28,9 +29,14 @@ last_updated: 2026-07-08
 > power flags, display clues, USB chatter, and process milestones, all local
 > and quiet.
 
-This document is documentation only. It does not change Go code, add
-executable project tooling, read GPIO, write GPIO, execute shutdown, execute
-reboot, install or activate systemd, alter `rc.local`, replace
+This procedure uses one portable read-only script:
+[`scripts/gpi-case2-boot-power-trace-field-lantern.sh`](../../scripts/gpi-case2-boot-power-trace-field-lantern.sh).
+The script is copied to the GPi Case 2 by hand and run from the user's home
+directory. It does not require git, a repository checkout, Go, a project
+install, root-only writes, or Arcadia Runtime services on the Pi.
+
+The script does not read GPIO, write GPIO, execute shutdown, execute reboot,
+install or activate systemd, alter `rc.local`, replace
 `/opt/RetroFlag/SafeShutdown.py`, implement resume, flash firmware, run
 RetroFlag installers, submit telemetry, upload data, apply automatic fixes, or
 contact the network.
@@ -93,19 +99,30 @@ first, then capture after the device is booted again.
 
 ## What It Captures
 
-The sample script creates a timestamped folder like:
+The portable Field Lantern script creates a timestamped folder like:
 
 ```text
-/home/pi/gpi-case2-boot-power-trace-20260708-191500
+/home/pi/gpi-case2-boot-power-trace-field-lantern-20260708-191500
 ```
 
 It writes:
 
 - `trace.csv`, one sample per second for 90 seconds.
 - `report.txt`, capture context, command availability, and safety reminders.
-- `dmesg-power-display-usb.txt`, matching kernel lines seen during the trace.
+- `manifest.txt`, portability and privacy notes for the capture.
+- `dmesg-power-display-usb-xpad-rcu-watchdog-mmc-ext4.txt`, matching kernel
+  lines for voltage, throttle, display, USB, controller, RCU, watchdog, MMC,
+  and ext4 clues.
+- `journal-power-display-usb-xpad-rcu-watchdog-mmc-ext4.txt`, matching
+  `journalctl -b` lines when `journalctl` is available.
 - `process-milestones.txt`, first-seen milestones such as EmulationStation
   becoming visible to `pgrep`.
+- Command outputs for `uname`, `uptime`, `mount`, `df`, `free`, `lsusb`,
+  `systemd-analyze blame`, `systemd-analyze critical-chain`, and safe
+  `vcgencmd` readings when those commands are available.
+- Readable boot context files such as `/proc/cmdline`, `/proc/uptime`,
+  `/proc/device-tree/model`, `/boot/config.txt`, `/boot/cmdline.txt`,
+  `/boot/firmware/config.txt`, and `/boot/firmware/cmdline.txt`.
 - A `.tar.gz` bundle beside the folder.
 
 Each CSV row includes:
@@ -118,12 +135,12 @@ Each CSV row includes:
 - Whether `emulationstation` is running.
 - A compact latest matching `dmesg` hint.
 
-If a command is unavailable, the script records that as evidence instead of
-installing anything.
+If a command or file is unavailable, the script records that as evidence
+instead of installing anything or broadening the capture.
 
 ## What It Does Not Do
 
-The sample script does not:
+The portable Field Lantern script does not:
 
 - Run `curl` or `wget`.
 - Modify files outside its own timestamped folder, except for the final
@@ -140,147 +157,46 @@ The sample script does not:
 - Upload telemetry or contact Lantern Dispatch.
 - Apply fixes or generate a repair plan.
 
-## Manual Capture On The GPi Case 2
+## Copy The Lantern To The GPi Case 2
 
-Paste this into an SSH session or local terminal shortly after boot. Keep the
-handheld awake while it runs, and stop the session before idle auto power-save
-can trigger.
-
-This is docs-only sample text, not project tooling.
+From the Mac, copy the single script to the Pi. Replace `pi` and
+`retropie.local` with the user and host for the test device.
 
 ```sh
-sh <<'EOF'
-#!/bin/sh
-set -eu
-
-DURATION_SECONDS="90"
-STAMP="$(date +%Y%m%d-%H%M%S)"
-ROOT="${HOME}/gpi-case2-boot-power-trace-${STAMP}"
-BUNDLE="${ROOT}.tar.gz"
-DMESG_PATTERN="under-voltage|undervoltage|voltage|thrott|vc4|v3d|drm|dpi|kms|framebuffer|panel|mailbox|usb|hid|input|audio|snd|mmc|ext4|filesystem|I/O error|rcu|stall|hung|blocked"
-
-mkdir -p "${ROOT}"
-
-csv_escape() {
-  printf '%s' "$1" | sed 's/"/""/g; s/^/"/; s/$/"/'
-}
-
-command_value() {
-  if command -v "$1" >/dev/null 2>&1; then
-    "$@" 2>&1 || true
-  else
-    printf 'command-unavailable:%s' "$1"
-  fi
-}
-
-latest_dmesg_match() {
-  dmesg 2>&1 | grep -Ei "${DMESG_PATTERN}" | tail -n 1 || true
-}
-
-{
-  echo "GPi Case 2 Boot Power Trace Lantern"
-  echo "Captured local time: ${STAMP}"
-  echo "Duration seconds: ${DURATION_SECONDS}"
-  echo "Output folder: ${ROOT}"
-  echo
-  echo "This trace is local and read-only."
-  echo "It does not read GPIO, write GPIO, upload, install, fix, shutdown, or reboot."
-  echo "Keep the device active and stop before idle auto power-save."
-  echo "Do not test resume yet."
-  echo
-  echo "Command availability:"
-  for cmd in date dmesg grep tail sed awk pgrep tar vcgencmd; do
-    if command -v "${cmd}" >/dev/null 2>&1; then
-      echo "- ${cmd}: available"
-    else
-      echo "- ${cmd}: unavailable"
-    fi
-  done
-} > "${ROOT}/report.txt"
-
-printf '%s\n' \
-  'captured_at,uptime_seconds,throttled,volts,temp,emulationstation_running,latest_dmesg_match' \
-  > "${ROOT}/trace.csv"
-
-{
-  echo "GPi Case 2 Boot Power Trace process milestones"
-  echo "Captured local time: ${STAMP}"
-  echo
-} > "${ROOT}/process-milestones.txt"
-
-{
-  echo "GPi Case 2 Boot Power Trace matching dmesg lines"
-  echo "Captured local time: ${STAMP}"
-  echo "Pattern: ${DMESG_PATTERN}"
-  echo
-} > "${ROOT}/dmesg-power-display-usb.txt"
-
-ES_WAS_RUNNING=0
-i=0
-while [ "${i}" -lt "${DURATION_SECONDS}" ]; do
-  NOW="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
-  UPTIME="$(awk '{print $1}' /proc/uptime 2>/dev/null || printf 'unknown')"
-  THROTTLED="$(command_value vcgencmd get_throttled | tr '\n' ' ' | sed 's/[[:space:]]*$//')"
-  VOLTS="$(command_value vcgencmd measure_volts | tr '\n' ' ' | sed 's/[[:space:]]*$//')"
-  TEMP="$(command_value vcgencmd measure_temp | tr '\n' ' ' | sed 's/[[:space:]]*$//')"
-
-  if pgrep -x emulationstation >/dev/null 2>&1; then
-    ES_RUNNING="yes"
-    if [ "${ES_WAS_RUNNING}" -eq 0 ]; then
-      echo "${NOW} uptime=${UPTIME} emulationstation first observed running" \
-        >> "${ROOT}/process-milestones.txt"
-      ES_WAS_RUNNING=1
-    fi
-  else
-    ES_RUNNING="no"
-  fi
-
-  LATEST_DMESG="$(latest_dmesg_match | tr '\n' ' ' | sed 's/[[:space:]]*$//')"
-
-  {
-    csv_escape "${NOW}"; printf ','
-    csv_escape "${UPTIME}"; printf ','
-    csv_escape "${THROTTLED}"; printf ','
-    csv_escape "${VOLTS}"; printf ','
-    csv_escape "${TEMP}"; printf ','
-    csv_escape "${ES_RUNNING}"; printf ','
-    csv_escape "${LATEST_DMESG}"; printf '\n'
-  } >> "${ROOT}/trace.csv"
-
-  {
-    echo "----- ${NOW} uptime=${UPTIME} -----"
-    dmesg 2>&1 | grep -Ei "${DMESG_PATTERN}" | tail -n 20 || true
-    echo
-  } >> "${ROOT}/dmesg-power-display-usb.txt"
-
-  i=$((i + 1))
-  sleep 1
-done
-
-{
-  echo
-  echo "Capture completed: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-  echo "Final throttled: $(command_value vcgencmd get_throttled | tr '\n' ' ' | sed 's/[[:space:]]*$//')"
-  echo "Final volts: $(command_value vcgencmd measure_volts | tr '\n' ' ' | sed 's/[[:space:]]*$//')"
-  echo "Final temp: $(command_value vcgencmd measure_temp | tr '\n' ' ' | sed 's/[[:space:]]*$//')"
-  echo
-  echo "Interpret with the EDC procedure:"
-  echo "- early boot"
-  echo "- KMS/display initialization"
-  echo "- USB/audio/controller initialization"
-  echo "- EmulationStation startup"
-  echo "- idle risk"
-} >> "${ROOT}/report.txt"
-
-tar -czf "${BUNDLE}" -C "${HOME}" "$(basename "${ROOT}")"
-echo "${BUNDLE}"
-EOF
+scp scripts/gpi-case2-boot-power-trace-field-lantern.sh \
+  pi@retropie.local:/home/pi/
 ```
 
-The final line prints the local bundle path, for example:
+If `.local` name resolution is unreliable, use the device IP address:
+
+```sh
+scp scripts/gpi-case2-boot-power-trace-field-lantern.sh \
+  pi@192.168.1.50:/home/pi/
+```
+
+This copy step is the whole Field Lantern Relic handoff. The Pi does not need
+the repository, git, Go, a service, or an installer.
+
+## Run The Lantern On The GPi Case 2
+
+SSH to the Pi shortly after a clean boot, keep the handheld awake, and run the
+script from the home directory. The default trace is 90 seconds.
+
+```sh
+ssh pi@retropie.local
+sh /home/pi/gpi-case2-boot-power-trace-field-lantern.sh
+```
+
+The script prints the local bundle path as its final line, for example:
 
 ```text
-/home/pi/gpi-case2-boot-power-trace-20260708-191500.tar.gz
+/home/pi/gpi-case2-boot-power-trace-field-lantern-20260708-191500.tar.gz
+```
+
+If a shorter smoke test is needed, pass a duration in seconds:
+
+```sh
+sh /home/pi/gpi-case2-boot-power-trace-field-lantern.sh 15
 ```
 
 ## Pull The Output With `scp`
@@ -290,14 +206,14 @@ the timestamp with the values for the test device.
 
 ```sh
 mkdir -p ~/Desktop/gpi-case-2-boot-power-traces
-scp pi@retropie.local:/home/pi/gpi-case2-boot-power-trace-20260708-191500.tar.gz \
+scp pi@retropie.local:/home/pi/gpi-case2-boot-power-trace-field-lantern-20260708-191500.tar.gz \
   ~/Desktop/gpi-case-2-boot-power-traces/
 ```
 
 If `.local` name resolution is unreliable, use the device IP address:
 
 ```sh
-scp pi@192.168.1.50:/home/pi/gpi-case2-boot-power-trace-20260708-191500.tar.gz \
+scp pi@192.168.1.50:/home/pi/gpi-case2-boot-power-trace-field-lantern-20260708-191500.tar.gz \
   ~/Desktop/gpi-case-2-boot-power-traces/
 ```
 
@@ -305,7 +221,7 @@ Inspect before sharing:
 
 ```sh
 mkdir -p ~/Desktop/gpi-case-2-boot-power-traces/review
-tar -xzf ~/Desktop/gpi-case-2-boot-power-traces/gpi-case2-boot-power-trace-20260708-191500.tar.gz \
+tar -xzf ~/Desktop/gpi-case-2-boot-power-traces/gpi-case2-boot-power-trace-field-lantern-20260708-191500.tar.gz \
   -C ~/Desktop/gpi-case-2-boot-power-traces/review
 ```
 

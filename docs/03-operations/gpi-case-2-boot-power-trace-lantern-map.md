@@ -13,6 +13,7 @@ audience:
 purpose: Map a future focused read-only boot power trace for timing GPi Case 2 undervoltage and throttling evidence during startup.
 related:
   - gpi-case-2-boot-power-trace-capture-procedure.md
+  - ../../scripts/gpi-case2-boot-power-trace-field-lantern.sh
   - gpi-case-2-field-lantern-capture-procedure.md
   - common-problems-mage-map.md
   - local-diagnostics-bundle-map.md
@@ -29,12 +30,18 @@ last_updated: 2026-07-08
 > of boot: enough light to see when the power warning appears, without touching
 > the power path.
 
-This document is documentation only. It does not change Go code, add executable
-project tooling, read GPIO, write GPIO, execute shutdown, install or activate
-systemd, alter `rc.local`, replace `/opt/RetroFlag/SafeShutdown.py`, implement
-resume, flash firmware, submit telemetry, upload data, make project-code
-network calls, apply automatic fixes, run RetroFlag installers, or approve
-hardware modification.
+This map is paired with one portable read-only script:
+[`scripts/gpi-case2-boot-power-trace-field-lantern.sh`](../../scripts/gpi-case2-boot-power-trace-field-lantern.sh).
+That script is a hand-carried Field Lantern Relic for the Pi; it is not an
+installer, service, daemon, or Arcadia Runtime activation path. It does not
+require git, a repository checkout, Go, root-only writes, or project install on
+the GPi Case 2.
+
+This map and its script do not change Go code, read GPIO, write GPIO, execute
+shutdown, install or activate systemd, alter `rc.local`, replace
+`/opt/RetroFlag/SafeShutdown.py`, implement resume, flash firmware, submit
+telemetry, upload data, make project-code network calls, apply automatic
+fixes, run RetroFlag installers, or approve hardware modification.
 
 Nothing here approves cutting battery leads, modifying lithium battery or
 charging circuitry, blind soldering, shorting unknown pads, relying on battery
@@ -49,8 +56,8 @@ Dispatch is not implemented.
 
 The current manual capture procedure lives in
 [GPi Case 2 Boot Power Trace Capture Procedure](gpi-case-2-boot-power-trace-capture-procedure.md).
-It provides a copy-paste, read-only shell sample for a short local trace. It is
-not project tooling and does not run automatically.
+It provides the copy, run, and retrieve path for the portable shell script. The
+script does not run automatically.
 
 ## Purpose
 
@@ -146,8 +153,10 @@ The output should be local, previewable, and easy to include inside later
 diagnostics:
 
 - A timestamped report file.
-- An optional CSV-style table for repeated samples.
+- A CSV-style table for repeated samples.
 - A short human-readable summary naming the strongest timing bucket.
+- Unavailable command and file markers instead of capture failure.
+- A `.tar.gz` bundle beside the timestamped folder.
 - No automatic upload.
 - No Lantern Dispatch contact.
 - No automatic fix recommendations.
@@ -221,8 +230,8 @@ integration.
 Expected path:
 
 1. Done: docs-only map.
-2. Done: manual script sample procedure, still read-only and not project
-   executable tooling.
+2. Done: portable read-only Field Lantern script and copy/run/retrieve
+   procedure.
 3. Later: Field Lantern bundle includes a boot power trace section.
 4. Later: Common Problems Mage classifies power buckets.
 5. Later: `retroflag-powerd diagnostics --bundle` can include the local trace
