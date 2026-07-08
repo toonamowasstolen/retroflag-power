@@ -6,6 +6,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/toonamowasstolen/retroflag-power/internal/diagnostics"
 	"github.com/toonamowasstolen/retroflag-power/internal/input"
 )
 
@@ -103,8 +104,8 @@ func TestRunDiagnosticsLongHelpPrintsUsageAndExits(t *testing.T) {
 	if got != 0 {
 		t.Fatalf("run(diagnostics --help) exit = %d, want 0", got)
 	}
-	if stdout.String() != diagnosticsUsageText {
-		t.Fatalf("run(diagnostics --help) stdout = %q, want %q", stdout.String(), diagnosticsUsageText)
+	if stdout.String() != diagnostics.UsageText() {
+		t.Fatalf("run(diagnostics --help) stdout = %q, want %q", stdout.String(), diagnostics.UsageText())
 	}
 	if stderr.String() != "" {
 		t.Fatalf("run(diagnostics --help) stderr = %q, want empty", stderr.String())
@@ -120,8 +121,8 @@ func TestRunDiagnosticsShortHelpPrintsUsageAndExits(t *testing.T) {
 	if got != 0 {
 		t.Fatalf("run(diagnostics -h) exit = %d, want 0", got)
 	}
-	if stdout.String() != diagnosticsUsageText {
-		t.Fatalf("run(diagnostics -h) stdout = %q, want %q", stdout.String(), diagnosticsUsageText)
+	if stdout.String() != diagnostics.UsageText() {
+		t.Fatalf("run(diagnostics -h) stdout = %q, want %q", stdout.String(), diagnostics.UsageText())
 	}
 	if stderr.String() != "" {
 		t.Fatalf("run(diagnostics -h) stderr = %q, want empty", stderr.String())

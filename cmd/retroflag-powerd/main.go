@@ -15,6 +15,7 @@ import (
 
 	"github.com/toonamowasstolen/retroflag-power/internal/app"
 	"github.com/toonamowasstolen/retroflag-power/internal/config"
+	"github.com/toonamowasstolen/retroflag-power/internal/diagnostics"
 	"github.com/toonamowasstolen/retroflag-power/internal/events"
 	"github.com/toonamowasstolen/retroflag-power/internal/gpio"
 	"github.com/toonamowasstolen/retroflag-power/internal/input"
@@ -23,41 +24,6 @@ import (
 )
 
 var probeGPIOSignal = gpio.ProbeSignal
-
-const diagnosticsTextStub = "retroflag-powerd diagnostics\n" +
-	"Local diagnostics are planned but not implemented yet.\n" +
-	"This command is local-only and read-only in this build.\n" +
-	"No GPIO, shutdown, systemd, SafeShutdown, file, telemetry, or network action was performed.\n"
-
-const diagnosticsUsageText = "retroflag-powerd diagnostics\n" +
-	"\n" +
-	"Usage:\n" +
-	"  retroflag-powerd diagnostics [--format text|json]\n" +
-	"  retroflag-powerd diagnostics --help\n" +
-	"  retroflag-powerd diagnostics -h\n" +
-	"\n" +
-	"Status:\n" +
-	"  Diagnostics collection is planned but not implemented yet.\n" +
-	"  This command is local-only and read-only in this build.\n" +
-	"  No diagnostics bundle is generated, and no GPIO, OS, display, audio, process, SafeShutdown, file, telemetry, or network state is inspected.\n" +
-	"\n" +
-	"Supported formats:\n" +
-	"  text\n" +
-	"  json\n" +
-	"\n" +
-	"Examples:\n" +
-	"  retroflag-powerd diagnostics\n" +
-	"  retroflag-powerd diagnostics --format text\n" +
-	"  retroflag-powerd diagnostics --format json\n"
-
-const diagnosticsJSONStub = "{\n" +
-	"  \"command\": \"retroflag-powerd diagnostics\",\n" +
-	"  \"implemented\": false,\n" +
-	"  \"local_only\": true,\n" +
-	"  \"read_only\": true,\n" +
-	"  \"message\": \"Local diagnostics are planned but not implemented yet.\",\n" +
-	"  \"actions_performed\": []\n" +
-	"}\n"
 
 func main() {
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
@@ -149,7 +115,7 @@ func run(ctx context.Context, args []string, stdout io.Writer, stderr io.Writer)
 
 func runDiagnosticsCommand(args []string, stdout io.Writer, stderr io.Writer) int {
 	if diagnosticsHelpRequested(args) {
-		fmt.Fprint(stdout, diagnosticsUsageText)
+		diagnostics.RenderUsage(stdout)
 		return 0
 	}
 
@@ -167,9 +133,9 @@ func runDiagnosticsCommand(args []string, stdout io.Writer, stderr io.Writer) in
 
 	switch *format {
 	case "text":
-		runDiagnosticsTextStub(stdout)
+		diagnostics.RenderText(stdout)
 	case "json":
-		runDiagnosticsJSONStub(stdout)
+		diagnostics.RenderJSON(stdout)
 	default:
 		fmt.Fprintf(stderr, "diagnostics failed: unsupported format %q (supported: text, json)\n", *format)
 		return 2
@@ -180,14 +146,6 @@ func runDiagnosticsCommand(args []string, stdout io.Writer, stderr io.Writer) in
 
 func diagnosticsHelpRequested(args []string) bool {
 	return len(args) == 1 && (args[0] == "--help" || args[0] == "-h")
-}
-
-func runDiagnosticsTextStub(stdout io.Writer) {
-	fmt.Fprint(stdout, diagnosticsTextStub)
-}
-
-func runDiagnosticsJSONStub(stdout io.Writer) {
-	fmt.Fprint(stdout, diagnosticsJSONStub)
 }
 
 func runDryRunPowerButton(ctx context.Context, cfg config.Config, stdout io.Writer, stderr io.Writer) error {
