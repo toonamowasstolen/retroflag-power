@@ -12,6 +12,7 @@ audience:
   - Hardware Porters
 purpose: Define a manual read-only GPi Case 2 Field Lantern capture bundle procedure for troubleshooting evidence without long terminal pastes.
 related:
+  - gpi-case-2-boot-power-trace-capture-procedure.md
   - common-problems-mage-map.md
   - local-diagnostics-bundle-map.md
   - gpi-case-2-boot-power-trace-lantern-map.md
@@ -44,10 +45,12 @@ is not implemented.
 
 The future focused startup timing trail is mapped in
 [GPi Case 2 Boot Power Trace Lantern Map](gpi-case-2-boot-power-trace-lantern-map.md).
-That Boot Power Trace Lantern is intended to capture when undervoltage or
-throttling appears during the first moments of GPi Case 2 boot. It may later
-become one optional section inside a Field Lantern bundle, but it is not
-implemented here.
+The current manual startup capture procedure lives in
+[GPi Case 2 Boot Power Trace Capture Procedure](gpi-case-2-boot-power-trace-capture-procedure.md).
+That Boot Power Trace Lantern captures when undervoltage or throttling appears
+during the first moments of GPi Case 2 boot. It may later become one optional
+section inside a Field Lantern bundle, but this Field Lantern procedure does
+not run it automatically.
 
 ## Purpose
 
@@ -390,7 +393,7 @@ The intended trail is staged:
 | Stage | Meaning | Status |
 | --- | --- | --- |
 | Today | Manual documented Field Lantern capture procedure. | This page. |
-| Next | Boot power trace script or map for power-integrity context. | Future documentation or tooling quest. |
+| Done | Manual Boot Power Trace capture procedure for power-integrity context. | [Boot Power Trace Capture Procedure](gpi-case-2-boot-power-trace-capture-procedure.md). |
 | Later | `retroflag-powerd diagnostics --bundle`. | Future local-only implementation quest. |
 | Later | `retroflag-powerd troubleshoot`. | Future Common Problems Mage classifier quest. |
 | Future optional | Lantern Dispatch submission. | Explicitly out of scope and not implemented. |

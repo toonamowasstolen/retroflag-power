@@ -361,6 +361,8 @@ Voltage normalised
 
 The future focused startup timing pass is mapped in the
 [GPi Case 2 Boot Power Trace Lantern Map](../03-operations/gpi-case-2-boot-power-trace-lantern-map.md).
+The manual capture procedure lives in the
+[GPi Case 2 Boot Power Trace Capture Procedure](../03-operations/gpi-case-2-boot-power-trace-capture-procedure.md).
 Use that lantern to distinguish early boot, KMS/display initialization,
 USB/audio/controller initialization, EmulationStation startup, and later
 idle/power-save timing before treating KMS or any single subsystem as the

@@ -12,6 +12,7 @@ audience:
   - Hardware Porters
 purpose: Map a future focused read-only boot power trace for timing GPi Case 2 undervoltage and throttling evidence during startup.
 related:
+  - gpi-case-2-boot-power-trace-capture-procedure.md
   - gpi-case-2-field-lantern-capture-procedure.md
   - common-problems-mage-map.md
   - local-diagnostics-bundle-map.md
@@ -45,6 +46,11 @@ capture. Field Lantern means the broader read-only local capture bundle.
 Common Problems Mage means a future classifier or troubleshooter. Lantern
 Dispatch means a future optional support, update, or submission layer. Lantern
 Dispatch is not implemented.
+
+The current manual capture procedure lives in
+[GPi Case 2 Boot Power Trace Capture Procedure](gpi-case-2-boot-power-trace-capture-procedure.md).
+It provides a copy-paste, read-only shell sample for a short local trace. It is
+not project tooling and does not run automatically.
 
 ## Purpose
 
@@ -214,8 +220,8 @@ integration.
 
 Expected path:
 
-1. Today: docs-only map.
-2. Next: manual script sample or procedure, still read-only and not project
+1. Done: docs-only map.
+2. Done: manual script sample procedure, still read-only and not project
    executable tooling.
 3. Later: Field Lantern bundle includes a boot power trace section.
 4. Later: Common Problems Mage classifies power buckets.

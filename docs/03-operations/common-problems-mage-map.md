@@ -14,6 +14,7 @@ purpose: Map a future read-only troubleshooting helper that can classify common 
 related:
   - local-diagnostics-bundle-map.md
   - gpi-case-2-field-lantern-capture-procedure.md
+  - gpi-case-2-boot-power-trace-capture-procedure.md
   - gpi-case-2-boot-power-trace-lantern-map.md
   - gpi-case-2-safeshutdown-script-behavior-map.md
   - safeshutdown-replacement-boundary-map.md
@@ -50,6 +51,8 @@ implementation.
 
 The future boot-specific power timing trail is mapped in
 [GPi Case 2 Boot Power Trace Lantern Map](gpi-case-2-boot-power-trace-lantern-map.md).
+The manual capture path lives in
+[GPi Case 2 Boot Power Trace Capture Procedure](gpi-case-2-boot-power-trace-capture-procedure.md).
 Those buckets can later help the mage distinguish early boot, KMS/display
 initialization, USB/audio/controller initialization, EmulationStation startup,
 and idle or power-save risk patterns.
