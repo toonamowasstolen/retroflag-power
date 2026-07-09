@@ -13,6 +13,7 @@ audience:
 purpose: Define a manual read-only GPi Case 2 Field Lantern capture bundle procedure for troubleshooting evidence without long terminal pastes.
 related:
   - gpi-case-2-session-watch-lantern-design.md
+  - gpi-case-2-session-watch-field-run-procedure.md
   - ../../scripts/gpi-case2-session-watch-lantern.sh
   - gpi-case-2-boot-power-trace-capture-procedure.md
   - human-facing-field-lantern-script-ux-standard.md
@@ -68,6 +69,11 @@ The first read-only foreground skeleton lives at
 It observes menu, emulator, play, idle-risk, and post-resume sessions after
 boot at skeleton scale, writes one final `.txt` Ledger artifact, and does not
 run automatically.
+The handheld-first run procedure lives in
+[GPi Case 2 Session Watch Field Run Procedure](gpi-case-2-session-watch-field-run-procedure.md)
+and covers real command examples, physical observations, artifact retrieval,
+and interpretation of clean, display-blank, SSH-lost, and hard-freeze-like
+runs.
 
 Manual Field Lantern scripts that a person watches in a terminal should use
 the
@@ -427,7 +433,7 @@ The intended trail is staged:
 | Today | Manual documented Field Lantern capture procedure. | This page. |
 | Done | Manual Bundle Collector Lantern procedure for post-boot power-integrity evidence. | [Bundle Collector Lantern Capture Procedure](gpi-case-2-boot-power-trace-capture-procedure.md). |
 | Later | Safe Boot Power Trace Lantern starts during boot and writes timestamped local samples. | Future quest; no boot startup or systemd activation here. |
-| Current skeleton | Session Watch Lantern observes runtime throttling, temp, load, memory, frontend/emulator clues, and recent warnings. | [`scripts/gpi-case2-session-watch-lantern.sh`](../../scripts/gpi-case2-session-watch-lantern.sh); foreground only, no telemetry by default. |
+| Current skeleton | Session Watch Lantern observes runtime throttling, temp, load, memory, frontend/emulator clues, and recent warnings. | [`scripts/gpi-case2-session-watch-lantern.sh`](../../scripts/gpi-case2-session-watch-lantern.sh); [field run procedure](gpi-case-2-session-watch-field-run-procedure.md); foreground only, no telemetry by default. |
 | Later | `retroflag-powerd diagnostics --bundle`. | Future local-only implementation quest. |
 | Later | `retroflag-powerd troubleshoot`. | Future Common Problems Mage classifier quest. |
 | Future optional | Lantern Dispatch submission. | Explicitly out of scope and not implemented. |

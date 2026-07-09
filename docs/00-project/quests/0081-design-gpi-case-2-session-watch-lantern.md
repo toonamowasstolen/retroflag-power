@@ -12,6 +12,7 @@ audience:
 purpose: Add a documentation-only design for a future read-only GPi Case 2 Session Watch Lantern that observes handheld runtime sessions without changing device behavior.
 related:
   - ../../03-operations/gpi-case-2-session-watch-lantern-design.md
+  - ../../03-operations/gpi-case-2-session-watch-field-run-procedure.md
   - ../../03-operations/gpi-case-2-boot-power-trace-lantern-map.md
   - ../../03-operations/gpi-case-2-boot-power-trace-capture-procedure.md
   - ../../03-operations/gpi-case-2-field-lantern-capture-procedure.md
@@ -95,3 +96,7 @@ The Session Watch Lantern now has a Spellbook page before it has a script. The
 next implementation quest can stay tiny and honest: a read-only handheld
 watch, clear progress, and one final satchel that says what it saw and what it
 missed.
+
+Follow-on field use is documented in
+[QUEST-0083](0083-add-gpi-case-2-session-watch-field-run-procedure.md) and the
+[GPi Case 2 Session Watch Field Run Procedure](../../03-operations/gpi-case-2-session-watch-field-run-procedure.md).

@@ -107,6 +107,9 @@ On unsupported platforms or uncertain GPIO access, it reports
 - [GPi Case 2 Session Watch Lantern design](docs/03-operations/gpi-case-2-session-watch-lantern-design.md):
   the handheld-first map and current script skeleton for a read-only runtime
   watch across menu, play, idle-risk, and post-resume field sessions.
+- [GPi Case 2 Session Watch field run procedure](docs/03-operations/gpi-case-2-session-watch-field-run-procedure.md):
+  the handheld-first command, observation, retrieval, and interpretation trail
+  for real Session Watch Lantern runs.
 - [Installer and migration toolkit map](docs/03-operations/installer-migration-toolkit-map.md):
   the reversible compass for future local install, update, uninstall, and
   restore trails before any field kit mutates a device.

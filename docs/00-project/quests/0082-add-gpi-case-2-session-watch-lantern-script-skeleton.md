@@ -13,6 +13,7 @@ purpose: Add the first read-only GPi Case 2 Session Watch Lantern script skeleto
 related:
   - ../../../scripts/gpi-case2-session-watch-lantern.sh
   - ../../03-operations/gpi-case-2-session-watch-lantern-design.md
+  - ../../03-operations/gpi-case-2-session-watch-field-run-procedure.md
   - ../../03-operations/gpi-case-2-field-lantern-capture-procedure.md
   - ../../03-operations/gpi-case-2-boot-power-trace-lantern-map.md
   - ../../03-operations/local-diagnostics-bundle-map.md
@@ -120,3 +121,7 @@ The Session Watch Lantern now has its first pocketable Relic. It is not yet a
 full diagnostics satchel, and it does not pretend to be one. It watches for a
 bounded duration, shows the operator that the Lantern is alive, and seals one
 Ledger file that says exactly what it saw and what it did not change.
+
+Follow-on field use is documented in
+[QUEST-0083](0083-add-gpi-case-2-session-watch-field-run-procedure.md) and the
+[GPi Case 2 Session Watch Field Run Procedure](../../03-operations/gpi-case-2-session-watch-field-run-procedure.md).

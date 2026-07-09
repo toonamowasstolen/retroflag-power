@@ -20,6 +20,7 @@ related:
   - docs/03-operations/gpi-case-2-boot-power-trace-capture-procedure.md
   - docs/03-operations/gpi-case-2-boot-power-trace-lantern-map.md
   - docs/03-operations/gpi-case-2-session-watch-lantern-design.md
+  - docs/03-operations/gpi-case-2-session-watch-field-run-procedure.md
   - scripts/gpi-case2-session-watch-lantern.sh
   - docs/03-operations/installer-migration-toolkit-map.md
   - docs/03-operations/gpi-case-2-acceptance-checklist.md
@@ -75,9 +76,11 @@ The runtime session trail is mapped in
 [GPi Case 2 Session Watch Lantern Design](gpi-case-2-session-watch-lantern-design.md).
 The current foreground skeleton lives at
 [`scripts/gpi-case2-session-watch-lantern.sh`](../../scripts/gpi-case2-session-watch-lantern.sh).
-It may later become an optional diagnostics bundle section for menu, emulator,
-play, idle-risk, and post-resume evidence, but this map does not implement
-that capture automatically.
+Real runs are documented in
+[GPi Case 2 Session Watch Field Run Procedure](gpi-case-2-session-watch-field-run-procedure.md).
+The script may later become an optional diagnostics bundle section for menu,
+emulator, play, idle-risk, and post-resume evidence, but this map does not
+implement that capture automatically.
 
 ## Purpose
 

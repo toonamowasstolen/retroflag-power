@@ -13,6 +13,7 @@ audience:
 purpose: Design a future read-only GPi Case 2 Session Watch Lantern for handheld runtime observation across menu, play, sleep-risk, and resume-risk field sessions.
 related:
   - ../../scripts/gpi-case2-session-watch-lantern.sh
+  - gpi-case-2-session-watch-field-run-procedure.md
   - gpi-case-2-boot-power-trace-lantern-map.md
   - gpi-case-2-boot-power-trace-capture-procedure.md
   - gpi-case-2-field-lantern-capture-procedure.md
@@ -43,6 +44,12 @@ The GPi Case 2 is a handheld Relic. The primary field procedure must not
 assume an attached keyboard. SSH to `retropi@gpi` is optional support for
 copying, launching, or retrieving a satchel; it is not the primary handheld
 experience.
+
+The practical handheld procedure for running the current script is
+[GPi Case 2 Session Watch Field Run Procedure](gpi-case-2-session-watch-field-run-procedure.md).
+Use that page for command examples, physical observation notes, artifact
+retrieval, and interpretation of clean, display-blank, SSH-lost, and hard
+freeze-like runs.
 
 ## Purpose
 
@@ -329,6 +336,12 @@ QUEST-0082 started tiny with
 - Shell syntax and help smoke checks through `make check-scripts`.
 - No systemd, no auto-start, no GPIO, no shutdown, no sleep/resume trigger, no
   upload, and no repair advice.
+
+QUEST-0083 adds the handheld-first field run procedure for the current
+skeleton:
+[GPi Case 2 Session Watch Field Run Procedure](gpi-case-2-session-watch-field-run-procedure.md).
+That page is the operator Spellbook for real runs; this design remains the
+map of intent, boundaries, and future growth.
 
 A later fuller implementation can grow from that skeleton:
 
