@@ -19,6 +19,7 @@ related:
   - docs/03-operations/gpi-case-2-field-lantern-capture-procedure.md
   - docs/03-operations/gpi-case-2-boot-power-trace-capture-procedure.md
   - docs/03-operations/gpi-case-2-boot-power-trace-lantern-map.md
+  - docs/03-operations/gpi-case-2-session-watch-lantern-design.md
   - docs/03-operations/installer-migration-toolkit-map.md
   - docs/03-operations/gpi-case-2-acceptance-checklist.md
   - docs/00-project/quests/0051-map-the-local-diagnostics-bundle.md
@@ -68,6 +69,12 @@ That current collector may attach remembered boot logs and current
 `vcgencmd get_throttled` state. A future Boot Power Trace Lantern may later
 become an optional diagnostics bundle section for true timestamped early-boot
 samples, but this map does not implement that capture automatically.
+
+The future runtime session trail is mapped in
+[GPi Case 2 Session Watch Lantern Design](gpi-case-2-session-watch-lantern-design.md).
+That Session Watch Lantern may later become an optional diagnostics bundle
+section for menu, emulator, play, idle-risk, and post-resume evidence, but this
+map does not implement that capture automatically.
 
 ## Purpose
 
@@ -203,6 +210,9 @@ A future local diagnostics bundle may include allowlisted sections such as:
   manual post-boot collector bundle, limited to remembered boot logs, current
   `vcgencmd get_throttled` state, narrow matching kernel excerpts, and
   best-effort process observations.
+- Optional Session Watch Lantern output, when a future explicit runtime
+  watcher exists, limited to menu, emulator, play, idle-risk, post-resume,
+  throttle, thermal, load, memory, and narrow matching log evidence.
 - `SafeShutdown.py` presence, process, and status observations, read-only only.
 - `rc.local` or systemd startup references, read-only only.
 - Raw GPIO probe observations, only when explicitly run and included by the

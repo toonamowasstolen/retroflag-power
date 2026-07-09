@@ -12,6 +12,7 @@ audience:
   - Hardware Porters
 purpose: Map a future focused read-only boot power trace for timing GPi Case 2 undervoltage and throttling evidence during startup.
 related:
+  - gpi-case-2-session-watch-lantern-design.md
   - gpi-case-2-boot-power-trace-capture-procedure.md
   - human-facing-field-lantern-script-ux-standard.md
   - ../../scripts/gpi-case2-bundle-collector-field-lantern.sh
@@ -78,7 +79,7 @@ script does not run automatically.
 | --- | --- | --- |
 | Bundle Collector Lantern | Current | Manual post-boot evidence and `.tar.gz` collector run only after the GPi Case 2 is responsive. |
 | Boot Trace Lantern | Future | Read-only local recorder that starts during boot and writes timestamped samples from early startup. |
-| Session Watch Lantern | Future | Runtime observer for menu, emulator, and play sessions after boot. |
+| Session Watch Lantern | Designed | Runtime observer for menu, emulator, play, idle-risk, and post-resume sessions after boot. |
 
 The current Bundle Collector Lantern can gather remembered boot logs and sample
 the current `vcgencmd get_throttled` state. It cannot determine the exact
@@ -315,7 +316,9 @@ The next safe Boot Power Trace Lantern should be:
 
 ## Future Session Watch Lantern
 
-A future Session Watch Lantern can observe runtime sessions after boot:
+The future Session Watch Lantern is now mapped in
+[GPi Case 2 Session Watch Lantern Design](gpi-case-2-session-watch-lantern-design.md).
+It can observe runtime sessions after boot:
 
 - Pre-sleep state when sleep is expected or suspected.
 - Post-resume state when the handheld returns.

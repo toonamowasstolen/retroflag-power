@@ -12,6 +12,7 @@ audience:
   - Hardware Porters
 purpose: Define the current manual read-only GPi Case 2 bundle collector procedure and separate it from the future Boot Power Trace Lantern.
 related:
+  - gpi-case-2-session-watch-lantern-design.md
   - gpi-case-2-boot-power-trace-lantern-map.md
   - gpi-case-2-field-lantern-capture-procedure.md
   - human-facing-field-lantern-script-ux-standard.md
@@ -50,11 +51,12 @@ exact artifact paths, duration reporting, and plain safety messages.
 Bundle Collector Lantern means this manual post-boot evidence and `.tar.gz`
 collector. Boot Power Trace Lantern is reserved for a future safe recorder
 that starts during boot and samples timestamped state from early startup.
-Session Watch Lantern means a later runtime observation lantern. Field Lantern
-means the broader family of local read-only evidence procedures. Common
-Problems Mage means a future classifier or troubleshooter. Lantern Dispatch
-means a future optional support, update, or submission layer. Lantern Dispatch
-is not implemented.
+Session Watch Lantern means a designed future runtime observation lantern for
+menu, emulator, play, idle-risk, and post-resume sessions. Field Lantern means
+the broader family of local read-only evidence procedures. Common Problems
+Mage means a future classifier or troubleshooter. Lantern Dispatch means a
+future optional support, update, or submission layer. Lantern Dispatch is not
+implemented.
 
 ## Purpose
 
@@ -383,7 +385,9 @@ implemented here.
 
 ## Future Session Watch Lantern
 
-A later Session Watch Lantern can watch runtime play and menu sessions:
+A later Session Watch Lantern can watch runtime play and menu sessions. Its
+design lives in
+[GPi Case 2 Session Watch Lantern Design](gpi-case-2-session-watch-lantern-design.md):
 
 - Pre-sleep state when sleep is expected or suspected.
 - Post-resume state when the handheld returns.

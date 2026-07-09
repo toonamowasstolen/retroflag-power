@@ -12,6 +12,7 @@ audience:
   - Hardware Porters
 purpose: Define a manual read-only GPi Case 2 Field Lantern capture bundle procedure for troubleshooting evidence without long terminal pastes.
 related:
+  - gpi-case-2-session-watch-lantern-design.md
   - gpi-case-2-boot-power-trace-capture-procedure.md
   - human-facing-field-lantern-script-ux-standard.md
   - common-problems-mage-map.md
@@ -58,6 +59,12 @@ Boot Power Trace Lantern name is reserved for a future safe boot-time recorder
 that starts during boot and samples timestamped state. It may later become one
 optional section inside a Field Lantern bundle, but this Field Lantern
 procedure does not run it automatically.
+
+The future runtime session trail is mapped in
+[GPi Case 2 Session Watch Lantern Design](gpi-case-2-session-watch-lantern-design.md).
+That Session Watch Lantern is designed to observe menu, emulator, play,
+idle-risk, and post-resume sessions after boot. It is not implemented here and
+does not run automatically.
 
 Manual Field Lantern scripts that a person watches in a terminal should use
 the

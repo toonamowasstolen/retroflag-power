@@ -16,6 +16,7 @@ related:
   - gpi-case-2-field-lantern-capture-procedure.md
   - gpi-case-2-boot-power-trace-capture-procedure.md
   - gpi-case-2-boot-power-trace-lantern-map.md
+  - gpi-case-2-session-watch-lantern-design.md
   - gpi-case-2-safeshutdown-script-behavior-map.md
   - safeshutdown-replacement-boundary-map.md
   - gpi-case-2-acceptance-checklist.md
@@ -61,6 +62,8 @@ power-save risk patterns.
 
 Power integrity evidence and read-only capture boundaries are mapped in
 [GPi Case 2 Power Integrity Investigation Notes](../03-hardware/gpi-case-2-power-integrity-investigation-notes.md).
+The future runtime session trail is mapped in
+[GPi Case 2 Session Watch Lantern Design](gpi-case-2-session-watch-lantern-design.md).
 Developer recovery and access candidates, including the inconclusive hidden
 firmware USB path, are mapped in
 [GPi Case 2 Developer Access Paths](../03-hardware/gpi-case-2-developer-access-paths.md).
@@ -107,6 +110,7 @@ The first GPi Case 2 issue buckets should be:
 | --- | --- | --- |
 | `power-integrity-warning` | Power headroom is suspicious or needs focused follow-up. | Any undervoltage, throttling, voltage-normalized, brownout-like, or context mismatch evidence from safe captures. |
 | `boot-power-trace-bucket` | A focused boot trace suggests a timing bucket for undervoltage or throttling. | Early-boot, KMS/display init, USB/audio/controller init, EmulationStation startup, idle/power-save, or no-observed-warning buckets from a Boot Power Trace Lantern. |
+| `session-watch-bucket` | A focused runtime watch suggests a menu, emulator, play, idle-risk, or post-resume pattern. | Session Watch Lantern samples, missing-sample gaps, process milestones, thermal/load trails, throttle changes, and narrow runtime log excerpts. |
 | `safeshutdown-not-running` | The stock SafeShutdown path appears absent or inactive when expected. | `/opt/RetroFlag/SafeShutdown.py` exists but no matching process or startup reference is visible. |
 | `safeshutdown-script-modified` | The local SafeShutdown script differs from the expected stock or captured baseline. | File hash, timestamp, content markers, or missing expected GPIO26/GPIO27 logic. |
 | `legacy-lcd-switching-active` | Old RetroFlag LCD/HDMI switching appears active and may rewrite display configuration. | `lcdfirst.sh`, `lcdnext.sh`, GPIO18 polling, or `rc.local` entries for old LCD scripts. |

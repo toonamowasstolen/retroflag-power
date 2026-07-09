@@ -104,6 +104,9 @@ On unsupported platforms or uncertain GPIO access, it reports
 - [Local diagnostics bundle map](docs/03-operations/local-diagnostics-bundle-map.md):
   the privacy-first compass for future local, redacted, previewable support
   bundles before any optional Lantern Dispatch trail exists.
+- [GPi Case 2 Session Watch Lantern design](docs/03-operations/gpi-case-2-session-watch-lantern-design.md):
+  the handheld-first map for a future read-only runtime watch across menu,
+  play, idle-risk, and post-resume field sessions.
 - [Installer and migration toolkit map](docs/03-operations/installer-migration-toolkit-map.md):
   the reversible compass for future local install, update, uninstall, and
   restore trails before any field kit mutates a device.
