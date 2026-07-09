@@ -22,7 +22,7 @@ related:
   - docs/03-operations/gpi-case-gpio-probe-ledger.md
   - docs/00-project/quests/0054-add-the-edc-quest-operating-rules.md
   - docs/00-project/quests/0056-add-the-claude-session-start-checklist.md
-last_updated: 2026-07-07
+last_updated: 2026-07-09
 ---
 
 # EDC Quest Operating Rules
@@ -81,6 +81,8 @@ failure.
 
 Every quest report should include:
 
+- Explicit QUEST number.
+- Quest file under `docs/00-project/quests/`.
 - Pushed commit hash.
 - Validation results.
 - Diff stat.
@@ -88,6 +90,11 @@ Every quest report should include:
 - EDC docs consulted.
 - Docs updated.
 - New findings or follow-up quests.
+
+The quest file should also carry the validation results and completion commit
+hash whenever the hash already exists. For the quest that creates its own file,
+the final report may carry the pushed hash because a Git commit cannot contain
+its own final object hash.
 
 The report should name the victory, not only the diff. A small verified win is
 still a real badge for the ledger.

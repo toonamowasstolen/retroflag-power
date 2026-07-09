@@ -66,6 +66,11 @@ Documentation
 - [x] `make check` passed.
 - [x] `make check-links` passed.
 
+## Completion Commit
+
+- `63bfd9f3d20f9a79c4c08efced40fb498cff5163` - added the shared
+  human-facing Field Lantern Script UX Standard.
+
 ## Milestone Note
 
 Human-facing manual Lanterns now have a shared terminal UX Spellbook. Long

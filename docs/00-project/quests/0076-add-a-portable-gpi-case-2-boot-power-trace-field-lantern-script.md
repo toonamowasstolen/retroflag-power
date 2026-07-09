@@ -69,6 +69,11 @@ Diagnostics
 - [x] `make check` passed.
 - [x] `make check-links` passed.
 
+## Completion Commit
+
+- `c8cd9f673a54f7c9e68316f10cf089c7f77eda2d` - added the portable GPi Case 2
+  Bundle Collector Field Lantern script and its capture trail markers.
+
 ## Milestone Note
 
 The GPi Case 2 now has a portable Bundle Collector Lantern: copy one script to
