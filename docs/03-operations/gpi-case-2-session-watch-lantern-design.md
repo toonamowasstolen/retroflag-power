@@ -14,6 +14,7 @@ purpose: Design a future read-only GPi Case 2 Session Watch Lantern for handheld
 related:
   - ../../scripts/gpi-case2-session-watch-lantern.sh
   - gpi-case-2-session-watch-field-run-procedure.md
+  - gpi-case-2-session-watch-evidence-ledger.md
   - gpi-case-2-boot-power-trace-lantern-map.md
   - gpi-case-2-boot-power-trace-capture-procedure.md
   - gpi-case-2-field-lantern-capture-procedure.md
@@ -50,6 +51,12 @@ The practical handheld procedure for running the current script is
 Use that page for command examples, physical observation notes, artifact
 retrieval, and interpretation of clean, display-blank, SSH-lost, and hard
 freeze-like runs.
+
+Real handheld results belong in the
+[GPi Case 2 Session Watch Evidence Ledger](gpi-case-2-session-watch-evidence-ledger.md).
+That Ledger keeps the script artifact, display and LED notes, SSH state,
+side-switch behavior, top-button behavior, EmulationStation status, and final
+outcome together without turning observations into guesses.
 
 ## Purpose
 

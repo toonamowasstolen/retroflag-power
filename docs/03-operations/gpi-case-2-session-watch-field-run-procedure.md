@@ -14,6 +14,7 @@ purpose: Define the handheld-first field procedure for running the read-only GPi
 related:
   - ../../scripts/gpi-case2-session-watch-lantern.sh
   - gpi-case-2-session-watch-lantern-design.md
+  - gpi-case-2-session-watch-evidence-ledger.md
   - gpi-case-2-field-lantern-capture-procedure.md
   - gpi-case-2-boot-power-trace-capture-procedure.md
   - human-facing-field-lantern-script-ux-standard.md
@@ -33,6 +34,9 @@ This procedure is for the current read-only script:
 It is a foreground Lantern Relic for a responsive GPi Case 2. It writes one
 final text Ledger artifact and prints progress, timing, status, and the final
 artifact path while it works.
+
+After the run, record the artifact and concise human observations in the
+[GPi Case 2 Session Watch Evidence Ledger](gpi-case-2-session-watch-evidence-ledger.md).
 
 The GPi Case 2 remains a handheld Relic first. Do not assume an attached
 keyboard. SSH to `retropi@gpi` is optional support for copying, launching, or
@@ -242,6 +246,8 @@ Before sharing:
 - Open the Ledger locally.
 - Confirm it says `READ-ONLY / NO CHANGES MADE`.
 - Check the final status, warnings, missing evidence, and artifact path.
+- Add or update the matching entry in the
+  [GPi Case 2 Session Watch Evidence Ledger](gpi-case-2-session-watch-evidence-ledger.md).
 - Add the human field notes beside it or below it.
 - Redact anything private before sending it to another maintainer.
 
@@ -266,6 +272,8 @@ procedure.
 
 The Session Watch Ledger pairs well with:
 
+- The evidence Ledger:
+  [GPi Case 2 Session Watch Evidence Ledger](gpi-case-2-session-watch-evidence-ledger.md).
 - The design map:
   [GPi Case 2 Session Watch Lantern Design](gpi-case-2-session-watch-lantern-design.md).
 - The wider manual bundle trail:

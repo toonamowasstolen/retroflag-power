@@ -18,6 +18,7 @@ related:
   - gpi-case-2-boot-power-trace-lantern-map.md
   - gpi-case-2-session-watch-lantern-design.md
   - gpi-case-2-session-watch-field-run-procedure.md
+  - gpi-case-2-session-watch-evidence-ledger.md
   - gpi-case-2-safeshutdown-script-behavior-map.md
   - safeshutdown-replacement-boundary-map.md
   - gpi-case-2-acceptance-checklist.md
@@ -72,6 +73,9 @@ Real handheld runs are documented in
 [GPi Case 2 Session Watch Field Run Procedure](gpi-case-2-session-watch-field-run-procedure.md),
 including the human display, LED, SSH, side-switch, and top-button notes that
 the future mage should treat as user-supplied field evidence.
+The first structured place for those real results is the
+[GPi Case 2 Session Watch Evidence Ledger](gpi-case-2-session-watch-evidence-ledger.md),
+which keeps observed script artifacts and human notes separate from guesses.
 Developer recovery and access candidates, including the inconclusive hidden
 firmware USB path, are mapped in
 [GPi Case 2 Developer Access Paths](../03-hardware/gpi-case-2-developer-access-paths.md).
@@ -246,6 +250,9 @@ This map depends on these existing ledgers:
 - [GPi Case 2 Session Watch Field Run Procedure](gpi-case-2-session-watch-field-run-procedure.md)
   for real handheld Session Watch runs and the human field notes that pair
   with one final Ledger artifact.
+- [GPi Case 2 Session Watch Evidence Ledger](gpi-case-2-session-watch-evidence-ledger.md)
+  for recorded Session Watch artifacts, field observations, interpretation
+  buckets, and next read-only runes.
 - [GPi Case 2 SafeShutdown Script Behavior Map](gpi-case-2-safeshutdown-script-behavior-map.md)
   for the stock script, GPIO26, GPIO27, GPIO18, and legacy LCD behavior.
 - [SafeShutdown Replacement Boundary Map](safeshutdown-replacement-boundary-map.md)

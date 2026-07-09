@@ -110,6 +110,9 @@ On unsupported platforms or uncertain GPIO access, it reports
 - [GPi Case 2 Session Watch field run procedure](docs/03-operations/gpi-case-2-session-watch-field-run-procedure.md):
   the handheld-first command, observation, retrieval, and interpretation trail
   for real Session Watch Lantern runs.
+- [GPi Case 2 Session Watch evidence ledger](docs/03-operations/gpi-case-2-session-watch-evidence-ledger.md):
+  the first place to record real Session Watch Lantern artifacts, human notes,
+  interpretation buckets, and next runes without inventing data.
 - [Installer and migration toolkit map](docs/03-operations/installer-migration-toolkit-map.md):
   the reversible compass for future local install, update, uninstall, and
   restore trails before any field kit mutates a device.

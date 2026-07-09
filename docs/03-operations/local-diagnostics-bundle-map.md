@@ -21,6 +21,7 @@ related:
   - docs/03-operations/gpi-case-2-boot-power-trace-lantern-map.md
   - docs/03-operations/gpi-case-2-session-watch-lantern-design.md
   - docs/03-operations/gpi-case-2-session-watch-field-run-procedure.md
+  - docs/03-operations/gpi-case-2-session-watch-evidence-ledger.md
   - scripts/gpi-case2-session-watch-lantern.sh
   - docs/03-operations/installer-migration-toolkit-map.md
   - docs/03-operations/gpi-case-2-acceptance-checklist.md
@@ -78,6 +79,8 @@ The current foreground skeleton lives at
 [`scripts/gpi-case2-session-watch-lantern.sh`](../../scripts/gpi-case2-session-watch-lantern.sh).
 Real runs are documented in
 [GPi Case 2 Session Watch Field Run Procedure](gpi-case-2-session-watch-field-run-procedure.md).
+Recorded run evidence belongs in the
+[GPi Case 2 Session Watch Evidence Ledger](gpi-case-2-session-watch-evidence-ledger.md).
 The script may later become an optional diagnostics bundle section for menu,
 emulator, play, idle-risk, and post-resume evidence, but this map does not
 implement that capture automatically.
@@ -219,6 +222,10 @@ A future local diagnostics bundle may include allowlisted sections such as:
 - Optional Session Watch Lantern output, when a future explicit runtime
   watcher exists, limited to menu, emulator, play, idle-risk, post-resume,
   throttle, thermal, load, memory, and narrow matching log evidence.
+- Optional Session Watch Evidence Ledger entries, when a user attaches them,
+  limited to script artifact names, concise display and LED notes, SSH state,
+  side-switch and top-button observations, EmulationStation status,
+  interpretation buckets, and next read-only runes.
 - `SafeShutdown.py` presence, process, and status observations, read-only only.
 - `rc.local` or systemd startup references, read-only only.
 - Raw GPIO probe observations, only when explicitly run and included by the
