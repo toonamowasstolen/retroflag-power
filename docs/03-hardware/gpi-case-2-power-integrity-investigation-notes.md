@@ -116,6 +116,11 @@ vcgencmd measure_volts
 dmesg -T | grep -iE "under-voltage|undervoltage|voltage|thrott"
 ```
 
+Interpret `vcgencmd` narrowly: `get_throttled` is the main firmware clue for
+undervoltage and throttling, but it does not report watts, TDP, amps, power
+draw, or actual 5V rail voltage. `measure_volts` reports an internal/core rail
+reading, not the GPi Case 2 5V input rail.
+
 Capture the same evidence:
 
 - Before and after boot.
@@ -147,7 +152,7 @@ cartridge/card removal.
 
 | Mode | Condition | Capture | Status |
 | --- | --- | --- | --- |
-| Battery only | Fresh charge, cold boot | `vcgencmd get_throttled`, `vcgencmd measure_volts`, voltage/throttling log search, manual observations | Safe observation-only |
+| Battery only | Fresh charge, cold boot | `vcgencmd get_throttled`, `vcgencmd measure_volts` internal/core rail reading, voltage/throttling log search, manual observations | Safe observation-only |
 | Battery only | After 10 minutes idle | Same read-only captures and manual observations | Safe observation-only |
 | Battery only | After screen power-save, if it can be observed safely | Same read-only captures and manual observations before and after wake | Unsafe/unverified until emergency recovery exists |
 | USB-C power attached | Handheld mode | Same read-only captures and manual observations | Safe observation-only |

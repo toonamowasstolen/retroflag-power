@@ -14,7 +14,7 @@ if [ "$DURATION_SECONDS" -eq 0 ]; then
 fi
 
 STAMP="$(date +%Y%m%d-%H%M%S 2>/dev/null || printf 'unknown-time')"
-ROOT="${HOME:-.}/gpi-case2-boot-power-trace-field-lantern-${STAMP}"
+ROOT="${HOME:-.}/gpi-case2-bundle-collector-field-lantern-${STAMP}"
 BUNDLE="${ROOT}.tar.gz"
 DMESG_PATTERN="under-voltage|undervoltage|voltage|thrott|vc4|v3d|drm|dpi|kms|framebuffer|panel|mailbox|usb|hid|input|xpad|audio|snd|mmc|ext4|filesystem|I/O error|rcu|stall|hung|blocked|watchdog"
 
@@ -130,13 +130,17 @@ write_matching_journal_excerpt() {
 }
 
 {
-	printf 'GPi Case 2 Boot Power Trace Field Lantern\n'
+	printf 'GPi Case 2 Bundle Collector Field Lantern\n'
 	printf 'captured_local_stamp: %s\n' "${STAMP}"
 	printf 'duration_seconds: %s\n' "${DURATION_SECONDS}"
 	printf 'output_folder: %s\n' "${ROOT}"
 	printf 'bundle: %s\n\n' "${BUNDLE}"
 	printf 'safety: local read-only capture; no GPIO reads, no GPIO writes, no shutdown, no reboot, no systemd activation, no installer, no telemetry, no automatic fixes.\n'
-	printf 'note: keep the handheld active and stop before idle auto power-save can trigger. Do not test resume yet.\n\n'
+	printf 'note: manual post-boot bundle collector; not a true early boot recorder.\n'
+	printf 'note: keep the handheld active and stop before idle auto power-save can trigger. Avoid the top sleep/resume button unless a procedure explicitly says otherwise.\n'
+	printf 'note: get_throttled reports firmware throttling flags, not watts, TDP, amps, power draw, or actual 5V rail voltage.\n'
+	printf 'note: measure_volts reports an internal/core rail, not the GPi Case 2 5V input rail.\n'
+	printf 'note: emulationstation process detection is a clue, not authoritative proof.\n\n'
 	printf 'command_availability:\n'
 	for cmd in date uname uptime cat awk sed grep tail pgrep tar dmesg journalctl systemd-analyze lsusb mount df free vcgencmd; do
 		printf -- '- %s: %s\n' "$cmd" "$(command_status "$cmd")"
@@ -144,10 +148,12 @@ write_matching_journal_excerpt() {
 } > "${ROOT}/report.txt"
 
 {
-	printf 'GPi Case 2 Boot Power Trace Field Lantern manifest\n'
+	printf 'GPi Case 2 Bundle Collector Field Lantern manifest\n'
 	printf 'captured_local_stamp: %s\n' "${STAMP}"
-	printf 'script: gpi-case2-boot-power-trace-field-lantern.sh\n'
+	printf 'script: gpi-case2-bundle-collector-field-lantern.sh\n'
 	printf 'portable: yes\n'
+	printf 'capture_kind: manual-post-boot-bundle-collector\n'
+	printf 'true_boot_time_recorder: no\n'
 	printf 'requires_repo_checkout: no\n'
 	printf 'requires_git: no\n'
 	printf 'requires_go: no\n'
@@ -179,12 +185,13 @@ write_matching_dmesg_excerpt "${ROOT}/dmesg-power-display-usb-xpad-rcu-watchdog-
 write_matching_journal_excerpt "${ROOT}/journal-power-display-usb-xpad-rcu-watchdog-mmc-ext4.txt"
 
 printf '%s\n' \
-	'captured_at,uptime_seconds,throttled,volts,temp,emulationstation_running,latest_dmesg_match' \
+	'captured_at,uptime_seconds,throttled,core_volts_not_5v_input,temp,emulationstation_running_unreliable,latest_dmesg_match' \
 	> "${ROOT}/trace.csv"
 
 {
-	printf 'GPi Case 2 Boot Power Trace process milestones\n'
+	printf 'GPi Case 2 Bundle Collector process milestones\n'
 	printf 'captured_local_stamp: %s\n\n' "${STAMP}"
+	printf 'note: process detection is best-effort and may miss a visible frontend.\n\n'
 } > "${ROOT}/process-milestones.txt"
 
 ES_WAS_RUNNING=0
@@ -226,14 +233,13 @@ done
 {
 	printf '\ncompleted_at: %s\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ 2>/dev/null || date 2>/dev/null || printf 'unknown-time')"
 	printf 'final_throttled: %s\n' "$(command_value vcgencmd get_throttled | one_line)"
-	printf 'final_volts: %s\n' "$(command_value vcgencmd measure_volts | one_line)"
+	printf 'final_core_volts_not_5v_input: %s\n' "$(command_value vcgencmd measure_volts | one_line)"
 	printf 'final_temp: %s\n\n' "$(command_value vcgencmd measure_temp | one_line)"
-	printf 'interpretation_buckets:\n'
-	printf -- '- early boot\n'
-	printf -- '- KMS/display initialization\n'
-	printf -- '- USB/audio/controller initialization\n'
-	printf -- '- EmulationStation startup\n'
-	printf -- '- idle risk\n'
+	printf 'collector_limits:\n'
+	printf -- '- gathers remembered boot logs after the handheld is responsive\n'
+	printf -- '- samples current and sticky get_throttled state\n'
+	printf -- '- cannot determine the exact second of early boot undervoltage unless a boot-time recorder was already running\n'
+	printf -- '- cannot report watts, TDP, amps, power draw, or actual 5V rail voltage\n'
 } >> "${ROOT}/report.txt"
 
 if command -v tar >/dev/null 2>&1; then

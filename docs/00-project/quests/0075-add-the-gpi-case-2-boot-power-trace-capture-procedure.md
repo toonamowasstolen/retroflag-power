@@ -1,6 +1,6 @@
 ---
 id: QUEST-0075
-title: Add the GPi Case 2 Boot Power Trace Capture Procedure
+title: Add the GPi Case 2 Post-Boot Power Evidence Capture Procedure
 version: 0.1.0
 status: Implemented
 owner: Joshua Taft
@@ -10,7 +10,7 @@ audience:
   - AI Assistants
   - Future Maintainers
   - Hardware Porters
-purpose: Document the manual read-only GPi Case 2 Boot Power Trace Lantern capture procedure for startup power and timing evidence.
+purpose: Document the manual read-only GPi Case 2 post-boot power evidence capture procedure that later needed clearer Bundle Collector naming.
 related:
   - ../../03-operations/gpi-case-2-boot-power-trace-capture-procedure.md
   - ../../03-operations/gpi-case-2-boot-power-trace-lantern-map.md
@@ -22,10 +22,10 @@ related:
 last_updated: 2026-07-08
 ---
 
-# QUEST-0075 - Add the GPi Case 2 Boot Power Trace Capture Procedure
+# QUEST-0075 - Add the GPi Case 2 Post-Boot Power Evidence Capture Procedure
 
-> Give the first 90 seconds of boot a small lantern: enough timing evidence to
-> see power, display, USB, and launcher clues without touching the power path.
+> Gather remembered boot clues into a small scroll after the handheld is
+> responsive, without touching the power path.
 
 ## Quest Status
 
@@ -42,12 +42,13 @@ Documentation
 ## Outcome
 
 - Added the manual
-  [GPi Case 2 Boot Power Trace Capture Procedure](../../03-operations/gpi-case-2-boot-power-trace-capture-procedure.md).
+  [GPi Case 2 Bundle Collector Lantern Capture Procedure](../../03-operations/gpi-case-2-boot-power-trace-capture-procedure.md).
 - Documented purpose, when to run, safety notes, captured files, non-goals, a
   copy-paste shell script sample, `scp` pull examples, Field Lantern inclusion,
   and interpretation notes.
-- Preserved the Boot Power Trace Lantern, Field Lantern, Common Problems Mage,
-  and Lantern Dispatch boundaries.
+- Preserved the Field Lantern, Common Problems Mage, and Lantern Dispatch
+  boundaries. Later quest work reserves Boot Power Trace Lantern for a true
+  boot-time recorder.
 - Linked the procedure from the Boot Power Trace Lantern map, Field Lantern
   capture procedure, Common Problems Mage map, Local Diagnostics Bundle map,
   Power Integrity notes, and KMS Power notes.
@@ -75,6 +76,7 @@ Documentation
 
 ## Milestone Note
 
-The GPi Case 2 power trail now has a copy-paste startup trace procedure:
+The GPi Case 2 power trail gained a copy-paste post-boot evidence procedure:
 local, timestamped, inspectable, and short enough to stop before idle
-power-save risk.
+power-save risk. Later terminology maps this as a Bundle Collector Lantern,
+not a true Boot Power Trace Lantern.

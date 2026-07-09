@@ -51,11 +51,13 @@ implementation.
 
 The future boot-specific power timing trail is mapped in
 [GPi Case 2 Boot Power Trace Lantern Map](gpi-case-2-boot-power-trace-lantern-map.md).
-The manual capture path lives in
+The current manual post-boot bundle collector path lives in
 [GPi Case 2 Boot Power Trace Capture Procedure](gpi-case-2-boot-power-trace-capture-procedure.md).
-Those buckets can later help the mage distinguish early boot, KMS/display
-initialization, USB/audio/controller initialization, EmulationStation startup,
-and idle or power-save risk patterns.
+The current collector can contribute remembered boot logs and current
+throttling flags. Future true Boot Power Trace Lantern buckets can later help
+the mage distinguish early boot, KMS/display initialization,
+USB/audio/controller initialization, EmulationStation startup, and idle or
+power-save risk patterns.
 
 Power integrity evidence and read-only capture boundaries are mapped in
 [GPi Case 2 Power Integrity Investigation Notes](../03-hardware/gpi-case-2-power-integrity-investigation-notes.md).

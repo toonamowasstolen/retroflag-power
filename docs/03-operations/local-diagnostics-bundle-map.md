@@ -62,11 +62,12 @@ anything.
 
 The future startup-specific power timing trail is mapped in
 [GPi Case 2 Boot Power Trace Lantern Map](gpi-case-2-boot-power-trace-lantern-map.md).
-The current manual capture path lives in
+The current manual post-boot bundle collector path lives in
 [GPi Case 2 Boot Power Trace Capture Procedure](gpi-case-2-boot-power-trace-capture-procedure.md).
-That Boot Power Trace Lantern may later become an optional diagnostics bundle
-section for the first 90 seconds after boot, but this map does not implement
-that capture automatically.
+That current collector may attach remembered boot logs and current
+`vcgencmd get_throttled` state. A future Boot Power Trace Lantern may later
+become an optional diagnostics bundle section for true timestamped early-boot
+samples, but this map does not implement that capture automatically.
 
 ## Purpose
 
@@ -195,10 +196,13 @@ A future local diagnostics bundle may include allowlisted sections such as:
 - KMS, FKMS, display connector, and display configuration facts that can be
   collected read-only.
 - Audio device facts that can be collected read-only.
-- Optional Boot Power Trace Lantern output, when a future explicit capture
-  exists or a user attaches the current manual capture, limited to startup
-  timing, `vcgencmd` power facts, narrow matching kernel excerpts, and process
-  milestone observations.
+- Optional Boot Power Trace Lantern output, when a future explicit boot-time
+  recorder exists, limited to startup timing, `vcgencmd` throttling facts,
+  narrow matching kernel excerpts, and process milestone observations.
+- Optional Bundle Collector Lantern output, when a user attaches the current
+  manual post-boot collector bundle, limited to remembered boot logs, current
+  `vcgencmd get_throttled` state, narrow matching kernel excerpts, and
+  best-effort process observations.
 - `SafeShutdown.py` presence, process, and status observations, read-only only.
 - `rc.local` or systemd startup references, read-only only.
 - Raw GPIO probe observations, only when explicitly run and included by the

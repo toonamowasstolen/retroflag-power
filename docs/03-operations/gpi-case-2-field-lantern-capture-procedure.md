@@ -45,12 +45,14 @@ is not implemented.
 
 The future focused startup timing trail is mapped in
 [GPi Case 2 Boot Power Trace Lantern Map](gpi-case-2-boot-power-trace-lantern-map.md).
-The current manual startup capture procedure lives in
+The current manual post-boot bundle collector procedure lives in
 [GPi Case 2 Boot Power Trace Capture Procedure](gpi-case-2-boot-power-trace-capture-procedure.md).
-That Boot Power Trace Lantern captures when undervoltage or throttling appears
-during the first moments of GPi Case 2 boot. It may later become one optional
-section inside a Field Lantern bundle, but this Field Lantern procedure does
-not run it automatically.
+That current Bundle Collector Lantern gathers remembered boot logs and samples
+current `vcgencmd get_throttled` state after the handheld is responsive. The
+Boot Power Trace Lantern name is reserved for a future safe boot-time recorder
+that starts during boot and samples timestamped state. It may later become one
+optional section inside a Field Lantern bundle, but this Field Lantern
+procedure does not run it automatically.
 
 ## Purpose
 
@@ -71,7 +73,8 @@ Use the Field Lantern when:
 - A maintainer needs local script provenance, boot config, KMS evidence, power
   warnings, input identity, USB identity, audio identity, and process state in
   one place.
-- The device is booted and responsive over SSH or local terminal.
+- The device is booted and responsive over a local terminal or optional SSH
+  support.
 - The next step is evidence collection, not repair.
 
 For a wedged device with no SSH, no ping, or visible RCU stall output, follow
@@ -121,6 +124,10 @@ It must not:
 - Replace future `retroflag-powerd diagnostics`.
 - Treat a capture as proof that hardware is safe.
 
+The side power switch remains the normal stock shutdown control while the
+system is responsive. The top sleep/resume button remains suspect and should
+be avoided during diagnostics unless a procedure explicitly says otherwise.
+
 It also must not collect or infer raw GPIO observations. Preserve the project
 vocabulary boundary:
 
@@ -149,6 +156,15 @@ The current Field Lantern bundle should contain:
 - USB device identity.
 - Audio device identity.
 - Relevant service and process state.
+
+`vcgencmd get_throttled` is the main firmware clue for undervoltage and
+throttling, but it does not report watts, TDP, amps, power draw, or actual 5V
+rail voltage. `vcgencmd measure_volts`, when captured by a Lantern, reports an
+internal/core rail reading, not the GPi Case 2 5V input rail.
+
+Current process detection is useful but not authoritative. The first field
+run reported EmulationStation as not running even though the operator observed
+it open, so process state should remain a clue rather than a verdict.
 
 The bundle should prefer narrow excerpts and copied allowlisted files over
 broad system dumps.
@@ -183,8 +199,10 @@ The safest bundle is useful even after redaction. Unknowns should remain
 
 ## Manual Capture On The GPi Case 2
 
-Run this from an SSH session or local terminal on the GPi Case 2 after the
-device has recovered and is stable enough for read-only inspection.
+Run this from a local terminal or optional SSH session on the GPi Case 2 after
+the device has recovered and is stable enough for read-only inspection. The
+handheld path must assume no attached keyboard and no repository checkout on
+the device; SSH is support convenience, not the primary UX.
 
 This is docs-only sample text, not project tooling. Keep the script in a
 temporary home-directory file on the device and delete it later if desired.
@@ -284,7 +302,7 @@ sh ~/field-lantern-capture.sh
 The final line prints the local bundle path, for example:
 
 ```text
-/home/pi/field-lantern-20260708T191500Z.tar.gz
+/home/retropi/field-lantern-20260708T191500Z.tar.gz
 ```
 
 If upstream downloads fail, keep the bundle. The local evidence is still
@@ -293,19 +311,12 @@ missing `upstream/` files.
 
 ## Pull The Bundle From macOS
 
-From the Mac, pull the bundle with `scp`. Replace `pi`, `retropie.local`, and
-the timestamp with the values for the test device.
+From the Mac, pull the bundle with `scp`. Replace the timestamp with the value
+printed by the test device.
 
 ```sh
 mkdir -p ~/Desktop/gpi-case-2-field-lanterns
-scp pi@retropie.local:/home/pi/field-lantern-20260708T191500Z.tar.gz \
-  ~/Desktop/gpi-case-2-field-lanterns/
-```
-
-If `.local` name resolution is unreliable, use the device IP address:
-
-```sh
-scp pi@192.168.1.50:/home/pi/field-lantern-20260708T191500Z.tar.gz \
+scp retropi@gpi:/home/retropi/field-lantern-20260708T191500Z.tar.gz \
   ~/Desktop/gpi-case-2-field-lanterns/
 ```
 
@@ -331,14 +342,14 @@ ssh-keygen -t ed25519 -f ~/.ssh/gpi-case-2-field-lantern -C "gpi-case-2-field-la
 Install the public key:
 
 ```sh
-ssh-copy-id -i ~/.ssh/gpi-case-2-field-lantern.pub pi@retropie.local
+ssh-copy-id -i ~/.ssh/gpi-case-2-field-lantern.pub retropi@gpi
 ```
 
 Pull with that key:
 
 ```sh
 scp -i ~/.ssh/gpi-case-2-field-lantern \
-  pi@retropie.local:/home/pi/field-lantern-20260708T191500Z.tar.gz \
+  retropi@gpi:/home/retropi/field-lantern-20260708T191500Z.tar.gz \
   ~/Desktop/gpi-case-2-field-lanterns/
 ```
 
@@ -393,7 +404,9 @@ The intended trail is staged:
 | Stage | Meaning | Status |
 | --- | --- | --- |
 | Today | Manual documented Field Lantern capture procedure. | This page. |
-| Done | Manual Boot Power Trace capture procedure for power-integrity context. | [Boot Power Trace Capture Procedure](gpi-case-2-boot-power-trace-capture-procedure.md). |
+| Done | Manual Bundle Collector Lantern procedure for post-boot power-integrity evidence. | [Bundle Collector Lantern Capture Procedure](gpi-case-2-boot-power-trace-capture-procedure.md). |
+| Later | Safe Boot Power Trace Lantern starts during boot and writes timestamped local samples. | Future quest; no boot startup or systemd activation here. |
+| Later | Session Watch Lantern observes runtime throttling, temp, load, memory, frontend/emulator/game clues, and recent warnings. | Future quest; no telemetry by default. |
 | Later | `retroflag-powerd diagnostics --bundle`. | Future local-only implementation quest. |
 | Later | `retroflag-powerd troubleshoot`. | Future Common Problems Mage classifier quest. |
 | Future optional | Lantern Dispatch submission. | Explicitly out of scope and not implemented. |

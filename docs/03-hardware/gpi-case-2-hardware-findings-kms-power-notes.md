@@ -352,6 +352,11 @@ Observed throttling/power state:
 vcgencmd get_throttled = 0x50000
 ```
 
+Interpret this as firmware throttling/undervoltage evidence only.
+`vcgencmd get_throttled` does not report watts, TDP, amps, power draw, or the
+actual 5V input rail. `vcgencmd measure_volts`, when used in later captures,
+reports an internal/core rail reading rather than the GPi Case 2 5V input rail.
+
 Observed dmesg:
 
 ```text

@@ -13,7 +13,7 @@ audience:
 purpose: Map a future focused read-only boot power trace for timing GPi Case 2 undervoltage and throttling evidence during startup.
 related:
   - gpi-case-2-boot-power-trace-capture-procedure.md
-  - ../../scripts/gpi-case2-boot-power-trace-field-lantern.sh
+  - ../../scripts/gpi-case2-bundle-collector-field-lantern.sh
   - gpi-case-2-field-lantern-capture-procedure.md
   - common-problems-mage-map.md
   - local-diagnostics-bundle-map.md
@@ -26,16 +26,17 @@ last_updated: 2026-07-08
 
 # GPi Case 2 Boot Power Trace Lantern Map
 
-> The Boot Power Trace Lantern is a small timing lantern for the first moments
-> of boot: enough light to see when the power warning appears, without touching
-> the power path.
+> The Boot Power Trace Lantern name is reserved for a future boot-time recorder:
+> a small timing lantern lit early enough to see when the power warning appears,
+> without touching the power path.
 
 This map is paired with one portable read-only script:
-[`scripts/gpi-case2-boot-power-trace-field-lantern.sh`](../../scripts/gpi-case2-boot-power-trace-field-lantern.sh).
-That script is a hand-carried Field Lantern Relic for the Pi; it is not an
-installer, service, daemon, or Arcadia Runtime activation path. It does not
-require git, a repository checkout, Go, root-only writes, or project install on
-the GPi Case 2.
+[`scripts/gpi-case2-bundle-collector-field-lantern.sh`](../../scripts/gpi-case2-bundle-collector-field-lantern.sh).
+That script is a hand-carried Bundle Collector Lantern Relic for the Pi. It is
+a manual post-boot evidence collector, not a true early boot recorder. It is
+not an installer, service, daemon, or Arcadia Runtime activation path. It does
+not require git, a repository checkout, Go, root-only writes, or project
+install on the GPi Case 2.
 
 This map and its script do not change Go code, read GPIO, write GPIO, execute
 shutdown, install or activate systemd, alter `rc.local`, replace
@@ -48,16 +49,33 @@ charging circuitry, blind soldering, shorting unknown pads, relying on battery
 depletion as recovery, or treating the side switch as a reliable emergency
 stop during a kernel stall.
 
-Boot Power Trace Lantern means a focused read-only power and boot timing
-capture. Field Lantern means the broader read-only local capture bundle.
-Common Problems Mage means a future classifier or troubleshooter. Lantern
-Dispatch means a future optional support, update, or submission layer. Lantern
-Dispatch is not implemented.
+Bundle Collector Lantern means the current manual post-boot `.tar.gz`
+evidence collector. Boot Trace Lantern means a future safe recorder that
+starts during boot and samples timestamped state from early startup. Boot
+Power Trace Lantern is reserved for that future Boot Trace Lantern when the
+subject is power integrity. Session Watch Lantern means a later runtime
+observation lantern. Field Lantern means the broader family of local read-only
+evidence procedures. Common Problems Mage means a future classifier or
+troubleshooter. Lantern Dispatch means a future optional support, update, or
+submission layer. Lantern Dispatch is not implemented.
 
-The current manual capture procedure lives in
+The current manual bundle collector procedure lives in
 [GPi Case 2 Boot Power Trace Capture Procedure](gpi-case-2-boot-power-trace-capture-procedure.md).
 It provides the copy, run, and retrieve path for the portable shell script. The
 script does not run automatically.
+
+## Lantern Architecture
+
+| Lantern | Status | Purpose |
+| --- | --- | --- |
+| Bundle Collector Lantern | Current | Manual post-boot evidence and `.tar.gz` collector run only after the GPi Case 2 is responsive. |
+| Boot Trace Lantern | Future | Read-only local recorder that starts during boot and writes timestamped samples from early startup. |
+| Session Watch Lantern | Future | Runtime observer for menu, emulator, and play sessions after boot. |
+
+The current Bundle Collector Lantern can gather remembered boot logs and sample
+the current `vcgencmd get_throttled` state. It cannot determine the exact
+second of early boot undervoltage unless a Boot Trace Lantern was already
+running.
 
 ## Purpose
 
@@ -111,6 +129,10 @@ The future trace should answer this as narrowly as possible:
 
 The trace should keep "current undervoltage" separate from "undervoltage has
 occurred since boot" when interpreting `vcgencmd get_throttled`.
+`vcgencmd get_throttled` is the main firmware clue for undervoltage and
+throttling, but it does not report watts, TDP, amps, power draw, or actual 5V
+rail voltage. `vcgencmd measure_volts` reports an internal/core rail reading,
+not the GPi Case 2 5V input rail.
 
 ## Safe Capture Fields
 
@@ -119,12 +141,15 @@ The Boot Power Trace Lantern should collect only allowlisted, read-only facts:
 - Timestamp.
 - Monotonic uptime, such as `/proc/uptime` or an equivalent elapsed time.
 - `vcgencmd get_throttled`.
-- `vcgencmd measure_volts`.
+- `vcgencmd measure_volts`, clearly labeled as internal/core rail evidence,
+  not 5V input rail evidence.
 - `vcgencmd measure_temp`.
 - Recent `dmesg` lines matching voltage, throttle, KMS, DRM, VC4, DPI, USB,
   audio, input, MMC, or ext4.
 - Process milestone observations when available, such as whether
-  `emulationstation` is running.
+  `emulationstation` is running. Treat process detection as unreliable unless
+  confirmed by stronger evidence; the first field run reported
+  EmulationStation as not running even though the operator observed it open.
 - Manual context notes when supplied by the maintainer, such as battery,
   USB-C power, docked or handheld state, visible display state, and whether the
   device is being kept active to avoid idle power-save.
@@ -191,11 +216,16 @@ buckets as evidence, not collapse them into a single confident answer.
 
 - Keep the capture read-only and local.
 - Do not run GPIO probes as part of this lantern.
+- Do not read GPIO.
+- Do not write GPIO.
 - Do not keep the GPi idle long enough to trigger automatic power-save during
   risky testing.
+- Avoid the top sleep/resume button during diagnostics unless a procedure
+  explicitly says otherwise.
+- The side power switch is the normal stock shutdown control while the system
+  is responsive, but do not treat side-switch shutdown as reliable emergency
+  recovery during a kernel stall.
 - Do not test power-save or resume until recovery is improved.
-- Do not treat side-switch shutdown as reliable emergency recovery during a
-  kernel stall.
 - Do not treat `0x50000` or any single throttling value as a complete root
   cause without timing context.
 - Do not rewrite KMS, display, audio, boot, or runtime configuration during the
@@ -206,16 +236,17 @@ evidence, record it in the relevant EDC map or ledger before deeper tests.
 
 ## Relationship To Other Lanterns
 
-The Boot Power Trace Lantern is narrower than the Field Lantern.
+The future Boot Power Trace Lantern is narrower than the Field Lantern.
 
 The [GPi Case 2 Field Lantern Capture Procedure](gpi-case-2-field-lantern-capture-procedure.md)
 collects broader post-recovery evidence: boot config, RetroFlag script
 provenance, logs, process state, input identity, USB identity, audio identity,
 and local-vs-upstream script comparison.
 
-The Boot Power Trace Lantern should eventually become one optional section
-inside Field Lantern bundles, focused only on startup timing and power-warning
-evidence.
+The current portable script is a Bundle Collector Lantern that may sit beside
+Field Lantern bundles. The future Boot Power Trace Lantern should eventually
+become one optional section inside Field Lantern bundles, focused only on real
+startup timing and power-warning evidence.
 
 The [Common Problems Mage Map](common-problems-mage-map.md) can later consume
 the trace buckets to classify power and boot timing patterns. The mage must
@@ -230,14 +261,38 @@ integration.
 Expected path:
 
 1. Done: docs-only map.
-2. Done: portable read-only Field Lantern script and copy/run/retrieve
-   procedure.
-3. Later: Field Lantern bundle includes a boot power trace section.
-4. Later: Common Problems Mage classifies power buckets.
-5. Later: `retroflag-powerd diagnostics --bundle` can include the local trace
+2. Done: portable read-only Bundle Collector Lantern script and
+   copy/run/retrieve procedure.
+3. Later: read-only Boot Power Trace Lantern writes local timestamped samples
+   from early boot, with no GPIO, no shutdown/reboot, and no systemd
+   activation in this quest.
+4. Later: Field Lantern bundle includes a boot power trace section.
+5. Later: Common Problems Mage classifies power buckets.
+6. Later: `retroflag-powerd diagnostics --bundle` can include the local trace
    when explicitly requested.
-6. Later: `retroflag-powerd troubleshoot` can classify trace evidence without
+7. Later: `retroflag-powerd troubleshoot` can classify trace evidence without
    changing the device.
 
 Each step needs its own quest, review, and validation. This page only lights
 the map.
+
+## Next Lantern Direction
+
+The next safe Boot Power Trace Lantern should be:
+
+- Read-only.
+- Local-file only.
+- Timestamped from early boot.
+- No GPIO.
+- No shutdown or reboot.
+- No systemd activation yet in this quest.
+
+## Future Session Watch Lantern
+
+A future Session Watch Lantern can observe runtime sessions after boot:
+
+- Throttled flags over time.
+- Temperature, load, and memory.
+- Frontend, emulator, and game detection where possible.
+- Recent `dmesg` and journal warnings.
+- No telemetry by default.
