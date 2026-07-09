@@ -1,7 +1,7 @@
 BINARY := retroflag-powerd
 
 # Workshop commands for local development.
-.PHONY: help build test version run clean check check-links
+.PHONY: help build test version run clean check check-scripts check-links
 
 help:
 	@printf '%s\n' \
@@ -13,6 +13,7 @@ help:
 		'  make run      Run the daemon locally' \
 		'  make clean    Remove the built binary' \
 		'  make check    Run tests, build, and version' \
+		'  make check-scripts  Check portable shell script syntax and help' \
 		'  make check-links  Check internal Markdown links and anchors'
 
 build:
@@ -30,7 +31,13 @@ run:
 clean:
 	rm -f ./$(BINARY)
 
-check: test build version
+check: test build version check-scripts
+
+check-scripts:
+	sh -n scripts/gpi-case2-bundle-collector-field-lantern.sh
+	sh -n scripts/gpi-case2-boot-power-trace-field-lantern.sh
+	sh -n scripts/gpi-case2-session-watch-lantern.sh
+	sh scripts/gpi-case2-session-watch-lantern.sh --help >/dev/null
 
 check-links:
 	python3 scripts/check-markdown-links.py

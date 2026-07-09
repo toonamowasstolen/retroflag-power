@@ -13,6 +13,7 @@ audience:
 purpose: Define a manual read-only GPi Case 2 Field Lantern capture bundle procedure for troubleshooting evidence without long terminal pastes.
 related:
   - gpi-case-2-session-watch-lantern-design.md
+  - ../../scripts/gpi-case2-session-watch-lantern.sh
   - gpi-case-2-boot-power-trace-capture-procedure.md
   - human-facing-field-lantern-script-ux-standard.md
   - common-problems-mage-map.md
@@ -24,7 +25,7 @@ related:
   - ../03-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
   - ../03-hardware/gpi-case-2-power-integrity-investigation-notes.md
   - ../03-hardware/gpi-case-2-developer-access-paths.md
-last_updated: 2026-07-08
+last_updated: 2026-07-09
 ---
 
 # GPi Case 2 Field Lantern Capture Procedure
@@ -60,11 +61,13 @@ that starts during boot and samples timestamped state. It may later become one
 optional section inside a Field Lantern bundle, but this Field Lantern
 procedure does not run it automatically.
 
-The future runtime session trail is mapped in
+The runtime session trail is mapped in
 [GPi Case 2 Session Watch Lantern Design](gpi-case-2-session-watch-lantern-design.md).
-That Session Watch Lantern is designed to observe menu, emulator, play,
-idle-risk, and post-resume sessions after boot. It is not implemented here and
-does not run automatically.
+The first read-only foreground skeleton lives at
+[`scripts/gpi-case2-session-watch-lantern.sh`](../../scripts/gpi-case2-session-watch-lantern.sh).
+It observes menu, emulator, play, idle-risk, and post-resume sessions after
+boot at skeleton scale, writes one final `.txt` Ledger artifact, and does not
+run automatically.
 
 Manual Field Lantern scripts that a person watches in a terminal should use
 the
@@ -424,7 +427,7 @@ The intended trail is staged:
 | Today | Manual documented Field Lantern capture procedure. | This page. |
 | Done | Manual Bundle Collector Lantern procedure for post-boot power-integrity evidence. | [Bundle Collector Lantern Capture Procedure](gpi-case-2-boot-power-trace-capture-procedure.md). |
 | Later | Safe Boot Power Trace Lantern starts during boot and writes timestamped local samples. | Future quest; no boot startup or systemd activation here. |
-| Later | Session Watch Lantern observes runtime throttling, temp, load, memory, frontend/emulator/game clues, and recent warnings. | Future quest; no telemetry by default. |
+| Current skeleton | Session Watch Lantern observes runtime throttling, temp, load, memory, frontend/emulator clues, and recent warnings. | [`scripts/gpi-case2-session-watch-lantern.sh`](../../scripts/gpi-case2-session-watch-lantern.sh); foreground only, no telemetry by default. |
 | Later | `retroflag-powerd diagnostics --bundle`. | Future local-only implementation quest. |
 | Later | `retroflag-powerd troubleshoot`. | Future Common Problems Mage classifier quest. |
 | Future optional | Lantern Dispatch submission. | Explicitly out of scope and not implemented. |

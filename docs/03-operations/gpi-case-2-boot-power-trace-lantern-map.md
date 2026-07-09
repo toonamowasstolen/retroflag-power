@@ -13,6 +13,7 @@ audience:
 purpose: Map a future focused read-only boot power trace for timing GPi Case 2 undervoltage and throttling evidence during startup.
 related:
   - gpi-case-2-session-watch-lantern-design.md
+  - ../../scripts/gpi-case2-session-watch-lantern.sh
   - gpi-case-2-boot-power-trace-capture-procedure.md
   - human-facing-field-lantern-script-ux-standard.md
   - ../../scripts/gpi-case2-bundle-collector-field-lantern.sh
@@ -62,11 +63,12 @@ Bundle Collector Lantern means the current manual post-boot `.tar.gz`
 evidence collector. Boot Trace Lantern means a future safe recorder that
 starts during boot and samples timestamped state from early startup. Boot
 Power Trace Lantern is reserved for that future Boot Trace Lantern when the
-subject is power integrity. Session Watch Lantern means a later runtime
-observation lantern. Field Lantern means the broader family of local read-only
-evidence procedures. Common Problems Mage means a future classifier or
-troubleshooter. Lantern Dispatch means a future optional support, update, or
-submission layer. Lantern Dispatch is not implemented.
+subject is power integrity. Session Watch Lantern means the current foreground
+runtime observation skeleton and its future fuller satchel path. Field Lantern
+means the broader family of local read-only evidence procedures. Common
+Problems Mage means a future classifier or troubleshooter. Lantern Dispatch
+means a future optional support, update, or submission layer. Lantern Dispatch
+is not implemented.
 
 The current manual bundle collector procedure lives in
 [GPi Case 2 Boot Power Trace Capture Procedure](gpi-case-2-boot-power-trace-capture-procedure.md).
@@ -79,7 +81,7 @@ script does not run automatically.
 | --- | --- | --- |
 | Bundle Collector Lantern | Current | Manual post-boot evidence and `.tar.gz` collector run only after the GPi Case 2 is responsive. |
 | Boot Trace Lantern | Future | Read-only local recorder that starts during boot and writes timestamped samples from early startup. |
-| Session Watch Lantern | Designed | Runtime observer for menu, emulator, play, idle-risk, and post-resume sessions after boot. |
+| Session Watch Lantern | Current skeleton | Runtime observer for menu, emulator, play, idle-risk, and post-resume sessions after boot. |
 
 The current Bundle Collector Lantern can gather remembered boot logs and sample
 the current `vcgencmd get_throttled` state. It cannot determine the exact
@@ -290,14 +292,16 @@ Expected path:
 1. Done: docs-only map.
 2. Done: portable read-only Bundle Collector Lantern script and
    copy/run/retrieve procedure.
-3. Later: read-only Boot Power Trace Lantern writes local timestamped samples
+3. Done: read-only Session Watch Lantern foreground skeleton writes one final
+   text Ledger for bounded runtime watches.
+4. Later: read-only Boot Power Trace Lantern writes local timestamped samples
    from early boot, with no GPIO, no shutdown/reboot, and no systemd
    activation in this quest.
-4. Later: Field Lantern bundle includes a boot power trace section.
-5. Later: Common Problems Mage classifies power buckets.
-6. Later: `retroflag-powerd diagnostics --bundle` can include the local trace
+5. Later: Field Lantern bundle includes a boot power trace section.
+6. Later: Common Problems Mage classifies power buckets.
+7. Later: `retroflag-powerd diagnostics --bundle` can include the local trace
    when explicitly requested.
-7. Later: `retroflag-powerd troubleshoot` can classify trace evidence without
+8. Later: `retroflag-powerd troubleshoot` can classify trace evidence without
    changing the device.
 
 Each step needs its own quest, review, and validation. This page only lights
@@ -314,10 +318,12 @@ The next safe Boot Power Trace Lantern should be:
 - No shutdown or reboot.
 - No systemd activation yet in this quest.
 
-## Future Session Watch Lantern
+## Session Watch Lantern
 
-The future Session Watch Lantern is now mapped in
+The Session Watch Lantern is mapped in
 [GPi Case 2 Session Watch Lantern Design](gpi-case-2-session-watch-lantern-design.md).
+The first script skeleton is
+[`scripts/gpi-case2-session-watch-lantern.sh`](../../scripts/gpi-case2-session-watch-lantern.sh).
 It can observe runtime sessions after boot:
 
 - Pre-sleep state when sleep is expected or suspected.

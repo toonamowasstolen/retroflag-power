@@ -20,13 +20,14 @@ related:
   - docs/03-operations/gpi-case-2-boot-power-trace-capture-procedure.md
   - docs/03-operations/gpi-case-2-boot-power-trace-lantern-map.md
   - docs/03-operations/gpi-case-2-session-watch-lantern-design.md
+  - scripts/gpi-case2-session-watch-lantern.sh
   - docs/03-operations/installer-migration-toolkit-map.md
   - docs/03-operations/gpi-case-2-acceptance-checklist.md
   - docs/00-project/quests/0051-map-the-local-diagnostics-bundle.md
   - docs/00-project/quests/0058-map-the-local-diagnostics-bundle-skeleton.md
   - docs/00-project/quests/0052-map-the-installer-and-migration-toolkit.md
   - docs/00-project/quests/0053-add-the-gpi-case-2-acceptance-checklist.md
-last_updated: 2026-07-07
+last_updated: 2026-07-09
 ---
 
 # Local Diagnostics Bundle Map
@@ -70,11 +71,13 @@ That current collector may attach remembered boot logs and current
 become an optional diagnostics bundle section for true timestamped early-boot
 samples, but this map does not implement that capture automatically.
 
-The future runtime session trail is mapped in
+The runtime session trail is mapped in
 [GPi Case 2 Session Watch Lantern Design](gpi-case-2-session-watch-lantern-design.md).
-That Session Watch Lantern may later become an optional diagnostics bundle
-section for menu, emulator, play, idle-risk, and post-resume evidence, but this
-map does not implement that capture automatically.
+The current foreground skeleton lives at
+[`scripts/gpi-case2-session-watch-lantern.sh`](../../scripts/gpi-case2-session-watch-lantern.sh).
+It may later become an optional diagnostics bundle section for menu, emulator,
+play, idle-risk, and post-resume evidence, but this map does not implement
+that capture automatically.
 
 ## Purpose
 

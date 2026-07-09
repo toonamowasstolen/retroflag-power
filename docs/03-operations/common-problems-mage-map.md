@@ -62,8 +62,11 @@ power-save risk patterns.
 
 Power integrity evidence and read-only capture boundaries are mapped in
 [GPi Case 2 Power Integrity Investigation Notes](../03-hardware/gpi-case-2-power-integrity-investigation-notes.md).
-The future runtime session trail is mapped in
+The runtime session trail is mapped in
 [GPi Case 2 Session Watch Lantern Design](gpi-case-2-session-watch-lantern-design.md).
+The current read-only skeleton lives at
+[`scripts/gpi-case2-session-watch-lantern.sh`](../../scripts/gpi-case2-session-watch-lantern.sh)
+and can provide one local Ledger artifact for future session-watch buckets.
 Developer recovery and access candidates, including the inconclusive hidden
 firmware USB path, are mapped in
 [GPi Case 2 Developer Access Paths](../03-hardware/gpi-case-2-developer-access-paths.md).

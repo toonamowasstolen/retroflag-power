@@ -12,6 +12,7 @@ audience:
   - Hardware Porters
 purpose: Design a future read-only GPi Case 2 Session Watch Lantern for handheld runtime observation across menu, play, sleep-risk, and resume-risk field sessions.
 related:
+  - ../../scripts/gpi-case2-session-watch-lantern.sh
   - gpi-case-2-boot-power-trace-lantern-map.md
   - gpi-case-2-boot-power-trace-capture-procedure.md
   - gpi-case-2-field-lantern-capture-procedure.md
@@ -30,10 +31,13 @@ last_updated: 2026-07-09
 > handheld Relic: it watches the menu, game, input, power, and resume trail
 > without touching the runes that make the device go.
 
-This is a documentation-only design. It does not implement a script, service,
-daemon, Arcadia Runtime Caster, installer, diagnostics bundle, Lantern
-Dispatch path, GPIO reader, GPIO writer, shutdown action, suspend action,
-resume action, firmware path, or automatic repair.
+This started as a documentation-only design. The first read-only foreground
+script skeleton now lives at
+[`scripts/gpi-case2-session-watch-lantern.sh`](../../scripts/gpi-case2-session-watch-lantern.sh).
+That script writes one final text Ledger artifact for a bounded watch. It is
+not a service, daemon, Arcadia Runtime Caster, installer, diagnostics bundle,
+Lantern Dispatch path, GPIO reader, GPIO writer, shutdown action, suspend
+action, resume action, firmware path, or automatic repair.
 
 The GPi Case 2 is a handheld Relic. The primary field procedure must not
 assume an attached keyboard. SSH to `retropi@gpi` is optional support for
@@ -55,13 +59,15 @@ Lantern and the future Boot Trace Lantern:
   responsive.
 - Boot Trace Lantern: future startup recorder for early boot timing and power
   warning buckets.
-- Session Watch Lantern: future runtime observer for menu, emulator, game,
-  idle-risk, and post-resume evidence after boot.
+- Session Watch Lantern: current foreground skeleton and future fuller runtime
+  observer for menu, emulator, game, idle-risk, and post-resume evidence after
+  boot.
 
-The first implementation, if one is later approved, should be a small
-foreground script or command that writes one final artifact file. It should not
-require long terminal paste. It should follow the
-[Human-Facing Field Lantern Script UX Standard](human-facing-field-lantern-script-ux-standard.md).
+The first implementation is a small foreground shell script that writes one
+final artifact file. It does not require long terminal paste. It follows the
+[Human-Facing Field Lantern Script UX Standard](human-facing-field-lantern-script-ux-standard.md)
+at skeleton scale: startup banner, bounded duration, progress lines, plain
+mode, `NO_COLOR`, safety marker, and exact artifact path.
 
 ## Non-Goals
 
@@ -156,8 +162,16 @@ attached keyboard during handheld use.
 
 ## Artifact Pattern
 
-The first future implementation should write a timestamped folder and one final
-portable artifact beside it:
+The current skeleton writes one final timestamped text Ledger by default:
+
+```text
+/home/retropi/gpi-case2-session-watch-lantern-YYYYMMDD-HHMMSS.txt
+```
+
+Use `--output FILE` to choose a different final Ledger path.
+
+A later fuller implementation may write a timestamped folder and one final
+portable archive beside it:
 
 ```text
 /home/retropi/gpi-case2-session-watch-lantern-YYYYMMDD-HHMMSS/
@@ -173,9 +187,10 @@ Duration: 00:10:03
 Status:   completed
 ```
 
-The folder should be inspectable before sharing. The `.tar.gz` should be the
-single file a maintainer can pull into the wider Ledger or attach beside a
-Field Lantern bundle after review.
+For the current skeleton, the `.txt` Ledger is the single file a maintainer can
+pull into the wider Ledger or attach beside a Field Lantern bundle after
+review. For a future fuller satchel, the folder should be inspectable before
+sharing and the `.tar.gz` should be the single shared file.
 
 ## Progress And Status Output
 
@@ -304,16 +319,22 @@ validation.
 
 ## Future Implementation Notes
 
-A later implementation quest should start tiny:
+QUEST-0082 started tiny with
+[`scripts/gpi-case2-session-watch-lantern.sh`](../../scripts/gpi-case2-session-watch-lantern.sh):
 
-- Portable foreground shell script or small command.
-- Explicit `--duration` and `--interval`.
+- Portable foreground shell script.
+- Explicit `--duration`, `--interval`, and `--output`.
 - `--plain` plus `NO_COLOR` support.
+- One final `.txt` Ledger artifact.
+- Shell syntax and help smoke checks through `make check-scripts`.
+- No systemd, no auto-start, no GPIO, no shutdown, no sleep/resume trigger, no
+  upload, and no repair advice.
+
+A later fuller implementation can grow from that skeleton:
+
 - One final `.tar.gz` artifact.
 - Unit tests or shell tests for option parsing, artifact naming, plain output,
   missing-command markers, and failure summaries where practical.
-- No systemd, no auto-start, no GPIO, no shutdown, no sleep/resume trigger, no
-  upload, and no repair advice.
 
 The first badge is not a clever daemon. The first badge is a trustworthy field
 satchel that tells the next maintainer exactly what it saw and exactly what it
