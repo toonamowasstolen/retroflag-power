@@ -108,8 +108,9 @@ On unsupported platforms or uncertain GPIO access, it reports
   the handheld-first map and current script skeleton for a read-only runtime
   watch across menu, play, idle-risk, and post-resume field sessions.
 - [GPi Case 2 True Boot Trace Lantern design](docs/03-operations/gpi-case-2-true-boot-trace-lantern-design.md):
-  the scp-first startup evidence map for a future read-only Boot Trace Ledger
-  that complements Session Watch without changing handheld behavior.
+  the scp-first startup evidence map and current foreground script skeleton
+  for a read-only Boot Trace Ledger that complements Session Watch without
+  changing handheld behavior.
 - [GPi Case 2 Session Watch field run procedure](docs/03-operations/gpi-case-2-session-watch-field-run-procedure.md):
   the handheld-first command, observation, retrieval, and interpretation trail
   for real Session Watch Lantern runs.

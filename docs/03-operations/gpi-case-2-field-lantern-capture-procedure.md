@@ -12,6 +12,8 @@ audience:
   - Hardware Porters
 purpose: Define a manual read-only GPi Case 2 Field Lantern capture bundle procedure for troubleshooting evidence without long terminal pastes.
 related:
+  - ../../scripts/gpi-case2-true-boot-trace-lantern.sh
+  - gpi-case-2-true-boot-trace-lantern-design.md
   - gpi-case-2-session-watch-lantern-design.md
   - gpi-case-2-session-watch-field-run-procedure.md
   - ../../scripts/gpi-case2-session-watch-lantern.sh
@@ -47,8 +49,13 @@ Problems Mage means a future classifier or troubleshooter. Lantern Dispatch
 means a future optional support, update, or submission layer. Lantern Dispatch
 is not implemented.
 
-The future focused startup timing trail is mapped in
+The focused startup timing trail is mapped in
 [GPi Case 2 Boot Power Trace Lantern Map](gpi-case-2-boot-power-trace-lantern-map.md).
+The first True Boot Trace foreground skeleton lives at
+[`scripts/gpi-case2-true-boot-trace-lantern.sh`](../../scripts/gpi-case2-true-boot-trace-lantern.sh).
+Copy it to `retropi@gpi:/home/retropi/`, run it from `/home/retropi/`, and
+retrieve its final Boot Trace Ledger with `scp`. It remains read-only,
+bounded, and non-automatic.
 The current manual post-boot bundle collector procedure lives in
 [GPi Case 2 Boot Power Trace Capture Procedure](gpi-case-2-boot-power-trace-capture-procedure.md).
 That current Bundle Collector Lantern gathers remembered boot logs and samples
@@ -57,10 +64,10 @@ script prints a human-facing banner, double-bracket stage lines, sampling
 progress, timing notes, and exact artifact/retrieval lines. Use `--duration`
 for shorter field retests and `--plain` when copyable ASCII output is better.
 The
-Boot Power Trace Lantern name is reserved for a future safe boot-time recorder
-that starts during boot and samples timestamped state. It may later become one
-optional section inside a Field Lantern bundle, but this Field Lantern
-procedure does not run it automatically.
+Boot Power Trace Lantern name is still reserved for a future safe boot-time
+recorder that starts during boot and samples timestamped state. It may later
+become one optional section inside a Field Lantern bundle, but this Field
+Lantern procedure does not run any Lantern automatically.
 
 The runtime session trail is mapped in
 [GPi Case 2 Session Watch Lantern Design](gpi-case-2-session-watch-lantern-design.md).

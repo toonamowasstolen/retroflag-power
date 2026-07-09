@@ -12,6 +12,7 @@ audience:
   - Hardware Porters
 purpose: Design a future read-only, scp-first GPi Case 2 Boot Trace Lantern for capturing startup evidence without changing handheld behavior.
 related:
+  - ../../scripts/gpi-case2-true-boot-trace-lantern.sh
   - gpi-case-2-boot-power-trace-lantern-map.md
   - gpi-case-2-boot-power-trace-capture-procedure.md
   - gpi-case-2-session-watch-lantern-design.md
@@ -34,11 +35,12 @@ last_updated: 2026-07-09
 > copied by hand, run from `/home/retropi/`, and trusted to bring back one
 > careful Boot Trace Ledger without moving the stones under the handheld.
 
-This is a design document. It does not implement the full script, install a
-service, change boot behavior, or approve automatic startup. The intended
-future tool is a small foreground shell script copied to the GPi Case 2 with
-`scp`, launched from `/home/retropi/`, and retrieved with `scp` when the
-handheld remains responsive.
+This design now has a first read-only foreground script skeleton:
+[`scripts/gpi-case2-true-boot-trace-lantern.sh`](../../scripts/gpi-case2-true-boot-trace-lantern.sh).
+It does not install a service, change boot behavior, or approve automatic
+startup. The current tool is a small foreground shell script copied to the GPi
+Case 2 with `scp`, launched from `/home/retropi/`, and retrieved with `scp`
+when the handheld remains responsive.
 
 The GPi Case 2 is a handheld Relic first. Do not assume an attached keyboard.
 SSH to `retropi@gpi` is optional support for copying, launching, and retrieving
@@ -112,7 +114,7 @@ unless a later dedicated procedure explicitly names that test.
 
 ## Scp-First Field Flow
 
-Expected future field flow:
+Expected field flow for the current skeleton:
 
 1. Boot the GPi Case 2 normally and keep the handheld physically observable.
 2. From the workstation, copy the one portable Lantern Relic:
@@ -149,7 +151,7 @@ not have the repository checked out on the device.
 
 ## Artifact Pattern
 
-The first true Boot Trace implementation should produce one final text Ledger:
+The first true Boot Trace skeleton produces one final text Ledger:
 
 ```text
 /home/retropi/gpi-case2-true-boot-trace-lantern-YYYYMMDD-HHMMSS.txt
@@ -370,12 +372,12 @@ Each Caster needs its own quest, tests, safety review, and field validation.
 | Bundle Collector Lantern | Current script | Post-boot responsive state | `.tar.gz` satchel plus report files | Gathers remembered boot clues after the fact; not a true startup recorder. |
 | Boot Power Trace Lantern | Mapped future direction | Startup power-warning timing | Future timestamped trace | Focuses on undervoltage/throttling buckets; does not prove root cause. |
 | Session Watch Lantern | Current foreground skeleton | Runtime menu, play, idle-risk, post-resume state | One final `.txt` Ledger | Complements boot evidence; does not prove transition-time behavior unless already running. |
-| True Boot Trace Lantern | This design | Short startup and frontend-start trail | One final `.txt` Boot Trace Ledger | Captures startup evidence without changing boot behavior; does not replace Session Watch. |
+| True Boot Trace Lantern | Current foreground skeleton | Short startup and frontend-start trail | One final `.txt` Boot Trace Ledger | Captures startup evidence without changing boot behavior; does not replace Session Watch. |
 
 ## Future Implementation Notes
 
-A later implementation quest may add a tiny portable script if it can be fully
-validated locally. That script should start as:
+QUEST-0088 adds the first tiny portable script skeleton. Later implementation
+quests may deepen its evidence map only if they stay:
 
 - POSIX-shell friendly where practical.
 - `--duration`, `--interval`, `--output`, `--plain`, `--help`.
