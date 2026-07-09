@@ -13,6 +13,7 @@ audience:
 purpose: Define a manual read-only GPi Case 2 Field Lantern capture bundle procedure for troubleshooting evidence without long terminal pastes.
 related:
   - gpi-case-2-boot-power-trace-capture-procedure.md
+  - human-facing-field-lantern-script-ux-standard.md
   - common-problems-mage-map.md
   - local-diagnostics-bundle-map.md
   - gpi-case-2-boot-power-trace-lantern-map.md
@@ -53,6 +54,12 @@ Boot Power Trace Lantern name is reserved for a future safe boot-time recorder
 that starts during boot and samples timestamped state. It may later become one
 optional section inside a Field Lantern bundle, but this Field Lantern
 procedure does not run it automatically.
+
+Manual Field Lantern scripts that a person watches in a terminal should use
+the
+[Human-Facing Field Lantern Script UX Standard](human-facing-field-lantern-script-ux-standard.md)
+for warm startup banners, double-bracket stage labels, long-running progress,
+artifact paths, timing, `--plain`, and unmistakable safety messages.
 
 ## Purpose
 

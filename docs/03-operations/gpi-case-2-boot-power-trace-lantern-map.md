@@ -13,6 +13,7 @@ audience:
 purpose: Map a future focused read-only boot power trace for timing GPi Case 2 undervoltage and throttling evidence during startup.
 related:
   - gpi-case-2-boot-power-trace-capture-procedure.md
+  - human-facing-field-lantern-script-ux-standard.md
   - ../../scripts/gpi-case2-bundle-collector-field-lantern.sh
   - gpi-case-2-field-lantern-capture-procedure.md
   - common-problems-mage-map.md
@@ -43,6 +44,12 @@ shutdown, install or activate systemd, alter `rc.local`, replace
 `/opt/RetroFlag/SafeShutdown.py`, implement resume, flash firmware, submit
 telemetry, upload data, make project-code network calls, apply automatic
 fixes, run RetroFlag installers, or approve hardware modification.
+
+When a Boot Trace Lantern or related manual Field Lantern script becomes
+human-facing, its terminal behavior should follow the
+[Human-Facing Field Lantern Script UX Standard](human-facing-field-lantern-script-ux-standard.md):
+clear banner, double-bracket stages, visible progress for long captures,
+timing, exact artifact paths, and plain safety language.
 
 Nothing here approves cutting battery leads, modifying lithium battery or
 charging circuitry, blind soldering, shorting unknown pads, relying on battery

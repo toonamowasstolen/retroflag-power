@@ -14,6 +14,7 @@ purpose: Define the current manual read-only GPi Case 2 bundle collector procedu
 related:
   - gpi-case-2-boot-power-trace-lantern-map.md
   - gpi-case-2-field-lantern-capture-procedure.md
+  - human-facing-field-lantern-script-ux-standard.md
   - ../../scripts/gpi-case2-bundle-collector-field-lantern.sh
   - common-problems-mage-map.md
   - local-diagnostics-bundle-map.md
@@ -39,6 +40,12 @@ install or activate systemd, alter `rc.local`, replace
 `/opt/RetroFlag/SafeShutdown.py`, implement resume, flash firmware, run
 RetroFlag installers, submit telemetry, upload data, apply automatic fixes, or
 contact the network.
+
+Human-facing terminal UX for this and future manual Lantern scripts should
+follow the
+[Human-Facing Field Lantern Script UX Standard](human-facing-field-lantern-script-ux-standard.md):
+visible startup, double-bracket stage lines, progress during long sampling,
+exact artifact paths, duration reporting, and plain safety messages.
 
 Bundle Collector Lantern means this manual post-boot evidence and `.tar.gz`
 collector. Boot Power Trace Lantern is reserved for a future safe recorder
