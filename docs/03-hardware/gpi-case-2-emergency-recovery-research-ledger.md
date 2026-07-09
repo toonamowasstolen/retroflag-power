@@ -18,7 +18,7 @@ related:
   - ../03-operations/gpi-case-gpio-probe-ledger.md
   - ../00-project/quests/0064-record-gpi-case-2-power-save-rcu-stall-incident.md
   - ../04-architecture/arcadia-runtime-migration-path.md
-last_updated: 2026-07-08
+last_updated: 2026-07-09
 ---
 
 # GPi Case 2 Emergency Recovery Research Ledger
@@ -71,6 +71,24 @@ depending on SSH after power-save are not acceptable development recovery
 plans. The recovery trail needs evidence before deeper power-save, resume, or
 replacement-runtime tests depend on it.
 
+On 2026-07-09, a later GPi Case 2 Bundle Collector Field Lantern run captured
+a successful post-resume session:
+`gpi-case2-bundle-collector-field-lantern-20260709-083407.tar.gz`.
+That run happened after an unintended sleep followed by successful resume.
+EmulationStation was visibly open and detected by the updated script, the
+90-sample trace ran for about 102 seconds, `get_throttled` stayed `0x0`,
+temperature stayed roughly 58-60 C, and the internal/core voltage sample stayed
+around `0.8700V`.
+
+This is a good field win, but it changes the theory carefully: the resume
+wedge is intermittent, not guaranteed. Successful resume has now been
+observed, while longer sleep duration, battery state, thermal state,
+USB/input state, display/KMS timing, and transient power conditions remain
+suspects. The post-resume satchel does not prove what happened during the
+sleep/resume transition because no watcher was already running before sleep.
+A late `xpad` USB `-19` line around uptime 2652 seconds is a trail marker,
+not proof of root cause.
+
 ## Known Current Behavior
 
 Known from the current EDC ledgers:
@@ -86,7 +104,8 @@ Known from the current EDC ledgers:
 - The legacy LCD scripts are not KMS-safe for the current project direction
   because they can rewrite display configuration.
 - The top power-save/resume button and possible automatic display/audio
-  power-save behavior remain unsafe/unverified after the RCU stall incident.
+  power-save behavior remain unsafe/unverified after the RCU stall incident,
+  even though one later successful resume has been captured.
 - Raw signal vocabulary remains separate from interpretation:
   `SignalLow`, `SignalHigh`, and `SignalUnverified` are raw observations.
   `SwitchOn`, `SwitchOff`, and `SwitchUnknown` are interpreted meanings from a
@@ -270,7 +289,15 @@ visual inspection only:
   meaning.
 - Keep the acceptance checklist marked no-go for power-save/resume replacement
   until a recovery plan exists.
+- Use the
+  [GPi Case 2 Bundle Collector Lantern Capture Procedure](../03-operations/gpi-case-2-boot-power-trace-capture-procedure.md)
+  for post-resume satchels when the device is already responsive, while
+  recording that post-resume captures do not prove transition-time behavior.
 - Keep any future read-only GPIO lantern work separate from this ledger and
   preserve the `SignalLow`/`SignalHigh`/`SignalUnverified` vocabulary boundary.
+- Map a future Session Watch Lantern that records pre-sleep state, records
+  post-resume state when available, tracks `get_throttled`, temperature,
+  frontend, and input hints over time, and avoids telemetry and automatic
+  fixes.
 
 The next badge is not a mod. The next badge is a clearer map.

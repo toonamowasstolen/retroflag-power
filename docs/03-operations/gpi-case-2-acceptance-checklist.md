@@ -21,7 +21,7 @@ related:
   - docs/03-hardware/gpi-case-2-power-integrity-investigation-notes.md
   - docs/00-project/quests/0053-add-the-gpi-case-2-acceptance-checklist.md
   - docs/00-project/quests/0057-add-gpi-case-2-field-test-checklist-entries.md
-last_updated: 2026-07-08
+last_updated: 2026-07-09
 ---
 
 # GPi Case 2 Acceptance Checklist
@@ -75,7 +75,9 @@ The checklist is not passed.
 - Power-save, resume, and automatic power-save behavior are unsafe/unverified
   after a field incident with repeated Linux RCU stall messages, lost network
   recovery, side-switch shutdown failure, and physical CM4 cartridge/card
-  removal as the only observed stop.
+  removal as the only observed stop. A later successful post-resume Bundle
+  Collector Field Lantern run shows the wedge is intermittent, not guaranteed,
+  but it does not pass the sleep/resume gate.
 - Power integrity is now an open gate after recovery diagnostics showed
   `hwmon hwmon1: Undervoltage detected!`, later `Voltage normalised`, and
   `vcgencmd get_throttled` returning `0x50000` while the device was being
@@ -154,6 +156,13 @@ Current caution:
 
 - A 2026-07-08 field incident suggests a kernel, hardware, display, or
   power-save stall where software shutdown paths may no longer be reliable.
+- A 2026-07-09 post-resume Bundle Collector Field Lantern run observed a
+  successful resume with EmulationStation visible and detected, `get_throttled`
+  staying `0x0`, temperature around 58-60 C, and uptime around 44-46 minutes
+  after boot.
+- Post-resume captures are useful, but they do not prove what happened during
+  the sleep/resume transition unless a watcher was already running before
+  sleep.
 - `SafeShutdown.py` was believed to be enabled, so do not classify this as only
   a disabled stock-script issue.
 - Waiting for battery depletion or repeatedly pulling the CM4 cartridge/card is
@@ -167,6 +176,9 @@ Current caution:
 - Use the
   [GPi Case 2 Power Integrity Investigation Notes](../03-hardware/gpi-case-2-power-integrity-investigation-notes.md)
   before claiming power-save or resume support.
+- A future Session Watch Lantern should record pre-sleep state, post-resume
+  state when available, and `get_throttled`, temperature, frontend, and input
+  hints over time without telemetry or automatic fixes.
 
 ## Audio Checks
 
@@ -246,6 +258,7 @@ For GPIO and switch notes, preserve the vocabulary boundary:
 | YYYY-MM-DD | Docked | Docked audio after KMS | Docked HDMI or dock audio path plays RetroPie game audio after KMS boot. | Unknown | Unknown | Note HDMI device presence, dock state at boot, dock insertion order, and whether EmulationStation menu audio also works. |
 | YYYY-MM-DD | Handheld | LCD sleep/wake behavior | LCD/backlight can enter power-save and return without losing EmulationStation state. | Unknown | Unknown | Record whether SSH, Wi-Fi, controller input, and display return cleanly after wake. |
 | 2026-07-08 | Handheld | Power-save/resume RCU stall incident | Power-save or resume returns without kernel stalls, network loss, or loss of shutdown recovery. | Repeated Linux `rcu: INFO: rcu_preempt detected stalls on CPUs/tasks` console output; SSH unavailable; ping unavailable; side switch moved off but did not shut down; top sleep/resume button still toggled visible state; only physical CM4 cartridge/card removal stopped the device. | Fail | Unresolved high-priority field incident. `SafeShutdown.py` was believed enabled, so do not treat as only disabled stock script. A field photo exists and can be linked later if evidence-asset rules are explicit. |
+| 2026-07-09 | Handheld | Successful post-resume Bundle Collector Field Lantern | If the handheld resumes, collect a read-only post-resume satchel without inducing resume or changing runtime behavior. | `gpi-case2-bundle-collector-field-lantern-20260709-083407.tar.gz`: unintended sleep followed by successful resume; EmulationStation visibly open and detected; 90-sample trace ran about 102 seconds; `get_throttled=0x0`; temperature roughly 58-60 C; internal/core voltage around `0.8700V`; uptime roughly 2686-2786 seconds; late `xpad` USB `-19` trail marker around uptime 2652 seconds. | Partial | Confirms successful resume has been observed and the wedge is intermittent. Does not prove transition-time behavior or clear longer sleep duration, battery state, thermal state, USB/input state, display/KMS timing, or transient power conditions. |
 | YYYY-MM-DD | Handheld | Top-button power-save/resume behavior | Top button triggers the observed case power-save path and wakes the LCD/backlight without kernel stalls, network loss, or shutdown-path loss. | Unsafe/unverified after RCU stall incident | Fail | Treat this as case/power-board behavior unless an input event or GPIO path is proven. Record undervoltage, access-loss, RCU stall, network, side-switch, and recovery events. |
 | YYYY-MM-DD | Handheld | Automatic display/audio power-save after idle | After roughly 15-20 minutes of no input, any automatic display/audio power-save path returns without kernel stalls, network loss, or shutdown-path loss. | Unsafe/unverified after field report that the case may auto-enter power-save | Unknown | Avoiding the top power-save button may not avoid this path. Field-test only with a documented recovery plan that does not depend on SSH, ping, side-switch shutdown, battery depletion, or repeated CM4 cartridge/card removal. |
 | YYYY-MM-DD | Handheld | Power-integrity read-only capture | Undervoltage/throttling evidence is captured before and after boot, idle, and any later safe resume pass. | `hwmon hwmon1: Undervoltage detected!`; later `Voltage normalised`; `vcgencmd get_throttled` returned `0x50000` while treated as battery-powered. | Fail | Follow the power-integrity investigation notes. Record battery level, USB-C power state, docked vs handheld, screen state, audio activity, controller activity, time since boot, and time since idle. |

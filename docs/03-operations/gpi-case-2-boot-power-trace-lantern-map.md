@@ -22,7 +22,7 @@ related:
   - ../03-hardware/gpi-case-2-power-integrity-investigation-notes.md
   - ../03-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
   - ../03-hardware/gpi-case-2-developer-access-paths.md
-last_updated: 2026-07-08
+last_updated: 2026-07-09
 ---
 
 # GPi Case 2 Boot Power Trace Lantern Map
@@ -87,6 +87,16 @@ boot-time recorder was already running. It records process snapshots and
 reports frontend detection as `detected`, `not_detected`, or `uncertain`
 because the first field run missed visibly running EmulationStation.
 
+It can also gather useful post-resume evidence after the handheld is
+responsive. The 2026-07-09 bundle
+`gpi-case2-bundle-collector-field-lantern-20260709-083407.tar.gz` captured a
+successful resume after unintended sleep, with EmulationStation visibly open
+and detected, about 102 seconds of sampling, `get_throttled=0x0` throughout,
+temperature around 58-60 C, and an internal/core voltage sample around
+`0.8700V`. That satchel proves successful resume has been observed, but it
+does not prove the transition itself because no watcher was already running
+before sleep.
+
 ## Purpose
 
 Map a future Boot Power Trace Lantern for the GPi Case 2 that records when
@@ -99,6 +109,8 @@ The trace should help separate these candidate timing buckets:
 - USB audio, controller, input, or hub initialization load.
 - EmulationStation or runtime startup load.
 - Later idle or power-save risk.
+- Post-resume state after a successful wake, without pretending it captured
+  the transition unless a watcher was already running.
 
 The lantern should preserve timing evidence and uncertainty. It should not
 claim a root cause from one warning flag.
@@ -135,6 +147,7 @@ The future trace should answer this as narrowly as possible:
 | USB/audio/controller init | Did warnings cluster near USB, input, HID, hub, or audio device initialization? |
 | EmulationStation startup | Did warnings appear when EmulationStation or the launcher stack became active? |
 | Idle/power-save | Did warnings appear only after boot, idle, display-off, or power-save behavior? |
+| Post-resume | If the device woke successfully, what did current state look like after resume? |
 | No observed warning | Did the trace complete with no current or historical throttling flags? |
 
 The trace should keep "current undervoltage" separate from "undervoltage has
@@ -219,6 +232,7 @@ Future tooling or manual review may classify traces into these buckets:
 | `usb-audio-controller-init-undervoltage` | Evidence clusters near USB hub, HID/controller, input, or USB audio initialization. | USB load may overlap with display and runtime startup. |
 | `emulationstation-startup-undervoltage` | Evidence appears when EmulationStation or launcher processes start. | Confirm renderer state and avoid confusing historic flags with current sag. |
 | `idle-power-save-risk` | Evidence appears after boot during idle, display-off, wake, or power-save paths. | Do not keep testing power-save without a safer recovery path. |
+| `successful-post-resume-observed` | The device was responsive after wake and a post-resume satchel was captured. | Does not prove transition-time behavior unless a watcher was already running. |
 | `no-undervoltage-observed` | No current or historical undervoltage is visible during the capture window. | Absence in one trace does not prove power headroom is safe. |
 
 Buckets may overlap. The future Common Problems Mage should report overlapping
@@ -303,8 +317,11 @@ The next safe Boot Power Trace Lantern should be:
 
 A future Session Watch Lantern can observe runtime sessions after boot:
 
+- Pre-sleep state when sleep is expected or suspected.
+- Post-resume state when the handheld returns.
 - Throttled flags over time.
 - Temperature, load, and memory.
-- Frontend, emulator, and game detection where possible.
+- Frontend, emulator, game, and input hints where possible.
 - Recent `dmesg` and journal warnings.
 - No telemetry by default.
+- No automatic fixes.

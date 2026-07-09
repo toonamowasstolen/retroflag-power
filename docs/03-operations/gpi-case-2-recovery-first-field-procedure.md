@@ -21,7 +21,7 @@ related:
   - ../03-hardware/gpi-case-2-emergency-recovery-research-ledger.md
   - ../03-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
   - ../00-project/quests/0064-record-gpi-case-2-power-save-rcu-stall-incident.md
-last_updated: 2026-07-08
+last_updated: 2026-07-09
 ---
 
 # GPi Case 2 Recovery-First Field Procedure
@@ -88,6 +88,20 @@ showed this pattern:
 
 Treat this as a critical unresolved field failure. Do not classify it as only a
 disabled-stock-script problem.
+
+The 2026-07-09 Bundle Collector Field Lantern Relic
+`gpi-case2-bundle-collector-field-lantern-20260709-083407.tar.gz` adds an
+important counterpoint: after an unintended sleep, the handheld successfully
+resumed, EmulationStation was visible and detected, a 90-sample trace ran for
+about 102 seconds, `get_throttled` stayed `0x0`, temperature stayed roughly
+58-60 C, and the internal/core voltage sample stayed around `0.8700V`.
+
+That win revises the map without clearing the hazard. The resume wedge is
+intermittent, not guaranteed, and successful resume has now been observed.
+Longer sleep duration, battery state, thermal state, USB/input state,
+display/KMS timing, and transient power conditions remain suspects. A late
+`xpad` USB `-19` message near uptime 2652 seconds is a trail marker, not proof
+of root cause.
 
 ## Immediate Triage While Wedged
 
@@ -170,6 +184,13 @@ use the manual
 after the device is booted and responsive. The Field Lantern is read-only and
 local; it does not fix the device, read or write GPIO, execute shutdown, upload
 data, or replace future `retroflag-powerd diagnostics`.
+
+For a focused post-boot or post-resume satchel, use the
+[GPi Case 2 Bundle Collector Lantern Capture Procedure](gpi-case-2-boot-power-trace-capture-procedure.md).
+Post-resume captures are useful evidence that the Arcadia Runtime trail was
+responsive after wake, but they do not prove what happened during the
+sleep/resume transition unless a Session Watch Lantern or other watcher was
+already running before sleep.
 
 ## Read-Only Log Searches After Recovery
 
@@ -265,6 +286,10 @@ These ideas are not yet proven and are not approved as implementation steps:
   a GPIO signal, a display/backlight event, or board-controlled behavior.
 - Determine whether a local diagnostics lantern can summarize logs, script
   provenance, KMS config, and filesystem warnings after recovery.
+- Determine whether a future Session Watch Lantern can record pre-sleep state,
+  record post-resume state when available, and track `get_throttled`,
+  temperature, frontend, and input hints over time without telemetry or
+  automatic fixes.
 - Determine whether a reversible development recovery path exists without
   touching lithium battery or charging circuitry.
 - Determine whether field tests should use a prepared local console, docked

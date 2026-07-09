@@ -20,7 +20,7 @@ related:
   - ../03-hardware/gpi-case-2-emergency-recovery-research-ledger.md
   - ../00-project/quests/0064-record-gpi-case-2-power-save-rcu-stall-incident.md
   - ../04-architecture/arcadia-runtime-migration-path.md
-last_updated: 2026-07-08
+last_updated: 2026-07-09
 ---
 
 # GPi Case 2 Replacement Coverage Matrix
@@ -62,6 +62,10 @@ replacement.
   power-save can happen after roughly 15-20 minutes.
 - KMS fixed one display path, but KMS timing or display/power-save interaction
   may still be involved in the current power-save/resume risk.
+- A 2026-07-09 Bundle Collector Field Lantern run captured a successful
+  post-resume session, so the resume wedge is intermittent rather than
+  guaranteed. That Relic is post-resume evidence, not proof of transition-time
+  behavior.
 
 ## Coverage Matrix
 
@@ -74,7 +78,7 @@ replacement.
 | GPIO18 LCD/power-save involvement | Stock LCD scripts and Linux userspace; KMS path now avoids legacy rewrite assumptions | Upstream `lcdfirst.sh`/`lcdnext.sh` use GPIO18 as `HDMI_HPD`; KMS notes say modern `rgb666-padhi` avoids GPIO18/19 and GPIO26/27. | Defer | Prove whether GPIO18 still reports dock or HDMI state under KMS without running legacy scripts or rewriting `/boot/config.txt`. | High |
 | Top power-save/resume button behavior | Board or MCU likely, with Linux path unknown | Field notes show screen turns off, indicator flashes, face buttons do not wake, and top button wakes visible state. It is not detected like normal EmulationStation controls. | Observe only | Use passive input-device inspection and documented field observations to identify whether the button appears as HID, GPIO, board control, or remains invisible to Linux. | High |
 | Automatic idle power-save behavior | Board or MCU, Linux userspace, display/audio domain, or unknown | Field notes say GPi Case 2 may auto-enter display/audio power-save after roughly 15-20 minutes idle. | Forbidden until proven | Reproduce only with a written recovery plan that does not depend on SSH, ping, side-switch shutdown, battery depletion, or repeated CM4 removal. | Critical |
-| LCD sleep/wake behavior | Board or MCU, display/backlight path, kernel/KMS, or unknown | Screen can turn off while Linux may stay alive; top button can wake visible state; wake has shown undervoltage; later incident showed RCU stalls. | Defer | Field-test sleep/wake under KMS with power-quality notes, SSH/network status, controller status, dmesg, and recovery steps. | Critical |
+| LCD sleep/wake behavior | Board or MCU, display/backlight path, kernel/KMS, or unknown | Screen can turn off while Linux may stay alive; top button can wake visible state; wake has shown undervoltage; a later incident showed RCU stalls; a 2026-07-09 post-resume Bundle Collector Lantern captured one successful resume with `get_throttled=0x0`. | Defer | Field-test sleep/wake under KMS with power-quality notes, SSH/network status, controller status, dmesg, recovery steps, and a future watcher when transition evidence is needed. | Critical |
 | LCD/HDMI switching | Stock LCD scripts currently own legacy path; future KMS behavior unknown | RetroFlag scripts call `lcdnext.sh`, read GPIO18, and rewrite `/boot/config.txt`; current project direction says this is not KMS-safe. | Defer | Design evidence for KMS-native LCD/HDMI behavior that does not call `lcdnext.sh`, `lcdfirst.sh`, or restore legacy FKMS/DPI config files. | High |
 | Docking behavior | Stock scripts, Linux display stack, dock hardware, and unknown audio/power paths | Upstream README says script automatically switches LCD/HDMI when docked; behavior map lists unknown dock effects on audio, power domains, wake, and recovery. | Defer | Field checklist entries for boot docked, handheld-to-dock, dock-to-handheld, active connector, audio path, controller path, and whether any legacy script ran. | High |
 | Handheld audio after KMS | Linux audio stack, USB audio, possibly board routing; current owner unknown | Hardware notes show `audremap` disabled because it conflicts with KMS DPI; USB audio device is present; audio after KMS is not fully verified. | Defer | Verify RetroPie game audio and menu audio in handheld mode, recording selected device, volume path, emulator, and whether `audremap` remains disabled. | Medium |
@@ -84,6 +88,7 @@ replacement.
 | Safe shutdown sequencing | Stock script and Linux userspace | Upstream script kills `emulationstation`, kills truncated `emulationstatio`, sleeps about five seconds, then calls `shutdown -h now`. | Must preserve | Define future clean-shutdown policy for EmulationStation, running games, process cleanup, delay, failure handling, and Linux shutdown before any shutdown execution exists. | High |
 | Process shutdown assumptions such as EmulationStation kills | Stock script | Behavior map records direct `killall` commands and notes they are observed assumptions, not proof of a good user-facing shutdown. | Defer | Determine expected RetroPie and active-game shutdown behavior; avoid copying `killall` blindly without evidence and user-safety review. | Medium |
 | Kernel-stall/RCU-stall emergency recovery | Kernel, power-save/display path, board behavior, or unknown | QUEST-0064 records RCU stall messages, no SSH, no ping, side-switch off failure, top-button visible-state toggling, and physical CM4 removal as the only observed stop. | Forbidden until proven | Find a reversible, mapped, maintainer-approved recovery path through public docs, board photos, electrical review, and separate decision before deeper risky tests. | Critical |
+| Session Watch Lantern | Future local read-only watcher only | Post-resume Bundle Collector satchels are useful, but they cannot prove what happened during sleep/resume unless a watcher was already running. | Defer | Map a watcher that records pre-sleep state, records post-resume state when available, tracks `get_throttled`, temperature, frontend, and input hints over time, and avoids telemetry and automatic fixes. | Medium |
 | Local diagnostics coverage | Future Linux userspace lanterns only | Local diagnostics bundle map and acceptance checklist describe future local-only support output; no implementation is authorized here. | Defer | Define read-only diagnostics that summarize GPIO vocabulary, script presence, KMS state, audio state, logs, and checklist evidence without network submission. | Low |
 | Field checklist coverage | EDC acceptance checklist | GPi Case 2 acceptance checklist has rows for power, GPIO, display, dock, audio, sleep/resume, RetroPie, diagnostics, rollback, and public readiness. | Must preserve | Keep checklist rows current as tests are performed; unknown remains `Unknown` until evidence exists. | Low |
 
@@ -129,6 +134,9 @@ Before claiming power-save/resume support, prove:
   loss, shutdown-path loss, or hidden filesystem risk.
 - Automatic idle power-save after roughly 15-20 minutes is tested with a
   documented non-SSH-dependent recovery plan.
+- Successful and failed resumes are both recorded as separate Field Lantern
+  evidence, with post-resume captures treated as after-the-fact satchels unless
+  a Session Watch Lantern was already running.
 - Display, audio, controller, side-switch, and dock behavior return cleanly in
   handheld and docked modes.
 - Any blinking LED or display-off behavior is attributed only to evidence, not

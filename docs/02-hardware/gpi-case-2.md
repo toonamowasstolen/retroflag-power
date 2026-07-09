@@ -20,7 +20,7 @@ related:
   - docs/04-architecture/system-overview.md
   - docs/13-reference/terminology.md
   - docs/13-reference/glossary.md
-last_updated: 2026-07-03
+last_updated: 2026-07-09
 ---
 
 # GPi Case 2 Reference Hardware
@@ -633,6 +633,15 @@ Mitigation:
 ## RISK-0005 — Resume corruption
 
 Future resume features could risk save-state or progress corruption.
+
+Field evidence has since shown both sides of the trail: a 2026-07-08
+power-save/resume RCU stall where software recovery vanished, and a
+2026-07-09 Bundle Collector Field Lantern run after unintended sleep followed
+by successful resume. Treat resume failure as intermittent, not guaranteed,
+and follow the newer Ledger before making claims:
+
+- [GPi Case 2 Hardware Findings and KMS Power Notes](../03-hardware/gpi-case-2-hardware-findings-kms-power-notes.md)
+- [GPi Case 2 Bundle Collector Lantern Capture Procedure](../03-operations/gpi-case-2-boot-power-trace-capture-procedure.md)
 
 Mitigation:
 

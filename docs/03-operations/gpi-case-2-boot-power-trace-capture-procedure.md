@@ -21,7 +21,7 @@ related:
   - gpi-case-2-recovery-first-field-procedure.md
   - ../03-hardware/gpi-case-2-power-integrity-investigation-notes.md
   - ../03-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
-last_updated: 2026-07-08
+last_updated: 2026-07-09
 ---
 
 # GPi Case 2 Bundle Collector Lantern Capture Procedure
@@ -68,6 +68,12 @@ present after boot. It cannot prove the exact second of early boot
 undervoltage unless a Boot Power Trace Lantern was already running during
 boot.
 
+The same boundary applies after sleep/resume: a Bundle Collector Lantern run
+after a successful wake is valuable evidence that the system resumed into a
+responsive session, but it does not prove what happened during the
+sleep/resume transition unless a Session Watch Lantern or other watcher was
+already running before sleep.
+
 The bundle preserves evidence. It does not diagnose the whole power path,
 claim that KMS is the cause, repair the device, or prove the hardware is safe.
 
@@ -82,6 +88,8 @@ It is useful when:
 
 - `vcgencmd get_throttled` or kernel logs show undervoltage or throttling
   somewhere during boot.
+- The handheld successfully resumes and the maintainer wants a post-resume
+  satchel before the trail goes cold.
 - The maintainer needs a short timing trail before changing any power,
   display, audio, or startup behavior.
 - The next step is post-boot evidence collection for the
@@ -101,7 +109,9 @@ first, then capture after the device is booted again.
 - Keep the GPi Case 2 active and stop before idle auto power-save can trigger.
   Current field evidence suggests idle display/audio power-save can appear
   after roughly 15-20 minutes of no input.
-- Do not test resume yet.
+- Do not induce resume as part of this capture. If an unintended sleep already
+  happened and the handheld successfully resumed, a post-resume capture is
+  useful evidence.
 - Avoid the top sleep/resume button during diagnostics unless a procedure
   explicitly says otherwise.
 - Do not use this trace as a power-save or wake test.
@@ -179,6 +189,8 @@ What this cannot prove:
 
 - It cannot determine the exact second of early boot undervoltage unless a
   boot-time recorder was already running.
+- It cannot determine what happened during a sleep/resume transition unless a
+  watcher was already running before sleep.
 - It cannot report watts, TDP, amps, power draw, or actual 5V rail voltage.
 - It cannot make process detection authoritative. EmulationStation/frontend
   visibility through process search is a clue, not a verdict.
@@ -295,6 +307,27 @@ belongs to a later quest with explicit scope and validation.
 Use the bundle as remembered-log and current-state evidence, not as a
 single-root-cause verdict.
 
+Successful post-resume field Relic:
+
+- `gpi-case2-bundle-collector-field-lantern-20260709-083407.tar.gz` was
+  captured after an unintended sleep followed by successful resume.
+- EmulationStation was visibly open and detected by the updated script.
+- The 90-sample trace ran for about 102 seconds total.
+- `get_throttled` stayed `0x0` across the trace.
+- Temperature stayed roughly 58-60 C.
+- The internal/core voltage sample stayed around `0.8700V`; do not interpret
+  this as 5V input rail evidence.
+- Uptime during the trace was roughly 2686-2786 seconds, about 44-46 minutes
+  after boot.
+- `dmesg` included a late `xpad` USB message around uptime 2652 seconds:
+  `xpad_try_sending_next_out_packet - usb_submit_urb failed with result -19`.
+  Treat this as a trail marker, not proof of root cause.
+
+This proves successful resume has been observed and the resume wedge is
+intermittent, not guaranteed. It does not clear longer sleep duration, battery
+state, thermal state, USB/input state, display/KMS timing, or transient power
+conditions as suspects.
+
 Early boot:
 
 - A non-zero throttling value or voltage line already present in the first
@@ -352,11 +385,14 @@ implemented here.
 
 A later Session Watch Lantern can watch runtime play and menu sessions:
 
+- Pre-sleep state when sleep is expected or suspected.
+- Post-resume state when the handheld returns.
 - `vcgencmd get_throttled` flags over time.
 - Temperature, load, and memory.
-- Frontend, emulator, and game detection where possible.
+- Frontend, emulator, game, and input hints where possible.
 - Recent `dmesg` and journal warnings.
 - No telemetry by default.
+- No automatic fixes.
 
 The strongest verified win is a small one: a timestamped local bundle that can
 be inspected without touching GPIO, shutdown, installers, or the power path.

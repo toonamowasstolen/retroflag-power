@@ -21,7 +21,7 @@ related:
   - ../03-operations/gpi-case-2-acceptance-checklist.md
   - ../03-operations/safeshutdown-replacement-boundary-map.md
   - ../00-project/quests/0064-record-gpi-case-2-power-save-rcu-stall-incident.md
-last_updated: 2026-07-08
+last_updated: 2026-07-09
 ---
 
 # GPi Case 2 Power Integrity Investigation Notes
@@ -80,11 +80,25 @@ no-side-switch-response investigation showed power warnings:
 These observations do not prove a single cause. They do make power integrity a
 real suspect in the incident chain.
 
+A later successful post-resume Bundle Collector Field Lantern run,
+`gpi-case2-bundle-collector-field-lantern-20260709-083407.tar.gz`, captured a
+different power clue: after an unintended sleep and successful resume,
+`get_throttled` stayed `0x0` for the 90-sample trace, temperature stayed
+roughly 58-60 C, and `measure_volts` stayed around `0.8700V` as an
+internal/core rail sample. The trace ran about 102 seconds and happened at
+roughly 44-46 minutes after boot.
+
+That Relic says successful resume can happen and the resume wedge is
+intermittent. It does not prove the transition was power-clean, because the
+Bundle Collector Lantern started after resume, not before sleep.
+
 ## Interpretation
 
 - Undervoltage does not prove GPi Case 2 board design failure by itself.
 - Undervoltage is now a real suspect in the RCU stall, no-network,
   no-side-switch-response incident chain.
+- A successful post-resume trace with `get_throttled=0x0` means the failure is
+  not guaranteed on every resume.
 - Software shutdown cannot be trusted if the kernel is already wedged.
 - Arcadia Runtime may need to detect and report power-integrity warnings before
   enabling risky behavior such as power-save/resume testing, service
@@ -102,6 +116,8 @@ characterized and an emergency recovery path exists.
 - Aging battery.
 - Case board power design limitation.
 - KMS/display resume sensitivity.
+- Longer sleep duration, battery state, thermal state, USB/input state,
+  display/KMS timing, and transient power conditions.
 
 Each candidate remains an investigation target, not a diagnosis.
 
@@ -126,6 +142,12 @@ Capture the same evidence:
 - Before and after boot.
 - Before and after idle.
 - Before and after resume, if testing is resumed.
+
+Post-resume captures are useful Field Lantern satchels, but they do not prove
+what happened during the sleep/resume transition unless a watcher was already
+running. A future Session Watch Lantern should record pre-sleep state, record
+post-resume state when available, track `get_throttled`, temperature,
+frontend, and input hints over time, and avoid telemetry and automatic fixes.
 
 If `vcgencmd` or the kernel log path is unavailable, record that absence as
 evidence instead of installing anything during the capture pass.
@@ -155,6 +177,7 @@ cartridge/card removal.
 | Battery only | Fresh charge, cold boot | `vcgencmd get_throttled`, `vcgencmd measure_volts` internal/core rail reading, voltage/throttling log search, manual observations | Safe observation-only |
 | Battery only | After 10 minutes idle | Same read-only captures and manual observations | Safe observation-only |
 | Battery only | After screen power-save, if it can be observed safely | Same read-only captures and manual observations before and after wake | Unsafe/unverified until emergency recovery exists |
+| Battery only | After unintended successful resume | Bundle Collector Lantern plus manual observations | Useful post-resume evidence; not transition proof unless a watcher was already running |
 | USB-C power attached | Handheld mode | Same read-only captures and manual observations | Safe observation-only |
 | Docked mode | Later safe docked pass | Same read-only captures and manual observations | Defer until docked recovery path is safe |
 | Audio active vs idle | Handheld or docked mode being tested | Compare captures with audio active and idle | Safe observation-only if no power-save/resume is induced |

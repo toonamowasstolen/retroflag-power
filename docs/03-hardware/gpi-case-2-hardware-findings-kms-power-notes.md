@@ -329,6 +329,44 @@ Additional field note:
 - Avoiding the top power-save button may therefore not avoid the risky
   power-save or resume path.
 
+## Successful Resume Field Lantern Evidence
+
+Verified field win, recorded 2026-07-09:
+
+- Bundle:
+  `gpi-case2-bundle-collector-field-lantern-20260709-083407.tar.gz`.
+- Script type: GPi Case 2 Bundle Collector Field Lantern, a manual post-boot
+  and post-session evidence collector.
+- Run condition: after an unintended sleep followed by successful resume.
+- EmulationStation was visibly open and detected by the updated script.
+- The 90-sample trace ran for about 102 seconds total.
+- `vcgencmd get_throttled` stayed `0x0` across the trace.
+- Temperature stayed roughly 58-60 C.
+- `vcgencmd measure_volts` stayed around `0.8700V`; this is an
+  internal/core rail sample, not the GPi Case 2 5V input rail.
+- Uptime during the trace was roughly 2686-2786 seconds, about 44-46 minutes
+  after boot.
+- `dmesg` included a late `xpad` USB trail marker around uptime 2652 seconds:
+  `xpad_try_sending_next_out_packet - usb_submit_urb failed with result -19`.
+
+Interpretation:
+
+- The resume wedge is intermittent, not guaranteed.
+- Successful resume has now been observed on the GPi Case 2 field trail.
+- The successful Bundle Collector Lantern capture proves the handheld was
+  responsive after this resume and that no throttling flag appeared during the
+  captured window.
+- It does not prove what happened during the sleep/resume transition itself,
+  because no Session Watch Lantern or other watcher was already running before
+  sleep.
+- Treat the `xpad` `-19` message as a trail marker, not proof of root cause.
+
+Current suspects remain on the map: longer sleep duration, battery state,
+thermal state, USB/input state, display/KMS timing, and transient power
+conditions. The recovery concern from the 2026-07-08 RCU stall still stands,
+but the theory is now "intermittent resume wedge" rather than "resume always
+wedges."
+
 New investigation items:
 
 - Identify whether a reversible emergency reset or safe power-cut path exists
@@ -368,10 +406,11 @@ The future focused startup timing pass is mapped in the
 [GPi Case 2 Boot Power Trace Lantern Map](../03-operations/gpi-case-2-boot-power-trace-lantern-map.md).
 The manual capture procedure lives in the
 [GPi Case 2 Boot Power Trace Capture Procedure](../03-operations/gpi-case-2-boot-power-trace-capture-procedure.md).
-Use that lantern to distinguish early boot, KMS/display initialization,
-USB/audio/controller initialization, EmulationStation startup, and later
-idle/power-save timing before treating KMS or any single subsystem as the
-cause.
+Use that Bundle Collector Lantern to gather post-boot or post-resume satchels,
+and use a future watcher to distinguish early boot, KMS/display
+initialization, USB/audio/controller initialization, EmulationStation startup,
+and later idle/power-save timing before treating KMS or any single subsystem
+as the cause.
 
 Likely causes:
 
