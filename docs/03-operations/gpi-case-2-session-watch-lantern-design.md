@@ -12,6 +12,7 @@ audience:
   - Hardware Porters
 purpose: Design a future read-only GPi Case 2 Session Watch Lantern for handheld runtime observation across menu, play, sleep-risk, and resume-risk field sessions.
 related:
+  - gpi-case-2-true-boot-trace-lantern-design.md
   - ../../scripts/gpi-case2-session-watch-lantern.sh
   - gpi-case-2-session-watch-field-run-procedure.md
   - gpi-case-2-session-watch-evidence-ledger.md
@@ -66,13 +67,13 @@ what changed while the maintainer used menus, launched games, left the system
 idle, or observed a successful post-resume state.
 
 The Session Watch Lantern is different from the current Bundle Collector
-Lantern and the future Boot Trace Lantern:
+Lantern and the future True Boot Trace Lantern:
 
 - Bundle Collector Lantern: current manual post-boot satchel that gathers
   remembered logs and a short sampling window after the handheld is already
   responsive.
-- Boot Trace Lantern: future startup recorder for early boot timing and power
-  warning buckets.
+- True Boot Trace Lantern: future scp-first startup recorder for boot,
+  display handoff, frontend-start, and warning buckets.
 - Session Watch Lantern: current foreground skeleton and future fuller runtime
   observer for menu, emulator, game, idle-risk, and post-resume evidence after
   boot.
@@ -306,8 +307,10 @@ missing-evidence section. Missing evidence is part of the map.
 
 ## Relationship To Boot Trace Lantern
 
-The Boot Trace Lantern answers startup timing questions. The Session Watch
-Lantern answers runtime session questions.
+The
+[True Boot Trace Lantern](gpi-case-2-true-boot-trace-lantern-design.md)
+answers startup timing questions. The Session Watch Lantern answers runtime
+session questions.
 
 The two lanterns should not duplicate each other:
 
