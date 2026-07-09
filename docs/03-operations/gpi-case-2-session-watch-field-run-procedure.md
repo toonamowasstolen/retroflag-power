@@ -101,16 +101,18 @@ This Field Lantern run must remain read-only and local.
 
 - A responsive GPi Case 2 with enough battery or stable USB-C power for the
   planned watch length.
-- The current script available on the device as:
+- The current script copied onto the device as one portable Relic. The GPi
+  Case 2 does not need the full repository checked out for current field use.
 
 ```sh
-/home/retropi/gpi-case2-session-watch-lantern.sh
+scp scripts/gpi-case2-session-watch-lantern.sh retropi@gpi:/home/retropi/
+ssh retropi@gpi
+sh /home/retropi/gpi-case2-session-watch-lantern.sh --plain --duration 300 --interval 15
 ```
 
 - Optional SSH support from a workstation:
 
 ```sh
-scp scripts/gpi-case2-session-watch-lantern.sh retropi@gpi:/home/retropi/
 ssh retropi@gpi
 ```
 

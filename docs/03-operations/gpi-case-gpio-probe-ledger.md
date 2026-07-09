@@ -35,10 +35,12 @@ The broader replacement compass lives in the
 
 ## Safe Probe Command
 
-Run the probe on the GPi Case with one candidate BCM pin:
+Run the probe on the GPi Case with one candidate BCM pin only after a later
+hardware quest provides a copied `retroflag-powerd` binary or an explicit
+development checkout on the device:
 
 ```sh
-go run ./cmd/retroflag-powerd --probe-gpio-signal <pin>
+./retroflag-powerd --probe-gpio-signal <pin>
 ```
 
 The command output is raw wire state only:
@@ -66,7 +68,7 @@ interpreted ledger.
 
 | Date | Device / image | Command run | BCM pin | Case state / control position | Docked or handheld | Raw result | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| YYYY-MM-DD | GPi Case model, Pi model, OS image | `go run ./cmd/retroflag-powerd --probe-gpio-signal <pin>` | `<pin>` | Describe only what the case control was doing | Docked / handheld | `SignalUnverified` | Note uncertainty, repeated readings, or nearby services |
+| YYYY-MM-DD | GPi Case model, Pi model, OS image | `./retroflag-powerd --probe-gpio-signal <pin>` | `<pin>` | Describe only what the case control was doing | Docked / handheld | `SignalUnverified` | Note uncertainty, repeated readings, or nearby services |
 
 ## Field Notes
 

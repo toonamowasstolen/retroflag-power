@@ -77,12 +77,16 @@ Implementation
 
 ## Safe Command
 
+Local-development form:
+
 ```sh
 go run ./cmd/retroflag-powerd --probe-gpio-signal 4
 ```
 
-On the GPi Case, replace `4` with the candidate BCM GPIO pin under observation.
-The result is a raw wire report, not a power decision.
+On the GPi Case, do not assume a repository checkout exists on the handheld;
+use a copied binary or a later explicit development-checkout procedure, and
+replace `4` with the candidate BCM GPIO pin under observation. The result is a
+raw wire report, not a power decision.
 
 ## Milestone Note
 

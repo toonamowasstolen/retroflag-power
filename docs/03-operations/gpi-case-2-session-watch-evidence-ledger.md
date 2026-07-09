@@ -129,47 +129,103 @@ Avoid claiming:
 
 ## Ledger Entries
 
-### Awaiting First Real Field Run
+### 2026-07-09 - First Handheld Session Watch Run
 
-Status: `untested`
+Status: `observed` / clean handheld run
 
-Script artifact path/name: `awaiting first real field run`
+Script artifact path/name:
+`/home/retropi/gpi-case2-session-watch-lantern-20260709-225152.txt`
 
-Script artifact retrieved: `pending`
+Local copied path:
+`~/Desktop/gpi-case-2-bundle-collector-lanterns/gpi-case2-session-watch-lantern-20260709-225152.txt`
 
-Run date: `pending`
+Script artifact retrieved: `yes`
 
-Run duration: `pending`
+Run date: `2026-07-09`
+
+Run duration: requested `300` seconds; observed `302` seconds / `05:02`
 
 Power source: `unknown`
 
-Docked/handheld state: `unknown`
+Docked/handheld state: `handheld`
 
-Display state: `unknown`
+Display state: Display was on and working in EmulationStation. No display
+blank was observed during this run.
 
-LED state: `unknown`
+LED state: Power LED was on and dimly lit. Operator notes it appears brighter
+when the battery is charging.
 
-SSH status: `not used`
+SSH status: `alive`; SSH stayed connected and showed progress.
 
-Side-switch behavior: `not tested`
+Side-switch behavior: `not recorded`
 
-Top-button behavior: `not tested`
+Top-button behavior: `not tested`; top sleep/resume button was avoided.
 
-EmulationStation status: `unknown`
+EmulationStation status: Human observation says EmulationStation was working.
+Artifact process detection reported `not_detected` for samples 1-2 and
+`detected` from sample 3 onward.
 
-Final outcome: `awaiting first real handheld Session Watch Lantern run`
+Final outcome: Script completed and wrote the final Ledger artifact. Overall
+handheld appeared to work pretty well during the test.
 
-Interpretation bucket: `untested`
+Interpretation bucket: `clean-run`
 
-Human notes: No real Session Watch Lantern field run has been recorded in
-this Ledger yet. The first entry should come from the actual script artifact
-and concise human notes, not reconstructed expectations.
+#### Artifact Facts
 
-Next rune: Run the
-[GPi Case 2 Session Watch Field Run Procedure](gpi-case-2-session-watch-field-run-procedure.md)
-on a responsive handheld Relic, retrieve the final artifact when possible, and
-replace this placeholder with the first observed entry.
+- `status`: `completed`
+- `read_only_marker`: `READ-ONLY / NO CHANGES MADE`
+- `started_utc`: `2026-07-09T14:51:52Z`
+- `ended_utc`: `2026-07-09T14:56:54Z`
+- `requested_duration_seconds`: `300`
+- `observed_duration_seconds`: `302`
+- `observed_duration`: `05:02`
+- `sample_interval_seconds`: `15`
+- `sample_count`: `21`
+- `hostname`: `raspberrypi`
+- `user`: `retropi`
+- `kernel`: `Linux raspberrypi 6.1.21-v8+ #1642 SMP PREEMPT Mon Apr  3 17:24:16 BST 2023 aarch64 GNU/Linux`
+- `frontend`: `not_detected` for samples 1-2, `detected` from sample 3 onward.
+- `temp range`: `37.9'C` to `48.7'C`
+- `throttled`: `throttled=0x50000` on samples.
+- `warnings_and_missing_evidence`: `none_recorded`
 
-Do not overclaim: This placeholder records readiness only. It is not evidence
-that the GPi Case 2 display, SSH, side switch, top button, EmulationStation,
-idle, resume, or power paths behaved in any particular way.
+#### Human Observations
+
+- Display was on and working in EmulationStation.
+- After the script ran for a bit, a Nintendo emulator was opened.
+- Power LED was on and dimly lit; operator notes it appears brighter when the
+  battery is charging.
+- SSH stayed alive and showed progress.
+- EmulationStation was working.
+- Slight slowdown was noticed while emulating Mega Man. Cause is unknown and
+  may be emulator, game, native CPU, or other runtime constraint.
+- Top sleep/resume button was avoided.
+- Brightness and volume sliders on the side were adjusted.
+- Overall handheld appeared to work pretty well during the test.
+
+#### Unknown Or Not Tested
+
+- Power source was not recorded in the artifact facts or human notes.
+- Side-switch shutdown behavior was not recorded in this run.
+- Top sleep/resume button was not tested.
+- No sleep/resume transition was tested.
+- No docked state was recorded.
+- The cause of the slight Mega Man slowdown is unknown.
+
+#### Interpretation
+
+- Clean handheld Session Watch run.
+- No SSH loss observed.
+- No display blank observed.
+- No top-button test performed.
+- No hard-freeze or RCU-stall-like outcome observed.
+- Slight emulator slowdown observed but not attributed.
+
+Do not overclaim: `throttled=0x50000` should be tracked in later runs, but this
+single artifact is not enough to claim a root cause, power condition, battery
+condition, charger condition, or emulator-performance cause.
+
+Next rune: Run another scp-first Session Watch Lantern pass with the same
+handheld-first procedure, recording power source, whether charging is active,
+LED brightness, selected emulator/game, and side-switch shutdown behavior if
+the operator chooses to shut down afterward while the Relic is responsive.

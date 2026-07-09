@@ -43,7 +43,7 @@ Documentation
 - Included a simple observation table for date, device or image, command, BCM
   pin, case state or control position, docked or handheld context, raw result,
   and notes.
-- Recorded the safe read-only command:
+- Recorded the original local-development read-only command:
   `go run ./cmd/retroflag-powerd --probe-gpio-signal <pin>`.
 - Made the raw vocabulary explicit: `SignalLow`, `SignalHigh`, and
   `SignalUnverified`.

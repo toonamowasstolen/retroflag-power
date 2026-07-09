@@ -77,14 +77,17 @@ explicit `active_switch_state` of `off` or `on`. It maps raw `SignalLow` and
 map. `SignalUnverified` becomes `SwitchUnknown`, keeping the lantern honest
 when the raw observation has not earned meaning yet.
 
-The first hardware-facing lantern is a read-only probe command:
+The first hardware-facing lantern is a read-only probe command. In local
+development it can be run from a repository checkout:
 
 ```sh
 go run ./cmd/retroflag-powerd --probe-gpio-signal 4
 ```
 
-Run it on the GPi Case with a candidate BCM GPIO pin number. The command reports
-only raw signal vocabulary:
+For GPi Case field work, do not assume the repository exists on the handheld;
+use a copied binary or a later explicit development-checkout procedure. Run it
+with a candidate BCM GPIO pin number. The command reports only raw signal
+vocabulary:
 
 ```text
 SignalLow
@@ -156,8 +159,9 @@ observation session:
 Useful manual probes are documented in the GPi Case 2 hardware notes, including
 `gpiodetect`, `gpioinfo`, and `gpiomon` examples.
 
-With RetroFlag Power built on the device, the project probe can be used during
-the same supervised observation session:
+If a later hardware quest provides a copied `retroflag-powerd` binary or an
+explicit development checkout on the device, the project probe can be used
+during the same supervised observation session:
 
 ```sh
 ./retroflag-powerd --probe-gpio-signal 4

@@ -195,8 +195,7 @@ portable archive beside it:
 The final terminal output should name the artifact exactly:
 
 ```text
-Artifact: /home/retropi/gpi-case2-session-watch-lantern-20260709-121500.tar.gz
-Folder:   /home/retropi/gpi-case2-session-watch-lantern-20260709-121500
+Artifact: /home/retropi/gpi-case2-session-watch-lantern-20260709-121500.txt
 Duration: 00:10:03
 Status:   completed
 ```
