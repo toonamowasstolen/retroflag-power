@@ -12,6 +12,7 @@ audience:
   - Hardware Porters
 purpose: Design a future read-only GPi Case 2 Session Watch Lantern for handheld runtime observation across menu, play, sleep-risk, and resume-risk field sessions.
 related:
+  - gpi-case-2-first-spark-boot-veil-welcome-scroll-design.md
   - gpi-case-2-true-boot-trace-lantern-design.md
   - ../../scripts/gpi-case2-session-watch-lantern.sh
   - gpi-case-2-session-watch-field-run-procedure.md
@@ -323,6 +324,13 @@ The two lanterns should not duplicate each other:
 A later Field Lantern bundle may include both satchels as separate sections.
 The Common Problems Mage can eventually read both: Boot Trace buckets for
 startup timing and Session Watch buckets for runtime behavior.
+
+The
+[First Spark / Boot Veil / Relic Welcome Scroll Design](gpi-case-2-first-spark-boot-veil-welcome-scroll-design.md)
+uses Session Watch as the post-boot verification companion. If a future veil
+or welcome scroll changes startup presentation, Session Watch should help
+confirm that the handheld remains understandable and responsive once
+EmulationStation or another frontend is visible.
 
 ## Relationship To Arcadia Runtime Casters
 

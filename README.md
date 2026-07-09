@@ -111,6 +111,9 @@ On unsupported platforms or uncertain GPIO access, it reports
   the scp-first startup evidence map and current foreground script skeleton
   for a read-only Boot Trace Ledger that complements Session Watch without
   changing handheld behavior.
+- [GPi Case 2 First Spark / Boot Veil / Relic Welcome Scroll design](docs/03-operations/gpi-case-2-first-spark-boot-veil-welcome-scroll-design.md):
+  the recovery-first startup UX map for earlier feedback, reversible boot-text
+  hiding, and bounded SSH login/status output after True Boot Trace evidence.
 - [GPi Case 2 Session Watch field run procedure](docs/03-operations/gpi-case-2-session-watch-field-run-procedure.md):
   the handheld-first command, observation, retrieval, and interpretation trail
   for real Session Watch Lantern runs.

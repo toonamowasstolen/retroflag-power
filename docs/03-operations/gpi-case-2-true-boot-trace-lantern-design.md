@@ -12,6 +12,7 @@ audience:
   - Hardware Porters
 purpose: Design a future read-only, scp-first GPi Case 2 Boot Trace Lantern for capturing startup evidence without changing handheld behavior.
 related:
+  - gpi-case-2-first-spark-boot-veil-welcome-scroll-design.md
   - ../../scripts/gpi-case2-true-boot-trace-lantern.sh
   - gpi-case-2-boot-power-trace-lantern-map.md
   - gpi-case-2-boot-power-trace-capture-procedure.md
@@ -348,6 +349,21 @@ A future Field Lantern bundle may include both artifacts. The Common Problems
 Mage can eventually compare the two Ledgers: boot buckets from the Boot Trace
 Lantern and runtime buckets from the Session Watch Lantern. Neither Lantern
 should apply fixes.
+
+## Relationship To First Spark And Boot Veil
+
+The
+[First Spark / Boot Veil / Relic Welcome Scroll Design](gpi-case-2-first-spark-boot-veil-welcome-scroll-design.md)
+depends on True Boot Trace evidence before any startup UX behavior changes.
+The observed roughly 15-second silent-screen window after the side switch is a
+field observation, not yet proof of a KMS, framebuffer, firmware, or userspace
+boundary.
+
+The True Boot Trace Lantern should provide the timing, display, framebuffer,
+frontend, warning, and missing-evidence clues needed before a future quest
+chooses firmware/kernel config, framebuffer splash, Plymouth, LED/status
+signal, or SSH welcome/status output. Startup polish must not hide diagnostic
+boot text unless a documented recovery profile can reveal it again.
 
 ## Relationship To Future Arcadia Runtime Casters
 

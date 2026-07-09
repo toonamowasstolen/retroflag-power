@@ -12,6 +12,7 @@ audience:
   - Hardware Porters
 purpose: Map a future focused read-only boot power trace for timing GPi Case 2 undervoltage and throttling evidence during startup.
 related:
+  - gpi-case-2-first-spark-boot-veil-welcome-scroll-design.md
   - gpi-case-2-true-boot-trace-lantern-design.md
   - ../../scripts/gpi-case2-true-boot-trace-lantern.sh
   - gpi-case-2-session-watch-lantern-design.md
@@ -278,6 +279,13 @@ evidence, record it in the relevant EDC map or ledger before deeper tests.
 ## Relationship To Other Lanterns
 
 The future Boot Power Trace Lantern is narrower than the Field Lantern.
+
+The
+[GPi Case 2 First Spark / Boot Veil / Relic Welcome Scroll Design](gpi-case-2-first-spark-boot-veil-welcome-scroll-design.md)
+is the recovery-first startup UX companion to this map. It must not treat
+undervoltage, throttling, KMS, framebuffer, or display timing as proven until
+Boot Trace and Boot Power Trace evidence support the claim, and it must keep a
+diagnostic path that reveals boot text again.
 
 The [GPi Case 2 Field Lantern Capture Procedure](gpi-case-2-field-lantern-capture-procedure.md)
 collects broader post-recovery evidence: boot config, RetroFlag script

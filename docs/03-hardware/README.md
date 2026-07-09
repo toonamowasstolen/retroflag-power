@@ -12,3 +12,4 @@ This shelf keeps the verified device maps and bench notes for RetroFlag Power.
 - [GPi Case 2 Power Integrity Investigation Notes](gpi-case-2-power-integrity-investigation-notes.md)
 - [GPi Case 2 Emergency Recovery Research Ledger](gpi-case-2-emergency-recovery-research-ledger.md)
 - [GPi Case 2 Developer Access Paths](gpi-case-2-developer-access-paths.md)
+- [GPi Case 2 First Spark / Boot Veil / Relic Welcome Scroll Design](../03-operations/gpi-case-2-first-spark-boot-veil-welcome-scroll-design.md)
