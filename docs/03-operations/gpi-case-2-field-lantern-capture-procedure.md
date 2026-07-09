@@ -50,6 +50,10 @@ The current manual post-boot bundle collector procedure lives in
 [GPi Case 2 Boot Power Trace Capture Procedure](gpi-case-2-boot-power-trace-capture-procedure.md).
 That current Bundle Collector Lantern gathers remembered boot logs and samples
 current `vcgencmd get_throttled` state after the handheld is responsive. The
+script prints a human-facing banner, double-bracket stage lines, sampling
+progress, timing notes, and exact artifact/retrieval lines. Use `--duration`
+for shorter field retests and `--plain` when copyable ASCII output is better.
+The
 Boot Power Trace Lantern name is reserved for a future safe boot-time recorder
 that starts during boot and samples timestamped state. It may later become one
 optional section inside a Field Lantern bundle, but this Field Lantern

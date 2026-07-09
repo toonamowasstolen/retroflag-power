@@ -127,15 +127,22 @@ It writes:
 - `trace.csv`, one post-boot sample per second for 90 seconds by default.
 - `report.txt`, capture context, command availability, and safety reminders.
 - `manifest.txt`, portability and privacy notes for the capture.
+- `timing.txt` and `timing.tsv`, capture start, end, total duration, and
+  per-stage durations where practical. Unusually slow capture stages may be
+  diagnostic evidence.
 - `dmesg-power-display-usb-xpad-rcu-watchdog-mmc-ext4.txt`, matching kernel
   lines for voltage, throttle, display, USB, controller, RCU, watchdog, MMC,
   and ext4 clues.
 - `journal-power-display-usb-xpad-rcu-watchdog-mmc-ext4.txt`, matching
   `journalctl -b` lines when `journalctl` is available.
 - `process-milestones.txt`, first-seen milestones such as EmulationStation
-  becoming visible to `pgrep`. Treat this as helpful but unreliable; the first
-  field run reported EmulationStation as not running even though the operator
-  observed it open.
+  or another frontend becoming visible to best-effort process search. Treat
+  this as helpful but unreliable; the first field run reported
+  EmulationStation as not running even though the operator observed it open.
+- `frontend-detection.txt`, the process patterns checked and the detection
+  policy: `detected`, `not_detected`, or `uncertain`.
+- `ps-before-sampling.txt` and `ps-after-sampling.txt`, process snapshots for
+  manual review when frontend detection looks surprising.
 - Command outputs for `uname`, `uptime`, `mount`, `df`, `free`, `lsusb`,
   `systemd-analyze blame`, `systemd-analyze critical-chain`, and safe
   `vcgencmd` readings when those commands are available.
@@ -152,7 +159,8 @@ Each CSV row includes:
 - `vcgencmd measure_volts`, which reports an internal/core rail reading, not
   the GPi Case 2 5V input rail.
 - `vcgencmd measure_temp`.
-- Whether `emulationstation` is running.
+- Best-effort frontend detection as `detected`, `not_detected`, or
+  `uncertain`.
 - A compact latest matching `dmesg` hint.
 
 If a command or file is unavailable, the script records that as evidence
@@ -172,8 +180,8 @@ What this cannot prove:
 - It cannot determine the exact second of early boot undervoltage unless a
   boot-time recorder was already running.
 - It cannot report watts, TDP, amps, power draw, or actual 5V rail voltage.
-- It cannot make process detection authoritative. EmulationStation visibility
-  through `pgrep` is a clue, not a verdict.
+- It cannot make process detection authoritative. EmulationStation/frontend
+  visibility through process search is a clue, not a verdict.
 
 ## What It Does Not Do
 
@@ -218,16 +226,31 @@ ssh retropi@gpi
 sh /home/retropi/gpi-case2-bundle-collector-field-lantern.sh
 ```
 
-The script prints the local bundle path as its final line, for example:
+The script prints a banner, double-bracket step lines, visible sampling
+progress, and the exact local artifact path, for example:
 
 ```text
-/home/retropi/gpi-case2-bundle-collector-field-lantern-20260708-191500.tar.gz
+Artifact: /home/retropi/gpi-case2-bundle-collector-field-lantern-20260708-191500.tar.gz
+Folder:   /home/retropi/gpi-case2-bundle-collector-field-lantern-20260708-191500
+Duration: 00:01:34
 ```
 
 If a shorter smoke test is needed, pass a duration in seconds:
 
 ```sh
-sh /home/retropi/gpi-case2-bundle-collector-field-lantern.sh 15
+sh /home/retropi/gpi-case2-bundle-collector-field-lantern.sh --duration 15
+```
+
+For plain, copyable output without color, glyphs, or live terminal control:
+
+```sh
+sh /home/retropi/gpi-case2-bundle-collector-field-lantern.sh --plain --duration 15
+```
+
+To preview the command's boundaries before running it:
+
+```sh
+sh /home/retropi/gpi-case2-bundle-collector-field-lantern.sh --help
 ```
 
 ## Pull The Output With `scp`
@@ -236,17 +259,17 @@ From the Mac, pull the bundle with `scp`. Replace the timestamp with the value
 printed by the test device.
 
 ```sh
-mkdir -p ~/Desktop/gpi-case-2-boot-power-traces
+mkdir -p ~/Desktop/gpi-case-2-bundle-collector-lanterns
 scp retropi@gpi:/home/retropi/gpi-case2-bundle-collector-field-lantern-20260708-191500.tar.gz \
-  ~/Desktop/gpi-case-2-boot-power-traces/
+  ~/Desktop/gpi-case-2-bundle-collector-lanterns/
 ```
 
 Inspect before sharing:
 
 ```sh
-mkdir -p ~/Desktop/gpi-case-2-boot-power-traces/review
-tar -xzf ~/Desktop/gpi-case-2-boot-power-traces/gpi-case2-bundle-collector-field-lantern-20260708-191500.tar.gz \
-  -C ~/Desktop/gpi-case-2-boot-power-traces/review
+mkdir -p ~/Desktop/gpi-case-2-bundle-collector-lanterns/review
+tar -xzf ~/Desktop/gpi-case-2-bundle-collector-lanterns/gpi-case2-bundle-collector-field-lantern-20260708-191500.tar.gz \
+  -C ~/Desktop/gpi-case-2-bundle-collector-lanterns/review
 ```
 
 ## Include In A Future Field Lantern Bundle

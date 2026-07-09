@@ -45,11 +45,12 @@ shutdown, install or activate systemd, alter `rc.local`, replace
 telemetry, upload data, make project-code network calls, apply automatic
 fixes, run RetroFlag installers, or approve hardware modification.
 
-When a Boot Trace Lantern or related manual Field Lantern script becomes
-human-facing, its terminal behavior should follow the
+The current Bundle Collector Lantern script is human-facing and follows the
 [Human-Facing Field Lantern Script UX Standard](human-facing-field-lantern-script-ux-standard.md):
 clear banner, double-bracket stages, visible progress for long captures,
-timing, exact artifact paths, and plain safety language.
+timing, exact artifact paths, `--plain`, `--duration`, and plain safety
+language. Any future Boot Trace Lantern or related manual Field Lantern script
+should follow the same standard.
 
 Nothing here approves cutting battery leads, modifying lithium battery or
 charging circuitry, blind soldering, shorting unknown pads, relying on battery
@@ -81,8 +82,10 @@ script does not run automatically.
 
 The current Bundle Collector Lantern can gather remembered boot logs and sample
 the current `vcgencmd get_throttled` state. It cannot determine the exact
-second of early boot undervoltage unless a Boot Trace Lantern was already
-running.
+second of early boot undervoltage unless a Boot Trace Lantern or another
+boot-time recorder was already running. It records process snapshots and
+reports frontend detection as `detected`, `not_detected`, or `uncertain`
+because the first field run missed visibly running EmulationStation.
 
 ## Purpose
 
@@ -186,6 +189,8 @@ diagnostics:
 
 - A timestamped report file.
 - A CSV-style table for repeated samples.
+- A timing Ledger with start time, end time, total duration, and per-stage
+  durations where practical.
 - A short human-readable summary naming the strongest timing bucket.
 - Unavailable command and file markers instead of capture failure.
 - A `.tar.gz` bundle beside the timestamped folder.
