@@ -228,6 +228,15 @@ If `--output FILE` is used, the final Ledger is written to that exact path.
 The terminal output should include an exact final artifact path. Treat that
 path as the map rune for retrieval and sharing.
 
+The Ledger also ends with an `Artifact Summary` section. Use it as the quick
+map for completed or interrupted status, requested versus observed duration,
+sample count, temperature range when available, first frontend detection,
+whether the SSH-side watch completed normally from the script's point of view,
+raw throttled values observed, and the count of warnings or missing evidence.
+The throttling note is deliberately cautious: preserve raw `vcgencmd
+get_throttled` values for later interpretation, but do not claim power source,
+battery, charger, or emulator-performance cause from the summary alone.
+
 ## Retrieve And Share The Ledger
 
 From a workstation with optional SSH support, pull the exact path printed by
@@ -247,7 +256,8 @@ Before sharing:
 
 - Open the Ledger locally.
 - Confirm it says `READ-ONLY / NO CHANGES MADE`.
-- Check the final status, warnings, missing evidence, and artifact path.
+- Check the final status, `Artifact Summary`, warnings, missing evidence, and
+  artifact path.
 - Add or update the matching entry in the
   [GPi Case 2 Session Watch Evidence Ledger](gpi-case-2-session-watch-evidence-ledger.md).
 - Add the human field notes beside it or below it.

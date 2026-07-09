@@ -53,6 +53,14 @@ field run:
 - Keep clean runs, display-blank trails, SSH loss, side-switch surprises,
   top-button oddities, and hard-freeze or RCU-stall-like outcomes comparable.
 
+For artifacts created after QUEST-0086, start with the script's final
+`Artifact Summary`. It should list completed or interrupted status, requested
+and observed duration, sample count, min/max temperature when safely parsed,
+frontend detection, first frontend-detected sample, whether the SSH-side watch
+completed normally from the script's point of view, raw throttled values, a
+cautious throttling note, and a warnings or missing-evidence count. Treat this
+summary as an index into the full per-sample rows, not a replacement for them.
+
 ## Evidence Status Legend
 
 | Status | Meaning |
@@ -76,6 +84,9 @@ Script artifact path/name:
 Script artifact retrieved: yes | no | pending | not applicable
 Run date:
 Run duration:
+Artifact Summary:
+Summary throttled raw values:
+Summary warnings/missing evidence count:
 Power source: battery | USB-C | dock | unknown
 Docked/handheld state: handheld | docked | moved during run | unknown
 Display state:
@@ -185,6 +196,9 @@ Interpretation bucket: `clean-run`
 - `user`: `retropi`
 - `kernel`: `Linux raspberrypi 6.1.21-v8+ #1642 SMP PREEMPT Mon Apr  3 17:24:16 BST 2023 aarch64 GNU/Linux`
 - `frontend`: `not_detected` for samples 1-2, `detected` from sample 3 onward.
+- `frontend_first_detected_sample`: sample `3`, inferred from the per-sample
+  rows because this pre-QUEST-0086 artifact did not yet include an
+  `Artifact Summary`.
 - `temp range`: `37.9'C` to `48.7'C`
 - `throttled`: `throttled=0x50000` on samples.
 - `warnings_and_missing_evidence`: `none_recorded`

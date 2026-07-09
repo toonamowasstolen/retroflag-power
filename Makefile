@@ -38,6 +38,8 @@ check-scripts:
 	sh -n scripts/gpi-case2-boot-power-trace-field-lantern.sh
 	sh -n scripts/gpi-case2-session-watch-lantern.sh
 	sh scripts/gpi-case2-session-watch-lantern.sh --help >/dev/null
+	sh scripts/gpi-case2-session-watch-lantern.sh --plain --duration 1 --interval 1 --output /tmp/gpi-case2-session-watch-lantern-plain-smoke.txt >/dev/null
+	NO_COLOR=1 sh scripts/gpi-case2-session-watch-lantern.sh --duration 1 --interval 1 --output /tmp/gpi-case2-session-watch-lantern-nocolor-smoke.txt >/dev/null
 
 check-links:
 	python3 scripts/check-markdown-links.py

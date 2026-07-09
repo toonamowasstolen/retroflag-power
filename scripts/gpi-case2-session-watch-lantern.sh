@@ -15,6 +15,11 @@ START_LOCAL=''
 SAMPLES=0
 CHECKPOINTS=''
 WARNINGS=''
+MIN_TEMP=''
+MAX_TEMP=''
+FRONTEND_EVER_DETECTED='no'
+FRONTEND_FIRST_SAMPLE='unavailable'
+THROTTLED_VALUES=''
 
 usage() {
 	cat <<'EOF'
@@ -307,6 +312,53 @@ $line"
 	fi
 }
 
+warning_count() {
+	if [ -n "$WARNINGS" ]; then
+		printf '%s\n' "$WARNINGS" | awk 'END {print NR}'
+	else
+		printf '0'
+	fi
+}
+
+track_throttled_value() {
+	value="$1"
+	if [ -z "$THROTTLED_VALUES" ]; then
+		THROTTLED_VALUES="$value"
+		return
+	fi
+	if ! printf '%s\n' "$THROTTLED_VALUES" | grep -Fx "$value" >/dev/null 2>&1; then
+		THROTTLED_VALUES="${THROTTLED_VALUES}
+$value"
+	fi
+}
+
+track_temp_value() {
+	value="$1"
+	temp_number="$(printf '%s\n' "$value" | sed -n "s/^temp=\([-0-9.][0-9.]*\)'C$/\1/p")"
+	if [ -z "$temp_number" ]; then
+		return
+	fi
+	if [ -z "$MIN_TEMP" ]; then
+		MIN_TEMP="$temp_number"
+		MAX_TEMP="$temp_number"
+		return
+	fi
+	if awk "BEGIN {exit !($temp_number < $MIN_TEMP)}"; then
+		MIN_TEMP="$temp_number"
+	fi
+	if awk "BEGIN {exit !($temp_number > $MAX_TEMP)}"; then
+		MAX_TEMP="$temp_number"
+	fi
+}
+
+track_frontend_value() {
+	value="$1"
+	if [ "$value" = "detected" ] && [ "$FRONTEND_EVER_DETECTED" = "no" ]; then
+		FRONTEND_EVER_DETECTED='yes'
+		FRONTEND_FIRST_SAMPLE="$SAMPLES"
+	fi
+}
+
 sample_once() {
 	elapsed="$1"
 	SAMPLES=$((SAMPLES + 1))
@@ -320,6 +372,10 @@ sample_once() {
 	disk_value="$(disk_root_available)"
 	frontend_value="$(frontend_hint)"
 	kernel_hint="$(dmesg_hint)"
+
+	track_throttled_value "$throttled"
+	track_temp_value "$temp"
+	track_frontend_value "$frontend_value"
 
 	case "$throttled$temp$volts$kernel_hint" in
 		*command_unavailable*)
@@ -339,6 +395,21 @@ write_artifact() {
 	if [ "$total_elapsed" -lt 0 ]; then
 		total_elapsed=0
 	fi
+	ssh_watch_completed='no'
+	if [ "$status" = "completed" ]; then
+		ssh_watch_completed='yes'
+	fi
+	temp_min_summary='unavailable'
+	temp_max_summary='unavailable'
+	if [ -n "$MIN_TEMP" ]; then
+		temp_min_summary="${MIN_TEMP}'C"
+		temp_max_summary="${MAX_TEMP}'C"
+	fi
+	throttled_summary='unavailable'
+	if [ -n "$THROTTLED_VALUES" ]; then
+		throttled_summary="$(printf '%s' "$THROTTLED_VALUES" | one_line)"
+	fi
+	warnings_total="$(warning_count)"
 
 	{
 		printf 'GPi Case 2 Session Watch Lantern Ledger\n'
@@ -386,6 +457,21 @@ write_artifact() {
 		else
 			printf 'none_recorded\n'
 		fi
+		printf '\n'
+		printf 'Artifact Summary\n'
+		printf 'completion_status: %s\n' "$status"
+		printf 'requested_duration_seconds: %s\n' "$DURATION_SECONDS"
+		printf 'observed_duration_seconds: %s\n' "$total_elapsed"
+		printf 'observed_duration: %s\n' "$(elapsed_hms "$total_elapsed")"
+		printf 'sample_count: %s\n' "$SAMPLES"
+		printf 'temperature_min: %s\n' "$temp_min_summary"
+		printf 'temperature_max: %s\n' "$temp_max_summary"
+		printf 'frontend_detected_ever: %s\n' "$FRONTEND_EVER_DETECTED"
+		printf 'frontend_first_detected_sample: %s\n' "$FRONTEND_FIRST_SAMPLE"
+		printf 'ssh_side_watch_completed_normally: %s\n' "$ssh_watch_completed"
+		printf 'throttled_raw_values_observed: %s\n' "$throttled_summary"
+		printf 'throttling_note: Raw vcgencmd get_throttled values are preserved for later interpretation; do not overclaim cause, power state, battery state, charger state, or emulator performance from this Ledger alone.\n'
+		printf 'warnings_missing_evidence_count: %s\n' "$warnings_total"
 		printf '\n'
 		printf 'Final Artifact Path\n'
 		printf '%s\n' "$OUTPUT_FILE"

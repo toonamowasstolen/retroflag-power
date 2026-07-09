@@ -205,6 +205,15 @@ pull into the wider Ledger or attach beside a Field Lantern bundle after
 review. For a future fuller satchel, the folder should be inspectable before
 sharing and the `.tar.gz` should be the single shared file.
 
+The current `.txt` Ledger keeps the per-sample rows intact and adds a final
+`Artifact Summary` after the warnings section. That summary is a human map for
+field interpretation: completion status, requested and observed duration,
+sample count, parsed temperature range when available, frontend detection,
+first frontend-detected sample, script-view SSH-side completion, distinct raw
+`get_throttled` values, a cautious throttling note, and warning or
+missing-evidence count. It must not turn raw throttled values into a power,
+battery, charger, or emulator-performance claim by itself.
+
 ## Progress And Status Output
 
 Long-running Session Watch Lantern runs must show life while they work:
@@ -215,6 +224,8 @@ Long-running Session Watch Lantern runs must show life while they work:
   and latest status.
 - Timing for setup, sampling, artifact writing, and total duration.
 - Final artifact path and folder path.
+- Final `Artifact Summary` inside the Ledger so future field readers can
+  orient themselves before reading every checkpoint row.
 - Final status: `completed`, `completed_with_warnings`, `interrupted`, or
   `failed`.
 - A short reminder to inspect and redact before sharing.
