@@ -573,9 +573,7 @@ while [ "$i" -lt "$DURATION_SECONDS" ]; do
 	print_progress "$sample" "$DURATION_SECONDS" "$sample"
 
 	i=$sample
-	if [ "$i" -lt "$DURATION_SECONDS" ]; then
-		sleep 1
-	fi
+	sleep 1
 done
 if [ "$IS_INTERACTIVE" -eq 1 ]; then
 	printf '\n'
