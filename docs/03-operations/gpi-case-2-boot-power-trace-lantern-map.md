@@ -15,6 +15,7 @@ related:
   - gpi-case-2-first-spark-boot-veil-welcome-scroll-design.md
   - gpi-case-2-true-boot-trace-lantern-design.md
   - gpi-case-2-true-boot-trace-field-run-procedure.md
+  - gpi-case-2-true-boot-trace-evidence-ledger.md
   - ../../scripts/gpi-case2-true-boot-trace-lantern.sh
   - gpi-case-2-session-watch-lantern-design.md
   - ../../scripts/gpi-case2-session-watch-lantern.sh
@@ -84,6 +85,8 @@ The current True Boot Trace handheld procedure lives in
 [GPi Case 2 True Boot Trace Field Run Procedure](gpi-case-2-true-boot-trace-field-run-procedure.md).
 It provides the scp-first copy, run, First Spark observation, and final Boot
 Trace Ledger retrieval path for the foreground startup trace skeleton.
+Returned True Boot Trace artifacts are recorded in the
+[GPi Case 2 True Boot Trace Evidence Ledger](gpi-case-2-true-boot-trace-evidence-ledger.md).
 
 ## Lantern Architecture
 

@@ -14,6 +14,7 @@ purpose: Define the handheld-first, scp-first field procedure for running the re
 related:
   - ../../scripts/gpi-case2-true-boot-trace-lantern.sh
   - gpi-case-2-true-boot-trace-lantern-design.md
+  - gpi-case-2-true-boot-trace-evidence-ledger.md
   - gpi-case-2-first-spark-boot-veil-welcome-scroll-design.md
   - gpi-case-2-boot-power-trace-lantern-map.md
   - gpi-case-2-session-watch-field-run-procedure.md
@@ -33,6 +34,10 @@ This procedure is for the current read-only script:
 The GPi Case 2 does not need the full repository checked out. Copy this one
 portable Relic to `retropi@gpi:/home/retropi/`, run it from `/home/retropi/`,
 and retrieve the final Ledger artifact with `scp`.
+
+After retrieval, record artifact facts and handheld observations in the
+[GPi Case 2 True Boot Trace Evidence Ledger](gpi-case-2-true-boot-trace-evidence-ledger.md).
+Do not fill unknown fields by guesswork.
 
 The GPi Case 2 is a handheld Relic first. Do not assume an attached keyboard.
 SSH to `retropi@gpi` is optional support for copying, launching, and retrieving

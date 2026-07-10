@@ -14,6 +14,7 @@ purpose: Design a future read-only, scp-first GPi Case 2 Boot Trace Lantern for 
 related:
   - gpi-case-2-first-spark-boot-veil-welcome-scroll-design.md
   - gpi-case-2-true-boot-trace-field-run-procedure.md
+  - gpi-case-2-true-boot-trace-evidence-ledger.md
   - ../../scripts/gpi-case2-true-boot-trace-lantern.sh
   - gpi-case-2-boot-power-trace-lantern-map.md
   - gpi-case-2-boot-power-trace-capture-procedure.md
@@ -49,6 +50,11 @@ The field procedure for real handheld runs lives at
 Use it for the scp-first copy/run/retrieve commands and for human First Spark
 notes about side-switch time, first visible display, LED state, SSH
 availability, and EmulationStation visibility.
+
+Real returned artifacts and handheld observations are recorded in the
+[GPi Case 2 True Boot Trace Evidence Ledger](gpi-case-2-true-boot-trace-evidence-ledger.md).
+That Ledger keeps artifact facts, human observations, unknown fields,
+interpretation buckets, and candidate improvements separate.
 
 The GPi Case 2 is a handheld Relic first. Do not assume an attached keyboard.
 SSH to `retropi@gpi` is optional support for copying, launching, and retrieving

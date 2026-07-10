@@ -114,6 +114,9 @@ On unsupported platforms or uncertain GPIO access, it reports
 - [GPi Case 2 True Boot Trace field run procedure](docs/03-operations/gpi-case-2-true-boot-trace-field-run-procedure.md):
   the handheld-first copy, run, First Spark observation, and Ledger retrieval
   trail for real True Boot Trace Lantern runs.
+- [GPi Case 2 True Boot Trace evidence ledger](docs/03-operations/gpi-case-2-true-boot-trace-evidence-ledger.md):
+  the first place to record returned Boot Trace artifacts, handheld notes,
+  interpretation buckets, missing evidence, and next runes.
 - [GPi Case 2 First Spark / Boot Veil / Relic Welcome Scroll design](docs/03-operations/gpi-case-2-first-spark-boot-veil-welcome-scroll-design.md):
   the recovery-first startup UX map for earlier feedback, reversible boot-text
   hiding, and bounded SSH login/status output after True Boot Trace evidence.

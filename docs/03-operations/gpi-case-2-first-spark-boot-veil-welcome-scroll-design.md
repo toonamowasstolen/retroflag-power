@@ -14,6 +14,7 @@ purpose: Design a recovery-first GPi Case 2 startup UX plan for earlier operator
 related:
   - gpi-case-2-true-boot-trace-lantern-design.md
   - gpi-case-2-true-boot-trace-field-run-procedure.md
+  - gpi-case-2-true-boot-trace-evidence-ledger.md
   - gpi-case-2-session-watch-lantern-design.md
   - gpi-case-2-boot-power-trace-lantern-map.md
   - gpi-case-2-recovery-first-field-procedure.md
@@ -46,6 +47,10 @@ Use the
 to gather the handheld First Spark observations this design depends on:
 power-switch time, first visible display time, first SSH availability, first
 EmulationStation visibility, and quiet-window notes.
+Returned artifacts and observations belong in the
+[GPi Case 2 True Boot Trace Evidence Ledger](gpi-case-2-true-boot-trace-evidence-ledger.md)
+before this design graduates any startup UX guess into a future implementation
+rune.
 
 ## Purpose
 
