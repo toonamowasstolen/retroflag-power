@@ -20,6 +20,7 @@ related:
   - docs/03-operations/gpi-case-2-boot-power-trace-capture-procedure.md
   - docs/03-operations/gpi-case-2-boot-power-trace-lantern-map.md
   - docs/03-operations/gpi-case-2-relic-welcome-scroll-design.md
+  - docs/03-operations/gpi-case-2-relic-welcome-scroll-preview-notes.md
   - scripts/gpi-case2-relic-welcome-scroll.sh
   - docs/03-operations/gpi-case-2-session-watch-lantern-design.md
   - docs/03-operations/gpi-case-2-session-watch-field-run-procedure.md
@@ -91,6 +92,8 @@ The optional SSH greeting lane is designed in
 [GPi Case 2 Relic Welcome Scroll Design](gpi-case-2-relic-welcome-scroll-design.md).
 The current manual preview script lives at
 [`scripts/gpi-case2-relic-welcome-scroll.sh`](../../scripts/gpi-case2-relic-welcome-scroll.sh).
+Real manual preview evidence is recorded in
+[GPi Case 2 Relic Welcome Scroll Preview Notes](gpi-case-2-relic-welcome-scroll-preview-notes.md).
 It may eventually show a single last-known Field Lantern artifact pointer, but
 it must remain read-only, fast, interactive-only, and safe for `scp` sessions.
 It is not installed into SSH login yet and should stay manually invoked until a

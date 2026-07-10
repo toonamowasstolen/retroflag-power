@@ -13,6 +13,7 @@ audience:
 purpose: Design a read-only, fast, recovery-first SSH welcome scroll for GPi Case 2 operator sessions without implementing shell startup, MOTD, boot, service, GPIO, shutdown, sleep, or resume behavior.
 related:
   - ../../scripts/gpi-case2-relic-welcome-scroll.sh
+  - gpi-case-2-relic-welcome-scroll-preview-notes.md
   - gpi-case-2-first-spark-boot-veil-welcome-scroll-design.md
   - gpi-case-2-true-boot-trace-lantern-design.md
   - gpi-case-2-true-boot-trace-field-run-procedure.md
@@ -35,6 +36,11 @@ The first manually runnable preview script now lives at
 It is a standalone preview only. It is not installed into SSH login, MOTD,
 shell startup, services, boot config, GPIO behavior, display behavior,
 shutdown behavior, sleep behavior, or resume behavior.
+
+The first real manual preview evidence is recorded in
+[GPi Case 2 Relic Welcome Scroll Preview Notes](gpi-case-2-relic-welcome-scroll-preview-notes.md).
+That run confirmed the scp-first trail, normal ASCII art output, `--plain`,
+and `NO_COLOR` behavior while keeping the script out of login wiring.
 
 The GPi Case 2 is a handheld Relic. SSH is optional support, not the primary
 handheld UX. Do not assume an attached keyboard. Current field practice is

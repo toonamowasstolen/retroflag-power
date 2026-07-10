@@ -14,6 +14,7 @@ purpose: Design a recovery-first GPi Case 2 startup UX plan for earlier operator
 related:
   - ../../scripts/gpi-case2-relic-welcome-scroll.sh
   - gpi-case-2-relic-welcome-scroll-design.md
+  - gpi-case-2-relic-welcome-scroll-preview-notes.md
   - gpi-case-2-true-boot-trace-lantern-design.md
   - gpi-case-2-true-boot-trace-field-run-procedure.md
   - gpi-case-2-true-boot-trace-evidence-ledger.md
@@ -169,6 +170,11 @@ The current manually runnable preview script lives at
 It is copied with `scp`, run from `/home/retropi/`, and kept out of shell
 startup, MOTD, SSHD, services, boot config, GPIO, display, shutdown, sleep,
 and resume behavior.
+
+The first real manual preview run is recorded in
+[GPi Case 2 Relic Welcome Scroll Preview Notes](gpi-case-2-relic-welcome-scroll-preview-notes.md).
+It confirmed normal art output, `--plain`, `NO_COLOR`, fast manual execution,
+and clean scp-first handling without installing the scroll into SSH login.
 
 ```sh
 scp scripts/gpi-case2-relic-welcome-scroll.sh retropi@gpi:/home/retropi/
