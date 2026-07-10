@@ -23,6 +23,14 @@ MAX_TEMP=''
 FRONTEND_EVER_DETECTED='no'
 FRONTEND_FIRST_SAMPLE='unavailable'
 DISPLAY_SUMMARY='unavailable'
+FIRST_DISPLAY_HINT_SAMPLE='unavailable'
+FIRST_DISPLAY_HINT_SUMMARY='unavailable'
+FIRST_SYSTEMD_TIMING_SAMPLE='unavailable'
+FIRST_SYSTEMD_TIMING_SUMMARY='unavailable'
+FIRST_JOURNAL_HINT_SAMPLE='unavailable'
+FIRST_JOURNAL_HINT_SUMMARY='unavailable'
+FIRST_DMESG_HINT_SAMPLE='unavailable'
+FIRST_DMESG_HINT_SUMMARY='unavailable'
 SYSTEMD_TIMING_STATUS='not_checked'
 JOURNAL_STATUS='not_checked'
 DMESG_STATUS='not_checked'
@@ -466,6 +474,46 @@ track_frontend_value() {
 	fi
 }
 
+track_first_summary_value() {
+	kind="$1"
+	value="$2"
+	sample="$3"
+	case "$value" in
+		''|unavailable|command_unavailable:*|empty_output:*|no_matching_boot_hints|*permission*|*Permission*|*denied*|*Operation\ not\ permitted*|*restricted*|*not\ booted*|*No\ journal\ files*)
+			return
+			;;
+	esac
+	if [ "$kind" = "display" ] && [ "$value" = "graphics=unavailable drm=unavailable fbdev=unavailable" ]; then
+		return
+	fi
+	case "$kind" in
+		display)
+			if [ "$FIRST_DISPLAY_HINT_SAMPLE" = "unavailable" ]; then
+				FIRST_DISPLAY_HINT_SAMPLE="$sample"
+				FIRST_DISPLAY_HINT_SUMMARY="$value"
+			fi
+			;;
+		systemd)
+			if [ "$FIRST_SYSTEMD_TIMING_SAMPLE" = "unavailable" ]; then
+				FIRST_SYSTEMD_TIMING_SAMPLE="$sample"
+				FIRST_SYSTEMD_TIMING_SUMMARY="$value"
+			fi
+			;;
+		journal)
+			if [ "$FIRST_JOURNAL_HINT_SAMPLE" = "unavailable" ]; then
+				FIRST_JOURNAL_HINT_SAMPLE="$sample"
+				FIRST_JOURNAL_HINT_SUMMARY="$value"
+			fi
+			;;
+		dmesg)
+			if [ "$FIRST_DMESG_HINT_SAMPLE" = "unavailable" ]; then
+				FIRST_DMESG_HINT_SAMPLE="$sample"
+				FIRST_DMESG_HINT_SUMMARY="$value"
+			fi
+			;;
+	esac
+}
+
 record_optional_evidence() {
 	field="$1"
 	value="$2"
@@ -524,6 +572,10 @@ sample_once() {
 	track_throttled_value "$throttled"
 	track_temp_value "$temp"
 	track_frontend_value "$frontend_value"
+	track_first_summary_value display "$display_value" "$SAMPLES"
+	track_first_summary_value systemd "$systemd_timing" "$SAMPLES"
+	track_first_summary_value journal "$journal_hints" "$SAMPLES"
+	track_first_summary_value dmesg "$dmesg_hints" "$SAMPLES"
 
 	record_optional_evidence "systemd_boot_timing" "$systemd_timing"
 	record_optional_evidence "journal_boot_hints" "$journal_hints"
@@ -652,6 +704,14 @@ write_artifact() {
 		printf 'dmesg_boot_hints_status: %s\n' "$DMESG_STATUS"
 		printf 'frontend_detected_ever: %s\n' "$FRONTEND_EVER_DETECTED"
 		printf 'frontend_first_detected_sample: %s\n' "$FRONTEND_FIRST_SAMPLE"
+		printf 'first_display_hint_sample: %s\n' "$FIRST_DISPLAY_HINT_SAMPLE"
+		printf 'first_display_hint_summary: %s\n' "$FIRST_DISPLAY_HINT_SUMMARY"
+		printf 'first_systemd_timing_sample: %s\n' "$FIRST_SYSTEMD_TIMING_SAMPLE"
+		printf 'first_systemd_timing_summary: %s\n' "$FIRST_SYSTEMD_TIMING_SUMMARY"
+		printf 'first_journal_hint_sample: %s\n' "$FIRST_JOURNAL_HINT_SAMPLE"
+		printf 'first_journal_hint_summary: %s\n' "$FIRST_JOURNAL_HINT_SUMMARY"
+		printf 'first_dmesg_hint_sample: %s\n' "$FIRST_DMESG_HINT_SAMPLE"
+		printf 'first_dmesg_hint_summary: %s\n' "$FIRST_DMESG_HINT_SUMMARY"
 		printf 'display_hint_summary: %s\n' "$DISPLAY_SUMMARY"
 		printf 'throttled_raw_values_observed: %s\n' "$throttled_summary"
 		printf 'temperature_min: %s\n' "$temp_min_summary"
@@ -663,6 +723,7 @@ write_artifact() {
 		printf 'warnings_count: %s\n' "$warnings_total"
 		printf 'missing_evidence_count: %s\n' "$missing_total"
 		printf 'cautious_timing_bucket: %s\n' "$(timing_bucket)"
+		printf 'first_visible_screen_note: human_observed_not_script_observed\n'
 		printf 'interpretation_note: This Boot Trace Ledger captures a bounded post-boot startup trail. It does not prove sleep, resume, shutdown, battery health, charger quality, or a single root cause.\n'
 		printf '\n'
 		printf 'Final Artifact Path\n'

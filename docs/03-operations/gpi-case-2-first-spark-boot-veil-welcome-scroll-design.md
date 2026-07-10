@@ -21,7 +21,7 @@ related:
   - gpi-case-2-session-watch-field-run-procedure.md
   - gpi-case-2-session-watch-evidence-ledger.md
   - ../03-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
-last_updated: 2026-07-09
+last_updated: 2026-07-10
 ---
 
 # GPi Case 2 First Spark / Boot Veil / Relic Welcome Scroll Design
@@ -83,6 +83,15 @@ Treat that as a field observation, not a proven subsystem boundary.
   earliest safe place to draw.
 - True Boot Trace evidence is required before implementation chooses timing,
   service ordering, or display assumptions.
+
+The first real QUEST-0091 True Boot Trace run adds useful but bounded
+evidence: the script completed from `/home/retropi/`, captured post-boot
+framebuffer/DRM hints, recorded `frontend_detected_ever: no`, and preserved
+raw `throttled=0x50000`. It did not capture the exact side-switch timestamp,
+exact first visible screen timestamp, first SSH availability, LED state,
+power source, handheld/docked state, or visible frontend state. Those gaps
+mean this design still cannot claim an earliest safe drawing point, a KMS or
+framebuffer cause, a power cause, or a proven Boot Veil strategy.
 
 ## Startup Timeline
 
@@ -178,6 +187,9 @@ First Spark or Boot Veil implementation quest:
 - `/proc/uptime` at script start and during samples.
 - KMS/DRM/VC4/DPI/framebuffer clues from `dmesg`, journal, `/sys/class/drm`,
   and `/sys/class/graphics` when available.
+- Script summary fields for first display hint sample, first systemd timing
+  sample, first journal hint sample, first dmesg hint sample, and first
+  frontend-detected sample.
 - Whether `/dev/fb*` exists during the capture and which framebuffer is active.
 - EmulationStation or frontend first-detected milestone.
 - `vcgencmd get_throttled` values, with sticky-flag caution.

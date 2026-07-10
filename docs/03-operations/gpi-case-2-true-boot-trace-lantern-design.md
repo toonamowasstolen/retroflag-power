@@ -29,7 +29,7 @@ related:
   - ../04-architecture/arcadia-runtime-migration-path.md
   - ../03-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
   - ../03-hardware/gpi-case-2-power-integrity-investigation-notes.md
-last_updated: 2026-07-09
+last_updated: 2026-07-10
 ---
 
 # GPi Case 2 True Boot Trace Lantern Design
@@ -241,12 +241,18 @@ The minimum Boot Trace Ledger should capture:
 - Memory summary from `/proc/meminfo` or `free`.
 - Disk space for `/` and `/home` from `df`.
 - Frontend detection for EmulationStation or known frontend process patterns.
+- First frontend-detected sample when a frontend process appears during the
+  bounded capture.
 - Framebuffer/display hints from safe read-only sources such as `/sys/class/graphics`,
   `/dev/fb*` existence checks, and narrow command output when available.
+- First display/framebuffer hint sample when a readable hint appears during
+  the bounded capture.
 - Network/SSH reachability from the script perspective: whether the script is
   running under an SSH session when safely detectable, and the local hostname.
 - Selected `dmesg` warning/error hints when safely available.
 - Selected `journalctl -b` snippets when safely available.
+- Earliest relevant systemd, journal, and dmesg hint samples when safely
+  captured.
 - Known GPi Case 2 warning hints where available: `gpio12`, `vc4`, `v3d`,
   `audio`, `xpad`, `RCU`, `watchdog`, `mmc`, `ext4`, `voltage`, `throttle`,
   `under-voltage`, `drm`, `kms`, `dpi`, `framebuffer`, `usb`, `hid`, and
@@ -290,6 +296,9 @@ The summary should report:
 - Whether dmesg hints were captured, unavailable, or permission-denied.
 - Frontend detection result: `detected`, `not_detected`, or `uncertain`.
 - First frontend-detected sample when available.
+- First display/framebuffer hint sample and summary when available.
+- Earliest captured systemd, journal, and dmesg hint samples and summaries
+  when available.
 - Display hint summary.
 - Distinct raw `vcgencmd get_throttled` values.
 - Temperature range when safely parsed.
@@ -299,6 +308,8 @@ The summary should report:
 - Warning count and missing-evidence count.
 - A cautious timing bucket if supported by the data, such as
   `early-userspace`, `display-handoff`, `frontend-start`, or `inconclusive`.
+- An explicit note that first visible screen timing is human-observed, not
+  script-observed.
 
 The summary must not replace raw rows. It is a map in the front pocket of the
 satchel, not the whole satchel.
@@ -374,6 +385,13 @@ is the current place to collect that evidence in the field.
 The observed roughly 15-second silent-screen window after the side switch is a
 field observation, not yet proof of a KMS, framebuffer, firmware, or userspace
 boundary.
+
+The first real QUEST-0091 run proved the Ledger can preserve post-boot display
+and power clues, including framebuffer/DRM hints and raw
+`throttled=0x50000`, but it did not capture the exact power-switch moment,
+exact first visible screen moment, first SSH availability, LED state, or
+visible frontend state. Future First Spark and Boot Veil choices must continue
+to treat those as unknown until field notes and artifacts line up.
 
 The True Boot Trace Lantern should provide the timing, display, framebuffer,
 frontend, warning, and missing-evidence clues needed before a future quest

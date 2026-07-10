@@ -20,7 +20,7 @@ related:
   - gpi-case-2-session-watch-field-run-procedure.md
   - gpi-case-2-recovery-first-field-procedure.md
   - human-facing-field-lantern-script-ux-standard.md
-last_updated: 2026-07-09
+last_updated: 2026-07-10
 ---
 
 # GPi Case 2 True Boot Trace Field Run Procedure
@@ -194,12 +194,24 @@ blank or quiet window.
 ```text
 Run label:
 Power source:
+Handheld/docked state:
 Power switch flipped:
 First visible display:
 First visible display rough seconds after switch:
 First visible display state: blank | text | splash/art | EmulationStation | unknown
 First SSH availability:
+Script launched:
+Script artifact started_utc/local:
+Script start_proc_uptime_seconds:
+Artifact first_display_hint_sample:
+Artifact first_systemd_timing_sample:
+Artifact first_journal_hint_sample:
+Artifact first_dmesg_hint_sample:
+Artifact frontend_first_detected_sample:
 First EmulationStation visible:
+LED state:
+Side-switch shutdown after run:
+Top button:
 Quiet window notes:
 ```
 
@@ -217,9 +229,22 @@ First visible display: about 12:10:15 local
 First visible display rough seconds after switch: about 15 seconds
 First visible display state: text
 First SSH availability: 12:10:42 local
+Script launched: 12:10:48 local
+Script artifact started_utc/local: copied from Ledger Artifact Summary
+Script start_proc_uptime_seconds: copied from Ledger Artifact Summary
+Artifact first_display_hint_sample: copied from Ledger Artifact Summary
+Artifact frontend_first_detected_sample: copied from Ledger Artifact Summary
 First EmulationStation visible: 12:10:58 local
+LED state: steady after first visible text; exact earlier state unknown.
+Side-switch shutdown after run: normal while responsive.
+Top button: not pressed.
 Quiet window notes: screen appeared blank or inactive until first text; cause unknown.
 ```
+
+The artifact's `first_display_hint_sample`,
+`first_systemd_timing_sample`, `first_journal_hint_sample`, and
+`first_dmesg_hint_sample` are script-observed clues after launch. They are not
+the same as the human first-visible screen time. Keep both side by side.
 
 ## What To Physically Observe
 
@@ -302,5 +327,11 @@ Before sharing:
 - Confirm it says `READ-ONLY / NO CHANGES MADE`.
 - Check the final status, `Artifact Summary`, warnings, missing evidence, and
   artifact path.
+- Copy the final summary fields for `frontend_first_detected_sample`,
+  `first_display_hint_sample`, `first_systemd_timing_sample`,
+  `first_journal_hint_sample`, `first_dmesg_hint_sample`,
+  `throttled_raw_values_observed`, `warnings_count`,
+  `missing_evidence_count`, and `first_visible_screen_note` into the evidence
+  Ledger when present.
 - Keep the human First Spark notes beside the Ledger. The script cannot see
   the exact power-switch moment or the first visible display moment by itself.

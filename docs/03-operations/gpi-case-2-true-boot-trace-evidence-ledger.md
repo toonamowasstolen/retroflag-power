@@ -21,7 +21,7 @@ related:
   - common-problems-mage-map.md
   - local-diagnostics-bundle-map.md
   - gpi-case-2-recovery-first-field-procedure.md
-last_updated: 2026-07-09
+last_updated: 2026-07-10
 ---
 
 # GPi Case 2 True Boot Trace Evidence Ledger
@@ -145,6 +145,35 @@ Avoid claiming:
 - That `vcgencmd get_throttled` proves the exact moment, cause, power supply
   quality, battery health, charger state, or emulator impact.
 - That a clean boot trace proves sleep, resume, shutdown, or idle paths.
+
+## Lessons From First Boot Trace Run
+
+QUEST-0091 brought back the first real Ledger from
+[`gpi-case2-true-boot-trace-lantern-20260710-081529.txt`](artifacts/true-boot-trace/gpi-case2-true-boot-trace-lantern-20260710-081529.txt).
+The first pass confirmed the scp-first workflow works from `/home/retropi/`
+without a repository checkout on the Relic, and that the read-only script can
+seal a useful 120-second startup artifact over optional SSH support.
+
+The first pass also showed which runes need sharper capture next time:
+
+- The exact side-switch flip time was not captured in the artifact.
+- The exact first visible screen time was a human observation, not a script
+  observation.
+- The script started after SSH was already available, so SSH first-available
+  timing remains unknown.
+- `frontend_detected_ever: no` is a process clue only; it does not prove what
+  the handheld display showed.
+- The artifact preserved raw `throttled=0x50000` values, but one run does not
+  prove the timing, cause, power source, charger state, or battery health.
+- The repeated journal and dmesg snippets were useful but hard to scan, so
+  later Ledgers should summarize first display, systemd, journal, and dmesg
+  hints near the final `Artifact Summary` while keeping raw rows intact.
+
+For the next run, keep a handheld First Spark note beside the Ledger with:
+side-switch flip time, first visible screen time, first visible state, script
+launch time, first SSH availability if known, first EmulationStation visible
+time if seen, LED state, power source, handheld/docked state, and whether the
+side switch performed normal shutdown while responsive after the capture.
 
 ## Ledger Entries
 
@@ -294,12 +323,15 @@ verdict, charger verdict, or emulator-performance verdict.
 #### Candidate Improvements
 
 - Record exact local timestamps for side-switch flip, first visible output,
-  first SSH availability, and first EmulationStation visibility.
+  script launch, first SSH availability, and first EmulationStation visibility.
 - Record power source, charging state if known, handheld/docked state, display
   state, LED state, and whether the top sleep/resume button was avoided.
 - Add an operator note before launch when the frontend is visibly present or
   absent so `frontend_detected_ever: no` can be compared with human display
   state.
+- Add summary fields for first display hint sample, earliest relevant
+  systemd/journal/dmesg hint samples, and the explicit note that first visible
+  screen timing is human-observed rather than script-observed.
 - If the Relic remains responsive after the run, record whether normal
   side-switch shutdown behaved as expected.
 - Keep the next run scp-first from `/home/retropi/` and evidence-only.
