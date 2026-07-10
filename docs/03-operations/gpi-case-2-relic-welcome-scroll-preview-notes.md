@@ -12,6 +12,7 @@ audience:
   - Hardware Porters
 purpose: Record real manual Relic Welcome Scroll preview runs for the GPi Case 2 without wiring the preview into login, boot, services, GPIO, display, shutdown, sleep, or resume behavior.
 related:
+  - ../../scripts/gpi-case2-install-relic-welcome-scroll-hook.sh
   - ../../scripts/gpi-case2-relic-welcome-scroll.sh
   - gpi-case-2-relic-welcome-scroll-design.md
   - gpi-case-2-relic-welcome-scroll-login-wiring-design.md
@@ -24,7 +25,7 @@ last_updated: 2026-07-10
 
 > The Relic Welcome Scroll is still a hand-held map from the satchel: copied
 > with `scp`, invoked by an operator, and kept away from the login doorway
-> until a later recovery-first rune earns that path.
+> unless the disabled-by-default installer is deliberately run.
 
 This document records manual preview evidence for
 [`scripts/gpi-case2-relic-welcome-scroll.sh`](../../scripts/gpi-case2-relic-welcome-scroll.sh).
@@ -32,10 +33,13 @@ It is evidence intake only. It does not install, enable, or wire the script
 into SSH login, MOTD, shell startup, services, boot config, GPIO behavior,
 display behavior, shutdown behavior, sleep behavior, or resume behavior.
 
-The future wiring map is
+The login wiring map is
 [GPi Case 2 Relic Welcome Scroll Login Wiring Design](gpi-case-2-relic-welcome-scroll-login-wiring-design.md).
-Use it before changing any login hook; these preview notes alone prove manual
-output behavior, not automatic login safety.
+Use it before changing any login hook. The disabled-by-default installer now
+lives at
+[`scripts/gpi-case2-install-relic-welcome-scroll-hook.sh`](../../scripts/gpi-case2-install-relic-welcome-scroll-hook.sh),
+but these preview notes alone prove manual output behavior, not automatic
+login safety.
 
 The GPi Case 2 is a handheld Relic. SSH to `retropi@gpi` is optional support,
 not the primary handheld UX. Do not assume an attached keyboard. Current field
@@ -153,6 +157,9 @@ Operator notes:
 
 ## Candidate Improvements
 
+- If the disabled-by-default installer is used on the GPi, record a separate
+  field entry that includes `--status`, `--install`, normal interactive SSH,
+  `scp`, non-interactive SSH, and `--uninstall` results.
 - Consider adding a cheap local time field so future preview notes can capture
   the GPi's own clock without a separate command.
 - Consider whether the default art should remain hidden for `NO_COLOR` or

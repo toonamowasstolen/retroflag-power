@@ -12,6 +12,7 @@ audience:
   - Hardware Porters
 purpose: Design a read-only, fast, recovery-first SSH welcome scroll for GPi Case 2 operator sessions without implementing shell startup, MOTD, boot, service, GPIO, shutdown, sleep, or resume behavior.
 related:
+  - ../../scripts/gpi-case2-install-relic-welcome-scroll-hook.sh
   - ../../scripts/gpi-case2-relic-welcome-scroll.sh
   - gpi-case-2-relic-welcome-scroll-login-wiring-design.md
   - gpi-case-2-relic-welcome-scroll-preview-notes.md
@@ -45,8 +46,10 @@ and `NO_COLOR` behavior while keeping the script out of login wiring.
 
 The recovery-first plan for possible future login wiring lives in
 [GPi Case 2 Relic Welcome Scroll Login Wiring Design](gpi-case-2-relic-welcome-scroll-login-wiring-design.md).
-That document compares shell, MOTD, PAM, and manual-only homes while keeping
-this quest lane design-only and safe for `scp`.
+That document now records the disabled-by-default installer path:
+[`scripts/gpi-case2-install-relic-welcome-scroll-hook.sh`](../../scripts/gpi-case2-install-relic-welcome-scroll-hook.sh).
+The installer must be run explicitly with `--install`; normal checks, manual
+preview runs, and `--status` do not enable login output.
 
 The GPi Case 2 is a handheld Relic. SSH is optional support, not the primary
 handheld UX. Do not assume an attached keyboard. Current field practice is
@@ -89,9 +92,21 @@ ssh retropi@gpi '/home/retropi/gpi-case2-relic-welcome-scroll.sh --plain'
 ssh retropi@gpi 'NO_COLOR=1 /home/retropi/gpi-case2-relic-welcome-scroll.sh'
 ```
 
-Warning: this script is not yet installed into SSH login. Keep it manually
-invoked until a later recovery-first wiring quest proves an interactive-only,
-easy-disable login path.
+Warning: this script is not installed into SSH login by default. Keep it
+manually invoked unless the operator deliberately chooses the
+recovery-first, interactive-only, easy-disable login path.
+
+Optional login wiring now exists as an operator-run path, not an automatic
+default:
+
+```sh
+scp scripts/gpi-case2-relic-welcome-scroll.sh retropi@gpi:/home/retropi/
+scp scripts/gpi-case2-install-relic-welcome-scroll-hook.sh retropi@gpi:/home/retropi/
+ssh retropi@gpi 'sh /home/retropi/gpi-case2-install-relic-welcome-scroll-hook.sh --status'
+ssh retropi@gpi 'sh /home/retropi/gpi-case2-install-relic-welcome-scroll-hook.sh --install'
+```
+
+Run `--uninstall` if the doorway feels noisy, slow, or wrong.
 
 The preview prints hostname/Relic name, user, uptime, kernel summary,
 temperature and throttled raw value when `vcgencmd` is available, root disk
@@ -230,7 +245,8 @@ or capture expected command failures and print the friendly fallback instead.
 
 ## Plain And No-Color Behavior
 
-A future script shape should respect both `--plain` and `NO_COLOR`.
+The scroll script and login hook installer respect both `--plain` and
+`NO_COLOR`.
 
 Plain mode:
 
@@ -249,25 +265,25 @@ Plain mode:
 The default rich mode may use warm retro/adventurer styling, but the text must
 still be readable in a basic terminal.
 
-## Future Home
+## Home And Optional Hook
 
-Possible future implementation homes, in order of caution:
+Implementation homes, in order of caution:
 
 | Home | Why it might fit | Boundary |
 | --- | --- | --- |
-| Standalone script in `/home/retropi/` | Easy to copy with `scp`, run manually, and remove. | Does not print automatically until a later quest wires it. |
-| User shell profile call | Can target only `retropi` interactive SSH sessions. | Must detect interactive shells and be easy to disable. |
+| Standalone script in `/home/retropi/` | Easy to copy with `scp`, run manually, and remove. | Does not print automatically. |
+| User shell profile call | Can target only `retropi` interactive SSH sessions. | Must be installed explicitly, detect interactive shells, and be easy to disable. |
 | `/etc/update-motd.d/` or MOTD hook | Familiar login-banner path on Debian-like systems. | Requires more system-level caution and a clean disable path. |
 
 The standalone preview now exists under `scripts/` and is copied manually to
-`/home/retropi/` when needed. A future implementation quest may wire automatic
-printing only after interactive detection, `scp` safety, and disable rules are
-validated.
+`/home/retropi/` when needed. The disabled-by-default installer can wire
+automatic printing only when the operator explicitly runs `--install`; it keeps
+interactive detection, `scp` safety, and disable rules in the generated hook.
 
 The detailed comparison and recommended first hook path are captured in the
 [Relic Welcome Scroll Login Wiring Design](gpi-case-2-relic-welcome-scroll-login-wiring-design.md).
-Use that document before any future quest edits `~/.bashrc`, `~/.profile`,
-MOTD, PAM, or system profile paths.
+Use that document before changing `~/.bashrc`, `~/.profile`, MOTD, PAM, or
+system profile paths.
 
 ## Recovery-First Rules
 
@@ -281,10 +297,9 @@ MOTD, PAM, or system profile paths.
 - Must not depend on the top sleep/resume button, attached keyboard, or local
   repository checkout.
 
-Interactive detection should check for an interactive shell and a terminal
-before printing. Future implementation notes may include guards such as testing
-for `case "$-" in *i*) ...` and `[ -t 1 ]`, but this document does not install
-those guards anywhere.
+Interactive detection checks for an interactive shell and a terminal before
+printing. The disabled-by-default hook uses guards such as
+`case "$-" in *i*) ...` and `[ -t 1 ]`.
 
 ## Risks
 
@@ -292,7 +307,7 @@ those guards anywhere.
 | --- | --- | --- |
 | Slow SSH login | The operator may need the shell during recovery. | Keep probes local, tiny, optional, and timeout-bounded. |
 | Noisy output for `scp` or non-interactive sessions | The current field practice is scp-first and artifacts must copy cleanly. | Print only for interactive terminal sessions. |
-| Broken shell profile locking out operator | A syntax error in login startup can block support access. | Prefer standalone first; if wired later, keep one-line disable and fail-open guards. |
+| Broken shell profile locking out operator | A syntax error in login startup can block support access. | Prefer standalone first; when wired, keep one-line disable and fail-open guards. |
 | Exposing too much system detail | A friendly banner can accidentally leak private context. | Use a narrow allowlist and never print secrets, histories, ROM lists, or broad dumps. |
 | Misleading health claims | A raw temperature or throttled value can be overread. | Label fields as clues and avoid diagnosis in the scroll. |
 

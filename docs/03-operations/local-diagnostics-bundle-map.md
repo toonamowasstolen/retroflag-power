@@ -22,6 +22,7 @@ related:
   - docs/03-operations/gpi-case-2-relic-welcome-scroll-design.md
   - docs/03-operations/gpi-case-2-relic-welcome-scroll-login-wiring-design.md
   - docs/03-operations/gpi-case-2-relic-welcome-scroll-preview-notes.md
+  - scripts/gpi-case2-install-relic-welcome-scroll-hook.sh
   - scripts/gpi-case2-relic-welcome-scroll.sh
   - docs/03-operations/gpi-case-2-session-watch-lantern-design.md
   - docs/03-operations/gpi-case-2-session-watch-field-run-procedure.md
@@ -91,16 +92,19 @@ implement that capture automatically.
 
 The optional SSH greeting lane is designed in
 [GPi Case 2 Relic Welcome Scroll Design](gpi-case-2-relic-welcome-scroll-design.md).
-Possible future login wiring for that greeting is mapped in
+Optional login wiring for that greeting is mapped in
 [GPi Case 2 Relic Welcome Scroll Login Wiring Design](gpi-case-2-relic-welcome-scroll-login-wiring-design.md).
 The current manual preview script lives at
 [`scripts/gpi-case2-relic-welcome-scroll.sh`](../../scripts/gpi-case2-relic-welcome-scroll.sh).
+The disabled-by-default login hook installer lives at
+[`scripts/gpi-case2-install-relic-welcome-scroll-hook.sh`](../../scripts/gpi-case2-install-relic-welcome-scroll-hook.sh)
+and must be run explicitly with `--install` before it changes login behavior.
 Real manual preview evidence is recorded in
 [GPi Case 2 Relic Welcome Scroll Preview Notes](gpi-case-2-relic-welcome-scroll-preview-notes.md).
 It may eventually show a single last-known Field Lantern artifact pointer, but
 it must remain read-only, fast, interactive-only, and safe for `scp` sessions.
-It is not installed into SSH login yet and should stay manually invoked until a
-later recovery-first wiring quest.
+It is not installed into SSH login by default; `--status`, tests, and manual
+preview runs keep the doorway unchanged.
 
 ## Purpose
 
