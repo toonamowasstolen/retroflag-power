@@ -12,6 +12,7 @@ audience:
   - Hardware Porters
 purpose: Design a recovery-first GPi Case 2 startup UX plan for earlier operator feedback, safer boot-text hiding, and an SSH welcome/status scroll without implementing boot config changes.
 related:
+  - ../../scripts/gpi-case2-relic-welcome-scroll.sh
   - gpi-case-2-relic-welcome-scroll-design.md
   - gpi-case-2-true-boot-trace-lantern-design.md
   - gpi-case-2-true-boot-trace-field-run-procedure.md
@@ -61,7 +62,7 @@ Design a recovery-first startup UX plan with three separate layers:
 | --- | --- | --- |
 | First Spark | Earliest possible visible or physical feedback after the side power switch is flipped. | LED, backlight, display flash, or other unmistakable "power path is alive" sign. |
 | Boot Veil | Hide rough boot text and penguin graphics after the display path is active, where safe. | Splash, framebuffer image, or service-managed cover that can be disabled. |
-| Relic Welcome Scroll | Show useful SSH login/status output when connecting to `retropi@gpi`. | MOTD or login-time status summary with artifact pointers and safety reminders. |
+| Relic Welcome Scroll | Show useful SSH support output when connecting to `retropi@gpi`. | Current standalone manual preview script; later MOTD or login-time status summary only after recovery-first wiring. |
 
 The design should reduce operator uncertainty without reducing recovery
 visibility. Earlier feedback is useful only if diagnostics can still reveal
@@ -163,6 +164,18 @@ That document defines the future banner layout, read-only field allowlist,
 fast-path behavior, plain/no-color behavior, `scp` safety, missing-command
 fallbacks, and recovery-first disable rules.
 
+The current manually runnable preview script lives at
+[`scripts/gpi-case2-relic-welcome-scroll.sh`](../../scripts/gpi-case2-relic-welcome-scroll.sh).
+It is copied with `scp`, run from `/home/retropi/`, and kept out of shell
+startup, MOTD, SSHD, services, boot config, GPIO, display, shutdown, sleep,
+and resume behavior.
+
+```sh
+scp scripts/gpi-case2-relic-welcome-scroll.sh retropi@gpi:/home/retropi/
+ssh retropi@gpi 'chmod +x /home/retropi/gpi-case2-relic-welcome-scroll.sh'
+ssh retropi@gpi '/home/retropi/gpi-case2-relic-welcome-scroll.sh'
+```
+
 Candidate approach:
 
 | Approach | What it could do | Risks | Recovery path |
@@ -262,7 +275,8 @@ change makes the handheld harder to observe.
 
 Later implementation quests may choose one layer at a time:
 
-1. Add a read-only SSH Relic Welcome Scroll.
+1. Later, wire the read-only SSH Relic Welcome Scroll into login only after
+   recovery-first disable and interactive-only rules are proven.
 2. Add a reversible framebuffer splash prototype.
 3. Evaluate Plymouth or an equivalent splash service only after evidence shows
    it improves the correct window.

@@ -12,6 +12,7 @@ audience:
   - Hardware Porters
 purpose: Design a read-only, fast, recovery-first SSH welcome scroll for GPi Case 2 operator sessions without implementing shell startup, MOTD, boot, service, GPIO, shutdown, sleep, or resume behavior.
 related:
+  - ../../scripts/gpi-case2-relic-welcome-scroll.sh
   - gpi-case-2-first-spark-boot-veil-welcome-scroll-design.md
   - gpi-case-2-true-boot-trace-lantern-design.md
   - gpi-case-2-true-boot-trace-field-run-procedure.md
@@ -29,9 +30,11 @@ last_updated: 2026-07-10
 > them with a quick map: where they are, what the weather looks like, and which
 > Field Lantern paths are nearby.
 
-This is a design document only. It does not implement a shell profile hook,
-MOTD script, PAM change, boot config change, service, GPIO behavior, display
-behavior, shutdown behavior, sleep behavior, or resume behavior.
+The first manually runnable preview script now lives at
+[`scripts/gpi-case2-relic-welcome-scroll.sh`](../../scripts/gpi-case2-relic-welcome-scroll.sh).
+It is a standalone preview only. It is not installed into SSH login, MOTD,
+shell startup, services, boot config, GPIO behavior, display behavior,
+shutdown behavior, sleep behavior, or resume behavior.
 
 The GPi Case 2 is a handheld Relic. SSH is optional support, not the primary
 handheld UX. Do not assume an attached keyboard. Current field practice is
@@ -57,9 +60,36 @@ The scroll is a greeting and orientation map. It is not a diagnostic bundle, a
 health verdict, an installer, a repair tool, or a replacement for the handheld
 frontend.
 
+## Current Preview Script
+
+Use the preview through the current scp-first field trail:
+
+```sh
+scp scripts/gpi-case2-relic-welcome-scroll.sh retropi@gpi:/home/retropi/
+ssh retropi@gpi 'chmod +x /home/retropi/gpi-case2-relic-welcome-scroll.sh'
+ssh retropi@gpi '/home/retropi/gpi-case2-relic-welcome-scroll.sh'
+```
+
+Plain and no-color previews:
+
+```sh
+ssh retropi@gpi '/home/retropi/gpi-case2-relic-welcome-scroll.sh --plain'
+ssh retropi@gpi 'NO_COLOR=1 /home/retropi/gpi-case2-relic-welcome-scroll.sh'
+```
+
+Warning: this script is not yet installed into SSH login. Keep it manually
+invoked until a later recovery-first wiring quest proves an interactive-only,
+easy-disable login path.
+
+The preview prints hostname/Relic name, user, uptime, kernel summary,
+temperature and throttled raw value when `vcgencmd` is available, root disk
+free, load average, memory available, an address hint, the `retropi@gpi` SSH
+target reminder, and a read-only Field Lantern reminder. Missing data shows as
+`unavailable` or `unknown`; the scroll should not fail as a whole.
+
 ## Non-Goals
 
-- Do not implement the scroll in this quest.
+- Do not wire the preview into automatic login or boot behavior in this quest.
 - Do not edit `.profile`, `.bashrc`, `.zshrc`, `/etc/profile`, `/etc/motd`,
   `/etc/update-motd.d/`, PAM, SSHD config, shell startup files, or login
   managers.
@@ -217,10 +247,10 @@ Possible future implementation homes, in order of caution:
 | User shell profile call | Can target only `retropi` interactive SSH sessions. | Must detect interactive shells and be easy to disable. |
 | `/etc/update-motd.d/` or MOTD hook | Familiar login-banner path on Debian-like systems. | Requires more system-level caution and a clean disable path. |
 
-This quest does not choose or implement any of those homes. A future
-implementation quest should start with the standalone script shape and only
-wire automatic printing after interactive detection, `scp` safety, and disable
-rules are validated.
+The standalone preview now exists under `scripts/` and is copied manually to
+`/home/retropi/` when needed. A future implementation quest may wire automatic
+printing only after interactive detection, `scp` safety, and disable rules are
+validated.
 
 ## Recovery-First Rules
 

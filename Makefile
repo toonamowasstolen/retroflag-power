@@ -36,10 +36,15 @@ check: test build version check-scripts
 check-scripts:
 	sh -n scripts/gpi-case2-bundle-collector-field-lantern.sh
 	sh -n scripts/gpi-case2-boot-power-trace-field-lantern.sh
+	sh -n scripts/gpi-case2-relic-welcome-scroll.sh
 	sh -n scripts/gpi-case2-session-watch-lantern.sh
 	sh -n scripts/gpi-case2-true-boot-trace-lantern.sh
+	sh scripts/gpi-case2-relic-welcome-scroll.sh --help >/dev/null
 	sh scripts/gpi-case2-session-watch-lantern.sh --help >/dev/null
 	sh scripts/gpi-case2-true-boot-trace-lantern.sh --help >/dev/null
+	NO_COLOR= sh scripts/gpi-case2-relic-welcome-scroll.sh >/dev/null
+	sh scripts/gpi-case2-relic-welcome-scroll.sh --plain >/dev/null
+	NO_COLOR=1 sh scripts/gpi-case2-relic-welcome-scroll.sh >/dev/null
 	sh scripts/gpi-case2-session-watch-lantern.sh --plain --duration 1 --interval 1 --output /tmp/gpi-case2-session-watch-lantern-plain-smoke.txt >/dev/null
 	NO_COLOR=1 sh scripts/gpi-case2-session-watch-lantern.sh --duration 1 --interval 1 --output /tmp/gpi-case2-session-watch-lantern-nocolor-smoke.txt >/dev/null
 	sh scripts/gpi-case2-true-boot-trace-lantern.sh --plain --duration 1 --interval 1 --output /tmp/gpi-case2-true-boot-trace-lantern-plain-smoke.txt >/dev/null
