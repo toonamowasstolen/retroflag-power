@@ -19,6 +19,7 @@ related:
   - docs/03-operations/gpi-case-2-field-lantern-capture-procedure.md
   - docs/03-operations/gpi-case-2-boot-power-trace-capture-procedure.md
   - docs/03-operations/gpi-case-2-boot-power-trace-lantern-map.md
+  - docs/03-operations/gpi-case-2-relic-welcome-scroll-design.md
   - docs/03-operations/gpi-case-2-session-watch-lantern-design.md
   - docs/03-operations/gpi-case-2-session-watch-field-run-procedure.md
   - docs/03-operations/gpi-case-2-session-watch-evidence-ledger.md
@@ -84,6 +85,11 @@ Recorded run evidence belongs in the
 The script may later become an optional diagnostics bundle section for menu,
 emulator, play, idle-risk, and post-resume evidence, but this map does not
 implement that capture automatically.
+
+The optional SSH greeting lane is designed in
+[GPi Case 2 Relic Welcome Scroll Design](gpi-case-2-relic-welcome-scroll-design.md).
+It may eventually show a single last-known Field Lantern artifact pointer, but
+it must remain read-only, fast, interactive-only, and safe for `scp` sessions.
 
 ## Purpose
 

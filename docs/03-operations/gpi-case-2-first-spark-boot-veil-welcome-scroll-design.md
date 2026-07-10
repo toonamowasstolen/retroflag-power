@@ -12,6 +12,7 @@ audience:
   - Hardware Porters
 purpose: Design a recovery-first GPi Case 2 startup UX plan for earlier operator feedback, safer boot-text hiding, and an SSH welcome/status scroll without implementing boot config changes.
 related:
+  - gpi-case-2-relic-welcome-scroll-design.md
   - gpi-case-2-true-boot-trace-lantern-design.md
   - gpi-case-2-true-boot-trace-field-run-procedure.md
   - gpi-case-2-true-boot-trace-evidence-ledger.md
@@ -156,6 +157,12 @@ Relic Welcome Scroll means useful SSH output when connecting to
 `retropi@gpi`. It supports the scp-first workflow. It is not the handheld's
 primary UX and must not require a keyboard attached to the GPi Case 2.
 
+The dedicated source-of-truth design for this lane is
+[GPi Case 2 Relic Welcome Scroll Design](gpi-case-2-relic-welcome-scroll-design.md).
+That document defines the future banner layout, read-only field allowlist,
+fast-path behavior, plain/no-color behavior, `scp` safety, missing-command
+fallbacks, and recovery-first disable rules.
+
 Candidate approach:
 
 | Approach | What it could do | Risks | Recovery path |
@@ -237,6 +244,11 @@ The [Session Watch Lantern](gpi-case-2-session-watch-lantern-design.md)
 continues after boot. It should verify that the handheld remains usable once
 the frontend is up and that any future veil does not create later runtime
 confusion.
+
+The [Relic Welcome Scroll Design](gpi-case-2-relic-welcome-scroll-design.md)
+keeps SSH login greeting behavior separate from First Spark and Boot Veil work.
+It should remain read-only, fast, interactive-only, and safe for the current
+scp-first field practice.
 
 The [Boot Power Trace Lantern Map](gpi-case-2-boot-power-trace-lantern-map.md)
 keeps power-warning timing separate from startup cosmetics. A veil must never
