@@ -20,6 +20,7 @@ related:
   - docs/03-operations/gpi-case-2-boot-power-trace-capture-procedure.md
   - docs/03-operations/gpi-case-2-boot-power-trace-lantern-map.md
   - docs/03-operations/gpi-case-2-relic-welcome-scroll-design.md
+  - docs/03-operations/gpi-case-2-relic-welcome-scroll-login-wiring-design.md
   - docs/03-operations/gpi-case-2-relic-welcome-scroll-preview-notes.md
   - scripts/gpi-case2-relic-welcome-scroll.sh
   - docs/03-operations/gpi-case-2-session-watch-lantern-design.md
@@ -90,6 +91,8 @@ implement that capture automatically.
 
 The optional SSH greeting lane is designed in
 [GPi Case 2 Relic Welcome Scroll Design](gpi-case-2-relic-welcome-scroll-design.md).
+Possible future login wiring for that greeting is mapped in
+[GPi Case 2 Relic Welcome Scroll Login Wiring Design](gpi-case-2-relic-welcome-scroll-login-wiring-design.md).
 The current manual preview script lives at
 [`scripts/gpi-case2-relic-welcome-scroll.sh`](../../scripts/gpi-case2-relic-welcome-scroll.sh).
 Real manual preview evidence is recorded in

@@ -14,6 +14,7 @@ purpose: Design a recovery-first GPi Case 2 startup UX plan for earlier operator
 related:
   - ../../scripts/gpi-case2-relic-welcome-scroll.sh
   - gpi-case-2-relic-welcome-scroll-design.md
+  - gpi-case-2-relic-welcome-scroll-login-wiring-design.md
   - gpi-case-2-relic-welcome-scroll-preview-notes.md
   - gpi-case-2-true-boot-trace-lantern-design.md
   - gpi-case-2-true-boot-trace-field-run-procedure.md
@@ -175,6 +176,11 @@ The first real manual preview run is recorded in
 [GPi Case 2 Relic Welcome Scroll Preview Notes](gpi-case-2-relic-welcome-scroll-preview-notes.md).
 It confirmed normal art output, `--plain`, `NO_COLOR`, fast manual execution,
 and clean scp-first handling without installing the scroll into SSH login.
+
+The recovery-first login wiring plan is
+[GPi Case 2 Relic Welcome Scroll Login Wiring Design](gpi-case-2-relic-welcome-scroll-login-wiring-design.md).
+It keeps the SSH greeting lane separate from First Spark and Boot Veil work and
+requires interactive-only output before any future hook is installed.
 
 ```sh
 scp scripts/gpi-case2-relic-welcome-scroll.sh retropi@gpi:/home/retropi/

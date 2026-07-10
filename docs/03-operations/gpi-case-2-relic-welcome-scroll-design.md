@@ -13,6 +13,7 @@ audience:
 purpose: Design a read-only, fast, recovery-first SSH welcome scroll for GPi Case 2 operator sessions without implementing shell startup, MOTD, boot, service, GPIO, shutdown, sleep, or resume behavior.
 related:
   - ../../scripts/gpi-case2-relic-welcome-scroll.sh
+  - gpi-case-2-relic-welcome-scroll-login-wiring-design.md
   - gpi-case-2-relic-welcome-scroll-preview-notes.md
   - gpi-case-2-first-spark-boot-veil-welcome-scroll-design.md
   - gpi-case-2-true-boot-trace-lantern-design.md
@@ -41,6 +42,11 @@ The first real manual preview evidence is recorded in
 [GPi Case 2 Relic Welcome Scroll Preview Notes](gpi-case-2-relic-welcome-scroll-preview-notes.md).
 That run confirmed the scp-first trail, normal ASCII art output, `--plain`,
 and `NO_COLOR` behavior while keeping the script out of login wiring.
+
+The recovery-first plan for possible future login wiring lives in
+[GPi Case 2 Relic Welcome Scroll Login Wiring Design](gpi-case-2-relic-welcome-scroll-login-wiring-design.md).
+That document compares shell, MOTD, PAM, and manual-only homes while keeping
+this quest lane design-only and safe for `scp`.
 
 The GPi Case 2 is a handheld Relic. SSH is optional support, not the primary
 handheld UX. Do not assume an attached keyboard. Current field practice is
@@ -257,6 +263,11 @@ The standalone preview now exists under `scripts/` and is copied manually to
 `/home/retropi/` when needed. A future implementation quest may wire automatic
 printing only after interactive detection, `scp` safety, and disable rules are
 validated.
+
+The detailed comparison and recommended first hook path are captured in the
+[Relic Welcome Scroll Login Wiring Design](gpi-case-2-relic-welcome-scroll-login-wiring-design.md).
+Use that document before any future quest edits `~/.bashrc`, `~/.profile`,
+MOTD, PAM, or system profile paths.
 
 ## Recovery-First Rules
 

@@ -14,6 +14,7 @@ purpose: Record real manual Relic Welcome Scroll preview runs for the GPi Case 2
 related:
   - ../../scripts/gpi-case2-relic-welcome-scroll.sh
   - gpi-case-2-relic-welcome-scroll-design.md
+  - gpi-case-2-relic-welcome-scroll-login-wiring-design.md
   - gpi-case-2-first-spark-boot-veil-welcome-scroll-design.md
   - local-diagnostics-bundle-map.md
 last_updated: 2026-07-10
@@ -30,6 +31,11 @@ This document records manual preview evidence for
 It is evidence intake only. It does not install, enable, or wire the script
 into SSH login, MOTD, shell startup, services, boot config, GPIO behavior,
 display behavior, shutdown behavior, sleep behavior, or resume behavior.
+
+The future wiring map is
+[GPi Case 2 Relic Welcome Scroll Login Wiring Design](gpi-case-2-relic-welcome-scroll-login-wiring-design.md).
+Use it before changing any login hook; these preview notes alone prove manual
+output behavior, not automatic login safety.
 
 The GPi Case 2 is a handheld Relic. SSH to `retropi@gpi` is optional support,
 not the primary handheld UX. Do not assume an attached keyboard. Current field
