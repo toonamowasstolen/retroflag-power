@@ -13,6 +13,7 @@ audience:
 purpose: Design a future read-only, scp-first GPi Case 2 Boot Trace Lantern for capturing startup evidence without changing handheld behavior.
 related:
   - gpi-case-2-first-spark-boot-veil-welcome-scroll-design.md
+  - gpi-case-2-true-boot-trace-field-run-procedure.md
   - ../../scripts/gpi-case2-true-boot-trace-lantern.sh
   - gpi-case-2-boot-power-trace-lantern-map.md
   - gpi-case-2-boot-power-trace-capture-procedure.md
@@ -42,6 +43,12 @@ It does not install a service, change boot behavior, or approve automatic
 startup. The current tool is a small foreground shell script copied to the GPi
 Case 2 with `scp`, launched from `/home/retropi/`, and retrieved with `scp`
 when the handheld remains responsive.
+
+The field procedure for real handheld runs lives at
+[GPi Case 2 True Boot Trace Field Run Procedure](gpi-case-2-true-boot-trace-field-run-procedure.md).
+Use it for the scp-first copy/run/retrieve commands and for human First Spark
+notes about side-switch time, first visible display, LED state, SSH
+availability, and EmulationStation visibility.
 
 The GPi Case 2 is a handheld Relic first. Do not assume an attached keyboard.
 SSH to `retropi@gpi` is optional support for copying, launching, and retrieving
@@ -355,6 +362,9 @@ should apply fixes.
 The
 [First Spark / Boot Veil / Relic Welcome Scroll Design](gpi-case-2-first-spark-boot-veil-welcome-scroll-design.md)
 depends on True Boot Trace evidence before any startup UX behavior changes.
+The
+[True Boot Trace Field Run Procedure](gpi-case-2-true-boot-trace-field-run-procedure.md)
+is the current place to collect that evidence in the field.
 The observed roughly 15-second silent-screen window after the side switch is a
 field observation, not yet proof of a KMS, framebuffer, firmware, or userspace
 boundary.

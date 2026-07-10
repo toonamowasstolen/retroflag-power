@@ -13,6 +13,7 @@ audience:
 purpose: Design a recovery-first GPi Case 2 startup UX plan for earlier operator feedback, safer boot-text hiding, and an SSH welcome/status scroll without implementing boot config changes.
 related:
   - gpi-case-2-true-boot-trace-lantern-design.md
+  - gpi-case-2-true-boot-trace-field-run-procedure.md
   - gpi-case-2-session-watch-lantern-design.md
   - gpi-case-2-boot-power-trace-lantern-map.md
   - gpi-case-2-recovery-first-field-procedure.md
@@ -39,6 +40,12 @@ responsive. The top sleep/resume button remains suspect unless a dedicated
 procedure explicitly tests it. Current field practice is scp-first: copy a
 small tool to `retropi@gpi:/home/retropi/`, run it from there, and retrieve the
 artifact with `scp`.
+
+Use the
+[GPi Case 2 True Boot Trace Field Run Procedure](gpi-case-2-true-boot-trace-field-run-procedure.md)
+to gather the handheld First Spark observations this design depends on:
+power-switch time, first visible display time, first SSH availability, first
+EmulationStation visibility, and quiet-window notes.
 
 ## Purpose
 
@@ -173,6 +180,11 @@ First Spark or Boot Veil implementation quest:
 - Missing-command and permission-denied markers.
 - Explicit note of what the Lantern could not see before it started.
 - Human notes for LED, backlight, screen, side switch, and SSH visibility.
+
+The
+[True Boot Trace Field Run Procedure](gpi-case-2-true-boot-trace-field-run-procedure.md)
+is the field trail for collecting those human notes beside the final Boot
+Trace Ledger.
 
 The True Boot Trace evidence should answer these implementation gates:
 

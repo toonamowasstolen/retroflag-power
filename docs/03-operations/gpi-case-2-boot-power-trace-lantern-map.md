@@ -14,6 +14,7 @@ purpose: Map a future focused read-only boot power trace for timing GPi Case 2 u
 related:
   - gpi-case-2-first-spark-boot-veil-welcome-scroll-design.md
   - gpi-case-2-true-boot-trace-lantern-design.md
+  - gpi-case-2-true-boot-trace-field-run-procedure.md
   - ../../scripts/gpi-case2-true-boot-trace-lantern.sh
   - gpi-case-2-session-watch-lantern-design.md
   - ../../scripts/gpi-case2-session-watch-lantern.sh
@@ -78,6 +79,11 @@ The current manual bundle collector procedure lives in
 [GPi Case 2 Boot Power Trace Capture Procedure](gpi-case-2-boot-power-trace-capture-procedure.md).
 It provides the copy, run, and retrieve path for the portable shell script. The
 script does not run automatically.
+
+The current True Boot Trace handheld procedure lives in
+[GPi Case 2 True Boot Trace Field Run Procedure](gpi-case-2-true-boot-trace-field-run-procedure.md).
+It provides the scp-first copy, run, First Spark observation, and final Boot
+Trace Ledger retrieval path for the foreground startup trace skeleton.
 
 ## Lantern Architecture
 
@@ -316,14 +322,16 @@ Expected path:
    text Ledger for bounded runtime watches.
 4. Done: read-only True Boot Trace Lantern foreground skeleton writes one
    startup-focused Boot Trace Ledger after normal boot.
-5. Later: read-only Boot Power Trace Lantern writes local timestamped samples
+5. Done: handheld-first True Boot Trace field procedure records First Spark
+   observations and retrieves the final Boot Trace Ledger with `scp`.
+6. Later: read-only Boot Power Trace Lantern writes local timestamped samples
    from early boot, with no GPIO, no shutdown/reboot, and no systemd
    activation in this quest.
-6. Later: Field Lantern bundle includes a boot power trace section.
-7. Later: Common Problems Mage classifies power buckets.
-8. Later: `retroflag-powerd diagnostics --bundle` can include the local trace
+7. Later: Field Lantern bundle includes a boot power trace section.
+8. Later: Common Problems Mage classifies power buckets.
+9. Later: `retroflag-powerd diagnostics --bundle` can include the local trace
    when explicitly requested.
-9. Later: `retroflag-powerd troubleshoot` can classify trace evidence without
+10. Later: `retroflag-powerd troubleshoot` can classify trace evidence without
    changing the device.
 
 Each step needs its own quest, review, and validation. This page only lights
