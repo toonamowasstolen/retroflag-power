@@ -479,3 +479,39 @@ accurately.
 ### Quest
 
 [0099-reconcile-hardware-and-operations-folders](quests/0099-reconcile-hardware-and-operations-folders.md)
+
+---
+
+<a id="m-0009"></a>
+## M-0009 — Added CODE_OF_CONDUCT.md, expanded CONTRIBUTING.md
+
+Epoch: Awakening
+
+Status: Verified
+
+Verified on: 2026-07-14
+
+### Summary
+
+This project had no `CODE_OF_CONDUCT.md` at all and a 3-line `CONTRIBUTING.md` stub — thinner than
+its three sibling EDC projects. Ported the pattern over, adapted to this project's actual context
+(solo/AI-collaborative hardware project, Quests/Milestones/ADRs, no branch/PR workflow evidenced in
+`git log`) rather than copying the siblings' corporate framing verbatim.
+
+### Verified
+
+- `CODE_OF_CONDUCT.md` exists at repo root.
+- `CONTRIBUTING.md` expanded, references only files that actually exist in this repo.
+- `python3 scripts/check-markdown-links.py` — 0 broken links, exit 0.
+
+### Not included
+
+- A branch-naming/PR-review process — this project's real `git log` shows none, so none was invented.
+
+### Evidence
+
+- Working-tree change, committed this session (see quest for the exact file list).
+
+### Quest
+
+[0100-add-code-of-conduct-and-expand-contributing](quests/0100-add-code-of-conduct-and-expand-contributing.md)
