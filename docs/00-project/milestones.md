@@ -397,3 +397,44 @@ status interface.
 ### Quest
 
 No dedicated Quest record exists for this small checkpoint.
+
+---
+
+<a id="m-0007"></a>
+## M-0007 — Infrastructure Ledger and Regular-Project Conversion
+
+Epoch: Awakening
+
+Status: Verified
+
+Verified on: 2026-07-14
+
+### Summary
+
+This repo converted from an external, read-only reference clone
+(`_reference_retroflag-power`, as seen by the sibling EDC projects) into a regular, owned project —
+it's the same owner's own repo, and the *origin* the shared EDC standard was retroactively
+generalized from. Gained the same `docs/14-infrastructure/host-events.md` category (a numbered,
+append-only ledger for host/infrastructure events outside this repo with a real effect on it) just
+added to the template and the three sibling projects, adapted to this project's own voice.
+
+### Verified
+
+- `docs/14-infrastructure/host-events.md` exists.
+- `git log` confirms Revision `03d2a61` landed and is pushed to `origin/main`.
+- `find . -iname README.md` still reports the pre-existing two (root + `docs/03-hardware/`) —
+  unrelated to this milestone, tracked separately.
+
+### Not included
+
+- Any real `INFRA-NNNN` entry — no host/infra event has affected this project yet.
+- The `docs/03-hardware`/`docs/03-operations` reconciliation, `CODE_OF_CONDUCT.md`/`CONTRIBUTING.md`
+  port, or any code-level change — separate work.
+
+### Evidence
+
+- Revision `03d2a61` — Open a filing slot for the world outside the repo.
+
+### Quest
+
+[0098-backfill-infrastructure-ledger-and-anchor-rule-sync](quests/0098-backfill-infrastructure-ledger-and-anchor-rule-sync.md)
