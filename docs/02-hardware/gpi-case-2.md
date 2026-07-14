@@ -20,7 +20,11 @@ related:
   - docs/04-architecture/system-overview.md
   - docs/13-reference/terminology.md
   - docs/13-reference/glossary.md
-last_updated: 2026-07-09
+  - docs/02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
+  - docs/02-hardware/gpi-case-2-power-integrity-investigation-notes.md
+  - docs/02-hardware/gpi-case-2-emergency-recovery-research-ledger.md
+  - docs/02-hardware/gpi-case-2-developer-access-paths.md
+last_updated: 2026-07-14
 ---
 
 # GPi Case 2 Reference Hardware
@@ -32,6 +36,18 @@ This document records the reference hardware for RetroFlag Power.
 The GPi Case 2 is the first witness because it is the hardware that started the project.
 
 The goal of this document is to capture what is known, what is assumed, what must be validated, and what the first implementation must respect.
+
+## See also
+
+Verified device maps and bench notes, formerly indexed by a second `docs/03-hardware/README.md`
+(folded in here 2026-07-14 as part of reconciling `docs/03-hardware` and `docs/03-operations`'
+number collision — see `QUEST-0099`):
+
+- [GPi Case 2 Hardware Findings and KMS Power Notes](gpi-case-2-hardware-findings-kms-power-notes.md)
+- [GPi Case 2 Power Integrity Investigation Notes](gpi-case-2-power-integrity-investigation-notes.md)
+- [GPi Case 2 Emergency Recovery Research Ledger](gpi-case-2-emergency-recovery-research-ledger.md)
+- [GPi Case 2 Developer Access Paths](gpi-case-2-developer-access-paths.md)
+- [GPi Case 2 First Spark / Boot Veil / Relic Welcome Scroll Design](../03-operations/gpi-case-2-first-spark-boot-veil-welcome-scroll-design.md)
 
 ---
 
@@ -640,7 +656,7 @@ power-save/resume RCU stall where software recovery vanished, and a
 by successful resume. Treat resume failure as intermittent, not guaranteed,
 and follow the newer Ledger before making claims:
 
-- [GPi Case 2 Hardware Findings and KMS Power Notes](../03-hardware/gpi-case-2-hardware-findings-kms-power-notes.md)
+- [GPi Case 2 Hardware Findings and KMS Power Notes](../02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md)
 - [GPi Case 2 Bundle Collector Lantern Capture Procedure](../03-operations/gpi-case-2-boot-power-trace-capture-procedure.md)
 
 Mitigation:

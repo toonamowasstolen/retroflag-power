@@ -13,9 +13,9 @@ audience:
 purpose: Record the completed evidence update that captured a successful GPi Case 2 post-resume Lantern run and refined the intermittent resume-wedge theory.
 related:
   - ../../02-hardware/gpi-case-2.md
-  - ../../03-hardware/gpi-case-2-emergency-recovery-research-ledger.md
-  - ../../03-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
-  - ../../03-hardware/gpi-case-2-power-integrity-investigation-notes.md
+  - ../../02-hardware/gpi-case-2-emergency-recovery-research-ledger.md
+  - ../../02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
+  - ../../02-hardware/gpi-case-2-power-integrity-investigation-notes.md
   - ../../03-operations/gpi-case-2-acceptance-checklist.md
   - ../../03-operations/gpi-case-2-boot-power-trace-capture-procedure.md
   - ../../03-operations/gpi-case-2-boot-power-trace-lantern-map.md

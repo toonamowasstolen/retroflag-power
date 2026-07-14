@@ -14,7 +14,7 @@ purpose: Add a small documentation-only ledger for safe manual read-only GPIO pr
 related:
   - docs/03-operations/gpi-case-gpio-probe-ledger.md
   - docs/03-operations/gpio-read-only-plan.md
-  - docs/03-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
+  - docs/02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
   - docs/00-project/quests/0045-add-a-hardware-read-only-gpio-probe-command.md
 last_updated: 2026-07-07
 ---

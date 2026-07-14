@@ -422,13 +422,13 @@ added to the template and the three sibling projects, adapted to this project's 
 
 - `docs/14-infrastructure/host-events.md` exists.
 - `git log` confirms Revision `03d2a61` landed and is pushed to `origin/main`.
-- `find . -iname README.md` still reports the pre-existing two (root + `docs/03-hardware/`) —
+- `find . -iname README.md` still reports the pre-existing two (root + `docs/02-hardware/`) —
   unrelated to this milestone, tracked separately.
 
 ### Not included
 
 - Any real `INFRA-NNNN` entry — no host/infra event has affected this project yet.
-- The `docs/03-hardware`/`docs/03-operations` reconciliation, `CODE_OF_CONDUCT.md`/`CONTRIBUTING.md`
+- The `docs/02-hardware`/`docs/03-operations` reconciliation, `CODE_OF_CONDUCT.md`/`CONTRIBUTING.md`
   port, or any code-level change — separate work.
 
 ### Evidence
@@ -438,3 +438,44 @@ added to the template and the three sibling projects, adapted to this project's 
 ### Quest
 
 [0098-backfill-infrastructure-ledger-and-anchor-rule-sync](quests/0098-backfill-infrastructure-ledger-and-anchor-rule-sync.md)
+
+---
+
+<a id="m-0008"></a>
+## M-0008 — Reconciled docs/02-hardware, docs/03-hardware, and docs/03-operations
+
+Epoch: Awakening
+
+Status: Verified
+
+Verified on: 2026-07-14
+
+### Summary
+
+The governance doc's Section 11 described a `docs/03-software/` that was never created;
+`docs/03-hardware/` (a second hardware folder) and `docs/03-operations/` both existed at number "03"
+instead, undocumented — and `docs/03-hardware/README.md` was a real second `README.md`. Merged
+`docs/03-hardware`'s 4 findings docs into the canonical `docs/02-hardware/` (via `git mv`, preserving
+history), folded the README's index content into `gpi-case-2.md`'s new "See also" section, let
+`docs/03-operations/` own "03" uncontested, and rewrote Section 11 to describe `docs/03-operations/`
+accurately.
+
+### Verified
+
+- `find . -iname README.md` (excluding vendored dirs) now reports exactly one, at the repo root.
+- `python3 scripts/check-markdown-links.py` — "Link Lantern checked 280 internal links across 150
+  Markdown files," exit 0, run after every path change.
+- `git status` shows the 4 files as renames, not delete+recreate — history preserved.
+
+### Not included
+
+- Any content rewrite inside the moved files themselves.
+- `CODE_OF_CONDUCT.md`/`CONTRIBUTING.md` — separate quest.
+
+### Evidence
+
+- Working-tree change, committed this session (see quest for the exact file list).
+
+### Quest
+
+[0099-reconcile-hardware-and-operations-folders](quests/0099-reconcile-hardware-and-operations-folders.md)

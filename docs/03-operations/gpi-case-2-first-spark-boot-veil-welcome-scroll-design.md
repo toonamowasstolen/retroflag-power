@@ -24,7 +24,7 @@ related:
   - gpi-case-2-recovery-first-field-procedure.md
   - gpi-case-2-session-watch-field-run-procedure.md
   - gpi-case-2-session-watch-evidence-ledger.md
-  - ../03-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
+  - ../02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
 last_updated: 2026-07-10
 ---
 

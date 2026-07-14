@@ -25,9 +25,9 @@ related:
   - gpi-case-2-recovery-first-field-procedure.md
   - gpi-case-2-safeshutdown-script-behavior-map.md
   - safeshutdown-replacement-boundary-map.md
-  - ../03-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
-  - ../03-hardware/gpi-case-2-power-integrity-investigation-notes.md
-  - ../03-hardware/gpi-case-2-developer-access-paths.md
+  - ../02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
+  - ../02-hardware/gpi-case-2-power-integrity-investigation-notes.md
+  - ../02-hardware/gpi-case-2-developer-access-paths.md
 last_updated: 2026-07-09
 ---
 

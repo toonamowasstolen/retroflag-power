@@ -19,7 +19,7 @@ related:
   - docs/03-operations/gpi-case-2-acceptance-checklist.md
   - docs/03-operations/gpi-case-gpio-probe-ledger.md
   - docs/03-operations/safeshutdown-replacement-boundary-map.md
-  - docs/03-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
+  - docs/02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
   - docs/00-project/quests/0051-map-the-local-diagnostics-bundle.md
 last_updated: 2026-07-07
 ---

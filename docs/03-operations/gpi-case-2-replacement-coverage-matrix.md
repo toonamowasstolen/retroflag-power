@@ -16,8 +16,8 @@ related:
   - safeshutdown-replacement-boundary-map.md
   - gpi-case-2-acceptance-checklist.md
   - gpi-case-gpio-probe-ledger.md
-  - ../03-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
-  - ../03-hardware/gpi-case-2-emergency-recovery-research-ledger.md
+  - ../02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
+  - ../02-hardware/gpi-case-2-emergency-recovery-research-ledger.md
   - ../00-project/quests/0064-record-gpi-case-2-power-save-rcu-stall-incident.md
   - ../04-architecture/arcadia-runtime-migration-path.md
 last_updated: 2026-07-09

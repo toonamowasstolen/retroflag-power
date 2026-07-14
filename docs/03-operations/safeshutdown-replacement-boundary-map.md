@@ -13,7 +13,7 @@ purpose: Map the behavior retroflag-powerd must preserve before it can safely re
 related:
   - docs/00-project/project-direction-save-room-arcadia.md
   - docs/04-architecture/arcadia-runtime-migration-path.md
-  - docs/03-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
+  - docs/02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
   - docs/03-operations/gpio-read-only-plan.md
   - docs/03-operations/gpi-case-gpio-probe-ledger.md
   - docs/03-operations/local-diagnostics-bundle-map.md

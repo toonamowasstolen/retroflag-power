@@ -12,8 +12,8 @@ audience:
   - Hardware Porters
 purpose: Preserve the verified GPi Case 2 KMS, GPIO, input, and power findings as a hardware campfire map for future quests.
 related:
-  - docs/03-hardware/README.md
-  - docs/03-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
+  - docs/02-hardware/gpi-case-2.md
+  - docs/02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
   - docs/00-project/quests/0045-add-a-hardware-read-only-gpio-probe-command.md
 last_updated: 2026-07-07
 ---
@@ -38,9 +38,9 @@ Documentation
 ## Outcome
 
 - Added the GPi Case 2 hardware findings field note at
-  [docs/03-hardware/gpi-case-2-hardware-findings-kms-power-notes.md](../../03-hardware/gpi-case-2-hardware-findings-kms-power-notes.md).
+  [docs/02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md](../../02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md).
 - Created the hardware field-note index at
-  [docs/03-hardware/README.md](../../03-hardware/README.md).
+  [docs/02-hardware/gpi-case-2.md](../../02-hardware/gpi-case-2.md).
 - Preserved the verified win: the GPi Case 2 LCD works under KMS DPI with
   Broadcom V3D rendering.
 - Recorded the known-good display charms:

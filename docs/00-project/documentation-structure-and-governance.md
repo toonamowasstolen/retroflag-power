@@ -1018,32 +1018,36 @@ Never claim support without validation.
 
 ---
 
-# 11. `docs/03-software/`
+# 11. `docs/03-operations/`
 
-Software stack notes.
+Field procedures, recovery runbooks, evidence ledgers, and "lantern" capture-tool designs — the
+operational, hands-on-hardware counterpart to `docs/02-hardware/`'s verified reference facts.
 
-Use for external software the project integrates with.
+This section originally described a `docs/03-software/` (external software stack notes) that was
+never created; `docs/03-operations/` grew organically at that same number instead, undocumented,
+across many real field-procedure quests. Reconciled 2026-07-14 (`QUEST-0099`) to describe what
+actually lives here, rather than leave the taxonomy pointing at a folder that doesn't exist.
 
-Possible files:
+Use for:
 
-```
-retropie-stack.md
-retroarch.md
-emulationstation.md
-systemd.md
-journald.md
-```
+- field-test/recovery procedures (boot-power traces, session watches, emergency recovery)
+- evidence ledgers recording real runs, not planning
+- "lantern" design docs (this project's term for a focused field-capture tool/script)
+- coverage matrices and behavior maps for real hardware-facing scripts (e.g. `SafeShutdown.py`
+  replacement boundaries)
 
 Should contain:
 
-- how the external software is used
-- relevant commands
-- integration boundaries
-- known assumptions
-- risks
-- validation notes
+- what was actually run, on real hardware, with real results
+- explicit safety/recovery framing (this folder exists partly *because* hardware work is
+  higher-risk than pure software changes)
+- links back to the `docs/02-hardware/` facts a procedure depends on
 
-Should not contain core architecture unless the architecture doc points here.
+Should not contain:
+
+- external software-stack integration notes with no hardware/field-operations angle — if that need
+  arises later, give it its own unused number rather than reusing this one again.
+- unverified plans — that's a Quest's job until it's actually run.
 
 ---
 
@@ -2139,6 +2143,9 @@ Product vision:
 
 Reference hardware:
   docs/02-hardware/gpi-case-2.md
+
+Field procedures and operations:
+  docs/03-operations/
 
 System architecture:
   docs/04-architecture/system-overview.md

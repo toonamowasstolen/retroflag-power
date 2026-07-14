@@ -15,7 +15,7 @@ related:
   - ../../03-operations/gpi-case-2-acceptance-checklist.md
   - ../../03-operations/gpi-case-gpio-probe-ledger.md
   - ../../03-operations/safeshutdown-replacement-boundary-map.md
-  - ../../03-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
+  - ../../02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
   - 0053-add-the-gpi-case-2-acceptance-checklist.md
   - 0048-map-the-safeshutdown-replacement-boundaries.md
 last_updated: 2026-07-07

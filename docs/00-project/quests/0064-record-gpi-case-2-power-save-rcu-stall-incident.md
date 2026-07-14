@@ -12,7 +12,7 @@ audience:
   - Hardware Porters
 purpose: Record a GPi Case 2 field incident where power-save or resume behavior led to repeated Linux RCU stall messages and loss of normal shutdown recovery.
 related:
-  - ../../03-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
+  - ../../02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
   - ../../03-operations/gpi-case-2-acceptance-checklist.md
   - ../../03-operations/safeshutdown-replacement-boundary-map.md
   - 0057-add-gpi-case-2-field-test-checklist-entries.md

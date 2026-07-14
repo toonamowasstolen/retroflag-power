@@ -22,9 +22,9 @@ related:
   - gpi-case-2-safeshutdown-script-behavior-map.md
   - safeshutdown-replacement-boundary-map.md
   - gpi-case-2-acceptance-checklist.md
-  - ../03-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
-  - ../03-hardware/gpi-case-2-power-integrity-investigation-notes.md
-  - ../03-hardware/gpi-case-2-developer-access-paths.md
+  - ../02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
+  - ../02-hardware/gpi-case-2-power-integrity-investigation-notes.md
+  - ../02-hardware/gpi-case-2-developer-access-paths.md
 last_updated: 2026-07-08
 ---
 
@@ -63,7 +63,7 @@ USB/audio/controller initialization, EmulationStation startup, and idle or
 power-save risk patterns.
 
 Power integrity evidence and read-only capture boundaries are mapped in
-[GPi Case 2 Power Integrity Investigation Notes](../03-hardware/gpi-case-2-power-integrity-investigation-notes.md).
+[GPi Case 2 Power Integrity Investigation Notes](../02-hardware/gpi-case-2-power-integrity-investigation-notes.md).
 The runtime session trail is mapped in
 [GPi Case 2 Session Watch Lantern Design](gpi-case-2-session-watch-lantern-design.md).
 The current read-only skeleton lives at
@@ -78,10 +78,10 @@ The first structured place for those real results is the
 which keeps observed script artifacts and human notes separate from guesses.
 Developer recovery and access candidates, including the inconclusive hidden
 firmware USB path, are mapped in
-[GPi Case 2 Developer Access Paths](../03-hardware/gpi-case-2-developer-access-paths.md).
+[GPi Case 2 Developer Access Paths](../02-hardware/gpi-case-2-developer-access-paths.md).
 KMS, legacy LCD switching, controller, USB audio, and SafeShutdown hardware
 findings are preserved in
-[GPi Case 2 Hardware Findings and KMS Power Notes](../03-hardware/gpi-case-2-hardware-findings-kms-power-notes.md).
+[GPi Case 2 Hardware Findings and KMS Power Notes](../02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md).
 
 ## Purpose
 
@@ -258,12 +258,12 @@ This map depends on these existing ledgers:
 - [SafeShutdown Replacement Boundary Map](safeshutdown-replacement-boundary-map.md)
   for the replacement safety boundary and the reminder that the stock script
   owns more than shutdown.
-- [GPi Case 2 Power Integrity Investigation Notes](../03-hardware/gpi-case-2-power-integrity-investigation-notes.md)
+- [GPi Case 2 Power Integrity Investigation Notes](../02-hardware/gpi-case-2-power-integrity-investigation-notes.md)
   for undervoltage and throttling evidence.
-- [GPi Case 2 Developer Access Paths](../03-hardware/gpi-case-2-developer-access-paths.md)
+- [GPi Case 2 Developer Access Paths](../02-hardware/gpi-case-2-developer-access-paths.md)
   for developer access candidates and the inconclusive hidden firmware USB
   trail.
-- [GPi Case 2 Hardware Findings and KMS Power Notes](../03-hardware/gpi-case-2-hardware-findings-kms-power-notes.md)
+- [GPi Case 2 Hardware Findings and KMS Power Notes](../02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md)
   for KMS DPI, controller, USB audio, SafeShutdown, and legacy display
   findings.
 

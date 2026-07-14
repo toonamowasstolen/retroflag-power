@@ -18,8 +18,8 @@ related:
   - gpi-case-2-acceptance-checklist.md
   - safeshutdown-replacement-boundary-map.md
   - gpi-case-gpio-probe-ledger.md
-  - ../03-hardware/gpi-case-2-emergency-recovery-research-ledger.md
-  - ../03-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
+  - ../02-hardware/gpi-case-2-emergency-recovery-research-ledger.md
+  - ../02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
   - ../00-project/quests/0064-record-gpi-case-2-power-save-rcu-stall-incident.md
 last_updated: 2026-07-09
 ---
@@ -157,7 +157,7 @@ If SSH, ping, and the side switch all fail:
 This procedure does not approve physical CM4 removal as a normal plan. It only
 records that a previous incident had no better observed stop. A better
 development recovery path must be earned through the
-[emergency recovery research ledger](../03-hardware/gpi-case-2-emergency-recovery-research-ledger.md).
+[emergency recovery research ledger](../02-hardware/gpi-case-2-emergency-recovery-research-ledger.md).
 
 ## Evidence To Capture After Recovery
 
@@ -319,7 +319,7 @@ When paused, update the relevant ledger before resuming:
 
 - [GPi Case 2 Replacement Coverage Matrix](gpi-case-2-replacement-coverage-matrix.md)
 - [GPi Case 2 Field Lantern Capture Procedure](gpi-case-2-field-lantern-capture-procedure.md)
-- [GPi Case 2 Emergency Recovery Research Ledger](../03-hardware/gpi-case-2-emergency-recovery-research-ledger.md)
+- [GPi Case 2 Emergency Recovery Research Ledger](../02-hardware/gpi-case-2-emergency-recovery-research-ledger.md)
 - [GPi Case 2 SafeShutdown Script Behavior Map](gpi-case-2-safeshutdown-script-behavior-map.md)
 - [GPi Case 2 Acceptance Checklist](gpi-case-2-acceptance-checklist.md)
 

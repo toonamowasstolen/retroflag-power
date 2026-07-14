@@ -17,8 +17,8 @@ related:
   - docs/03-operations/installer-migration-toolkit-map.md
   - docs/03-operations/local-diagnostics-bundle-map.md
   - docs/04-architecture/arcadia-runtime-migration-path.md
-  - docs/03-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
-  - docs/03-hardware/gpi-case-2-power-integrity-investigation-notes.md
+  - docs/02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
+  - docs/02-hardware/gpi-case-2-power-integrity-investigation-notes.md
   - docs/00-project/quests/0053-add-the-gpi-case-2-acceptance-checklist.md
   - docs/00-project/quests/0057-add-gpi-case-2-field-test-checklist-entries.md
 last_updated: 2026-07-09
@@ -174,7 +174,7 @@ Current caution:
 - Do not cut battery leads or modify lithium battery or charging circuitry
   without mapping the board first.
 - Use the
-  [GPi Case 2 Power Integrity Investigation Notes](../03-hardware/gpi-case-2-power-integrity-investigation-notes.md)
+  [GPi Case 2 Power Integrity Investigation Notes](../02-hardware/gpi-case-2-power-integrity-investigation-notes.md)
   before claiming power-save or resume support.
 - A future Session Watch Lantern should record pre-sleep state, post-resume
   state when available, and `get_throttled`, temperature, frontend, and input

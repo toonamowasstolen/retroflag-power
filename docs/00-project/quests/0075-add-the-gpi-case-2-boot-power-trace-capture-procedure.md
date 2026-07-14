@@ -17,8 +17,8 @@ related:
   - ../../03-operations/gpi-case-2-field-lantern-capture-procedure.md
   - ../../03-operations/common-problems-mage-map.md
   - ../../03-operations/local-diagnostics-bundle-map.md
-  - ../../03-hardware/gpi-case-2-power-integrity-investigation-notes.md
-  - ../../03-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
+  - ../../02-hardware/gpi-case-2-power-integrity-investigation-notes.md
+  - ../../02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
 last_updated: 2026-07-08
 ---
 

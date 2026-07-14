@@ -27,8 +27,8 @@ related:
   - local-diagnostics-bundle-map.md
   - gpi-case-2-recovery-first-field-procedure.md
   - ../04-architecture/arcadia-runtime-migration-path.md
-  - ../03-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
-  - ../03-hardware/gpi-case-2-power-integrity-investigation-notes.md
+  - ../02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
+  - ../02-hardware/gpi-case-2-power-integrity-investigation-notes.md
 last_updated: 2026-07-10
 ---
 

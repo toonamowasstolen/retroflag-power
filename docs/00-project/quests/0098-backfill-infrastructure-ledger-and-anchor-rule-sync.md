@@ -70,7 +70,7 @@ trail.
 
 ## Out of Scope
 
-- The full `docs/03-hardware`/`docs/03-operations` reconciliation, the `CODE_OF_CONDUCT.md`/
+- The full `docs/02-hardware`/`docs/03-operations` reconciliation, the `CODE_OF_CONDUCT.md`/
   `CONTRIBUTING.md` port, and any code-level changes — separate quests, tracked in
   `claude-tools/docs/11-retroflag-power-gap-analysis.md` on the infra side.
 
