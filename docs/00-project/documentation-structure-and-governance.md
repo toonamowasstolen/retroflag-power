@@ -2166,6 +2166,9 @@ Glossary:
 
 Archived content:
   docs/99-archive/
+
+Infra/host events:
+  docs/14-infrastructure/host-events.md
 ```
 
 ---
@@ -2359,7 +2362,28 @@ current cleanup quest.
 
 ---
 
-# 40. Closing Rule
+# 40. `docs/14-infrastructure/`
+
+Host/infrastructure events (outside this repo entirely) that had a real, concrete effect on this
+project — data, uptime, environment, or deployment. Not a Milestone (that's this project's own
+verified progress), not an ADR (that's a decision this project made, with real alternatives
+weighed), not research.
+
+### `docs/14-infrastructure/host-events.md`
+
+A numbered, chronological, append-only log, same shape as `milestones.md`: stable IDs such as
+`INFRA-0001`, explicit anchors such as `<a id="infra-0001"></a>` for the same reason Milestone
+anchors exist (GitHub's auto-generated heading slug is unpredictable on em-dash titles), link out to
+the infra side's own full writeup instead of duplicating it, but record this project's own concrete
+impact here.
+
+Log an entry when host/infra work touched this project's data, uptime, or environment. Don't log
+routine, no-impact maintenance elsewhere. If reacting to an entry produces a real decision, create an
+ADR and cross-link it — keep the event log and the decision record separate.
+
+---
+
+# 41. Closing Rule
 
 When in doubt, ask:
 

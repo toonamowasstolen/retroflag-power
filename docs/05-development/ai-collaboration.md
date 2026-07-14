@@ -1,7 +1,7 @@
 ---
 id: DEV-AI-COLLABORATION-001
 title: AI Collaboration Guide
-version: 0.2.0
+version: 0.3.0
 status: Draft
 owner: Joshua Taft
 audience:
@@ -21,7 +21,8 @@ related:
   - docs/00-project/requirements.md
   - docs/04-architecture/system-overview.md
   - docs/02-hardware/gpi-case-2.md
-last_updated: 2026-07-06
+  - docs/14-infrastructure/host-events.md
+last_updated: 2026-07-14
 ---
 
 # AI Collaboration Guide
@@ -622,6 +623,9 @@ Before finalizing an artifact or code change, AI should check:
 - Does it avoid unnecessary complexity?
 - Does it protect safe shutdown?
 - Does it leave a small victory?
+- Does host/infra work outside this repo (a reboot, a storage rebuild, a backup change) need an
+  entry in `docs/14-infrastructure/host-events.md`? If it touched this project's data, uptime, or
+  environment, log it there rather than letting it live only on the infra side.
 
 ---
 
