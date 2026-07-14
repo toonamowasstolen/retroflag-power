@@ -515,3 +515,45 @@ its three sibling EDC projects. Ported the pattern over, adapted to this project
 ### Quest
 
 [0100-add-code-of-conduct-and-expand-contributing](quests/0100-add-code-of-conduct-and-expand-contributing.md)
+
+---
+
+<a id="m-0010"></a>
+## M-0010 — Gave the daemon a startup banner, fixed the dead-code logger
+
+Epoch: Awakening
+
+Status: Verified
+
+Verified on: 2026-07-14
+
+### Summary
+
+`internal/logging.New()` was dead code — never called anywhere; the real logger was built inline in
+`main.go`, twice. Wired `logging.New` (now accepting an `io.Writer`) into both call sites, and added
+a one-time ASCII startup banner (plain, no color) printed only on real daemon startup — moving the
+"ASCII terminal welcome screen" aspiration from `PROJECT_MEMORY.md`'s idea list to real, at the
+smallest scope that does so honestly.
+
+### Verified
+
+- `gofmt -l .` — no files.
+- `go build ./...` — succeeds.
+- `go test ./...` — all 12 tested packages pass (`internal/power` has no test files, pre-existing).
+- A real compiled binary shows the banner on real startup; `--dry-run-power-button` and `--version`
+  show no banner, output unchanged.
+- No Go toolchain exists on Ramuh itself — verified via a throwaway Go 1.24 + Node container built on
+  Phoenix, working tree synced over, checked there directly (not assumed).
+
+### Not included
+
+- Rewriting existing log-line formats.
+- ANSI color support.
+
+### Evidence
+
+- Working-tree change, committed this session (see quest for the exact file list).
+
+### Quest
+
+[0101-give-the-daemon-a-startup-banner](quests/0101-give-the-daemon-a-startup-banner.md)

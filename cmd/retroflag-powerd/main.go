@@ -6,7 +6,6 @@ import (
 	"flag"
 	"fmt"
 	"io"
-	"log"
 	"os"
 	"os/signal"
 	"strconv"
@@ -19,6 +18,7 @@ import (
 	"github.com/toonamowasstolen/retroflag-power/internal/events"
 	"github.com/toonamowasstolen/retroflag-power/internal/gpio"
 	"github.com/toonamowasstolen/retroflag-power/internal/input"
+	"github.com/toonamowasstolen/retroflag-power/internal/logging"
 	"github.com/toonamowasstolen/retroflag-power/internal/power"
 	"github.com/toonamowasstolen/retroflag-power/internal/version"
 )
@@ -109,7 +109,8 @@ func run(ctx context.Context, args []string, stdout io.Writer, stderr io.Writer)
 		return 0
 	}
 
-	app.New(log.New(stderr, "", log.LstdFlags), cfg).Run(ctx)
+	logging.WriteBanner(stdout, cfg.AppName, cfg.Version)
+	app.New(logging.New(stderr), cfg).Run(ctx)
 	return 0
 }
 
@@ -266,10 +267,10 @@ func runAppAndProcess(ctx context.Context, cfg config.Config, stderr io.Writer, 
 
 	ready := make(chan struct{})
 	done := make(chan struct{})
-	logger := log.New(&readySignalWriter{
+	logger := logging.New(&readySignalWriter{
 		dst:   stderr,
 		ready: ready,
-	}, "", log.LstdFlags)
+	})
 	daemon := app.New(logger, cfg)
 
 	go func() {
