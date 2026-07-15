@@ -113,4 +113,9 @@ human editing the repo directly.
 **Full detail:** `driverworks-tooling/docs/00-project/quests/QUEST-0010.md` (the quest that built
 this capability).
 
-**Follow-up:** None yet — this entry itself is the verification.
+**Follow-up:** None yet — this entry itself is the verification. Two real bugs found during
+this same verification, fixed the same day: `git_sync` now always normalizes to the SSH
+transport (an HTTPS-cloned checkout could not push even with a correctly configured deploy
+key), and this container's image now bakes in a git identity (a fresh clone had none, so the
+very first commit attempt failed with "Author identity unknown"). Also added `gh` CLI to the
+image (`REQ-0008`) for future GitHub API operations this gateway can do itself.
