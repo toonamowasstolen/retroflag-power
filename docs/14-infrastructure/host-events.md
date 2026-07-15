@@ -92,5 +92,25 @@ One paragraph: what happened at the host/infra layer.
 **Follow-up:** link to any ADR/Quest raised in response, if any
 ```
 
-No entries yet — no known host/infrastructure event has touched this project's data, uptime, or
-environment as of 2026-07-14.
+<a id="infra-0001"></a>
+## INFRA-0001 — driverworks-tooling deploy key granted write access
+
+**Date:** 2026-07-15
+**Host/system:** Phoenix — `driverworks-tooling-server` (the project-family tooling gateway, see
+`driverworks-tooling/docs/adr/ADR-0006.md`)
+
+A dedicated SSH deploy key for `driverworks-tooling`'s server-side git operations was added to
+this repo's GitHub deploy keys (write access enabled), and `git_commit_push` was verified for
+real: this exact entry was authored and pushed by that service via its MCP tool interface, not by a
+human editing the repo directly.
+
+**Impact on this project:**
+- No functional change to this project's own code/behavior — purely an access grant.
+- This project can now receive automated, tooling-driven commits (e.g. verification results, future
+  automated fixes) from `driverworks-tooling`, gated behind that service's own
+  `TOOLING_AUTH_TOKEN` auth.
+
+**Full detail:** `driverworks-tooling/docs/00-project/quests/QUEST-0010.md` (the quest that built
+this capability).
+
+**Follow-up:** None yet — this entry itself is the verification.
