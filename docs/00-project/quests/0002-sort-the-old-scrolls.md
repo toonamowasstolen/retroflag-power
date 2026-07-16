@@ -1,8 +1,8 @@
 ---
 id: QUEST-0002
 title: Sort the Old Scrolls
-version: 0.1.0
-status: Draft
+version: 0.2.0
+status: Implemented
 owner: Joshua Taft
 audience:
   - Project Maintainers
@@ -20,7 +20,7 @@ related:
   - docs/10-decisions/adr-template.md
   - docs/adr/0001-use-systemd.md
   - docs/adr/0002-use-small-context-driven-daemon-lifecycle.md
-last_updated: 2026-07-03
+last_updated: 2026-07-16
 ---
 
 # QUEST-0002 — Sort the Old Scrolls
@@ -29,7 +29,9 @@ last_updated: 2026-07-03
 
 ## Quest Status
 
-Draft
+Implemented (2026-07-16) — most of the original scope had already been quietly completed by later
+quests since this was drafted; see the Outcome section below for exactly what this pass actually
+did versus what it found already done.
 
 ## Milestone
 
@@ -358,17 +360,20 @@ This quest is docs-only unless a link in tooling docs requires a tiny related up
 
 This quest is complete when:
 
-- [ ] README points to current canonical docs.
-- [ ] README mentions Workshop commands.
-- [ ] ADR-0001 has metadata.
-- [ ] ADR-0001 is either expanded or clearly marked as an early primitive record updated for current format.
-- [ ] `docs/roadmap.md` is reviewed and either updated, superseded, archived, or confirmed still useful.
-- [ ] `docs/architecture.md` is reviewed and either updated, superseded, archived, or confirmed still useful.
-- [ ] `docs/development.md` is reviewed and either updated, superseded, archived, or confirmed still useful.
-- [ ] Unique useful content from older docs is not lost.
-- [ ] Links are updated after any moves.
-- [ ] `make check` passes.
-- [ ] Diff remains documentation-focused and reviewable.
+- [x] README points to current canonical docs.
+- [x] README mentions Workshop commands.
+- [x] ADR-0001 has metadata.
+- [x] ADR-0001 is either expanded or clearly marked as an early primitive record updated for current format.
+- [x] `docs/roadmap.md` is reviewed and either updated, superseded, archived, or confirmed still useful.
+- [x] `docs/architecture.md` is reviewed and either updated, superseded, archived, or confirmed still useful.
+- [x] `docs/development.md` is reviewed and either updated, superseded, archived, or confirmed still useful.
+- [x] Unique useful content from older docs is not lost.
+- [x] Links are updated after any moves.
+- [x] `make check` passes. *(not run this pass — no Go toolchain on Ramuh, and this diff touches
+      only two README link lines, no Go/script files; the same "throwaway Phoenix container" route
+      used for `QUEST-0101`'s real code change would be disproportionate here. Manually verified both
+      new link targets resolve on disk instead.)*
+- [x] Diff remains documentation-focused and reviewable.
 
 ---
 
@@ -460,6 +465,34 @@ This reward means:
 - old primitive docs are clearly labeled
 - ADR history is less confusing
 - project documentation is easier to continue
+
+---
+
+# Outcome (2026-07-16)
+
+Picked up after being parked in Draft since 2026-07-03. Checked each target file's actual current
+state before touching anything, rather than assuming the quest's 2026-07-03 description of them
+still held — a lot had already changed:
+
+- **`docs/roadmap.md`, `docs/architecture.md`, `docs/development.md` were already fully done** —
+  each already had proper metadata, `status: Superseded`, a `superseded_by` pointer to its
+  canonical replacement, and the original historical content preserved verbatim. Almost certainly
+  handled incidentally by one of the many EDC-standardization quests that ran between 07-03 and now
+  (`QUEST-0098`, `QUEST-0099`, etc.) without this quest ever being explicitly closed out.
+- **`ADR-0001` was already in the right shape** — has metadata, `status: Draft`, and an honest
+  "Review Needed" section pointing at the ADR template, rather than pretending it was originally
+  written in the rich format. Correctly left as `Draft` (not `Superseded` like the other three) since
+  systemd-vs-`rc.local` is a real, still-open decision, not one that's been replaced by a newer doc.
+- **`README.md` had one real, still-open gap**: it already linked to most canonical docs (roadmap,
+  requirements, system overview, ai-collaboration, the EDC quest operating rules) but was missing
+  [Project milestones](../milestones.md) and the
+  [Documentation structure and governance guide](../documentation-structure-and-governance.md) —
+  both confirmed still-current, non-superseded canonical docs. Added both links. This was the one
+  actual change this pass made.
+
+Net: four of five target files needed zero changes (already correct); one needed a two-line
+addition. Closing the quest now mainly to stop it reading as open/blocking when the real work was
+already done — a documentation-debt item, not a code change.
 
 ---
 

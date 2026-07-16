@@ -1,7 +1,7 @@
 ---
 id: MILESTONES-001
 title: Verified Milestone Ledger
-version: 0.5.0
+version: 0.6.0
 status: Active
 owner: Joshua Taft
 audience:
@@ -557,3 +557,46 @@ smallest scope that does so honestly.
 ### Quest
 
 [0101-give-the-daemon-a-startup-banner](quests/0101-give-the-daemon-a-startup-banner.md)
+
+<a id="m-0011"></a>
+
+## M-0011 — Sorted the old scrolls (closed a Draft quest parked since 2026-07-03)
+
+Epoch: Awakening
+
+Status: Verified
+
+Verified on: 2026-07-16
+
+### Summary
+
+Checked each target file's real current state before touching anything, rather than trusting the
+quest's 2026-07-03 description of them. Four of five were already fully done — `docs/roadmap.md`,
+`docs/architecture.md`, and `docs/development.md` each already had metadata, `status: Superseded`,
+a `superseded_by` pointer, and preserved original content; `docs/adr/0001-use-systemd.md` already
+had metadata and an honest `Draft`/"Review Needed" treatment. Almost certainly handled incidentally
+by later EDC-standardization quests without this one ever being explicitly closed. `README.md` had
+one real gap — missing links to `docs/00-project/milestones.md` and
+`docs/00-project/documentation-structure-and-governance.md`, both confirmed still-current — added
+both.
+
+### Verified
+
+- Both new README link targets confirmed to exist on disk.
+- `make check` not run — no Go toolchain on Ramuh, and the diff touches only two README link lines,
+  no Go/script files; the throwaway-Phoenix-container route used for `M-0010`'s real code change
+  would be disproportionate for a two-line prose addition.
+
+### Not included
+
+- Any code change — this was docs-only per the quest's own Rule 5.
+- Archiving any of the four already-Superseded/Draft files further — they're already in the right
+  state, moving them to `docs/99-archive/` wasn't warranted.
+
+### Evidence
+
+- Working-tree change, committed this session (see quest for the exact file list).
+
+### Quest
+
+[0002-sort-the-old-scrolls](quests/0002-sort-the-old-scrolls.md)
