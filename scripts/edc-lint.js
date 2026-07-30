@@ -10,6 +10,7 @@ const checks = [
   { name: 'metadata', label: 'Metadata headers', mod: require('./check-metadata') },
   { name: 'related', label: 'related: consistency', mod: require('./check-related-consistency') },
   { name: 'governance', label: 'Governance structure', mod: require('./check-governance') },
+  { name: 'distribution', label: 'Template distribution', mod: require('./check-distribution') },
 ];
 
 function run(root) {

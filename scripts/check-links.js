@@ -66,6 +66,15 @@ function run(root) {
       const [filePart, anchor] = target.split('#');
       const resolved = filePart === '' ? file : path.resolve(path.dirname(file), filePart);
 
+      // A link that leaves the repository resolves fine on the machine that
+      // wrote it and nowhere else. It is broken for everyone who clones.
+      const abs = path.resolve(root);
+      const resolvedAbs = path.resolve(resolved);
+      if (resolvedAbs !== abs && !resolvedAbs.startsWith(abs + path.sep)) {
+        broken.push(`${path.relative(root, file)} -> ${target} (escapes the repository: ${resolvedAbs})`);
+        continue;
+      }
+
       if (!fs.existsSync(resolved)) {
         broken.push(`${path.relative(root, file)} -> ${target} (missing file: ${path.relative(root, resolved)})`);
         continue;
