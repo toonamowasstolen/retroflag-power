@@ -14,8 +14,13 @@ last_updated: 2026-07-30
 
 # RetroFlag Power
 
-RetroFlag Power is a modern Go daemon project for evolving RetroFlag power
-management safely and deliberately.
+> The power switch should be the only part of this the player ever has to
+> think about.
+
+RetroFlag Power is a Go daemon that takes over power management on
+RetroFlag handhelds from an aging Python shutdown script. It is being
+built deliberately, in that order: the save file survives first,
+everything else afterwards.
 
 ## Current Status
 
