@@ -14,7 +14,6 @@ related:
   - ../../../PROJECT_CHARTER.md
   - ../../../PROJECT_MANIFEST.md
   - ../../../ENGINEERING_MANIFESTO.md
-  - /
 last_updated: 2026-07-07
 ---
 
@@ -38,7 +37,7 @@ Documentation
 
 ## Outcome
 
-- Root [[[`PROJECT_CHARTER.md`](../../../PROJECT_CHARTER.md)](/)](../../../PROJECT_CHARTER.md) now records the project working spirit in explicit
+- Root [`PROJECT_CHARTER.md`](../../../PROJECT_CHARTER.md) now records the project working spirit in explicit
   adventurer-toolkit language.
 - The charter names the daily principles: small verified wins, short quests,
   plain maintainable code, flavor in project artifacts, careful hardware work,
@@ -84,4 +83,4 @@ should stay plain.
 
 ## Related work
 
-It rests on [Project Manifest](../../../PROJECT_MANIFEST.md) (what it is made of) and [Engineering Manifesto](../../../ENGINEERING_MANIFESTO.md) (the engineering principles behind it). It reads alongside [](/).
+It rests on [Project Manifest](../../../PROJECT_MANIFEST.md) (what it is made of) and [Engineering Manifesto](../../../ENGINEERING_MANIFESTO.md) (the engineering principles behind it).

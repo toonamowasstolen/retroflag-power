@@ -91,7 +91,15 @@ function run(root) {
     const linkedMd = bodyLinkedMarkdownFiles(file, parsed.body);
 
     for (const [target, entry] of related) {
-      if (!fs.existsSync(target)) {
+      // An entry that escapes the repository is broken for anyone who clones
+      // it, however well it resolves on this machine. A bare '/' resolves to
+      // the filesystem root and looks like a real target to anything that
+      // only asks "does this path exist?" — it isn't one.
+      const abs = path.resolve(root);
+      const inside = target === abs || target.startsWith(abs + path.sep);
+      if (!inside) {
+        issues.push(`${rel}: related: '${entry}' resolves outside the repository (${target})`);
+      } else if (!fs.existsSync(target)) {
         issues.push(`${rel}: related: '${entry}' points at a file that does not exist`);
       } else if (!linkedAny.has(target)) {
         issues.push(

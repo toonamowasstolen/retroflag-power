@@ -17,7 +17,6 @@ related:
   - ../MILESTONES.md
   - ../ROADMAP.md
   - ../awakening-readiness.md
-  - /
   - ../../adr/0003-adopt-epoch-milestone-quest-model.md
 last_updated: 2026-07-06
 ---
@@ -44,7 +43,7 @@ made.
 This quest does not:
 
 - rewrite the EDC model
-- rename [`Milestone`](/) to `Epoch`
+- rename `Milestone` to `Epoch`
 - redefine `Milestone`
 - move checkpoint prose
 - create a checkpoint ledger
