@@ -15,9 +15,9 @@ related:
   - PROJECT_MEMORY.md
   - PROJECT_MANIFEST.md
   - PROJECT_CHARTER.md
-  - docs/00-project/milestones.md
-  - docs/00-project/roadmap.md
-  - docs/01-product/vision.md
+  - docs/00-project/MILESTONES.md
+  - docs/00-project/ROADMAP.md
+  - docs/01-product/VISION.md
   - docs/13-reference/terminology.md
 last_updated: 2026-07-03
 ---

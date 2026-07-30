@@ -16,12 +16,12 @@ related:
   - ENGINEERING_MANIFESTO.md
   - PROJECT_MANIFEST.md
   - PROJECT_CHARTER.md
-  - docs/00-project/milestones.md
-  - docs/00-project/roadmap.md
-  - docs/00-project/requirements.md
+  - docs/00-project/MILESTONES.md
+  - docs/00-project/ROADMAP.md
+  - docs/00-project/REQUIREMENTS.md
   - docs/04-architecture/system-overview.md
   - docs/02-hardware/gpi-case-2.md
-  - docs/14-infrastructure/host-events.md
+  - docs/14-infrastructure/HOST-EVENTS.md
 last_updated: 2026-07-14
 ---
 
@@ -252,7 +252,7 @@ Example:
 
 ```
 Files:
-docs/00-project/roadmap.md
+docs/00-project/ROADMAP.md
 
 Commit:
 Place road signs in the dream.
@@ -624,7 +624,7 @@ Before finalizing an artifact or code change, AI should check:
 - Does it protect safe shutdown?
 - Does it leave a small victory?
 - Does host/infra work outside this repo (a reboot, a storage rebuild, a backup change) need an
-  entry in `docs/14-infrastructure/host-events.md`? If it touched this project's data, uptime, or
+  entry in `docs/14-infrastructure/HOST-EVENTS.md`? If it touched this project's data, uptime, or
   environment, log it there rather than letting it live only on the infra side.
 
 ---

@@ -1,5 +1,6 @@
 /retroflag-powerd
 /dist/
+node_modules/
 
 # macOS
 .DS_Store

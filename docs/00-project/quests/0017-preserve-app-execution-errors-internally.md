@@ -65,5 +65,5 @@ Implementation
 
 ## Milestone Note
 
-This supports [M-0004 — Dry-Run Action Charm](../milestones.md#m-0004) but does
+This supports [M-0004 — Dry-Run Action Charm](../MILESTONES.md#m-0004) but does
 not create a new milestone.

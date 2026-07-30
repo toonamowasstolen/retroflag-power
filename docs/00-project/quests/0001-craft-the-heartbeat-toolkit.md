@@ -12,9 +12,9 @@ audience:
 purpose: Define the first implementation quest after the daemon's first breath, focused on reviewing and preparing the future systemd heartbeat path without activating shutdown behavior or touching hardware.
 related:
   - docs/00-project/awakening-readiness.md
-  - docs/00-project/milestones.md
-  - docs/00-project/roadmap.md
-  - docs/00-project/requirements.md
+  - docs/00-project/MILESTONES.md
+  - docs/00-project/ROADMAP.md
+  - docs/00-project/REQUIREMENTS.md
   - docs/04-architecture/system-overview.md
   - docs/adr/0002-use-small-context-driven-daemon-lifecycle.md
 last_updated: 2026-07-03
@@ -213,7 +213,7 @@ Makefile
 cmd/retroflag-powerd/main.go
 internal/app/app.go
 internal/logging/logging.go
-docs/00-project/requirements.md
+docs/00-project/REQUIREMENTS.md
 docs/04-architecture/system-overview.md
 docs/00-project/awakening-readiness.md
 ```

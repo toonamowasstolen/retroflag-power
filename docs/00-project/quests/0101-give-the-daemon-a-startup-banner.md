@@ -11,7 +11,7 @@ audience:
   - Future Maintainers
 purpose: Close the real gap flagged in the 2026-07-14 gap analysis — internal/logging/logging.go was dead code (never called anywhere) and the running daemon had no warmth at all, despite PROJECT_MANIFEST.md's "Terminal Personality" section and PROJECT_MEMORY.md's "ASCII terminal welcome screen" aspiration.
 related:
-  - ../milestones.md
+  - ../MILESTONES.md
   - ../../../internal/logging/logging.go
   - ../../../cmd/retroflag-powerd/main.go
 last_updated: 2026-07-14
@@ -102,7 +102,7 @@ This quest is complete when:
 - [x] A real built binary shows the banner on real startup, and does not show it on
   `--dry-run-power-button`/`--version`. **Done** — verified against a real compiled binary, not `go
   run`'s output alone.
-- [x] `docs/00-project/milestones.md` gets a new entry. **Done as M-0010.**
+- [x] `docs/00-project/MILESTONES.md` gets a new entry. **Done as M-0010.**
 
 **Toolchain note**: no Go toolchain exists on Ramuh (this project's docs live on a NAS/infra host,
 not a dev workstation) — verified instead via a throwaway `node:22-bookworm-slim` + Go 1.24 container

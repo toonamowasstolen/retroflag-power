@@ -40,7 +40,7 @@ human engineers — this document holds both to the same standard, in every inte
   project, in any venue connected to it (issues, PRs, commit messages, any future community channel).
 - Deliberately misrepresenting what was tested, verified, or shipped — this project's entire
   discipline rests on Milestones pairing every claim with real evidence
-  (`docs/00-project/milestones.md`'s verification rules). A false claim here isn't just rude, it's a
+  (`docs/00-project/MILESTONES.md`'s verification rules). A false claim here isn't just rude, it's a
   direct violation of how this project works — the same rule whether a human or an AI session made
   the claim.
 - Retaliating against someone for reporting a concern in good faith.

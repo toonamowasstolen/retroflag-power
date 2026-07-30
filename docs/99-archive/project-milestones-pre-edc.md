@@ -16,8 +16,8 @@ related:
   - ENGINEERING_MANIFESTO.md
   - PROJECT_MANIFEST.md
   - PROJECT_CHARTER.md
-  - docs/00-project/roadmap.md
-  - docs/00-project/milestones.md
+  - docs/00-project/ROADMAP.md
+  - docs/00-project/MILESTONES.md
   - docs/adr/0003-adopt-epoch-milestone-quest-model.md
   - docs/13-reference/terminology.md
 last_updated: 2026-07-06
@@ -32,9 +32,9 @@ last_updated: 2026-07-06
 Canonical current sources:
 
 - Epoch ladder and current direction:
-  `docs/00-project/roadmap.md`
+  `docs/00-project/ROADMAP.md`
 - Numbered verified Milestones:
-  `docs/00-project/milestones.md`
+  `docs/00-project/MILESTONES.md`
 - Vocabulary decision:
   `docs/adr/0003-adopt-epoch-milestone-quest-model.md`
 
@@ -970,14 +970,14 @@ Current path through Milestone 0:
 - [x] PROJECT_CHARTER.md
 - [x] docs/13-reference/terminology.md
 - [ ] docs/13-reference/glossary.md
-- [ ] docs/01-product/vision.md
-- [ ] docs/00-project/roadmap.md
-- [ ] docs/00-project/requirements.md
+- [ ] docs/01-product/VISION.md
+- [ ] docs/00-project/ROADMAP.md
+- [ ] docs/00-project/REQUIREMENTS.md
 - [ ] docs/04-architecture/system-overview.md
 - [ ] docs/02-hardware/gpi-case-2.md
 - [ ] docs/05-development/ai-collaboration.md
-- [ ] docs/10-decisions/adr-template.md
-- [ ] docs/11-rfc/rfc-template.md
+- [ ] docs/10-decisions/ADR-TEMPLATE.md
+- [ ] docs/11-rfc/RFC-TEMPLATE.md
 
 Milestone 0 should not grow forever.
 

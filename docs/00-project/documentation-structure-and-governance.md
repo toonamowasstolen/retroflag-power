@@ -14,12 +14,12 @@ purpose: Define how RetroFlag Power documentation is organized, how metadata hea
 related:
   - PROJECT_MEMORY.md
   - PROJECT_CHARTER.md
-  - docs/00-project/roadmap.md
-  - docs/00-project/milestones.md
-  - docs/00-project/requirements.md
+  - docs/00-project/ROADMAP.md
+  - docs/00-project/MILESTONES.md
+  - docs/00-project/REQUIREMENTS.md
   - docs/05-development/ai-collaboration.md
-  - docs/10-decisions/adr-template.md
-  - docs/11-rfc/rfc-template.md
+  - docs/10-decisions/ADR-TEMPLATE.md
+  - docs/11-rfc/RFC-TEMPLATE.md
   - docs/adr/0003-adopt-epoch-milestone-quest-model.md
 last_updated: 2026-07-06
 ---
@@ -338,7 +338,7 @@ Example:
 ```
 related:
   - PROJECT_MEMORY.md
-  - docs/00-project/requirements.md
+  - docs/00-project/REQUIREMENTS.md
 ```
 
 ### Rules
@@ -489,7 +489,7 @@ Use when the document describes an ongoing plan, process, or current work item.
 Good candidates:
 
 - PROJECT_MEMORY.md
-- roadmap.md
+- ROADMAP.md
 - current quest docs
 - current Epoch notes
 - active research index
@@ -617,13 +617,13 @@ PROJECT_MANIFEST.md
 PROJECT_CHARTER.md
   Draft → Accepted
 
-docs/00-project/milestones.md
+docs/00-project/MILESTONES.md
   Active
 
-docs/00-project/roadmap.md
+docs/00-project/ROADMAP.md
   Active
 
-docs/00-project/requirements.md
+docs/00-project/REQUIREMENTS.md
   Draft → Review → Accepted
   Individual requirements may track Implemented or Verified inside the document.
 
@@ -633,7 +633,7 @@ docs/00-project/awakening-readiness.md
 docs/00-project/quests/*.md
   Draft → Active → Implemented → Verified → Archived
 
-docs/01-product/vision.md
+docs/01-product/VISION.md
   Draft → Accepted
 
 docs/02-hardware/*.md
@@ -646,10 +646,10 @@ docs/04-architecture/*.md
 docs/05-development/*.md
   Draft → Accepted or Active
 
-docs/10-decisions/adr-template.md
+docs/10-decisions/ADR-TEMPLATE.md
   Accepted
 
-docs/11-rfc/rfc-template.md
+docs/11-rfc/RFC-TEMPLATE.md
   Accepted
 
 docs/adr/*.md
@@ -812,7 +812,7 @@ Use for documents that guide the project as a project.
 
 ## Expected files
 
-### `docs/00-project/milestones.md`
+### `docs/00-project/MILESTONES.md`
 
 The canonical ledger of numbered, verified checkpoints.
 
@@ -833,7 +833,7 @@ verified prose.
 If a future contributor would reasonably ask why a Milestone was implemented
 that way, create an ADR in `docs/adr/` and cross-link it with the Milestone.
 
-### `docs/00-project/roadmap.md`
+### `docs/00-project/ROADMAP.md`
 
 The canonical current state, seven-Epoch ladder, and practical route through
 upcoming work.
@@ -849,7 +849,7 @@ Should contain:
 
 Should be updated when the route changes.
 
-### `docs/00-project/requirements.md`
+### `docs/00-project/REQUIREMENTS.md`
 
 Traceable project requirements.
 
@@ -937,7 +937,7 @@ Use for documents that describe what the project should feel like and who it ser
 
 ## Expected files
 
-### `docs/01-product/vision.md`
+### `docs/01-product/VISION.md`
 
 The horizon.
 
@@ -1242,7 +1242,7 @@ Decision process and templates.
 
 ## Expected file
 
-### `docs/10-decisions/adr-template.md`
+### `docs/10-decisions/ADR-TEMPLATE.md`
 
 The ADR template.
 
@@ -1275,7 +1275,7 @@ Proposal process and templates.
 
 ## Expected file
 
-### `docs/11-rfc/rfc-template.md`
+### `docs/11-rfc/RFC-TEMPLATE.md`
 
 The RFC template.
 
@@ -1498,7 +1498,7 @@ Use an ADR when the project has made, or is about to make, a meaningful decision
 Example:
 
 ```
-cp docs/10-decisions/adr-template.md docs/adr/0003-use-systemd-service-strategy.md
+cp docs/10-decisions/ADR-TEMPLATE.md docs/adr/0003-use-systemd-service-strategy.md
 ```
 
 Then update:
@@ -1578,7 +1578,7 @@ Example:
 
 ```
 mkdir -p docs/rfc
-cp docs/11-rfc/rfc-template.md docs/rfc/0001-sleep-like-mode.md
+cp docs/11-rfc/RFC-TEMPLATE.md docs/rfc/0001-sleep-like-mode.md
 ```
 
 Then update:
@@ -1628,7 +1628,7 @@ Progress should be tracked at multiple levels.
 Use:
 
 ```
-docs/00-project/roadmap.md
+docs/00-project/ROADMAP.md
 ```
 
 For large project life stages:
@@ -1660,7 +1660,7 @@ Update the Epoch ladder only when:
 Use:
 
 ```
-docs/00-project/milestones.md
+docs/00-project/MILESTONES.md
 ```
 
 For numbered, verified checkpoints.
@@ -1704,7 +1704,7 @@ that way, create an ADR in `docs/adr/` and cross-link the ADR and Milestone.
 Use:
 
 ```
-docs/00-project/roadmap.md
+docs/00-project/ROADMAP.md
 ```
 
 For the practical route.
@@ -1731,7 +1731,7 @@ Update roadmap when:
 Use:
 
 ```
-docs/00-project/requirements.md
+docs/00-project/REQUIREMENTS.md
 ```
 
 For traceable needs.
@@ -2076,7 +2076,7 @@ AI assistants should not create duplicate documents such as:
 
 ```
 docs/roadmap.md
-docs/00-project/roadmap.md
+docs/00-project/ROADMAP.md
 ```
 
 without explaining why both exist.
@@ -2102,12 +2102,12 @@ Example:
 
 ```
 docs/roadmap.md
-docs/00-project/roadmap.md
+docs/00-project/ROADMAP.md
 ```
 
 Possible action:
 
-- keep `docs/00-project/roadmap.md` as canonical
+- keep `docs/00-project/ROADMAP.md` as canonical
 - move unique content from `docs/roadmap.md`
 - mark `docs/roadmap.md` Superseded or archive it
 
@@ -2119,7 +2119,7 @@ Use these canonical locations unless an ADR changes them.
 
 ```
 Project roadmap:
-  docs/00-project/roadmap.md
+  docs/00-project/ROADMAP.md
 
 Project Charter:
   PROJECT_CHARTER.md
@@ -2127,19 +2127,19 @@ Project Charter:
   hardware caution, and project voice.
 
 Epoch ladder and current direction:
-  docs/00-project/roadmap.md
+  docs/00-project/ROADMAP.md
 
 Verified Milestones:
-  docs/00-project/milestones.md
+  docs/00-project/MILESTONES.md
 
 Requirements:
-  docs/00-project/requirements.md
+  docs/00-project/REQUIREMENTS.md
 
 Quests:
   docs/00-project/quests/
 
 Product vision:
-  docs/01-product/vision.md
+  docs/01-product/VISION.md
 
 Reference hardware:
   docs/02-hardware/gpi-case-2.md
@@ -2154,10 +2154,10 @@ AI collaboration:
   docs/05-development/ai-collaboration.md
 
 ADR template:
-  docs/10-decisions/adr-template.md
+  docs/10-decisions/ADR-TEMPLATE.md
 
 RFC template:
-  docs/11-rfc/rfc-template.md
+  docs/11-rfc/RFC-TEMPLATE.md
 
 Actual ADRs:
   docs/adr/
@@ -2175,7 +2175,7 @@ Archived content:
   docs/99-archive/
 
 Infra/host events:
-  docs/14-infrastructure/host-events.md
+  docs/14-infrastructure/HOST-EVENTS.md
 ```
 
 ---
@@ -2295,7 +2295,7 @@ Documentation commits should be coherent.
 Good commit packet:
 
 ```
-docs/00-project/requirements.md
+docs/00-project/REQUIREMENTS.md
 docs/04-architecture/system-overview.md
 ```
 
@@ -2376,9 +2376,9 @@ project — data, uptime, environment, or deployment. Not a Milestone (that's th
 verified progress), not an ADR (that's a decision this project made, with real alternatives
 weighed), not research.
 
-### `docs/14-infrastructure/host-events.md`
+### `docs/14-infrastructure/HOST-EVENTS.md`
 
-A numbered, chronological, append-only log, same shape as `milestones.md`: stable IDs such as
+A numbered, chronological, append-only log, same shape as `MILESTONES.md`: stable IDs such as
 `INFRA-0001`, explicit anchors such as `<a id="infra-0001"></a>` for the same reason Milestone
 anchors exist (GitHub's auto-generated heading slug is unpredictable on em-dash titles), link out to
 the infra side's own full writeup instead of duplicating it, but record this project's own concrete
@@ -2408,19 +2408,19 @@ Project memory?
   PROJECT_MEMORY.md
 
 Plan?
-  docs/00-project/roadmap.md
+  docs/00-project/ROADMAP.md
 
 Epoch?
-  docs/00-project/roadmap.md
+  docs/00-project/ROADMAP.md
 
 Verified checkpoint?
-  docs/00-project/milestones.md
+  docs/00-project/MILESTONES.md
 
 Route and current state?
-  docs/00-project/roadmap.md
+  docs/00-project/ROADMAP.md
 
 Requirement?
-  docs/00-project/requirements.md
+  docs/00-project/REQUIREMENTS.md
 
 Focused work?
   docs/00-project/quests/

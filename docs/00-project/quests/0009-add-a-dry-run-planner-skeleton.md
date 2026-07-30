@@ -12,7 +12,7 @@ audience:
 purpose: Record the small dry-run planner boundary added for future action planning.
 related:
   - internal/planner
-  - docs/00-project/milestones.md#m-0004
+  - docs/00-project/MILESTONES.md#m-0004
   - b0a84c4 Add a dry-run planner skeleton
 last_updated: 2026-07-06
 ---
@@ -64,5 +64,5 @@ Implementation
 
 ## Milestone Note
 
-This supports [M-0004 — Dry-Run Action Charm](../milestones.md#m-0004) but does
+This supports [M-0004 — Dry-Run Action Charm](../MILESTONES.md#m-0004) but does
 not create a new milestone.

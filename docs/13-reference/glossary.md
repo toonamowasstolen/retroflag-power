@@ -16,8 +16,8 @@ related:
   - PROJECT_MEMORY.md
   - PROJECT_CHARTER.md
   - PROJECT_MANIFEST.md
-  - docs/00-project/milestones.md
-  - docs/00-project/roadmap.md
+  - docs/00-project/MILESTONES.md
+  - docs/00-project/ROADMAP.md
   - docs/adr/0003-adopt-epoch-milestone-quest-model.md
 last_updated: 2026-07-06
 ---
@@ -584,7 +584,7 @@ A numbered, verified project checkpoint.
 Primary document:
 
 ```
-docs/00-project/milestones.md
+docs/00-project/MILESTONES.md
 ```
 
 Milestones use stable IDs such as `M-0001` and cite verification evidence.

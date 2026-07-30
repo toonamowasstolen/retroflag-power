@@ -11,8 +11,8 @@ audience:
   - Future Maintainers
 purpose: Provide a lightweight template for recording important architecture and project decisions in RetroFlag Power.
 related:
-  - docs/00-project/requirements.md
-  - docs/00-project/roadmap.md
+  - docs/00-project/REQUIREMENTS.md
+  - docs/00-project/ROADMAP.md
   - docs/04-architecture/system-overview.md
   - docs/05-development/ai-collaboration.md
 last_updated: 2026-07-03

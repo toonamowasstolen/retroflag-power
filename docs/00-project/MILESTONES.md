@@ -12,7 +12,7 @@ audience:
 purpose: Provide the canonical ledger of numbered, verified RetroFlag Power checkpoints with stable anchors and evidence.
 related:
   - PROJECT_MEMORY.md
-  - docs/00-project/roadmap.md
+  - docs/00-project/ROADMAP.md
   - docs/00-project/quests/
   - docs/00-project/quests/0006-gather-the-checkpoints-into-one-ledger.md
   - docs/00-project/quests/0007-add-the-link-lantern.md
@@ -414,13 +414,13 @@ Verified on: 2026-07-14
 This repo converted from an external, read-only reference clone
 (`_reference_retroflag-power`, as seen by the sibling EDC projects) into a regular, owned project —
 it's the same owner's own repo, and the *origin* the shared EDC standard was retroactively
-generalized from. Gained the same `docs/14-infrastructure/host-events.md` category (a numbered,
+generalized from. Gained the same `docs/14-infrastructure/HOST-EVENTS.md` category (a numbered,
 append-only ledger for host/infrastructure events outside this repo with a real effect on it) just
 added to the template and the three sibling projects, adapted to this project's own voice.
 
 ### Verified
 
-- `docs/14-infrastructure/host-events.md` exists.
+- `docs/14-infrastructure/HOST-EVENTS.md` exists.
 - `git log` confirms Revision `03d2a61` landed and is pushed to `origin/main`.
 - `find . -iname README.md` still reports the pre-existing two (root + `docs/02-hardware/`) —
   unrelated to this milestone, tracked separately.
@@ -576,7 +576,7 @@ quest's 2026-07-03 description of them. Four of five were already fully done —
 a `superseded_by` pointer, and preserved original content; `docs/adr/0001-use-systemd.md` already
 had metadata and an honest `Draft`/"Review Needed" treatment. Almost certainly handled incidentally
 by later EDC-standardization quests without this one ever being explicitly closed. `README.md` had
-one real gap — missing links to `docs/00-project/milestones.md` and
+one real gap — missing links to `docs/00-project/MILESTONES.md` and
 `docs/00-project/documentation-structure-and-governance.md`, both confirmed still-current — added
 both.
 

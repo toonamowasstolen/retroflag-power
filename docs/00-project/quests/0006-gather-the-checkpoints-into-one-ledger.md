@@ -14,8 +14,8 @@ purpose: Gather duplicated Awakening checkpoint evidence into the canonical veri
 related:
   - PROJECT_MEMORY.md
   - docs/00-project/awakening-readiness.md
-  - docs/00-project/milestones.md
-  - docs/00-project/roadmap.md
+  - docs/00-project/MILESTONES.md
+  - docs/00-project/ROADMAP.md
   - docs/00-project/quests/0004-chart-the-edc-map.md
   - docs/00-project/quests/0005-correct-the-edc-compass.md
   - docs/adr/0003-adopt-epoch-milestone-quest-model.md
@@ -39,7 +39,7 @@ Documentation consolidation and Milestone migration
 # 1. Objective
 
 Gather duplicated Awakening checkpoint prose into
-`docs/00-project/milestones.md`, the canonical verified Milestone ledger, and
+`docs/00-project/MILESTONES.md`, the canonical verified Milestone ledger, and
 replace the duplicate summaries with stable citations.
 
 ---
@@ -77,10 +77,10 @@ replace the duplicate summaries with stable citations.
 
 This Quest established:
 
-- [M-0001 — Daemon Nameplate](../milestones.md#m-0001)
-- [M-0002 — Config Satchel](../milestones.md#m-0002)
-- [M-0003 — Event Charms](../milestones.md#m-0003)
-- [M-0004 — Dry-Run Action Charm](../milestones.md#m-0004)
+- [M-0001 — Daemon Nameplate](../MILESTONES.md#m-0001)
+- [M-0002 — Config Satchel](../MILESTONES.md#m-0002)
+- [M-0003 — Event Charms](../MILESTONES.md#m-0003)
+- [M-0004 — Dry-Run Action Charm](../MILESTONES.md#m-0004)
 
 No dedicated Quest records existed for these small checkpoints. The Milestone
 entries say so rather than inventing historical work records.

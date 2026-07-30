@@ -14,8 +14,8 @@ related:
   - PROJECT_MEMORY.md
   - PROJECT_MANIFEST.md
   - docs/00-project/documentation-structure-and-governance.md
-  - docs/00-project/milestones.md
-  - docs/00-project/roadmap.md
+  - docs/00-project/MILESTONES.md
+  - docs/00-project/ROADMAP.md
   - docs/00-project/quests/0004-chart-the-edc-map.md
   - docs/00-project/quests/0005-correct-the-edc-compass.md
   - docs/13-reference/terminology.md
@@ -42,8 +42,8 @@ Joshua Taft
 
 - `docs/00-project/quests/0004-chart-the-edc-map.md`
 - `docs/00-project/quests/0005-correct-the-edc-compass.md`
-- `docs/00-project/roadmap.md`
-- `docs/00-project/milestones.md`
+- `docs/00-project/ROADMAP.md`
+- `docs/00-project/MILESTONES.md`
 - `docs/00-project/documentation-structure-and-governance.md`
 - `PROJECT_MEMORY.md`
 
@@ -102,7 +102,7 @@ M-0002
 M-0003
 ```
 
-The canonical ledger is `docs/00-project/milestones.md`.
+The canonical ledger is `docs/00-project/MILESTONES.md`.
 
 Milestone entries require explicit anchors such as:
 
@@ -239,7 +239,7 @@ stable M-IDs are assigned.
 1. Adopt vocabulary and ownership rules in governance and reference docs.
 2. Make the seven-Epoch ladder canonical in the Roadmap.
 3. Preserve the former eleven-stage journey in the archive.
-4. Repurpose `docs/00-project/milestones.md` as the verified ledger.
+4. Repurpose `docs/00-project/MILESTONES.md` as the verified ledger.
 5. Leave duplicated checkpoint prose in place during this Quest.
 6. Use QUEST-0006 to create reviewed Milestone entries and remove duplication.
 7. Update remaining historical terminology when touching affected documents.

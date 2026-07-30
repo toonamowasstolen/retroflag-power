@@ -12,7 +12,7 @@ audience:
 purpose: Provide the canonical ledger of host/infrastructure events, outside this repo entirely, that had a real, concrete effect on this project's data, uptime, environment, or deployment.
 related:
   - PROJECT_MEMORY.md
-  - docs/00-project/milestones.md
+  - docs/00-project/MILESTONES.md
   - docs/00-project/documentation-structure-and-governance.md
 last_updated: 2026-07-14
 ---

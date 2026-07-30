@@ -14,8 +14,8 @@ purpose: Audit the current RetroFlag Power documentation model, terminology, pro
 related:
   - PROJECT_MEMORY.md
   - docs/00-project/documentation-structure-and-governance.md
-  - docs/00-project/milestones.md
-  - docs/00-project/roadmap.md
+  - docs/00-project/MILESTONES.md
+  - docs/00-project/ROADMAP.md
   - docs/00-project/awakening-readiness.md
   - docs/00-project/quests/
   - docs/adr/0003-adopt-epoch-milestone-quest-model.md
@@ -64,9 +64,9 @@ guidance.
 Primary progress documents:
 
 - `PROJECT_MEMORY.md`
-- `docs/00-project/roadmap.md`
+- `docs/00-project/ROADMAP.md`
 - `docs/00-project/awakening-readiness.md`
-- `docs/00-project/milestones.md`
+- `docs/00-project/MILESTONES.md`
 
 Governance and record locations:
 
@@ -101,7 +101,7 @@ story.
 
 ## 3.2 Eleven-stage journey in `milestones.md`
 
-`docs/00-project/milestones.md` expands the journey to eleven stages:
+`docs/00-project/MILESTONES.md` expands the journey to eleven stages:
 
 1. Milestone 0 — Dreaming
 2. Milestone 1 — Awakening
@@ -120,7 +120,7 @@ risks, and a victory condition.
 
 ## 3.3 Other large-stage uses
 
-- `docs/00-project/roadmap.md` repeats the eleven-stage sequence in its
+- `docs/00-project/ROADMAP.md` repeats the eleven-stage sequence in its
   medium-term roadmap and explicitly says, “A milestone is the chapter.”
 - `docs/00-project/awakening-readiness.md` uses Milestone 0 and Milestone 1 as
   the transition from Dreaming to Awakening.
@@ -179,7 +179,7 @@ This creates four risks:
 4. `awakening-readiness.md` is becoming an implementation journal even though
    its stated purpose is readiness and entry criteria.
 
-`docs/00-project/milestones.md` has the opposite problem: its Milestone 1 exit
+`docs/00-project/MILESTONES.md` has the opposite problem: its Milestone 1 exit
 criteria remain unchecked and its “Immediate Next Path” still says the project
 is moving through Milestone 0. It does not reflect the duplicated checkpoint
 progress found elsewhere.
@@ -193,19 +193,19 @@ same.
 
 | Concern | Intended source | Actual current behavior | Audit finding |
 | --- | --- | --- | --- |
-| Project phase | `docs/00-project/milestones.md` | `roadmap.md` says Milestone 1; `milestones.md` still describes the current path through Milestone 0 | Conflicted |
-| Current progress | `docs/00-project/roadmap.md` | Progress is repeated in roadmap, readiness, and project memory | Duplicated |
+| Project phase | `docs/00-project/MILESTONES.md` | `roadmap.md` says Milestone 1; `milestones.md` still describes the current path through Milestone 0 | Conflicted |
+| Current progress | `docs/00-project/ROADMAP.md` | Progress is repeated in roadmap, readiness, and project memory | Duplicated |
 | Verified checkpoints | No dedicated source | Evidence is scattered through checkpoint prose, quest outcomes, and unchecked criteria | Missing canonical ledger |
 | Quest records | `docs/00-project/quests/` | Quest files hold scope, status, evidence, and outcomes | Clear and functioning |
 | Safety memory | `PROJECT_MEMORY.md` | Safety context also appears in readiness, requirements, architecture, and quests | `PROJECT_MEMORY.md` is the broad safety net; requirements remain normative |
 
 ## 6.1 Project phase
 
-Governance assigns large phases to `docs/00-project/milestones.md`, but that file
+Governance assigns large phases to `docs/00-project/MILESTONES.md`, but that file
 does not currently provide an accurate current-position statement.
 
 The practical current phase is most accurately stated in
-`docs/00-project/roadmap.md`:
+`docs/00-project/ROADMAP.md`:
 
 ```text
 Milestone 1 — Awakening
@@ -248,14 +248,14 @@ retain durable risks, constraints, context, and ideas that have not found a more
 specific home.
 
 It should not be the canonical progress ledger. Normative safety requirements
-belong in `docs/00-project/requirements.md`; focused validation boundaries
+belong in `docs/00-project/REQUIREMENTS.md`; focused validation boundaries
 belong in their quests and test plans.
 
 ---
 
 # 7. Broken or Fragile Citation Patterns
 
-No missing `docs/00-project/milestones.md` file reference was found. The larger
+No missing `docs/00-project/MILESTONES.md` file reference was found. The larger
 problem is semantic and structural fragility.
 
 ## 7.1 Plain prose references
@@ -267,8 +267,8 @@ specific canonical section.
 Readers must guess whether the authority is:
 
 - `PROJECT_MEMORY.md`
-- `docs/00-project/milestones.md`
-- `docs/00-project/roadmap.md`
+- `docs/00-project/MILESTONES.md`
+- `docs/00-project/ROADMAP.md`
 - `docs/00-project/awakening-readiness.md`
 
 ## 7.2 File-only metadata relationships
@@ -277,7 +277,7 @@ Front matter commonly lists:
 
 ```yaml
 related:
-  - docs/00-project/milestones.md
+  - docs/00-project/MILESTONES.md
 ```
 
 This is useful for document-level discovery, but it cannot cite a specific

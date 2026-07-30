@@ -10,16 +10,16 @@ audience:
   - Future Maintainers
 purpose: Preserve the original abbreviated release sequence as project history.
 related:
-  - docs/00-project/milestones.md
+  - docs/00-project/MILESTONES.md
 superseded_by:
-  - docs/00-project/roadmap.md
+  - docs/00-project/ROADMAP.md
 last_updated: 2026-07-03
 ---
 
 # Legacy Roadmap
 
 > Superseded by the canonical
-> [Project Roadmap](00-project/roadmap.md). The original outline remains below
+> [Project Roadmap](00-project/ROADMAP.md). The original outline remains below
 > for historical context.
 
 - v0.1 daemon

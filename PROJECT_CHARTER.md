@@ -16,7 +16,7 @@ related:
   - ENGINEERING_MANIFESTO.md
   - PROJECT_MANIFEST.md
   - docs/00-project/quests/0033-add-the-project-charter.md
-  - docs/01-product/vision.md
+  - docs/01-product/VISION.md
   - docs/13-reference/terminology.md
 last_updated: 2026-07-07
 ---

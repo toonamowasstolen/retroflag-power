@@ -14,7 +14,7 @@ purpose: Add a small local checker for internal Markdown links and anchors.
 related:
   - Makefile
   - scripts/check-markdown-links.py
-  - docs/00-project/milestones.md
+  - docs/00-project/MILESTONES.md
   - docs/00-project/quests/0006-gather-the-checkpoints-into-one-ledger.md
 last_updated: 2026-07-06
 ---

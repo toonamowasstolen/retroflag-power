@@ -15,8 +15,8 @@ related:
   - PROJECT_MEMORY.md
   - PROJECT_MANIFEST.md
   - docs/00-project/documentation-structure-and-governance.md
-  - docs/00-project/milestones.md
-  - docs/00-project/roadmap.md
+  - docs/00-project/MILESTONES.md
+  - docs/00-project/ROADMAP.md
   - docs/00-project/quests/0004-chart-the-edc-map.md
   - docs/13-reference/terminology.md
   - docs/13-reference/glossary.md
@@ -90,7 +90,7 @@ The Roadmap is canonical for the ladder, current Epoch, and direction.
 
 ## Milestone ledger
 
-`docs/00-project/milestones.md` is canonical for numbered, verified checkpoint
+`docs/00-project/MILESTONES.md` is canonical for numbered, verified checkpoint
 facts.
 
 No Milestones were created by this Quest. QUEST-0006 will review existing
@@ -129,7 +129,7 @@ M-IDs.
 - [x] ADR-0003 records the vocabulary decision.
 - [x] One seven-Epoch ladder is canonical.
 - [x] The eleven-stage journey is preserved but non-canonical.
-- [x] `docs/00-project/milestones.md` is a verified ledger scaffold.
+- [x] `docs/00-project/MILESTONES.md` is a verified ledger scaffold.
 - [x] No M-0001 through M-0004 entries were created.
 - [x] Governance defines all five EDC concepts.
 - [x] Governance requires stable Milestone anchors.

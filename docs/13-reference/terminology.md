@@ -16,8 +16,8 @@ related:
   - ENGINEERING_MANIFESTO.md
   - PROJECT_MANIFEST.md
   - PROJECT_CHARTER.md
-  - docs/00-project/milestones.md
-  - docs/00-project/roadmap.md
+  - docs/00-project/MILESTONES.md
+  - docs/00-project/ROADMAP.md
   - docs/adr/0003-adopt-epoch-milestone-quest-model.md
 last_updated: 2026-07-06
 ---
@@ -213,7 +213,7 @@ M-0002
 M-0003
 ```
 
-Verified Milestone facts belong in `docs/00-project/milestones.md`. Cite the
+Verified Milestone facts belong in `docs/00-project/MILESTONES.md`. Cite the
 canonical entry instead of duplicating its evidence.
 
 ## Quest

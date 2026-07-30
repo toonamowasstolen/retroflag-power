@@ -16,15 +16,15 @@ related:
   - ENGINEERING_MANIFESTO.md
   - PROJECT_MANIFEST.md
   - PROJECT_CHARTER.md
-  - docs/00-project/milestones.md
-  - docs/00-project/roadmap.md
-  - docs/00-project/requirements.md
-  - docs/01-product/vision.md
+  - docs/00-project/MILESTONES.md
+  - docs/00-project/ROADMAP.md
+  - docs/00-project/REQUIREMENTS.md
+  - docs/01-product/VISION.md
   - docs/02-hardware/gpi-case-2.md
   - docs/04-architecture/system-overview.md
   - docs/05-development/ai-collaboration.md
-  - docs/10-decisions/adr-template.md
-  - docs/11-rfc/rfc-template.md
+  - docs/10-decisions/ADR-TEMPLATE.md
+  - docs/11-rfc/RFC-TEMPLATE.md
 last_updated: 2026-07-03
 ---
 
@@ -144,13 +144,13 @@ The following foundation artifacts exist or are planned as committed project con
 
 ## Project planning artifacts
 
-- [x] docs/00-project/milestones.md
-- [x] docs/00-project/roadmap.md
-- [x] docs/00-project/requirements.md
+- [x] docs/00-project/MILESTONES.md
+- [x] docs/00-project/ROADMAP.md
+- [x] docs/00-project/REQUIREMENTS.md
 
 ## Product artifacts
 
-- [x] docs/01-product/vision.md
+- [x] docs/01-product/VISION.md
 
 ## Hardware artifacts
 
@@ -166,8 +166,8 @@ The following foundation artifacts exist or are planned as committed project con
 
 ## Decision and proposal artifacts
 
-- [x] docs/10-decisions/adr-template.md
-- [x] docs/11-rfc/rfc-template.md
+- [x] docs/10-decisions/ADR-TEMPLATE.md
+- [x] docs/11-rfc/RFC-TEMPLATE.md
 
 ## Reference artifacts
 
@@ -458,10 +458,10 @@ Minimum validation:
 
 The following verified Milestones support this first-breath readiness record:
 
-- [M-0001 — Daemon Nameplate](milestones.md#m-0001)
-- [M-0002 — Config Satchel](milestones.md#m-0002)
-- [M-0003 — Event Charms](milestones.md#m-0003)
-- [M-0004 — Dry-Run Action Charm](milestones.md#m-0004)
+- [M-0001 — Daemon Nameplate](MILESTONES.md#m-0001)
+- [M-0002 — Config Satchel](MILESTONES.md#m-0002)
+- [M-0003 — Event Charms](MILESTONES.md#m-0003)
+- [M-0004 — Dry-Run Action Charm](MILESTONES.md#m-0004)
 
 The canonical Milestone ledger owns the detailed evidence and exclusions. This
 readiness document retains the safety framing: these checkpoints add no GPIO,

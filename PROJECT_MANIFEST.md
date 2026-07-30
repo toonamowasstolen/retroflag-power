@@ -18,8 +18,8 @@ related:
   - docs/00-project/edc-quest-operating-rules.md
   - docs/00-project/project-direction-save-room-arcadia.md
   - docs/04-architecture/arcadia-runtime-migration-path.md
-  - docs/00-project/roadmap.md
-  - docs/00-project/milestones.md
+  - docs/00-project/ROADMAP.md
+  - docs/00-project/MILESTONES.md
   - docs/adr/0003-adopt-epoch-milestone-quest-model.md
   - docs/13-reference/terminology.md
 last_updated: 2026-07-06
@@ -173,7 +173,7 @@ RetroFlag Power uses distinct names for distinct scales of work:
 - Project Memory preserves origin, principles, safety context, and important
   memory; it is not the progress log.
 
-Verified Milestone facts belong in `docs/00-project/milestones.md`. Other
+Verified Milestone facts belong in `docs/00-project/MILESTONES.md`. Other
 documents should cite them instead of copying their evidence.
 
 ## Momentum matters

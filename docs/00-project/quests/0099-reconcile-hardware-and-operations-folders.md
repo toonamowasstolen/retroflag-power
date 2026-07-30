@@ -12,7 +12,7 @@ audience:
   - Hardware Porters
 purpose: Fix a real number collision (docs/03-hardware and docs/03-operations both existed) and a real one-README violation (docs/03-hardware/README.md), found in the 2026-07-14 EDC gap analysis.
 related:
-  - ../milestones.md
+  - ../MILESTONES.md
   - ../documentation-structure-and-governance.md
   - ../../02-hardware/gpi-case-2.md
 last_updated: 2026-07-14
@@ -95,7 +95,7 @@ This quest is complete when:
 - [x] `python3 scripts/check-markdown-links.py` reports 0 broken links, run *after* every path
   change. **Done** — "Link Lantern checked 280 internal links across 150 Markdown files," exit 0.
 - [x] Governance-doc Section 11 describes `docs/03-operations/` accurately. **Done.**
-- [x] `docs/00-project/milestones.md` gets a new entry. **Done as M-0008.**
+- [x] `docs/00-project/MILESTONES.md` gets a new entry. **Done as M-0008.**
 
 ---
 

@@ -18,15 +18,15 @@ related:
   - PROJECT_CHARTER.md
   - docs/00-project/project-direction-save-room-arcadia.md
   - docs/04-architecture/arcadia-runtime-migration-path.md
-  - docs/00-project/milestones.md
-  - docs/00-project/roadmap.md
-  - docs/00-project/requirements.md
+  - docs/00-project/MILESTONES.md
+  - docs/00-project/ROADMAP.md
+  - docs/00-project/REQUIREMENTS.md
   - docs/00-project/quests/0035-add-a-dry-run-power-intent-path.md
   - docs/00-project/quests/0036-add-a-dry-run-power-intent-cli-flag.md
   - docs/00-project/quests/0038-add-a-configurable-dry-run-power-policy.md
   - docs/00-project/quests/0039-add-a-gpio-observer-interface.md
   - docs/00-project/quests/0043-add-a-latching-power-switch-interpreter.md
-  - docs/01-product/vision.md
+  - docs/01-product/VISION.md
   - docs/13-reference/terminology.md
   - docs/13-reference/glossary.md
 last_updated: 2026-07-07

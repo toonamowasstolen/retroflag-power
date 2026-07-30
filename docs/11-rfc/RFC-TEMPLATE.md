@@ -11,11 +11,11 @@ audience:
   - Future Maintainers
 purpose: Provide a lightweight template for proposing and discussing meaningful changes before they become accepted decisions or implementation work in RetroFlag Power.
 related:
-  - docs/00-project/requirements.md
-  - docs/00-project/roadmap.md
+  - docs/00-project/REQUIREMENTS.md
+  - docs/00-project/ROADMAP.md
   - docs/04-architecture/system-overview.md
   - docs/05-development/ai-collaboration.md
-  - docs/10-decisions/adr-template.md
+  - docs/10-decisions/ADR-TEMPLATE.md
 last_updated: 2026-07-03
 ---
 

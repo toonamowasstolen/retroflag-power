@@ -136,9 +136,9 @@ On unsupported platforms or uncertain GPIO access, it reports
   the field-test gate ledger for power, display, dock, audio, sleep/resume,
   RetroPie, diagnostics, rollback, and public readiness before replacement or
   migration.
-- [Project roadmap](docs/00-project/roadmap.md)
-- [Project milestones](docs/00-project/milestones.md)
-- [Project requirements](docs/00-project/requirements.md)
+- [Project roadmap](docs/00-project/ROADMAP.md)
+- [Project milestones](docs/00-project/MILESTONES.md)
+- [Project requirements](docs/00-project/REQUIREMENTS.md)
 - [Documentation structure and governance guide](docs/00-project/documentation-structure-and-governance.md)
 - [GPi Case GPIO probe field ledger](docs/03-operations/gpi-case-gpio-probe-ledger.md)
 - [SafeShutdown replacement boundary map](docs/03-operations/safeshutdown-replacement-boundary-map.md)

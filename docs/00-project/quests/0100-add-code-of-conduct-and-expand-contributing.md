@@ -11,7 +11,7 @@ audience:
   - Future Maintainers
 purpose: Close a real governance-scaffolding gap found in the 2026-07-14 EDC gap analysis — this project had no CODE_OF_CONDUCT.md at all and a 3-line CONTRIBUTING.md stub, thinner than its three sibling EDC projects.
 related:
-  - ../milestones.md
+  - ../MILESTONES.md
   - ../../../CODE_OF_CONDUCT.md
   - ../../../CONTRIBUTING.md
 last_updated: 2026-07-14
@@ -82,7 +82,7 @@ This quest is complete when:
 - [x] `CONTRIBUTING.md` expanded beyond the 3-line stub, referencing only files that actually exist in
   this repo. **Done.**
 - [x] `python3 scripts/check-markdown-links.py` reports 0 broken links. **Done.**
-- [x] `docs/00-project/milestones.md` gets a new entry. **Done as M-0009.**
+- [x] `docs/00-project/MILESTONES.md` gets a new entry. **Done as M-0009.**
 
 ---
 

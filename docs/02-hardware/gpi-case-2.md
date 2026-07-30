@@ -15,8 +15,8 @@ related:
   - WHY.md
   - PROJECT_MEMORY.md
   - PROJECT_CHARTER.md
-  - docs/00-project/requirements.md
-  - docs/00-project/roadmap.md
+  - docs/00-project/REQUIREMENTS.md
+  - docs/00-project/ROADMAP.md
   - docs/04-architecture/system-overview.md
   - docs/13-reference/terminology.md
   - docs/13-reference/glossary.md
