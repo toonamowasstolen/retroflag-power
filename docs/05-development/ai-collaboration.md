@@ -428,7 +428,7 @@ Near-term path:
 ```
 Requirements
   ↓
-System Overview
+[System Overview](../04-architecture/system-overview.md)
   ↓
 Hardware Reference
   ↓
@@ -715,3 +715,7 @@ The case is closed.
 The courthouse stands.
 
 The next builders know the rules.
+
+## Related work
+
+It rests on [Why](../../WHY.md) (why this project exists), [Engineering Manifesto](../../ENGINEERING_MANIFESTO.md) (the engineering principles behind it), [Project Manifest](../../PROJECT_MANIFEST.md) (what it is made of) and [Project Charter](../../PROJECT_CHARTER.md) (what it promises). For where it sits in the project's arc, see [Verified Milestone Ledger](../00-project/MILESTONES.md) (the checkpoint log). It reads alongside [GPi Case 2 Reference Hardware](../02-hardware/gpi-case-2.md).

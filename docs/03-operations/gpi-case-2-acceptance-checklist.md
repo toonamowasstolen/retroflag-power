@@ -279,3 +279,7 @@ Use this compact ledger for each field-test pass:
 
 The first honest value for an untested row is `Unknown`. The checklist becomes
 useful by showing what remains dark as clearly as what has been lit.
+
+## Related work
+
+It rests on [README](../../README.md) (the project overview). The work itself was carried out under [Add the GPi Case 2 Acceptance Checklist](../00-project/quests/0053-add-the-gpi-case-2-acceptance-checklist.md) and [Add GPi Case 2 Field Test Checklist Entries](../00-project/quests/0057-add-gpi-case-2-field-test-checklist-entries.md). It reads alongside [SafeShutdown Replacement Boundary Map](safeshutdown-replacement-boundary-map.md), [Installer and Migration Toolkit Map](installer-migration-toolkit-map.md), [Local Diagnostics Bundle Map](local-diagnostics-bundle-map.md), [Arcadia Runtime Migration Path](../04-architecture/arcadia-runtime-migration-path.md) and [GPi Case 2 Hardware Findings and KMS Power Notes](../02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md).

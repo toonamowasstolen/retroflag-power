@@ -79,3 +79,7 @@ Implementation
 
 The app now carries one startup diagnostic relic in its field kit, ready for the
 next map step that wants to show or format startup diagnostics deliberately.
+
+## Related work
+
+The work itself was carried out under [Add an App Runtime Summary Accessor](0023-add-an-app-runtime-summary-accessor.md), [Add a Runtime Diagnostic Value](0024-add-a-runtime-diagnostic-value.md), [Cover Runtime Diagnostic Across the App Lifecycle](0025-cover-runtime-diagnostic-across-the-app-lifecycle.md) and [Make Runtime Diagnostic Shutdown Coverage Explicit](0026-make-runtime-diagnostic-shutdown-coverage-explicit.md).

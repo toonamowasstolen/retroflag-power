@@ -758,3 +758,7 @@ Move toward the first breath.
 The dream has a path.
 
 Now it has road signs.
+
+## Related work
+
+The decision behind it is recorded in [Adopt the Epoch, Milestone, and Quest Model](../adr/0003-adopt-epoch-milestone-quest-model.md).

@@ -65,3 +65,7 @@ Implementation
 
 This supports [M-0004 — Dry-Run Action Charm](../MILESTONES.md#m-0004) but does
 not create a new milestone.
+
+## Related work
+
+The work itself was carried out under [Add an Internal Plan Executor Skeleton](0014-add-an-internal-plan-executor-skeleton.md).

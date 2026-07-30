@@ -1734,3 +1734,7 @@ When an idea graduates into a proper document, it should remain referenced here 
 The purpose of this file is simple:
 
 > Make sure nothing important from the dream is lost before the project wakes up.
+
+## Related work
+
+For where it sits in the project's arc, see [Project Roadmap](docs/00-project/ROADMAP.md) (the stage this belongs to). The decision behind it is recorded in [Adopt the Epoch, Milestone, and Quest Model](docs/adr/0003-adopt-epoch-milestone-quest-model.md).

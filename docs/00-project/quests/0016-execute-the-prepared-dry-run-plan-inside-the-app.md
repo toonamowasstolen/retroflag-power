@@ -64,3 +64,7 @@ Implementation
 
 This supports [M-0004 — Dry-Run Action Charm](../MILESTONES.md#m-0004) but does
 not create a new milestone.
+
+## Related work
+
+The work itself was carried out under [Give Executor Results a Small Summary](0015-give-executor-results-a-small-summary.md).

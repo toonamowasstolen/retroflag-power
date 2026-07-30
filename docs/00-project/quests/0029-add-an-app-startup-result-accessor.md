@@ -74,3 +74,7 @@ Implementation
 
 The app now carries a simple startup success badge in its field kit, ready for
 future daemon, log, and CLI map steps to read deliberately.
+
+## Related work
+
+The work itself was carried out under [Add an App Startup Diagnostic Snapshot](0027-add-an-app-startup-diagnostic-snapshot.md) and [Document Runtime vs Startup Diagnostics](0028-document-runtime-vs-startup-diagnostics.md).

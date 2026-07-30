@@ -135,7 +135,7 @@ M-IDs.
 - [x] Governance requires stable Milestone anchors.
 - [x] Governance requires cross-linked ADRs for durable Milestone reasoning.
 - [x] ADR and RFC record/template locations are explicit.
-- [x] Terminology and glossary definitions agree.
+- [x] Terminology and [glossary](../../13-reference/glossary.md) definitions agree.
 - [x] Project Memory is explicitly not the progress log.
 - [x] Existing checkpoint prose was not moved.
 - [x] No production code or packaging changed.
@@ -171,3 +171,7 @@ Epochs tell the journey.
 Milestones prove progress.
 
 Quests do the work.
+
+## Related work
+
+It rests on [Project Memory and Blueprint Capture](../../../PROJECT_MEMORY.md) (the running record of decisions and open questions) and [Project Manifest](../../../PROJECT_MANIFEST.md) (what it is made of). For where it sits in the project's arc, see [Project Roadmap](../ROADMAP.md) (the stage this belongs to). Vocabulary is fixed by [Terminology Guide](../../13-reference/terminology.md) (which word to use). The decision behind it is recorded in [Adopt the Epoch, Milestone, and Quest Model](../../adr/0003-adopt-epoch-milestone-quest-model.md). The work itself was carried out under [Chart the EDC Map](0004-chart-the-edc-map.md). It reads alongside [Documentation Structure and Governance Guide](../documentation-structure-and-governance.md).

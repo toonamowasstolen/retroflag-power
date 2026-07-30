@@ -54,7 +54,7 @@ Documentation
 - Added the "Do Not Do Yet" field-kit boundary for services, shutdown wiring,
   `SafeShutdown.py`, GPIO writes, `rc.local`, systemd activation, persistence,
   and daemon activation.
-- Linked the ledger from the GPIO read-only plan and the project documentation
+- Linked the ledger from the [GPIO read-only plan](../../03-operations/gpio-read-only-plan.md) and the project documentation
   list in `README.md`.
 
 ## Validation
@@ -82,3 +82,7 @@ Documentation
 The GPi Case hardware lantern now has a small field ledger. Future probe
 sessions can record candidate pins, case controls, and raw signal states in one
 place before any quest turns those observations into interpreted switch meaning.
+
+## Related work
+
+The work itself was carried out under [Add a Hardware Read-Only GPIO Probe Command](0045-add-a-hardware-read-only-gpio-probe-command.md). It reads alongside [GPi Case 2 Hardware Findings and KMS Power Notes](../../02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md).

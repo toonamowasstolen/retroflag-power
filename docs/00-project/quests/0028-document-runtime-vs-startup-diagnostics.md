@@ -81,3 +81,7 @@ Documentation
 The diagnostic map now marks the difference between the live runtime lantern and
 the startup-complete relic, keeping future log and CLI quests from mixing their
 signals.
+
+## Related work
+
+The work itself was carried out under [Record Runtime Summary Formatter Guidance](0022-record-runtime-summary-formatter-guidance.md), [Add a Runtime Diagnostic Value](0024-add-a-runtime-diagnostic-value.md) and [Add an App Startup Diagnostic Snapshot](0027-add-an-app-startup-diagnostic-snapshot.md).

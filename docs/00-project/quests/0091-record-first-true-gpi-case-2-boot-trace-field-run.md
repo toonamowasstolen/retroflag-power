@@ -133,3 +133,7 @@ accepted the scp-first script, completed a 120-second requested trace in 127
 seconds, wrote 25 samples, preserved `throttled=0x50000` as a cautious clue,
 and left the next rune clear: repeat with exact handheld timestamps, LED
 state, visible frontend state, and side-switch notes.
+
+## Related work
+
+The work itself was carried out under [Design the True GPi Case 2 Boot Trace Lantern](0087-design-true-gpi-case-2-boot-trace-lantern.md), [Add the True GPi Case 2 Boot Trace Lantern Script Skeleton](0088-add-true-gpi-case-2-boot-trace-lantern-script-skeleton.md), [Design GPi Case 2 First Spark and Boot Veil UX](0089-design-gpi-case-2-first-spark-and-boot-veil-ux.md) and [Add the True Boot Trace Field Run Procedure](0090-add-true-boot-trace-field-run-procedure.md). It reads alongside [GPi Case 2 True Boot Trace Field Run Procedure](../../03-operations/gpi-case-2-true-boot-trace-field-run-procedure.md), [GPi Case 2 True Boot Trace Lantern Design](../../03-operations/gpi-case-2-true-boot-trace-lantern-design.md) and [GPi Case 2 First Spark / Boot Veil / Relic Welcome Scroll Design](../../03-operations/gpi-case-2-first-spark-boot-veil-welcome-scroll-design.md).

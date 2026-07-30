@@ -298,3 +298,7 @@ An RFC is not a delay tactic.
 It is a safe place to think before building.
 
 Use it when the question is bigger than a commit but not yet ready to become law.
+
+## Related work
+
+For where it sits in the project's arc, see [Project Roadmap](../00-project/ROADMAP.md) (the stage this belongs to). The decision behind it is recorded in [Architecture Decision Record Template](../10-decisions/ADR-TEMPLATE.md). It reads alongside [System Overview](../04-architecture/system-overview.md) and [AI Collaboration Guide](../05-development/ai-collaboration.md).

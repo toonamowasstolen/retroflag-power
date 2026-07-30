@@ -75,3 +75,7 @@ The first power-intent path now leaves three small lantern marks in the app's
 internal ledger: intent received, dry-run plan prepared, and noop execution
 completed. These breadcrumbs give future GPIO, shutdown, and service quests a
 stable map without changing today's safe dry-run boundary.
+
+## Related work
+
+It reads alongside [planner](../../../internal/planner), [executor](../../../internal/executor) and [System Overview](../../04-architecture/system-overview.md).

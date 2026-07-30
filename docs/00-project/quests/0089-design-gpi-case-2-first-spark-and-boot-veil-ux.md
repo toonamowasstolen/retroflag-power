@@ -119,3 +119,7 @@ The startup UX now has a recovery-first design path. The Relic can pursue an
 earlier sign of life, a reversible veil over rough boot text, and a useful SSH
 welcome scroll only after the True Boot Trace Lantern proves which window each
 layer can safely touch.
+
+## Related work
+
+It reads alongside [GPi Case 2 True Boot Trace Lantern Design](../../03-operations/gpi-case-2-true-boot-trace-lantern-design.md), [GPi Case 2 Session Watch Lantern Design](../../03-operations/gpi-case-2-session-watch-lantern-design.md), [GPi Case 2 Boot Power Trace Lantern Map](../../03-operations/gpi-case-2-boot-power-trace-lantern-map.md) and [GPi Case 2 Recovery-First Field Procedure](../../03-operations/gpi-case-2-recovery-first-field-procedure.md).

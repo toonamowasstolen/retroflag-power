@@ -380,3 +380,7 @@ A daemon that survives service supervision will have a heartbeat.
 Prepare the toolkit.
 
 Do not pull the lever yet.
+
+## Related work
+
+For where it sits in the project's arc, see [Awakening Readiness Check](../awakening-readiness.md) (the readiness gate), [Verified Milestone Ledger](../MILESTONES.md) (the checkpoint log) and [Project Roadmap](../ROADMAP.md) (the stage this belongs to). The decision behind it is recorded in [Use a Small Context-Driven Daemon Lifecycle](../../adr/0002-use-small-context-driven-daemon-lifecycle.md). It reads alongside [Project Requirements](../REQUIREMENTS.md) and [System Overview](../../04-architecture/system-overview.md).

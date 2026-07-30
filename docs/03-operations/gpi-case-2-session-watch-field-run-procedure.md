@@ -298,3 +298,7 @@ The Session Watch Ledger pairs well with:
 Keep the machine Ledger and the human note together. The script sees process,
 kernel, and system clues; the human sees the Relic's screen, LED, buttons, and
 body language.
+
+## Related work
+
+It reads alongside [GPi Case 2 Boot Power Trace Capture Procedure](gpi-case-2-boot-power-trace-capture-procedure.md) and [Human-Facing Field Lantern Script UX Standard](human-facing-field-lantern-script-ux-standard.md).

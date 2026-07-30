@@ -78,3 +78,7 @@ Test Coverage
 Runtime diagnostic shutdown coverage now carries its own stopped-state badge in
 the field kit, keeping the summary and diagnostic lanterns aligned for the next
 diagnostic spellbook step.
+
+## Related work
+
+The work itself was carried out under [Add an App Runtime Summary Accessor](0023-add-an-app-runtime-summary-accessor.md), [Add a Runtime Diagnostic Value](0024-add-a-runtime-diagnostic-value.md) and [Cover Runtime Diagnostic Across the App Lifecycle](0025-cover-runtime-diagnostic-across-the-app-lifecycle.md). It reads alongside [app](../../../internal/app).

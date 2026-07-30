@@ -36,3 +36,7 @@ Use systemd instead of `rc.local`.
 Before this ADR is accepted, document its context, alternatives, consequences,
 validation plan, and safe migration boundary using the
 [ADR template](../10-decisions/ADR-TEMPLATE.md).
+
+## Related work
+
+It reads alongside [Project Requirements](../00-project/REQUIREMENTS.md) and [System Overview](../04-architecture/system-overview.md).

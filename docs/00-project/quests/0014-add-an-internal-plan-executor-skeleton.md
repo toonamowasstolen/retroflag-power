@@ -64,3 +64,7 @@ Implementation
 
 This supports [M-0004 — Dry-Run Action Charm](../MILESTONES.md#m-0004) but does
 not create a new milestone.
+
+## Related work
+
+The work itself was carried out under [Give Plans a Small Summary](0013-give-plans-a-small-summary.md). It reads alongside [planner](../../../internal/planner).

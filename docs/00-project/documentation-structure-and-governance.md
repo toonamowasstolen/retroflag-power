@@ -2474,3 +2474,7 @@ Old but valuable?
 The filing cabinet is now labeled.
 
 Future builders should not need to guess where the scrolls go.
+
+## Related work
+
+The decision behind it is recorded in [Adopt the Epoch, Milestone, and Quest Model](../adr/0003-adopt-epoch-milestone-quest-model.md).

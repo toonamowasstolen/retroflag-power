@@ -26,3 +26,7 @@ last_updated: 2026-07-03
 - v0.2 GPIO abstraction
 - v0.3 edge detection
 - v1.0 stable
+
+## Related work
+
+For where it sits in the project's arc, see [Verified Milestone Ledger](00-project/MILESTONES.md) (the checkpoint log).

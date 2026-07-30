@@ -74,3 +74,7 @@ Planning
 The map now shows the safe route from fake observer charm to future read-only
 hardware observation. The next quest can bring the GPi Case onto the workbench
 with a clear rule: watch first, write nothing, keep every power action noop.
+
+## Related work
+
+It reads alongside [GPIO Read-Only Plan](../../03-operations/gpio-read-only-plan.md), [GPi Case 2 Reference Hardware](../../02-hardware/gpi-case-2.md) and [System Overview](../../04-architecture/system-overview.md).

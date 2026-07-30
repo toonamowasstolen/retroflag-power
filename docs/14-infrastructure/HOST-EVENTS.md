@@ -120,3 +120,7 @@ transport (an HTTPS-cloned checkout could not push even with a correctly configu
 key), and this container's image now bakes in a git identity (a fresh clone had none, so the
 very first commit attempt failed with "Author identity unknown"). Also added `gh` CLI to the
 image (`REQ-0008`) for future GitHub API operations this gateway can do itself.
+
+## Related work
+
+It rests on [Project Memory and Blueprint Capture](../../PROJECT_MEMORY.md) (the running record of decisions and open questions). For where it sits in the project's arc, see [Verified Milestone Ledger](../00-project/MILESTONES.md) (the checkpoint log). It reads alongside [Documentation Structure and Governance Guide](../00-project/documentation-structure-and-governance.md).

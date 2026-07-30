@@ -333,3 +333,7 @@ The standard is intentionally small. A human-facing Lantern does not need a
 terminal UI framework. It needs to tell the person watching it: "I started, I
 am still working, here is what I made, and here is what you can safely do
 next."
+
+## Related work
+
+The work itself was carried out under [Add a Human-Facing Field Lantern Script UX Standard](../00-project/quests/0077-add-a-human-facing-field-lantern-script-ux-standard.md). It reads alongside [GPi Case 2 Field Lantern Capture Procedure](gpi-case-2-field-lantern-capture-procedure.md), [GPi Case 2 Boot Power Trace Capture Procedure](gpi-case-2-boot-power-trace-capture-procedure.md), [GPi Case 2 Boot Power Trace Lantern Map](gpi-case-2-boot-power-trace-lantern-map.md), [Local Diagnostics Bundle Map](local-diagnostics-bundle-map.md), [Common Problems Mage Map](common-problems-mage-map.md), [Save Room Tech and Arcadia Runtime Direction](../00-project/project-direction-save-room-arcadia.md) and [EDC Quest Operating Rules](../00-project/edc-quest-operating-rules.md).

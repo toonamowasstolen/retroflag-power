@@ -79,3 +79,6 @@ fake power-button event during tests, translate that event into the existing
 dry-run power intent, and leave the same clear breadcrumb ledger behind. The
 real hardware map remains folded for a future quest.
 
+## Related work
+
+The work itself was carried out under [Add a Configurable Dry-Run Power Policy](0038-add-a-configurable-dry-run-power-policy.md). It reads alongside [System Overview](../../04-architecture/system-overview.md).

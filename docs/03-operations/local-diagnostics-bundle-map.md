@@ -463,3 +463,7 @@ This diagnostics map does not permit:
 
 The bundle should be a user-readable satchel first: local, redacted,
 previewable, and useful before any future dispatch trail exists.
+
+## Related work
+
+It rests on [README](../../README.md) (the project overview). The work itself was carried out under [Map the Local Diagnostics Bundle](../00-project/quests/0051-map-the-local-diagnostics-bundle.md), [Map the Local Diagnostics Bundle Skeleton](../00-project/quests/0058-map-the-local-diagnostics-bundle-skeleton.md), [Map the Installer and Migration Toolkit](../00-project/quests/0052-map-the-installer-and-migration-toolkit.md) and [Add the GPi Case 2 Acceptance Checklist](../00-project/quests/0053-add-the-gpi-case-2-acceptance-checklist.md). It reads alongside [Save Room Tech and Arcadia Runtime Direction](../00-project/project-direction-save-room-arcadia.md), [Arcadia Runtime Migration Path](../04-architecture/arcadia-runtime-migration-path.md) and [SafeShutdown Replacement Boundary Map](safeshutdown-replacement-boundary-map.md).

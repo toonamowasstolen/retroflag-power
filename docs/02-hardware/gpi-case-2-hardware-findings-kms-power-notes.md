@@ -551,3 +551,7 @@ Replace old RetroFlag scripts.
 Improve power-supply headroom.
 Map the extra buttons.
 ```
+
+## Related work
+
+It reads alongside [GPi Case 2 Power Integrity Investigation Notes](gpi-case-2-power-integrity-investigation-notes.md).

@@ -238,3 +238,7 @@ The conservative trail should look like this:
 
 This map keeps the quest pointed at replacement readiness without pretending
 the relic is ready to leave the satchel today.
+
+## Related work
+
+The work itself was carried out under [Map the SafeShutdown Replacement Boundaries](../00-project/quests/0048-map-the-safeshutdown-replacement-boundaries.md), [Map the Local Diagnostics Bundle](../00-project/quests/0051-map-the-local-diagnostics-bundle.md), [Map the Installer and Migration Toolkit](../00-project/quests/0052-map-the-installer-and-migration-toolkit.md) and [Add the GPi Case 2 Acceptance Checklist](../00-project/quests/0053-add-the-gpi-case-2-acceptance-checklist.md). It reads alongside [GPi Case 2 Hardware Findings and KMS Power Notes](../02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md), [GPIO Read-Only Plan](gpio-read-only-plan.md) and [GPi Case GPIO Probe Field Ledger](gpi-case-gpio-probe-ledger.md).

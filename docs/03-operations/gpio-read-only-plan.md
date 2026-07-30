@@ -224,3 +224,7 @@ The first real hardware-read-only quest is complete only when:
 - Candidate pins, polarity, latching or momentary behavior, and bounce/noise
   notes are documented with device context.
 - The resulting plan and execution remain deterministic and noop-only.
+
+## Related work
+
+The work itself was carried out under [Plan the GPIO Read-Only Path](../00-project/quests/0041-plan-the-gpio-read-only-path.md), [Separate Raw Signals from Interpreted Inputs](../00-project/quests/0042-separate-raw-signals-from-interpreted-inputs.md), [Add a Latching Power Switch Interpreter](../00-project/quests/0043-add-a-latching-power-switch-interpreter.md) and [Add a Hardware Read-Only GPIO Probe Command](../00-project/quests/0045-add-a-hardware-read-only-gpio-probe-command.md). It reads alongside [GPi Case 2 Reference Hardware](../02-hardware/gpi-case-2.md) and [System Overview](../04-architecture/system-overview.md).

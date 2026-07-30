@@ -996,7 +996,7 @@ The project should move the handheld experience toward a console-like model.
 
 Rationale:
 
-The product vision is to reduce the feeling of managing a Linux computer.
+The [product vision](../01-product/VISION.md) is to reduce the feeling of managing a Linux computer.
 
 ## REQ-0801 — Resume continuity
 
@@ -1204,3 +1204,7 @@ Respect the hardware.
 Preserve the dream.
 
 Build the machine.
+
+## Related work
+
+It rests on [Why](../../WHY.md) (why this project exists), [Project Memory and Blueprint Capture](../../PROJECT_MEMORY.md) (the running record of decisions and open questions) and [Project Manifest](../../PROJECT_MANIFEST.md) (what it is made of). For where it sits in the project's arc, see [Verified Milestone Ledger](MILESTONES.md) (the checkpoint log) and [Project Roadmap](ROADMAP.md) (the stage this belongs to).

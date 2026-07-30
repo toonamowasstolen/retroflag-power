@@ -123,3 +123,7 @@ Let's build something we're proud of.
 ## A promise to ourselves
 
 > Never lose today's excitement in tomorrow's implementation.
+
+## Related work
+
+It rests on [Project Memory and Blueprint Capture](PROJECT_MEMORY.md) (the running record of decisions and open questions), [Engineering Manifesto](ENGINEERING_MANIFESTO.md) (the engineering principles behind it), [Project Manifest](PROJECT_MANIFEST.md) (what it is made of) and [Project Charter](PROJECT_CHARTER.md) (what it promises).

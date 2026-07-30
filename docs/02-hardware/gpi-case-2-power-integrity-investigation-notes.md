@@ -206,3 +206,7 @@ These actions remain not approved:
 
 The next badge is disciplined evidence: voltage flags, context, and recovery
 notes gathered without poking the live power path.
+
+## Related work
+
+The work itself was carried out under [Record GPi Case 2 Power-Save RCU Stall Incident](../00-project/quests/0064-record-gpi-case-2-power-save-rcu-stall-incident.md). It reads alongside [GPi Case 2 Hardware Findings and KMS Power Notes](gpi-case-2-hardware-findings-kms-power-notes.md), [GPi Case 2 Emergency Recovery Research Ledger](gpi-case-2-emergency-recovery-research-ledger.md), [GPi Case 2 Recovery-First Field Procedure](../03-operations/gpi-case-2-recovery-first-field-procedure.md), [GPi Case 2 Replacement Coverage Matrix](../03-operations/gpi-case-2-replacement-coverage-matrix.md), [GPi Case 2 Acceptance Checklist](../03-operations/gpi-case-2-acceptance-checklist.md) and [SafeShutdown Replacement Boundary Map](../03-operations/safeshutdown-replacement-boundary-map.md).

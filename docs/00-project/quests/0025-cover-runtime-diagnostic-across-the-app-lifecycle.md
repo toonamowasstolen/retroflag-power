@@ -77,3 +77,7 @@ Test Coverage
 The runtime diagnostic now has lifecycle coverage at startup and shutdown, so
 future diagnostic spellbook work can rely on the same summary charm without
 guessing where it drifted.
+
+## Related work
+
+The work itself was carried out under [Add a Runtime Snapshot Summary](0020-add-a-runtime-snapshot-summary.md), [Add an App Runtime Summary Accessor](0023-add-an-app-runtime-summary-accessor.md) and [Add a Runtime Diagnostic Value](0024-add-a-runtime-diagnostic-value.md).

@@ -64,3 +64,7 @@ Implementation
 
 This supports [M-0004 — Dry-Run Action Charm](../MILESTONES.md#m-0004) but does
 not create a new milestone.
+
+## Related work
+
+The work itself was carried out under [Add a Dry-Run Planner Skeleton](0009-add-a-dry-run-planner-skeleton.md).

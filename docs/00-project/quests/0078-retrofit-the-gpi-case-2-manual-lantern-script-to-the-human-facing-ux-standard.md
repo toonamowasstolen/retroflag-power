@@ -86,3 +86,7 @@ Diagnostics
 The GPi Case 2 Bundle Collector Lantern became a better field companion: it
 shows its work, names its satchel, reports its timing, and still keeps every
 safety boundary bright on the trail.
+
+## Related work
+
+It reads alongside [Human-Facing Field Lantern Script UX Standard](../../03-operations/human-facing-field-lantern-script-ux-standard.md), [GPi Case 2 Boot Power Trace Capture Procedure](../../03-operations/gpi-case-2-boot-power-trace-capture-procedure.md), [GPi Case 2 Boot Power Trace Lantern Map](../../03-operations/gpi-case-2-boot-power-trace-lantern-map.md) and [GPi Case 2 Field Lantern Capture Procedure](../../03-operations/gpi-case-2-field-lantern-capture-procedure.md). The script involved is [`gpi-case2-bundle-collector-field-lantern.sh`](../../../scripts/gpi-case2-bundle-collector-field-lantern.sh).

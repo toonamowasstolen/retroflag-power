@@ -92,3 +92,7 @@ Hardware Evidence
 The Ledger now holds both the failed resume trail and the successful
 post-resume Lantern satchel. That is a verified win: the next Arcadia Runtime
 map can move with sharper uncertainty instead of a single frightening story.
+
+## Related work
+
+It reads alongside [GPi Case 2 Reference Hardware](../../02-hardware/gpi-case-2.md), [GPi Case 2 Emergency Recovery Research Ledger](../../02-hardware/gpi-case-2-emergency-recovery-research-ledger.md), [GPi Case 2 Hardware Findings and KMS Power Notes](../../02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md), [GPi Case 2 Power Integrity Investigation Notes](../../02-hardware/gpi-case-2-power-integrity-investigation-notes.md), [GPi Case 2 Acceptance Checklist](../../03-operations/gpi-case-2-acceptance-checklist.md), [GPi Case 2 Boot Power Trace Capture Procedure](../../03-operations/gpi-case-2-boot-power-trace-capture-procedure.md), [GPi Case 2 Boot Power Trace Lantern Map](../../03-operations/gpi-case-2-boot-power-trace-lantern-map.md), [GPi Case 2 Recovery-First Field Procedure](../../03-operations/gpi-case-2-recovery-first-field-procedure.md) and [GPi Case 2 Replacement Coverage Matrix](../../03-operations/gpi-case-2-replacement-coverage-matrix.md).

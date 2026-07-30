@@ -125,3 +125,7 @@ Ledger file that says exactly what it saw and what it did not change.
 Follow-on field use is documented in
 [QUEST-0083](0083-add-gpi-case-2-session-watch-field-run-procedure.md) and the
 [GPi Case 2 Session Watch Field Run Procedure](../../03-operations/gpi-case-2-session-watch-field-run-procedure.md).
+
+## Related work
+
+It reads alongside [GPi Case 2 Session Watch Lantern Design](../../03-operations/gpi-case-2-session-watch-lantern-design.md), [GPi Case 2 Field Lantern Capture Procedure](../../03-operations/gpi-case-2-field-lantern-capture-procedure.md), [GPi Case 2 Boot Power Trace Lantern Map](../../03-operations/gpi-case-2-boot-power-trace-lantern-map.md), [Local Diagnostics Bundle Map](../../03-operations/local-diagnostics-bundle-map.md), [Common Problems Mage Map](../../03-operations/common-problems-mage-map.md) and [Human-Facing Field Lantern Script UX Standard](../../03-operations/human-facing-field-lantern-script-ux-standard.md).

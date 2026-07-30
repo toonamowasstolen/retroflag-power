@@ -26,3 +26,7 @@ Original instruction:
 ```sh
 make run
 ```
+
+## Related work
+
+It reads alongside [Makefile](../Makefile).

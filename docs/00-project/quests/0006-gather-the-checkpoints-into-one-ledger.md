@@ -133,3 +133,7 @@ Completed before commit:
 One ledger holds the proof.
 
 The rest of the map stays light enough to carry.
+
+## Related work
+
+It rests on [Project Memory and Blueprint Capture](../../../PROJECT_MEMORY.md) (the running record of decisions and open questions). For where it sits in the project's arc, see [Awakening Readiness Check](../awakening-readiness.md) (the readiness gate) and [Project Roadmap](../ROADMAP.md) (the stage this belongs to). The decision behind it is recorded in [Adopt the Epoch, Milestone, and Quest Model](../../adr/0003-adopt-epoch-milestone-quest-model.md). The work itself was carried out under [Chart the EDC Map](0004-chart-the-edc-map.md) and [Correct the EDC Compass](0005-correct-the-edc-compass.md).

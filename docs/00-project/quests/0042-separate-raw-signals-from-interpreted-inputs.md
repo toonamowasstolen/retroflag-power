@@ -49,7 +49,7 @@ Implementation
   `ButtonReleased`, and `ButtonUnknown`.
 - Kept the existing fake power-button observer and dry-run power intent CLI
   behavior unchanged.
-- Updated the GPIO read-only plan and architecture map to show the layered route:
+- Updated the [GPIO read-only plan](../../03-operations/gpio-read-only-plan.md) and architecture map to show the layered route:
   raw signal, configured interpretation, latching switch or momentary button
   event, power intent, policy, plan, noop execution, and breadcrumbs.
 
@@ -81,3 +81,7 @@ GPIO work can record whether a line appears low, high, or unverified without
 pretending it already knows whether the player toggled a latching switch or
 pressed a momentary button. The power path remains dry-run, noop-only, and
 quietly deterministic.
+
+## Related work
+
+The work itself was carried out under [Plan the GPIO Read-Only Path](0041-plan-the-gpio-read-only-path.md). It reads alongside [System Overview](../../04-architecture/system-overview.md).

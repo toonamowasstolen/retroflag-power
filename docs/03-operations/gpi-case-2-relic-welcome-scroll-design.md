@@ -322,3 +322,7 @@ True Boot Trace and Session Watch Lantern artifacts may eventually feed a
 single `last known Lantern artifact` pointer, but the welcome scroll should
 not search for those artifacts at login time. The scroll lights the map; it
 does not empty the whole satchel onto the floor.
+
+## Related work
+
+It reads alongside [GPi Case 2 True Boot Trace Lantern Design](gpi-case-2-true-boot-trace-lantern-design.md), [GPi Case 2 True Boot Trace Field Run Procedure](gpi-case-2-true-boot-trace-field-run-procedure.md), [GPi Case 2 True Boot Trace Evidence Ledger](gpi-case-2-true-boot-trace-evidence-ledger.md), [GPi Case 2 Session Watch Lantern Design](gpi-case-2-session-watch-lantern-design.md), [GPi Case 2 Session Watch Field Run Procedure](gpi-case-2-session-watch-field-run-procedure.md), [GPi Case 2 Session Watch Evidence Ledger](gpi-case-2-session-watch-evidence-ledger.md) and [GPi Case 2 Recovery-First Field Procedure](gpi-case-2-recovery-first-field-procedure.md).

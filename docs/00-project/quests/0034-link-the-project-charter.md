@@ -75,3 +75,7 @@ Documentation
 The project charter is now visible from the front README and the documentation
 governance map. The working-style badge, hardware caution, and project voice
 have a clearer trailhead for future quests.
+
+## Related work
+
+The work itself was carried out under [Add the Project Charter](0033-add-the-project-charter.md).

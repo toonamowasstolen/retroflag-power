@@ -811,3 +811,7 @@ Build the machine.
 Protect the dream.
 
 Never lose today's excitement in tomorrow's implementation.
+
+## Related work
+
+Vocabulary is fixed by [Terminology Guide](docs/13-reference/terminology.md) (which word to use). The work itself was carried out under [Add the Project Charter](docs/00-project/quests/0033-add-the-project-charter.md). It reads alongside [Product Vision](docs/01-product/VISION.md).

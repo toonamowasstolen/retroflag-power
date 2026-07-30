@@ -267,3 +267,7 @@ If this model creates confusion, supersede this ADR with a new decision. Do not
 silently reuse Epoch, Milestone, or Quest for different concepts.
 
 Stable Milestone IDs must never be reassigned after publication.
+
+## Related work
+
+It rests on [Project Manifest](../../PROJECT_MANIFEST.md) (what it is made of). Vocabulary is fixed by [Terminology Guide](../13-reference/terminology.md) (which word to use).

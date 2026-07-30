@@ -74,3 +74,7 @@ Implementation
 
 This gives future internal diagnostic lanterns a shorter route to the runtime
 summary. It does not add a new formatter or print the summary anywhere yet.
+
+## Related work
+
+The work itself was carried out under [Add an App Runtime Snapshot](0019-add-an-app-runtime-snapshot.md), [Add a Runtime Snapshot Summary](0020-add-a-runtime-snapshot-summary.md) and [Add a Runtime Summary String](0021-add-a-runtime-summary-string.md).

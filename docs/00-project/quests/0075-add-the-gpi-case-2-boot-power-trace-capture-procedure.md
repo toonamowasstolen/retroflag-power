@@ -50,7 +50,7 @@ Documentation
   boundaries. Later quest work reserves Boot Power Trace Lantern for a true
   boot-time recorder.
 - Linked the procedure from the Boot Power Trace Lantern map, Field Lantern
-  capture procedure, Common Problems Mage map, Local Diagnostics Bundle map,
+  capture procedure, [Common Problems Mage map](../../03-operations/common-problems-mage-map.md), [Local Diagnostics Bundle map](../../03-operations/local-diagnostics-bundle-map.md),
   Power Integrity notes, and KMS Power notes.
 
 ## Boundary
@@ -80,3 +80,7 @@ The GPi Case 2 power trail gained a copy-paste post-boot evidence procedure:
 local, timestamped, inspectable, and short enough to stop before idle
 power-save risk. Later terminology maps this as a Bundle Collector Lantern,
 not a true Boot Power Trace Lantern.
+
+## Related work
+
+It reads alongside [GPi Case 2 Boot Power Trace Lantern Map](../../03-operations/gpi-case-2-boot-power-trace-lantern-map.md), [GPi Case 2 Field Lantern Capture Procedure](../../03-operations/gpi-case-2-field-lantern-capture-procedure.md), [GPi Case 2 Power Integrity Investigation Notes](../../02-hardware/gpi-case-2-power-integrity-investigation-notes.md) and [GPi Case 2 Hardware Findings and KMS Power Notes](../../02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md).

@@ -140,3 +140,7 @@ Completed before commit:
 The map has paths.
 
 The Lantern makes sure they still lead somewhere.
+
+## Related work
+
+The work itself was carried out under [Gather the Checkpoints into One Ledger](0006-gather-the-checkpoints-into-one-ledger.md). It reads alongside [Makefile](../../../Makefile).

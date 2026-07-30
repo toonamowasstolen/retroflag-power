@@ -49,7 +49,7 @@ Implementation
 - Wired interpreted `PowerSwitchEvent(SwitchOff)` into the existing dry-run/noop
   power intent path.
 - Kept the existing fake observer and CLI paths working.
-- Updated the GPIO read-only plan and architecture map to show the current
+- Updated the [GPIO read-only plan](../../03-operations/gpio-read-only-plan.md) and architecture map to show the current
   route: raw signal, configured latching switch interpretation, power switch
   event, power intent, policy, plan, noop execution, and breadcrumbs.
 
@@ -81,3 +81,7 @@ The [input](../../../internal/input) field kit now carries its first configured 
 Raw low and high observations still stay plain until a caller declares both the
 active signal and the active switch state. Once declared, `SwitchOff` can walk
 the dry-run/noop power path and leave breadcrumbs without touching hardware.
+
+## Related work
+
+The work itself was carried out under [Separate Raw Signals from Interpreted Inputs](0042-separate-raw-signals-from-interpreted-inputs.md). It reads alongside [app](../../../internal/app) and [System Overview](../../04-architecture/system-overview.md).

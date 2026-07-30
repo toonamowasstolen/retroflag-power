@@ -65,7 +65,7 @@ Documentation
   RetroFlag affiliation and to run name, domain, and trademark clearance before
   treating Arcadia Runtime as a public brand.
 - Linked the direction record from [`README.md`](../../../README.md), [`PROJECT_MANIFEST.md`](../../../PROJECT_MANIFEST.md), the
-  system overview, and the SafeShutdown replacement boundary map.
+  [system overview](../../04-architecture/system-overview.md), and the [SafeShutdown replacement boundary map](../../03-operations/safeshutdown-replacement-boundary-map.md).
 
 ## Validation
 

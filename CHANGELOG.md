@@ -16,3 +16,7 @@ last_updated: 2026-07-30
 
 ## v0.1.0
 - Initial bootstrap
+
+## Related work
+
+For where it sits in the project's arc, see [Verified Milestone Ledger](docs/00-project/MILESTONES.md) (the checkpoint log).

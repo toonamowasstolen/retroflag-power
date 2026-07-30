@@ -91,3 +91,7 @@ The GPi Case 2 now has a verified KMS campfire map in the project docs. Future
 power and input quests can gather around one field note instead of rediscovering
 which pins are claimed, which overlays work, and where the old RetroFlag scripts
 still carry sharp edges.
+
+## Related work
+
+The work itself was carried out under [Add a Hardware Read-Only GPIO Probe Command](0045-add-a-hardware-read-only-gpio-probe-command.md).

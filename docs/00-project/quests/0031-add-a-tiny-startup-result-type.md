@@ -81,3 +81,7 @@ Implementation
 Startup success now has its own tiny badge in the app satchel. The diagnostic
 lantern still shines the same way, while the map has a cleaner place for future
 startup result detail.
+
+## Related work
+
+The work itself was carried out under [Add an App Startup Diagnostic Snapshot](0027-add-an-app-startup-diagnostic-snapshot.md), [Add an App Startup Result Accessor](0029-add-an-app-startup-result-accessor.md) and [Document Startup Success Meaning](0030-document-startup-success-meaning.md).

@@ -432,3 +432,7 @@ work for gathering verified checkpoints into the canonical ledger.
 The compass can be corrected now because the old map has been preserved.
 
 Do not move the signposts until the follow-up quests begin.
+
+## Related work
+
+The decision behind it is recorded in [Adopt the Epoch, Milestone, and Quest Model](../../adr/0003-adopt-epoch-milestone-quest-model.md).

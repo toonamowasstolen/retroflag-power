@@ -73,3 +73,7 @@ The daemon now carries a tiny power-intent charm in its satchel. Pressing the
 internal dry-run power button produces a predictable noop plan and noop result,
 giving future hardware quests a clear map marker without waking the real power
 relics.
+
+## Related work
+
+It reads alongside [System Overview](../../04-architecture/system-overview.md).

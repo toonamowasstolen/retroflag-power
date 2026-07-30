@@ -301,3 +301,7 @@ visual inspection only:
   fixes.
 
 The next badge is not a mod. The next badge is a clearer map.
+
+## Related work
+
+The work itself was carried out under [Record GPi Case 2 Power-Save RCU Stall Incident](../00-project/quests/0064-record-gpi-case-2-power-save-rcu-stall-incident.md). It reads alongside [GPi Case 2 Hardware Findings and KMS Power Notes](gpi-case-2-hardware-findings-kms-power-notes.md), [GPi Case 2 Acceptance Checklist](../03-operations/gpi-case-2-acceptance-checklist.md), [SafeShutdown Replacement Boundary Map](../03-operations/safeshutdown-replacement-boundary-map.md), [GPi Case GPIO Probe Field Ledger](../03-operations/gpi-case-gpio-probe-ledger.md) and [Arcadia Runtime Migration Path](../04-architecture/arcadia-runtime-migration-path.md).

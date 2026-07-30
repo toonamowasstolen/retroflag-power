@@ -158,3 +158,7 @@ On unsupported platforms or uncertain GPIO access, it reports
 - [SafeShutdown replacement boundary map](docs/03-operations/safeshutdown-replacement-boundary-map.md)
 - [System overview](docs/04-architecture/system-overview.md)
 - [AI collaboration guide](docs/05-development/ai-collaboration.md)
+
+## Related work
+
+It rests on [Project Manifest](PROJECT_MANIFEST.md) (what it is made of).

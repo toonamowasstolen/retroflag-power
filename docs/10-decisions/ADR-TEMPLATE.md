@@ -204,3 +204,7 @@ Use it when future maintainers will ask:
 ```
 Why did we do it this way?
 ```
+
+## Related work
+
+For where it sits in the project's arc, see [Project Roadmap](../00-project/ROADMAP.md) (the stage this belongs to). It reads alongside [System Overview](../04-architecture/system-overview.md) and [AI Collaboration Guide](../05-development/ai-collaboration.md).

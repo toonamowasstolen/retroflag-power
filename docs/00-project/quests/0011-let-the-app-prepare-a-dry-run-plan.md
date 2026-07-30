@@ -62,3 +62,7 @@ Implementation
 
 This supports [M-0004 — Dry-Run Action Charm](../MILESTONES.md#m-0004) but does
 not create a new milestone.
+
+## Related work
+
+The work itself was carried out under [Thread the Planner Through the App Lifecycle](0010-thread-the-planner-through-the-app-lifecycle.md).

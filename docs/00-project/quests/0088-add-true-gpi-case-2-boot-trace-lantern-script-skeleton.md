@@ -138,3 +138,7 @@ The True Boot Trace Lantern now has its first handheld-safe Relic. It is still
 not a boot service and not a repair spell. It gives startup a bounded,
 scp-first Ledger with warm progress, missing-evidence honesty, and a final map
 for later SignalMage or Caster work.
+
+## Related work
+
+It reads alongside [GPi Case 2 True Boot Trace Lantern Design](../../03-operations/gpi-case-2-true-boot-trace-lantern-design.md), [GPi Case 2 Boot Power Trace Lantern Map](../../03-operations/gpi-case-2-boot-power-trace-lantern-map.md), [GPi Case 2 Field Lantern Capture Procedure](../../03-operations/gpi-case-2-field-lantern-capture-procedure.md), [GPi Case 2 Session Watch Lantern Design](../../03-operations/gpi-case-2-session-watch-lantern-design.md), [GPi Case 2 Session Watch Field Run Procedure](../../03-operations/gpi-case-2-session-watch-field-run-procedure.md) and [Human-Facing Field Lantern Script UX Standard](../../03-operations/human-facing-field-lantern-script-ux-standard.md).

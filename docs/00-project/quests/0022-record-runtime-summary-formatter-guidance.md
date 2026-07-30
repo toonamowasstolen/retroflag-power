@@ -75,3 +75,7 @@ Documentation
 
 This preserves the runtime map's internal formatter boundary. It does not wire
 the summary string into any user-facing lantern.
+
+## Related work
+
+The work itself was carried out under [Add a Runtime Snapshot Summary](0020-add-a-runtime-snapshot-summary.md) and [Add a Runtime Summary String](0021-add-a-runtime-summary-string.md).

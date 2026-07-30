@@ -80,3 +80,7 @@ Documentation
 
 The GPi Case 2 acceptance gate now has ready-to-fill field rows for the
 specific hardware unknowns discovered during the KMS and power investigation.
+
+## Related work
+
+The work itself was carried out under [Add the GPi Case 2 Acceptance Checklist](0053-add-the-gpi-case-2-acceptance-checklist.md) and [Map the SafeShutdown Replacement Boundaries](0048-map-the-safeshutdown-replacement-boundaries.md). It reads alongside [GPi Case GPIO Probe Field Ledger](../../03-operations/gpi-case-gpio-probe-ledger.md), [SafeShutdown Replacement Boundary Map](../../03-operations/safeshutdown-replacement-boundary-map.md) and [GPi Case 2 Hardware Findings and KMS Power Notes](../../02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md).

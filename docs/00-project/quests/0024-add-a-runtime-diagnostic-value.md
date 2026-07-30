@@ -77,3 +77,7 @@ Implementation
 
 This places a small diagnostic badge beside the runtime summary without
 lighting it up in user-facing output yet.
+
+## Related work
+
+The work itself was carried out under [Add a Runtime Snapshot Summary](0020-add-a-runtime-snapshot-summary.md), [Add a Runtime Summary String](0021-add-a-runtime-summary-string.md), [Record Runtime Summary Formatter Guidance](0022-record-runtime-summary-formatter-guidance.md) and [Add an App Runtime Summary Accessor](0023-add-an-app-runtime-summary-accessor.md).

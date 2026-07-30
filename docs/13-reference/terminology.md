@@ -1119,3 +1119,7 @@ A polished experience is the goal.
 Name things well.
 
 Build from there.
+
+## Related work
+
+It rests on [Why](../../WHY.md) (why this project exists), [Engineering Manifesto](../../ENGINEERING_MANIFESTO.md) (the engineering principles behind it), [Project Manifest](../../PROJECT_MANIFEST.md) (what it is made of) and [Project Charter](../../PROJECT_CHARTER.md) (what it promises). For where it sits in the project's arc, see [Project Roadmap](../00-project/ROADMAP.md) (the stage this belongs to). The decision behind it is recorded in [Adopt the Epoch, Milestone, and Quest Model](../adr/0003-adopt-epoch-milestone-quest-model.md).

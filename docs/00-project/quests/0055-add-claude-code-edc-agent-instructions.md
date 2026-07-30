@@ -73,3 +73,7 @@ Documentation
 The repo now has a Claude-facing gate sign and a reusable prompt satchel. Future
 assistant sessions have a clearer path back to the EDC before they touch the
 workbench.
+
+## Related work
+
+It reads alongside [EDC Quest Operating Rules](../edc-quest-operating-rules.md), [Documentation Structure and Governance Guide](../documentation-structure-and-governance.md) and [AI Collaboration Guide](../../05-development/ai-collaboration.md).

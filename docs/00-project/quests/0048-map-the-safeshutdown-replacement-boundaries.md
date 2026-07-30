@@ -69,7 +69,7 @@ Documentation
   latch documentation, fake policy modeling, dry-run service planning, unit
   drafting, hardware field testing, and only then replacement planning.
 - Linked the map from `README.md`, the GPi Case 2 hardware notes, the GPIO
-  read-only plan, and the GPi Case GPIO probe field ledger.
+  read-only plan, and the [GPi Case GPIO probe field ledger](../../03-operations/gpi-case-gpio-probe-ledger.md).
 
 ## Validation
 
@@ -95,3 +95,7 @@ Documentation
 The project now has a safety compass for the GPi Case 2 replacement trail.
 Future maintainers can see the behaviors `retroflag-powerd` must preserve
 before the stock RetroFlag script is touched.
+
+## Related work
+
+It reads alongside [GPi Case 2 Hardware Findings and KMS Power Notes](../../02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md) and [GPIO Read-Only Plan](../../03-operations/gpio-read-only-plan.md).

@@ -83,3 +83,7 @@ into package names, exported types, filenames, commands, or low-level technical
 identifiers when plain engineering names are clearer.
 
 Clarity wins whenever personality and precision compete.
+
+## Related work
+
+It rests on [Project Manifest](PROJECT_MANIFEST.md) (what it is made of). It reads alongside [EDC Quest Operating Rules](docs/00-project/edc-quest-operating-rules.md), [Documentation Structure and Governance Guide](docs/00-project/documentation-structure-and-governance.md), [Agent Prompt Templates](docs/00-project/agent-prompt-templates.md) and [AI Collaboration Guide](docs/05-development/ai-collaboration.md).

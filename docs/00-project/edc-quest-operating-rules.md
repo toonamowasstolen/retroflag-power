@@ -192,3 +192,7 @@ Likely source-of-truth docs for future agents:
 - [Local Diagnostics Bundle Map](../03-operations/local-diagnostics-bundle-map.md)
 - [GPi Case 2 Acceptance Checklist](../03-operations/gpi-case-2-acceptance-checklist.md)
 - [GPi Case GPIO Probe Field Ledger](../03-operations/gpi-case-gpio-probe-ledger.md)
+
+## Related work
+
+The work itself was carried out under [Add the EDC Quest Operating Rules](quests/0054-add-the-edc-quest-operating-rules.md) and [Add The Claude Session Start Checklist](quests/0056-add-the-claude-session-start-checklist.md).

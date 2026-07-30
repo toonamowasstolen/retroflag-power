@@ -270,3 +270,7 @@ This map depends on these existing ledgers:
 The mage should stay humble: classify what the local evidence supports, say
 what is missing, and leave every hardware-affecting action for a separate,
 reviewed quest.
+
+## Related work
+
+It reads alongside [GPi Case 2 Acceptance Checklist](gpi-case-2-acceptance-checklist.md).

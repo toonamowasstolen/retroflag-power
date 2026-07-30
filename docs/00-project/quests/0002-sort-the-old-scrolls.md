@@ -135,7 +135,7 @@ This quest should:
 - state storage.
 - large documentation rewrites.
 - deleting old docs without preserving unique content.
-- changing the project roadmap direction without discussion.
+- changing the [project roadmap](../ROADMAP.md) direction without discussion.
 
 ---
 
@@ -511,3 +511,7 @@ Sort carefully.
 Preserve history.
 
 Point to the canonical path.
+
+## Related work
+
+It rests on [Project Memory and Blueprint Capture](../../../PROJECT_MEMORY.md) (the running record of decisions and open questions). The decision behind it is recorded in [Architecture Decision Record Template](../../10-decisions/ADR-TEMPLATE.md).

@@ -78,3 +78,7 @@ The daemon now has a small command-line lantern for the first power-shaped
 behavior. Developers can press the dry-run power-button charm from the terminal,
 watch the planner and executor path light up, and keep every real hardware and
 shutdown spell safely asleep.
+
+## Related work
+
+It rests on [README](../../../README.md) (the project overview). The work itself was carried out under [Add a Dry-Run Power Intent Path](0035-add-a-dry-run-power-intent-path.md). It reads alongside [System Overview](../../04-architecture/system-overview.md).

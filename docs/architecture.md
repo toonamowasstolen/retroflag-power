@@ -25,3 +25,7 @@ last_updated: 2026-07-03
 ```text
 systemd -> daemon -> event bus -> handlers
 ```
+
+## Related work
+
+It reads alongside [Project Requirements](00-project/REQUIREMENTS.md).

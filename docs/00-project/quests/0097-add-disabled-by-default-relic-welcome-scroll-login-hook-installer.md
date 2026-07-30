@@ -77,7 +77,7 @@ assumed.
 - Added script checks to `make check-scripts`, including help, status,
   dry-run, plain/no-color, and temp-`HOME` install/uninstall checks.
 - Updated the login wiring design, Relic Welcome Scroll design, preview notes,
-  and Local Diagnostics Bundle Map.
+  and [Local Diagnostics Bundle Map](../../03-operations/local-diagnostics-bundle-map.md).
 
 ## scp-First Field Instructions
 
@@ -153,3 +153,7 @@ The Relic's SSH doorway now has an operator-run welcome scroll installer, but
 the default path remains quiet. The Field Lantern is in the satchel, `--status`
 is the first rune, `--install` is deliberate, and `--uninstall` keeps recovery
 plain.
+
+## Related work
+
+The work itself was carried out under [Design the Relic Welcome Scroll](0093-design-relic-welcome-scroll.md), [Add the Relic Welcome Scroll Preview Script](0094-add-relic-welcome-scroll-preview-script.md), [Record the First Relic Welcome Scroll Preview Run](0095-record-first-relic-welcome-scroll-preview-run.md) and [Design Recovery-First Relic Welcome Scroll Login Wiring](0096-design-recovery-first-relic-welcome-scroll-login-wiring.md). It reads alongside [GPi Case 2 Relic Welcome Scroll Login Wiring Design](../../03-operations/gpi-case-2-relic-welcome-scroll-login-wiring-design.md), [GPi Case 2 Relic Welcome Scroll Design](../../03-operations/gpi-case-2-relic-welcome-scroll-design.md) and [GPi Case 2 Relic Welcome Scroll Preview Notes](../../03-operations/gpi-case-2-relic-welcome-scroll-preview-notes.md). The script involved is [`gpi-case2-relic-welcome-scroll.sh`](../../../scripts/gpi-case2-relic-welcome-scroll.sh).

@@ -64,3 +64,7 @@ that it should be written up before the work starts.
 Open an issue describing what happened, on real hardware where applicable — include the exact
 `retroflag-powerd --version` output and, if it's a field/hardware issue, which `docs/03-operations/`
 procedure (if any) was being followed when it occurred.
+
+## Related work
+
+It rests on [Project Charter](PROJECT_CHARTER.md) (what it promises).

@@ -556,3 +556,7 @@ Leave moments of delight.
 And above all:
 
 > Never lose today's excitement in tomorrow's implementation.
+
+## Related work
+
+It rests on [Why](WHY.md) (why this project exists), [Project Memory and Blueprint Capture](PROJECT_MEMORY.md) (the running record of decisions and open questions), [Engineering Manifesto](ENGINEERING_MANIFESTO.md) (the engineering principles behind it) and [Project Charter](PROJECT_CHARTER.md) (what it promises). For where it sits in the project's arc, see [Project Roadmap](docs/00-project/ROADMAP.md) (the stage this belongs to). Vocabulary is fixed by [Terminology Guide](docs/13-reference/terminology.md) (which word to use). The decision behind it is recorded in [Adopt the Epoch, Milestone, and Quest Model](docs/adr/0003-adopt-epoch-milestone-quest-model.md).

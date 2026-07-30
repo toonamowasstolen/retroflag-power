@@ -73,3 +73,7 @@ Implementation
 
 This supports the dry-run planning and execution path plus the Status Badge
 work. It does not create a new milestone.
+
+## Related work
+
+The work itself was carried out under [Thread the Status Badge Through the App Lifecycle](0008-thread-the-status-badge-through-the-app-lifecycle.md), [Execute the Prepared Dry-Run Plan Inside the App](0016-execute-the-prepared-dry-run-plan-inside-the-app.md) and [Add an App Runtime Snapshot](0019-add-an-app-runtime-snapshot.md).

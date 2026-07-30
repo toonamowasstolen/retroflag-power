@@ -213,3 +213,7 @@ Useful future quests:
 The compass for now is simple: keep the current lantern honest, keep the
 prototype safe, and let the larger Arcadia Runtime trail open only when the
 field ledgers say it is ready.
+
+## Related work
+
+It rests on [README](../../README.md) (the project overview) and [Project Manifest](../../PROJECT_MANIFEST.md) (what it is made of). The work itself was carried out under [Map the Arcadia Runtime Migration Path](../00-project/quests/0050-map-the-arcadia-runtime-migration-path.md), [Map the Local Diagnostics Bundle](../00-project/quests/0051-map-the-local-diagnostics-bundle.md), [Map the Installer and Migration Toolkit](../00-project/quests/0052-map-the-installer-and-migration-toolkit.md) and [Add the GPi Case 2 Acceptance Checklist](../00-project/quests/0053-add-the-gpi-case-2-acceptance-checklist.md). It reads alongside [Save Room Tech and Arcadia Runtime Direction](../00-project/project-direction-save-room-arcadia.md), [System Overview](system-overview.md) and [SafeShutdown Replacement Boundary Map](../03-operations/safeshutdown-replacement-boundary-map.md).

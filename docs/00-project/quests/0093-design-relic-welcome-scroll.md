@@ -121,3 +121,7 @@ The Relic Welcome Scroll is now designed as a support-lane greeting, not a
 boot change. Future work has a safe first shape: standalone, read-only,
 interactive-only, plain-capable, no-color aware, fast to skip, and friendly to
 the scp-first field trail.
+
+## Related work
+
+The work itself was carried out under [Design GPi Case 2 First Spark and Boot Veil UX](0089-design-gpi-case-2-first-spark-and-boot-veil-ux.md), [Record the First True GPi Case 2 Boot Trace Field Run](0091-record-first-true-gpi-case-2-boot-trace-field-run.md) and [Refine True Boot Trace First Spark Evidence Capture](0092-refine-true-boot-trace-first-spark-evidence-capture.md). It reads alongside [GPi Case 2 First Spark / Boot Veil / Relic Welcome Scroll Design](../../03-operations/gpi-case-2-first-spark-boot-veil-welcome-scroll-design.md), [GPi Case 2 True Boot Trace Lantern Design](../../03-operations/gpi-case-2-true-boot-trace-lantern-design.md), [GPi Case 2 Session Watch Lantern Design](../../03-operations/gpi-case-2-session-watch-lantern-design.md) and [GPi Case 2 Recovery-First Field Procedure](../../03-operations/gpi-case-2-recovery-first-field-procedure.md).

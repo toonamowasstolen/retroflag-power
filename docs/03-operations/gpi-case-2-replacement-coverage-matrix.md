@@ -90,7 +90,7 @@ replacement.
 | Kernel-stall/RCU-stall emergency recovery | Kernel, power-save/display path, board behavior, or unknown | QUEST-0064 records RCU stall messages, no SSH, no ping, side-switch off failure, top-button visible-state toggling, and physical CM4 removal as the only observed stop. | Forbidden until proven | Find a reversible, mapped, maintainer-approved recovery path through public docs, board photos, electrical review, and separate decision before deeper risky tests. | Critical |
 | Session Watch Lantern | Future local read-only watcher only | Post-resume Bundle Collector satchels are useful, but they cannot prove what happened during sleep/resume unless a watcher was already running. | Defer | Map a watcher that records pre-sleep state, records post-resume state when available, tracks `get_throttled`, temperature, frontend, and input hints over time, and avoids telemetry and automatic fixes. | Medium |
 | Local diagnostics coverage | Future Linux userspace lanterns only | Local diagnostics bundle map and acceptance checklist describe future local-only support output; no implementation is authorized here. | Defer | Define read-only diagnostics that summarize GPIO vocabulary, script presence, KMS state, audio state, logs, and checklist evidence without network submission. | Low |
-| Field checklist coverage | EDC acceptance checklist | GPi Case 2 acceptance checklist has rows for power, GPIO, display, dock, audio, sleep/resume, RetroPie, diagnostics, rollback, and public readiness. | Must preserve | Keep checklist rows current as tests are performed; unknown remains `Unknown` until evidence exists. | Low |
+| Field checklist coverage | EDC acceptance checklist | [GPi Case 2 acceptance checklist](gpi-case-2-acceptance-checklist.md) has rows for power, GPIO, display, dock, audio, sleep/resume, RetroPie, diagnostics, rollback, and public readiness. | Must preserve | Keep checklist rows current as tests are performed; unknown remains `Unknown` until evidence exists. | Low |
 
 ## Replacement Readiness Gates
 
@@ -158,3 +158,7 @@ Before any emergency reset or cutoff mod is considered, prove:
 This matrix does not make RetroFlag Power replacement-ready. It names the
 coverage the future runtime must earn before the stock script leaves the
 satchel.
+
+## Related work
+
+The work itself was carried out under [Record GPi Case 2 Power-Save RCU Stall Incident](../00-project/quests/0064-record-gpi-case-2-power-save-rcu-stall-incident.md). It reads alongside [GPi Case 2 SafeShutdown Script Behavior Map](gpi-case-2-safeshutdown-script-behavior-map.md), [SafeShutdown Replacement Boundary Map](safeshutdown-replacement-boundary-map.md), [GPi Case GPIO Probe Field Ledger](gpi-case-gpio-probe-ledger.md), [GPi Case 2 Hardware Findings and KMS Power Notes](../02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md), [GPi Case 2 Emergency Recovery Research Ledger](../02-hardware/gpi-case-2-emergency-recovery-research-ledger.md) and [Arcadia Runtime Migration Path](../04-architecture/arcadia-runtime-migration-path.md).

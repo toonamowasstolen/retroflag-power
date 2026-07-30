@@ -93,3 +93,7 @@ raw wire report, not a power decision.
 The daemon now has its first hardware-facing read-only lantern. It can look at
 a candidate GPi Case pin, report what the wire appears to say, and keep the
 satchel closed on shutdown, services, persistence, and interpretation.
+
+## Related work
+
+It rests on [README](../../../README.md) (the project overview). The work itself was carried out under [Add a Fake Power Signal CLI Path](0044-add-a-fake-power-signal-cli-path.md). It reads alongside [GPIO Read-Only Plan](../../03-operations/gpio-read-only-plan.md).

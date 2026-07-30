@@ -206,3 +206,7 @@ Until the project deliberately chooses a public name, maintainers should:
 The current compass is simple: build carefully under RetroFlag Power, map the
 field honestly, and let Save Room Tech and Arcadia Runtime remain the larger
 trail markers until the project is ready for them.
+
+## Related work
+
+It rests on [README](../../README.md) (the project overview) and [Project Manifest](../../PROJECT_MANIFEST.md) (what it is made of). The work itself was carried out under [Record the Save Room Tech and Arcadia Runtime Direction](quests/0049-record-the-save-room-tech-and-arcadia-runtime-direction.md), [Map the Local Diagnostics Bundle](quests/0051-map-the-local-diagnostics-bundle.md) and [Map the Installer and Migration Toolkit](quests/0052-map-the-installer-and-migration-toolkit.md). It reads alongside [System Overview](../04-architecture/system-overview.md) and [SafeShutdown Replacement Boundary Map](../03-operations/safeshutdown-replacement-boundary-map.md).

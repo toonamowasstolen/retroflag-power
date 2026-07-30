@@ -339,3 +339,7 @@ verdict, charger verdict, or emulator-performance verdict.
 Next rune: Repeat one True Boot Trace pass with exact handheld timestamps and
 LED/display/frontend notes beside the script artifact, then compare whether
 `frontend_detected_ever: no` matches the actual screen.
+
+## Related work
+
+It reads alongside [GPi Case 2 True Boot Trace Lantern Design](gpi-case-2-true-boot-trace-lantern-design.md), [GPi Case 2 True Boot Trace Field Run Procedure](gpi-case-2-true-boot-trace-field-run-procedure.md), [GPi Case 2 First Spark / Boot Veil / Relic Welcome Scroll Design](gpi-case-2-first-spark-boot-veil-welcome-scroll-design.md), [GPi Case 2 Boot Power Trace Lantern Map](gpi-case-2-boot-power-trace-lantern-map.md), [GPi Case 2 Session Watch Evidence Ledger](gpi-case-2-session-watch-evidence-ledger.md), [Common Problems Mage Map](common-problems-mage-map.md), [Local Diagnostics Bundle Map](local-diagnostics-bundle-map.md) and [GPi Case 2 Recovery-First Field Procedure](gpi-case-2-recovery-first-field-procedure.md).

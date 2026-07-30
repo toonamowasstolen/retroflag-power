@@ -81,3 +81,7 @@ Documentation
 The startup success badge now has a clear label in the architecture spellbook,
 keeping future quests from mistaking diagnostic availability for a complete
 startup failure taxonomy.
+
+## Related work
+
+The work itself was carried out under [Add an App Startup Diagnostic Snapshot](0027-add-an-app-startup-diagnostic-snapshot.md), [Document Runtime vs Startup Diagnostics](0028-document-runtime-vs-startup-diagnostics.md) and [Add an App Startup Result Accessor](0029-add-an-app-startup-result-accessor.md).

@@ -100,3 +100,7 @@ Before any later quest maps raw signal states into switch states, review the
 ledger for repeated observations across the same device, image, command, pin,
 case control position, and docked or handheld context. The compass point should
 come from evidence, not from the first low or high value the lantern sees.
+
+## Related work
+
+The work itself was carried out under [Add a GPi Case GPIO Probe Field Ledger](../00-project/quests/0047-add-a-gpi-case-gpio-probe-field-ledger.md). It reads alongside [GPIO Read-Only Plan](gpio-read-only-plan.md) and [GPi Case 2 Hardware Findings and KMS Power Notes](../02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md).

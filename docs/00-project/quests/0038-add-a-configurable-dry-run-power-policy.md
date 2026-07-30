@@ -87,3 +87,7 @@ The daemon now carries a tiny policy compass in its config satchel. It points
 the dry-run power-button route at `noop`, rejects unknown paths clearly, and
 keeps every real power relic asleep until a future quest deliberately earns
 that behavior.
+
+## Related work
+
+It rests on [README](../../../README.md) (the project overview). The work itself was carried out under [Record Power Intent Events](0037-record-power-intent-events.md). It reads alongside [retroflag-powerd](../../../cmd/retroflag-powerd) and [System Overview](../../04-architecture/system-overview.md).

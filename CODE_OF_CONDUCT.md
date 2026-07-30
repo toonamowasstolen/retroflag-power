@@ -69,3 +69,7 @@ something AI must not do unilaterally.
 
 This document is a durable artifact — a substantive change to it (not a typo fix) gets logged in
 `PROJECT_MEMORY.md`, same as any other foundational doc.
+
+## Related work
+
+It rests on [Contributing](CONTRIBUTING.md) (how to take part).

@@ -40,7 +40,7 @@ This document defines the high-level architecture for RetroFlag Power.
 
 It is not the final design for every package, interface, or command.
 
-It is the first courthouse: the place where the project requirements, product vision, hardware reality, and implementation path can meet without chaos.
+It is the first courthouse: the place where the project requirements, [product vision](../01-product/VISION.md), hardware reality, and implementation path can meet without chaos.
 
 The wider naming and platform direction is tracked separately in
 [Save Room Tech and Arcadia Runtime Direction](../00-project/project-direction-save-room-arcadia.md).
@@ -1426,3 +1426,7 @@ But before the daemon breathes, the reference hardware should be documented.
 The courthouse has been built.
 
 Now bring in the first witness: the GPi Case 2.
+
+## Related work
+
+It rests on [Why](../../WHY.md) (why this project exists), [Project Memory and Blueprint Capture](../../PROJECT_MEMORY.md) (the running record of decisions and open questions), [Project Manifest](../../PROJECT_MANIFEST.md) (what it is made of) and [Project Charter](../../PROJECT_CHARTER.md) (what it promises). For where it sits in the project's arc, see [Verified Milestone Ledger](../00-project/MILESTONES.md) (the checkpoint log) and [Project Roadmap](../00-project/ROADMAP.md) (the stage this belongs to). Vocabulary is fixed by [Terminology Guide](../13-reference/terminology.md) (which word to use) and [Glossary](../13-reference/glossary.md) (what the words mean). The work itself was carried out under [Add a Dry-Run Power Intent Path](../00-project/quests/0035-add-a-dry-run-power-intent-path.md), [Add a Dry-Run Power Intent CLI Flag](../00-project/quests/0036-add-a-dry-run-power-intent-cli-flag.md), [Add a Configurable Dry-Run Power Policy](../00-project/quests/0038-add-a-configurable-dry-run-power-policy.md), [Add a GPIO Observer Interface](../00-project/quests/0039-add-a-gpio-observer-interface.md) and [Add a Latching Power Switch Interpreter](../00-project/quests/0043-add-a-latching-power-switch-interpreter.md).

@@ -119,3 +119,7 @@ and after, not by eye.
 
 Landed 2026-07-14 (see `milestones.md#m-0008`). Confirmed via `git status` (renames tracked, not
 delete+recreate), a full link-checker pass (0 broken), and a direct `find` for stray READMEs.
+
+## Related work
+
+It reads alongside [Documentation Structure and Governance Guide](../documentation-structure-and-governance.md).

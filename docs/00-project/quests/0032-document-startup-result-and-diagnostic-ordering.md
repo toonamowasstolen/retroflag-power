@@ -85,3 +85,7 @@ Documentation
 The startup result badge and diagnostic lantern now have their ordering written
 in the architecture spellbook. Future startup failure work has a clearer place
 to add detail if diagnostic capture ever becomes its own fallible step.
+
+## Related work
+
+The work itself was carried out under [Add an App Startup Diagnostic Snapshot](0027-add-an-app-startup-diagnostic-snapshot.md), [Document Runtime vs Startup Diagnostics](0028-document-runtime-vs-startup-diagnostics.md), [Add an App Startup Result Accessor](0029-add-an-app-startup-result-accessor.md), [Document Startup Success Meaning](0030-document-startup-success-meaning.md) and [Add a Tiny Startup Result Type](0031-add-a-tiny-startup-result-type.md).

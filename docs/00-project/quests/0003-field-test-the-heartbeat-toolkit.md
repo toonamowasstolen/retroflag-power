@@ -275,3 +275,7 @@ The toolkit is ready for a future field test.
 It is not yet permission to replace the old path.
 
 Test the heartbeat. Keep the safety net.
+
+## Related work
+
+The decisions behind it are recorded in [Use systemd Instead of rc.local](../../adr/0001-use-systemd.md) and [Use a Small Context-Driven Daemon Lifecycle](../../adr/0002-use-small-context-driven-daemon-lifecycle.md). The work itself was carried out under [Craft the Heartbeat Toolkit](0001-craft-the-heartbeat-toolkit.md). It reads alongside [Project Requirements](../REQUIREMENTS.md), [GPi Case 2 Reference Hardware](../../02-hardware/gpi-case-2.md) and [System Overview](../../04-architecture/system-overview.md).

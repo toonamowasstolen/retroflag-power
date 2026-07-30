@@ -81,3 +81,7 @@ The charter now carries the project spirit beside the technical map. Future
 reviews and handoffs have a clearer badge to name the victory, preserve the
 state, and keep the field kit practical without forcing charm into code that
 should stay plain.
+
+## Related work
+
+It rests on [Project Manifest](../../../PROJECT_MANIFEST.md) (what it is made of) and [Engineering Manifesto](../../../ENGINEERING_MANIFESTO.md) (the engineering principles behind it). It reads alongside [](/).

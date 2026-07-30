@@ -407,3 +407,7 @@ This decision gives RetroFlag Power a small body, a clean breath, and enough bon
 The dream has entered the waking world.
 
 Now its first breath has a memory crystal.
+
+## Related work
+
+The decision behind it is recorded in [Architecture Decision Record Template](../10-decisions/ADR-TEMPLATE.md).

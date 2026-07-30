@@ -141,3 +141,7 @@ what completed, how long it really ran, how many samples came home, whether
 the frontend appeared, which raw throttled values were seen, and how much
 evidence is missing. The full rows remain the source of truth, and the
 summary keeps the throttle rune humble until later interpretation.
+
+## Related work
+
+The work itself was carried out under [Design the GPi Case 2 Session Watch Lantern](0081-design-gpi-case-2-session-watch-lantern.md), [Add the GPi Case 2 Session Watch Lantern Script Skeleton](0082-add-gpi-case-2-session-watch-lantern-script-skeleton.md), [Add the GPi Case 2 Session Watch Field Run Procedure](0083-add-gpi-case-2-session-watch-field-run-procedure.md), [Add the GPi Case 2 Session Watch Evidence Ledger](0084-add-gpi-case-2-session-watch-evidence-ledger.md) and [Record the First GPi Case 2 Session Watch Field Run](0085-record-first-gpi-case-2-session-watch-field-run.md). It reads alongside [GPi Case 2 Session Watch Field Run Procedure](../../03-operations/gpi-case-2-session-watch-field-run-procedure.md), [GPi Case 2 Session Watch Evidence Ledger](../../03-operations/gpi-case-2-session-watch-evidence-ledger.md) and [GPi Case 2 Session Watch Lantern Design](../../03-operations/gpi-case-2-session-watch-lantern-design.md).

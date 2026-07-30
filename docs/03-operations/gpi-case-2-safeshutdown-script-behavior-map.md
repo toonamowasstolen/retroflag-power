@@ -411,3 +411,7 @@ power path.
 - What recovery path exists when Linux stalls and software shutdown is gone?
 
 The map stays humble until the field evidence earns a brighter badge.
+
+## Related work
+
+The work itself was carried out under [Record GPi Case 2 Power-Save RCU Stall Incident](../00-project/quests/0064-record-gpi-case-2-power-save-rcu-stall-incident.md). It reads alongside [GPi Case 2 Acceptance Checklist](gpi-case-2-acceptance-checklist.md), [SafeShutdown Replacement Boundary Map](safeshutdown-replacement-boundary-map.md), [GPi Case GPIO Probe Field Ledger](gpi-case-gpio-probe-ledger.md), [GPi Case 2 Hardware Findings and KMS Power Notes](../02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md), [GPi Case 2 Emergency Recovery Research Ledger](../02-hardware/gpi-case-2-emergency-recovery-research-ledger.md) and [Arcadia Runtime Migration Path](../04-architecture/arcadia-runtime-migration-path.md).

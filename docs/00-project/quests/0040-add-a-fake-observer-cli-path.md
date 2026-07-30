@@ -84,3 +84,7 @@ go run ./cmd/retroflag-powerd --fake-power-button-observer
 The daemon now has a command-line observer charm in its satchel. Developers can
 emit one fake power-button event, watch it travel through the same input path as
 future GPIO work, and keep the result dry-run, noop-only, and easy to verify.
+
+## Related work
+
+It rests on [README](../../../README.md) (the project overview). The work itself was carried out under [Add a GPIO Observer Interface](0039-add-a-gpio-observer-interface.md). It reads alongside [events](../../../internal/events) and [System Overview](../../04-architecture/system-overview.md).

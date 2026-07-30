@@ -602,3 +602,7 @@ both.
 ### Quest
 
 [0002-sort-the-old-scrolls](quests/0002-sort-the-old-scrolls.md)
+
+## Related work
+
+For where it sits in the project's arc, see [Project Roadmap](ROADMAP.md) (the stage this belongs to). Vocabulary is fixed by [Terminology Guide](../13-reference/terminology.md) (which word to use). The decision behind it is recorded in [Adopt the Epoch, Milestone, and Quest Model](../adr/0003-adopt-epoch-milestone-quest-model.md). The work itself was carried out under [Gather the Checkpoints into One Ledger](quests/0006-gather-the-checkpoints-into-one-ledger.md).

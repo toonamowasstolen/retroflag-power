@@ -1052,3 +1052,7 @@ If the word shapes how people understand the project, define it.
 The dream has words.
 
 Keep them clear.
+
+## Related work
+
+It rests on [Project Memory and Blueprint Capture](../../PROJECT_MEMORY.md) (the running record of decisions and open questions), [Project Charter](../../PROJECT_CHARTER.md) (what it promises) and [Project Manifest](../../PROJECT_MANIFEST.md) (what it is made of). For where it sits in the project's arc, see [Project Roadmap](../00-project/ROADMAP.md) (the stage this belongs to). The decision behind it is recorded in [Adopt the Epoch, Milestone, and Quest Model](../adr/0003-adopt-epoch-milestone-quest-model.md).

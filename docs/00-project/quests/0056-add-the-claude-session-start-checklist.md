@@ -73,3 +73,7 @@ Documentation
 Future sessions now begin at the map table. The agent names the quest, lights
 the lantern, checks the hard boundaries, and points to the intended path before
 touching the files.
+
+## Related work
+
+It reads alongside [EDC Quest Operating Rules](../edc-quest-operating-rules.md), [Documentation Structure and Governance Guide](../documentation-structure-and-governance.md) and [AI Collaboration Guide](../../05-development/ai-collaboration.md).

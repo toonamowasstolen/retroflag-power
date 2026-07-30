@@ -440,3 +440,7 @@ Do not implement automatic boot start, systemd activation, GPIO capture,
 shutdown behavior, sleep/resume behavior, repair suggestions, or Lantern
 Dispatch in the first implementation. The first useful rune is a quiet,
 honest Ledger.
+
+## Related work
+
+It reads alongside [GPi Case 2 Boot Power Trace Lantern Map](gpi-case-2-boot-power-trace-lantern-map.md), [GPi Case 2 Boot Power Trace Capture Procedure](gpi-case-2-boot-power-trace-capture-procedure.md), [GPi Case 2 Session Watch Lantern Design](gpi-case-2-session-watch-lantern-design.md), [GPi Case 2 Session Watch Field Run Procedure](gpi-case-2-session-watch-field-run-procedure.md), [GPi Case 2 Session Watch Evidence Ledger](gpi-case-2-session-watch-evidence-ledger.md), [GPi Case 2 Field Lantern Capture Procedure](gpi-case-2-field-lantern-capture-procedure.md), [Human-Facing Field Lantern Script UX Standard](human-facing-field-lantern-script-ux-standard.md), [Common Problems Mage Map](common-problems-mage-map.md), [Local Diagnostics Bundle Map](local-diagnostics-bundle-map.md), [GPi Case 2 Recovery-First Field Procedure](gpi-case-2-recovery-first-field-procedure.md), [Arcadia Runtime Migration Path](../04-architecture/arcadia-runtime-migration-path.md), [GPi Case 2 Hardware Findings and KMS Power Notes](../02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md) and [GPi Case 2 Power Integrity Investigation Notes](../02-hardware/gpi-case-2-power-integrity-investigation-notes.md).

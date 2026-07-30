@@ -85,3 +85,7 @@ Documentation
 The diagnostics trail now has a clearer local skeleton: enough structure for a
 future implementation quest to follow, and enough safety rail to keep today's
 prototype read-only.
+
+## Related work
+
+The work itself was carried out under [Map the Local Diagnostics Bundle](0051-map-the-local-diagnostics-bundle.md). It reads alongside [Claude Code Instructions](../../../CLAUDE.md), [EDC Quest Operating Rules](../edc-quest-operating-rules.md), [Arcadia Runtime Migration Path](../../04-architecture/arcadia-runtime-migration-path.md), [GPi Case 2 Acceptance Checklist](../../03-operations/gpi-case-2-acceptance-checklist.md), [GPi Case GPIO Probe Field Ledger](../../03-operations/gpi-case-gpio-probe-ledger.md), [SafeShutdown Replacement Boundary Map](../../03-operations/safeshutdown-replacement-boundary-map.md) and [GPi Case 2 Hardware Findings and KMS Power Notes](../../02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md).

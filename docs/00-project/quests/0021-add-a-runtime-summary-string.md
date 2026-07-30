@@ -72,3 +72,7 @@ Implementation
 
 This keeps the runtime map ready for later diagnostics. It does not wire the
 new line into any lantern yet.
+
+## Related work
+
+The work itself was carried out under [Add an App Runtime Snapshot](0019-add-an-app-runtime-snapshot.md) and [Add a Runtime Snapshot Summary](0020-add-a-runtime-snapshot-summary.md).
