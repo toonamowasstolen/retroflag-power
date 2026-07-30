@@ -11,11 +11,11 @@ audience:
   - Future Maintainers
 purpose: Leave deterministic internal breadcrumbs as the dry-run power intent moves through the app path.
 related:
-  - internal/events
-  - internal/app
-  - internal/planner
-  - internal/executor
-  - docs/04-architecture/system-overview.md
+  - ../../../internal/events
+  - ../../../internal/app
+  - ../../../internal/planner
+  - ../../../internal/executor
+  - ../../04-architecture/system-overview.md
 last_updated: 2026-07-07
 ---
 
@@ -38,12 +38,12 @@ Implementation
 
 ## Outcome
 
-- Reused the internal `events` package for power-intent breadcrumbs.
+- Reused the internal [`events`](../../../internal/events) package for power-intent breadcrumbs.
 - Added stable event types for:
   - `power.intent_received`
   - `power.dry_run_plan_prepared`
   - `power.noop_execution_completed`
-- The app records the dry-run power intent route as it receives the intent,
+- The [app](../../../internal/app) records the dry-run power intent route as it receives the intent,
   prepares the noop plan, and completes noop execution.
 - `App.Events()` exposes a read-only snapshot for tests and future diagnostics.
 - Existing lifecycle logs are also retained internally through the same small
@@ -75,3 +75,7 @@ The first power-intent path now leaves three small lantern marks in the app's
 internal ledger: intent received, dry-run plan prepared, and noop execution
 completed. These breadcrumbs give future GPIO, shutdown, and service quests a
 stable map without changing today's safe dry-run boundary.
+
+## Related work
+
+It reads alongside [planner](../../../internal/planner), [executor](../../../internal/executor) and [System Overview](../../04-architecture/system-overview.md).

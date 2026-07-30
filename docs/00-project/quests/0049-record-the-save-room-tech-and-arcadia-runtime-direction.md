@@ -12,11 +12,11 @@ audience:
   - Hardware Porters
 purpose: Add a documentation-only project direction record that captures the current RetroFlag Power prototype, the future Save Room Tech umbrella, the preferred Arcadia Runtime direction, the naming taxonomy, and the privacy-first platform path.
 related:
-  - docs/00-project/project-direction-save-room-arcadia.md
-  - README.md
-  - PROJECT_MANIFEST.md
-  - docs/04-architecture/system-overview.md
-  - docs/03-operations/safeshutdown-replacement-boundary-map.md
+  - ../project-direction-save-room-arcadia.md
+  - ../../../README.md
+  - ../../../PROJECT_MANIFEST.md
+  - ../../04-architecture/system-overview.md
+  - ../../03-operations/safeshutdown-replacement-boundary-map.md
 last_updated: 2026-07-07
 ---
 
@@ -64,8 +64,8 @@ Documentation
 - Captured rename caution for public v1.0, including the need to avoid implied
   RetroFlag affiliation and to run name, domain, and trademark clearance before
   treating Arcadia Runtime as a public brand.
-- Linked the direction record from `README.md`, `PROJECT_MANIFEST.md`, the
-  system overview, and the SafeShutdown replacement boundary map.
+- Linked the direction record from [`README.md`](../../../README.md), [`PROJECT_MANIFEST.md`](../../../PROJECT_MANIFEST.md), the
+  [system overview](../../04-architecture/system-overview.md), and the [SafeShutdown replacement boundary map](../../03-operations/safeshutdown-replacement-boundary-map.md).
 
 ## Validation
 

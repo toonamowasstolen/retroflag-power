@@ -12,12 +12,12 @@ audience:
   - Hardware Porters
 purpose: Add a documentation-only staged migration map for moving from the current RetroFlag Power GPi Case 2 prototype toward the broader Arcadia Runtime direction.
 related:
-  - docs/04-architecture/arcadia-runtime-migration-path.md
-  - README.md
-  - PROJECT_MANIFEST.md
-  - docs/00-project/project-direction-save-room-arcadia.md
-  - docs/04-architecture/system-overview.md
-  - docs/03-operations/safeshutdown-replacement-boundary-map.md
+  - ../../04-architecture/arcadia-runtime-migration-path.md
+  - ../../../README.md
+  - ../../../PROJECT_MANIFEST.md
+  - ../project-direction-save-room-arcadia.md
+  - ../../04-architecture/system-overview.md
+  - ../../03-operations/safeshutdown-replacement-boundary-map.md
 last_updated: 2026-07-07
 ---
 
@@ -65,10 +65,10 @@ Documentation
 - Added explicit no-go guidance for mid-discovery renames, premature hardware
   broadening, telemetry before consent, implied RetroFlag endorsement, and
   unsafe SafeShutdown replacement.
-- Linked the migration path from `README.md`, `PROJECT_MANIFEST.md`,
-  `docs/00-project/project-direction-save-room-arcadia.md`,
-  `docs/04-architecture/system-overview.md`, and
-  `docs/03-operations/safeshutdown-replacement-boundary-map.md`.
+- Linked the migration path from [`README.md`](../../../README.md), [`PROJECT_MANIFEST.md`](../../../PROJECT_MANIFEST.md),
+  [`docs/00-project/project-direction-save-room-arcadia.md`](../project-direction-save-room-arcadia.md),
+  [`docs/04-architecture/system-overview.md`](../../04-architecture/system-overview.md), and
+  [`docs/03-operations/safeshutdown-replacement-boundary-map.md`](../../03-operations/safeshutdown-replacement-boundary-map.md).
 
 ## Validation
 

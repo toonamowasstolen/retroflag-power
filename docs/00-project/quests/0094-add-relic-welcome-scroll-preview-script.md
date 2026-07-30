@@ -75,7 +75,7 @@ services, boot config, GPIO, display, shutdown, sleep, or resume behavior.
 - Added syntax, help, normal, `--plain`, and `NO_COLOR` smoke checks to
   `make check-scripts`.
 - Updated the Relic Welcome Scroll design, First Spark / Boot Veil / Welcome
-  Scroll design, and Local Diagnostics Bundle Map with script links and
+  Scroll design, and [Local Diagnostics Bundle Map](../../03-operations/local-diagnostics-bundle-map.md) with script links and
   scp-first preview examples.
 
 ## Manual Preview Commands
@@ -140,3 +140,7 @@ ssh retropi@gpi 'NO_COLOR=1 /home/retropi/gpi-case2-relic-welcome-scroll.sh'
 The Relic now has a welcome scroll preview in the satchel, but it has not been
 stitched into the doorway. Operators can copy it to `/home/retropi/`, run it by
 hand, and keep SSH login boring until a later recovery-first wiring quest.
+
+## Related work
+
+The work itself was carried out under [Design the Relic Welcome Scroll](0093-design-relic-welcome-scroll.md). It reads alongside [GPi Case 2 Relic Welcome Scroll Design](../../03-operations/gpi-case-2-relic-welcome-scroll-design.md) and [GPi Case 2 First Spark / Boot Veil / Relic Welcome Scroll Design](../../03-operations/gpi-case-2-first-spark-boot-veil-welcome-scroll-design.md).

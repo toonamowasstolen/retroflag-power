@@ -11,16 +11,16 @@ audience:
   - Future Maintainers
 purpose: Add a small app-level runtime summary accessor for internal diagnostics.
 related:
-  - internal/app
-  - docs/00-project/quests/0019-add-an-app-runtime-snapshot.md
-  - docs/00-project/quests/0020-add-a-runtime-snapshot-summary.md
-  - docs/00-project/quests/0021-add-a-runtime-summary-string.md
+  - ../../../internal/app
+  - 0019-add-an-app-runtime-snapshot.md
+  - 0020-add-a-runtime-snapshot-summary.md
+  - 0021-add-a-runtime-summary-string.md
 last_updated: 2026-07-06
 ---
 
 # QUEST-0023 - Add an App Runtime Summary Accessor
 
-> Add a small lantern hook to the app runtime map so callers can read the
+> Add a small lantern hook to the [app](../../../internal/app) runtime map so callers can read the
 > current summary charm without unpacking the whole snapshot satchel first.
 
 ## Quest Status
@@ -74,3 +74,7 @@ Implementation
 
 This gives future internal diagnostic lanterns a shorter route to the runtime
 summary. It does not add a new formatter or print the summary anywhere yet.
+
+## Related work
+
+The work itself was carried out under [Add an App Runtime Snapshot](0019-add-an-app-runtime-snapshot.md), [Add a Runtime Snapshot Summary](0020-add-a-runtime-snapshot-summary.md) and [Add a Runtime Summary String](0021-add-a-runtime-summary-string.md).

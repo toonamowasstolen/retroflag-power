@@ -11,13 +11,13 @@ audience:
   - Future Maintainers
 purpose: Add the smallest safe CLI doorway for future local diagnostics without collecting diagnostics yet.
 related:
-  - CLAUDE.md
-  - docs/00-project/edc-quest-operating-rules.md
-  - docs/03-operations/local-diagnostics-bundle-map.md
-  - docs/03-operations/gpi-case-2-acceptance-checklist.md
-  - docs/03-operations/gpi-case-gpio-probe-ledger.md
-  - docs/03-operations/safeshutdown-replacement-boundary-map.md
-  - docs/04-architecture/arcadia-runtime-migration-path.md
+  - ../../../CLAUDE.md
+  - ../edc-quest-operating-rules.md
+  - ../../03-operations/local-diagnostics-bundle-map.md
+  - ../../03-operations/gpi-case-2-acceptance-checklist.md
+  - ../../03-operations/gpi-case-gpio-probe-ledger.md
+  - ../../03-operations/safeshutdown-replacement-boundary-map.md
+  - ../../04-architecture/arcadia-runtime-migration-path.md
 last_updated: 2026-07-07
 ---
 
@@ -74,3 +74,7 @@ Mixed
 
 The local diagnostics trail now has a safe command doorway, with every larger
 diagnostics behavior still waiting behind future quests.
+
+## Related work
+
+It reads alongside [Claude Code Instructions](../../../CLAUDE.md), [EDC Quest Operating Rules](../edc-quest-operating-rules.md), [Local Diagnostics Bundle Map](../../03-operations/local-diagnostics-bundle-map.md), [GPi Case 2 Acceptance Checklist](../../03-operations/gpi-case-2-acceptance-checklist.md), [GPi Case GPIO Probe Field Ledger](../../03-operations/gpi-case-gpio-probe-ledger.md), [SafeShutdown Replacement Boundary Map](../../03-operations/safeshutdown-replacement-boundary-map.md) and [Arcadia Runtime Migration Path](../../04-architecture/arcadia-runtime-migration-path.md).

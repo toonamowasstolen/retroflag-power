@@ -1,10 +1,17 @@
 ---
+id: HW-GPI-CASE-2-KMS-POWER-FIELD-NOTES-001
 title: GPi Case 2 Hardware Findings and KMS Power Notes
-status: field-notes
-created: 2026-07-07
-project: RetroFlag Power
-device: RetroFlag GPi Case 2 + Raspberry Pi Compute Module 4
-tone: warm retro/adventurer field notes
+version: 1.0.0
+status: Accepted
+owner: Joshua Taft
+audience:
+  - Project Maintainers
+  - Future Maintainers
+  - AI Assistants
+purpose: Preserve the field findings from the GPi Case 2 KMS migration and power-behaviour investigation, as measured rather than as remembered.
+related:
+  - gpi-case-2-power-integrity-investigation-notes.md
+last_updated: 2026-07-07
 ---
 
 # GPi Case 2 Hardware Findings and KMS Power Notes
@@ -544,3 +551,7 @@ Replace old RetroFlag scripts.
 Improve power-supply headroom.
 Map the extra buttons.
 ```
+
+## Related work
+
+It reads alongside [GPi Case 2 Power Integrity Investigation Notes](gpi-case-2-power-integrity-investigation-notes.md).

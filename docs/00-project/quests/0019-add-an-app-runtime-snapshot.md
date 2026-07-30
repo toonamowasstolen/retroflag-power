@@ -11,18 +11,18 @@ audience:
   - Future Maintainers
 purpose: Record the read-only runtime snapshot for internal app diagnostics.
 related:
-  - internal/app
-  - internal/planner
-  - internal/executor
-  - docs/00-project/quests/0008-thread-the-status-badge-through-the-app-lifecycle.md
-  - docs/00-project/quests/0012-add-a-planner-snapshot-to-the-app.md
-  - docs/00-project/quests/0016-execute-the-prepared-dry-run-plan-inside-the-app.md
+  - ../../../internal/app
+  - ../../../internal/planner
+  - ../../../internal/executor
+  - 0008-thread-the-status-badge-through-the-app-lifecycle.md
+  - 0012-add-a-planner-snapshot-to-the-app.md
+  - 0016-execute-the-prepared-dry-run-plan-inside-the-app.md
 last_updated: 2026-07-06
 ---
 
 # QUEST-0019 — Add an App Runtime Snapshot
 
-> Gather the badge, plan charm, and execution ledger onto one small app map for
+> Gather the badge, plan charm, and execution ledger onto one small [app](../../../internal/app) map for
 > internal tests and future diagnostic lantern work.
 
 ## Quest Status
@@ -49,7 +49,7 @@ Implementation
   execution status, and successful execution summary.
 - Shutdown reports the stopped badge while preserving the dry-run plan and
   execution summaries.
-- Daemon logs, CLI behavior, lifecycle statuses, planner behavior, executor
+- Daemon logs, CLI behavior, lifecycle statuses, [planner](../../../internal/planner) behavior, [executor](../../../internal/executor)
   behavior, packaging, hardware behavior, and state storage remain unchanged.
 
 ## Validation
@@ -74,3 +74,7 @@ Implementation
 
 This supports the dry-run planning and execution path plus the Status Badge
 work. It does not create a new milestone.
+
+## Related work
+
+The work itself was carried out under [Thread the Status Badge Through the App Lifecycle](0008-thread-the-status-badge-through-the-app-lifecycle.md), [Add a Planner Snapshot to the App](0012-add-a-planner-snapshot-to-the-app.md) and [Execute the Prepared Dry-Run Plan Inside the App](0016-execute-the-prepared-dry-run-plan-inside-the-app.md).

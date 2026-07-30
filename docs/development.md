@@ -9,8 +9,8 @@ audience:
   - Project Maintainers
 purpose: Preserve the original local run instruction as project history.
 related:
-  - README.md
-  - Makefile
+  - ../README.md
+  - ../Makefile
 superseded_by:
   - README.md
 last_updated: 2026-07-03
@@ -26,3 +26,7 @@ Original instruction:
 ```sh
 make run
 ```
+
+## Related work
+
+It reads alongside [Makefile](../Makefile).

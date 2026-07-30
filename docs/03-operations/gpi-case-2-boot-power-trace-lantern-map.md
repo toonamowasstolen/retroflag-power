@@ -368,3 +368,7 @@ It can observe runtime sessions after boot:
 - Recent `dmesg` and journal warnings.
 - No telemetry by default.
 - No automatic fixes.
+
+## Related work
+
+It reads alongside [GPi Case 2 Recovery-First Field Procedure](gpi-case-2-recovery-first-field-procedure.md), [GPi Case 2 Power Integrity Investigation Notes](../02-hardware/gpi-case-2-power-integrity-investigation-notes.md), [GPi Case 2 Hardware Findings and KMS Power Notes](../02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md) and [GPi Case 2 Developer Access Paths](../02-hardware/gpi-case-2-developer-access-paths.md).

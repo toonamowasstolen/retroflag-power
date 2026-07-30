@@ -11,10 +11,10 @@ audience:
   - Future Maintainers
 purpose: Clarify the difference between the current runtime diagnostic and the captured startup diagnostic.
 related:
-  - docs/04-architecture/system-overview.md
-  - docs/00-project/quests/0022-record-runtime-summary-formatter-guidance.md
-  - docs/00-project/quests/0024-add-a-runtime-diagnostic-value.md
-  - docs/00-project/quests/0027-add-an-app-startup-diagnostic-snapshot.md
+  - ../../04-architecture/system-overview.md
+  - 0022-record-runtime-summary-formatter-guidance.md
+  - 0024-add-a-runtime-diagnostic-value.md
+  - 0027-add-an-app-startup-diagnostic-snapshot.md
 last_updated: 2026-07-06
 ---
 
@@ -37,7 +37,7 @@ Documentation
 
 ## Outcome
 
-- `docs/04-architecture/system-overview.md` now records that
+- [`docs/04-architecture/system-overview.md`](../../04-architecture/system-overview.md) now records that
   `App.RuntimeDiagnostic()` represents the current runtime state.
 - The same architecture note records that `App.StartupDiagnostic()` returns the
   diagnostic captured when startup completed.
@@ -81,3 +81,7 @@ Documentation
 The diagnostic map now marks the difference between the live runtime lantern and
 the startup-complete relic, keeping future log and CLI quests from mixing their
 signals.
+
+## Related work
+
+The work itself was carried out under [Record Runtime Summary Formatter Guidance](0022-record-runtime-summary-formatter-guidance.md), [Add a Runtime Diagnostic Value](0024-add-a-runtime-diagnostic-value.md) and [Add an App Startup Diagnostic Snapshot](0027-add-an-app-startup-diagnostic-snapshot.md).

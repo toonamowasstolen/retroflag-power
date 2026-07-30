@@ -11,9 +11,9 @@ audience:
   - Future Maintainers
 purpose: Record the tiny internal execution boundary for prepared dry-run plans.
 related:
-  - internal/executor
-  - internal/planner
-  - docs/00-project/quests/0013-give-plans-a-small-summary.md
+  - ../../../internal/executor
+  - ../../../internal/planner
+  - 0013-give-plans-a-small-summary.md
 last_updated: 2026-07-06
 ---
 
@@ -36,7 +36,7 @@ Implementation
 
 ## Outcome
 
-- `internal/executor` now provides a tiny executor boundary for prepared plans.
+- [`internal/executor`](../../../internal/executor) now provides a tiny executor boundary for prepared plans.
 - `Executor.Execute()` accepts the existing `planner.Plan` value and returns a
   small `Result` ledger.
 - Dry-run noop plans execute successfully as noop-only work with no side
@@ -62,5 +62,9 @@ Implementation
 
 ## Milestone Note
 
-This supports [M-0004 — Dry-Run Action Charm](../milestones.md#m-0004) but does
+This supports [M-0004 — Dry-Run Action Charm](../MILESTONES.md#m-0004) but does
 not create a new milestone.
+
+## Related work
+
+The work itself was carried out under [Give Plans a Small Summary](0013-give-plans-a-small-summary.md). It reads alongside [planner](../../../internal/planner).

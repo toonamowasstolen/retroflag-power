@@ -1,15 +1,39 @@
+---
+id: README-001
+title: README
+version: 1.0.0
+status: Active
+owner: Joshua Taft
+audience:
+  - Everyone
+purpose: Introduce the project and send a newcomer to the right document within a minute of arriving.
+related:
+  - PROJECT_MANIFEST.md
+last_updated: 2026-07-30
+---
+
 # RetroFlag Power
 
-RetroFlag Power is a modern Go daemon project for evolving RetroFlag power
-management safely and deliberately.
+> The power switch should be the only part of this the player ever has to
+> think about.
+
+RetroFlag Power is a Go daemon that takes over power management on
+RetroFlag handhelds from an aging Python shutdown script. It is being
+built deliberately, in that order: the save file survives first,
+everything else afterwards.
 
 ## Current Status
 
-The project is in Milestone 1 — Awakening. The daemon can build, run, log its
-lifecycle, wait for SIGINT or SIGTERM, and exit cleanly.
+The project is in **Epoch 1 — Awakening** (see
+[EPOCHS.md](EPOCHS.md) for what that means, and
+[docs/00-project/ROADMAP.md](docs/00-project/ROADMAP.md) for where it sits
+today). The daemon builds, runs, prints a startup banner, logs its
+lifecycle, waits for SIGINT or SIGTERM, and exits cleanly. It can also read
+a candidate GPIO pin on request via `--probe-gpio-signal` — strictly
+read-only, and it never drives a line.
 
-It does not yet control GPIO, execute shutdown, replace `SafeShutdown.py`, or
-activate a systemd service.
+It does not yet act on GPIO, execute a shutdown, replace
+`SafeShutdown.py`, or run as a systemd service.
 
 ## Goals
 
@@ -136,11 +160,15 @@ On unsupported platforms or uncertain GPIO access, it reports
   the field-test gate ledger for power, display, dock, audio, sleep/resume,
   RetroPie, diagnostics, rollback, and public readiness before replacement or
   migration.
-- [Project roadmap](docs/00-project/roadmap.md)
-- [Project milestones](docs/00-project/milestones.md)
-- [Project requirements](docs/00-project/requirements.md)
+- [Project roadmap](docs/00-project/ROADMAP.md)
+- [Project milestones](docs/00-project/MILESTONES.md)
+- [Project requirements](docs/00-project/REQUIREMENTS.md)
 - [Documentation structure and governance guide](docs/00-project/documentation-structure-and-governance.md)
 - [GPi Case GPIO probe field ledger](docs/03-operations/gpi-case-gpio-probe-ledger.md)
 - [SafeShutdown replacement boundary map](docs/03-operations/safeshutdown-replacement-boundary-map.md)
 - [System overview](docs/04-architecture/system-overview.md)
 - [AI collaboration guide](docs/05-development/ai-collaboration.md)
+
+## Related work
+
+It rests on [Project Manifest](PROJECT_MANIFEST.md) (what it is made of).

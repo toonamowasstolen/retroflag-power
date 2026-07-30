@@ -11,9 +11,9 @@ audience:
   - Future Maintainers
 purpose: Record the small dry-run planner boundary added for future action planning.
 related:
-  - internal/planner
-  - docs/00-project/milestones.md#m-0004
-  - b0a84c4 Add a dry-run planner skeleton
+  - ../../../internal/planner
+  - ../MILESTONES.md
+  - ../MILESTONES.md
 last_updated: 2026-07-06
 ---
 
@@ -39,7 +39,7 @@ Implementation
 
 ## Outcome
 
-- Added the `internal/planner` package.
+- Added the [`internal/planner`](../../../internal/planner) package.
 - Added focused planner tests.
 - The planner creates dry-run plans with a noop action and a supplied reason.
 - The planner is not wired into the app yet.
@@ -64,5 +64,5 @@ Implementation
 
 ## Milestone Note
 
-This supports [M-0004 — Dry-Run Action Charm](../milestones.md#m-0004) but does
+This supports [M-0004 — Dry-Run Action Charm](../MILESTONES.md#m-0004) but does
 not create a new milestone.

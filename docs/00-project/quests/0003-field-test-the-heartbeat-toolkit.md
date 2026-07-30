@@ -12,12 +12,12 @@ audience:
   - Hardware Validators
 purpose: Define a future reference-hardware validation quest for manually testing the prepared systemd service toolkit on the GPi Case 2 without replacing the existing shutdown path.
 related:
-  - docs/00-project/quests/0001-craft-the-heartbeat-toolkit.md
-  - docs/00-project/requirements.md
-  - docs/02-hardware/gpi-case-2.md
-  - docs/04-architecture/system-overview.md
-  - docs/adr/0001-use-systemd.md
-  - docs/adr/0002-use-small-context-driven-daemon-lifecycle.md
+  - 0001-craft-the-heartbeat-toolkit.md
+  - ../REQUIREMENTS.md
+  - ../../02-hardware/gpi-case-2.md
+  - ../../04-architecture/system-overview.md
+  - ../../adr/0001-use-systemd.md
+  - ../../adr/0002-use-small-context-driven-daemon-lifecycle.md
 last_updated: 2026-07-03
 ---
 
@@ -275,3 +275,7 @@ The toolkit is ready for a future field test.
 It is not yet permission to replace the old path.
 
 Test the heartbeat. Keep the safety net.
+
+## Related work
+
+The decisions behind it are recorded in [Use systemd Instead of rc.local](../../adr/0001-use-systemd.md) and [Use a Small Context-Driven Daemon Lifecycle](../../adr/0002-use-small-context-driven-daemon-lifecycle.md). The work itself was carried out under [Craft the Heartbeat Toolkit](0001-craft-the-heartbeat-toolkit.md). It reads alongside [Project Requirements](../REQUIREMENTS.md), [GPi Case 2 Reference Hardware](../../02-hardware/gpi-case-2.md) and [System Overview](../../04-architecture/system-overview.md).

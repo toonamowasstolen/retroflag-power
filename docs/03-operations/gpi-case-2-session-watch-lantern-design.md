@@ -380,3 +380,7 @@ A later fuller implementation can grow from that skeleton:
 The first badge is not a clever daemon. The first badge is a trustworthy field
 satchel that tells the next maintainer exactly what it saw and exactly what it
 missed.
+
+## Related work
+
+It reads alongside [GPi Case 2 Boot Power Trace Lantern Map](gpi-case-2-boot-power-trace-lantern-map.md), [GPi Case 2 Boot Power Trace Capture Procedure](gpi-case-2-boot-power-trace-capture-procedure.md), [GPi Case 2 Field Lantern Capture Procedure](gpi-case-2-field-lantern-capture-procedure.md), [Common Problems Mage Map](common-problems-mage-map.md), [Local Diagnostics Bundle Map](local-diagnostics-bundle-map.md), [Arcadia Runtime Migration Path](../04-architecture/arcadia-runtime-migration-path.md) and [GPi Case 2 Hardware Findings and KMS Power Notes](../02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md).

@@ -52,7 +52,7 @@ Documentation
   Bundle Map, recovery-first field work, and the future migration path toward
   `retroflag-powerd diagnostics --bundle`, `retroflag-powerd troubleshoot`,
   and optional Lantern Dispatch.
-- Linked the new procedure from the Common Problems Mage map, Local
+- Linked the new procedure from the [Common Problems Mage map](../../03-operations/common-problems-mage-map.md), Local
   Diagnostics Bundle map, and Recovery-First Field Procedure.
 
 ## Boundary
@@ -84,3 +84,7 @@ Documentation
 
 The GPi Case 2 support trail now has a first-class Field Lantern: one local
 bundle to carry the evidence, and no new behavior that touches the power path.
+
+## Related work
+
+It reads alongside [Local Diagnostics Bundle Map](../../03-operations/local-diagnostics-bundle-map.md), [GPi Case 2 Recovery-First Field Procedure](../../03-operations/gpi-case-2-recovery-first-field-procedure.md), [GPi Case 2 Hardware Findings and KMS Power Notes](../../02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md) and [GPi Case 2 Power Integrity Investigation Notes](../../02-hardware/gpi-case-2-power-integrity-investigation-notes.md).

@@ -11,7 +11,7 @@ audience:
   - Future Maintainers
 purpose: Close the real gap flagged in the 2026-07-14 gap analysis — internal/logging/logging.go was dead code (never called anywhere) and the running daemon had no warmth at all, despite PROJECT_MANIFEST.md's "Terminal Personality" section and PROJECT_MEMORY.md's "ASCII terminal welcome screen" aspiration.
 related:
-  - ../milestones.md
+  - ../MILESTONES.md
   - ../../../internal/logging/logging.go
   - ../../../cmd/retroflag-powerd/main.go
 last_updated: 2026-07-14
@@ -43,7 +43,7 @@ Joshua Taft
 
 Investigating the "generic logging.go" gap turned up something more specific than the original
 finding described: `internal/logging.New()` was never called anywhere in the codebase — the real
-daemon logger was constructed inline in `cmd/retroflag-powerd/main.go` via bare
+daemon logger was constructed inline in [`cmd/retroflag-powerd/main.go`](../../../cmd/retroflag-powerd/main.go) via bare
 `log.New(stderr, "", log.LstdFlags)`, twice, at two separate call sites. So the actual fix has two
 parts: give `logging.New` real callers (fixing the dead code), and add the one-time startup banner
 `PROJECT_MEMORY.md`'s "Product and experience ideas" lists as an aspiration.
@@ -62,7 +62,7 @@ both of `main.go`'s logger-construction call sites.
 
 ## In Scope
 
-- `internal/logging/logging.go`: `New(w io.Writer) *log.Logger` (was `New()`, hardcoded to
+- [`internal/logging/logging.go`](../../../internal/logging/logging.go): `New(w io.Writer) *log.Logger` (was `New()`, hardcoded to
   `os.Stderr` — changed to accept a writer since the real usage needs to wrap a custom
   `readySignalWriter` at one call site); `Banner(appName, version string) string`;
   `WriteBanner(w io.Writer, appName, version string)`.
@@ -102,7 +102,7 @@ This quest is complete when:
 - [x] A real built binary shows the banner on real startup, and does not show it on
   `--dry-run-power-button`/`--version`. **Done** — verified against a real compiled binary, not `go
   run`'s output alone.
-- [x] `docs/00-project/milestones.md` gets a new entry. **Done as M-0010.**
+- [x] [`docs/00-project/MILESTONES.md`](../MILESTONES.md) gets a new entry. **Done as M-0010.**
 
 **Toolchain note**: no Go toolchain exists on Ramuh (this project's docs live on a NAS/infra host,
 not a dev workstation) — verified instead via a throwaway `node:22-bookworm-slim` + Go 1.24 container

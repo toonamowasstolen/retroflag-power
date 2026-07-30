@@ -16,7 +16,7 @@ related:
   - ENGINEERING_MANIFESTO.md
   - PROJECT_MANIFEST.md
   - docs/00-project/quests/0033-add-the-project-charter.md
-  - docs/01-product/vision.md
+  - docs/01-product/VISION.md
   - docs/13-reference/terminology.md
 last_updated: 2026-07-07
 ---
@@ -726,10 +726,10 @@ Capture the project's purpose, philosophy, language, constraints, and blueprint 
 
 Key artifacts:
 
-- WHY.md
-- PROJECT_MEMORY.md
-- ENGINEERING_MANIFESTO.md
-- PROJECT_MANIFEST.md
+- [WHY.md](WHY.md)
+- [PROJECT_MEMORY.md](PROJECT_MEMORY.md)
+- [ENGINEERING_MANIFESTO.md](ENGINEERING_MANIFESTO.md)
+- [PROJECT_MANIFEST.md](PROJECT_MANIFEST.md)
 - PROJECT_CHARTER.md
 - Terminology
 - Glossary
@@ -811,3 +811,7 @@ Build the machine.
 Protect the dream.
 
 Never lose today's excitement in tomorrow's implementation.
+
+## Related work
+
+Vocabulary is fixed by [Terminology Guide](docs/13-reference/terminology.md) (which word to use). The work itself was carried out under [Add the Project Charter](docs/00-project/quests/0033-add-the-project-charter.md). It reads alongside [Product Vision](docs/01-product/VISION.md).

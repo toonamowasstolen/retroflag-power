@@ -255,3 +255,7 @@ sleep, resume, telemetry, upload, or Lantern Dispatch work.
 
 The Relic Welcome Scroll should stay a small greeting from the satchel. If it
 cannot be shown safely, manual-only remains the right answer.
+
+## Related work
+
+It reads alongside [GPi Case 2 Relic Welcome Scroll Design](gpi-case-2-relic-welcome-scroll-design.md), [GPi Case 2 Relic Welcome Scroll Preview Notes](gpi-case-2-relic-welcome-scroll-preview-notes.md), [GPi Case 2 First Spark / Boot Veil / Relic Welcome Scroll Design](gpi-case-2-first-spark-boot-veil-welcome-scroll-design.md) and [Local Diagnostics Bundle Map](local-diagnostics-bundle-map.md).

@@ -12,12 +12,12 @@ audience:
   - Hardware Porters
 purpose: Add a documentation-only map for a future local-first, reversible installer and migration toolkit for RetroFlag Power and future Arcadia Runtime field kits.
 related:
-  - docs/03-operations/installer-migration-toolkit-map.md
-  - README.md
-  - docs/04-architecture/arcadia-runtime-migration-path.md
-  - docs/00-project/project-direction-save-room-arcadia.md
-  - docs/03-operations/local-diagnostics-bundle-map.md
-  - docs/03-operations/safeshutdown-replacement-boundary-map.md
+  - ../../03-operations/installer-migration-toolkit-map.md
+  - ../../../README.md
+  - ../../04-architecture/arcadia-runtime-migration-path.md
+  - ../project-direction-save-room-arcadia.md
+  - ../../03-operations/local-diagnostics-bundle-map.md
+  - ../../03-operations/safeshutdown-replacement-boundary-map.md
 last_updated: 2026-07-07
 ---
 
@@ -79,11 +79,11 @@ Documentation
   `SafeShutdown.py` replacement, unconfirmed service install, required network
   access, ROM/library collection, official support claims, and skipped rollback
   documentation.
-- Linked the map from `README.md`,
-  `docs/04-architecture/arcadia-runtime-migration-path.md`,
-  `docs/00-project/project-direction-save-room-arcadia.md`,
-  `docs/03-operations/local-diagnostics-bundle-map.md`, and
-  `docs/03-operations/safeshutdown-replacement-boundary-map.md`.
+- Linked the map from [`README.md`](../../../README.md),
+  [`docs/04-architecture/arcadia-runtime-migration-path.md`](../../04-architecture/arcadia-runtime-migration-path.md),
+  [`docs/00-project/project-direction-save-room-arcadia.md`](../project-direction-save-room-arcadia.md),
+  [`docs/03-operations/local-diagnostics-bundle-map.md`](../../03-operations/local-diagnostics-bundle-map.md), and
+  [`docs/03-operations/safeshutdown-replacement-boundary-map.md`](../../03-operations/safeshutdown-replacement-boundary-map.md).
 
 ## Validation
 

@@ -11,14 +11,14 @@ audience:
   - Future Maintainers
 purpose: Let configuration guide the dry-run power-button intent while keeping the daemon noop-only and safe.
 related:
-  - internal/config
-  - internal/app
-  - internal/planner
-  - internal/executor
-  - cmd/retroflag-powerd
-  - README.md
-  - docs/04-architecture/system-overview.md
-  - docs/00-project/quests/0037-record-power-intent-events.md
+  - ../../../internal/config
+  - ../../../internal/app
+  - ../../../internal/planner
+  - ../../../internal/executor
+  - ../../../cmd/retroflag-powerd
+  - ../../../README.md
+  - ../../04-architecture/system-overview.md
+  - 0037-record-power-intent-events.md
 last_updated: 2026-07-07
 ---
 
@@ -41,14 +41,14 @@ Implementation
 
 ## Outcome
 
-- Added a `PowerButtonAction` config value for the dry-run power-button path.
+- Added a `PowerButtonAction` [config](../../../internal/config) value for the dry-run power-button path.
 - The default config sets `power_button_action` to `noop`.
-- The app validates the configured policy before preparing a dry-run power
+- The [app](../../../internal/app) validates the configured policy before preparing a dry-run power
   intent plan.
-- The planner receives the configured action and still prepares only the
+- The [planner](../../../internal/planner) receives the configured action and still prepares only the
   supported noop dry-run plan.
 - Unsupported policy values fail with a deterministic
-  `unsupported power_button_action` error before executor work.
+  `unsupported power_button_action` error before [executor](../../../internal/executor) work.
 - The dry-run CLI accepts `--power-button-action noop` and uses that configured
   policy for the power-button intent route.
 - Tests prove the default noop policy, explicit noop policy, unsupported policy
@@ -87,3 +87,7 @@ The daemon now carries a tiny policy compass in its config satchel. It points
 the dry-run power-button route at `noop`, rejects unknown paths clearly, and
 keeps every real power relic asleep until a future quest deliberately earns
 that behavior.
+
+## Related work
+
+It rests on [README](../../../README.md) (the project overview). The work itself was carried out under [Record Power Intent Events](0037-record-power-intent-events.md). It reads alongside [retroflag-powerd](../../../cmd/retroflag-powerd) and [System Overview](../../04-architecture/system-overview.md).

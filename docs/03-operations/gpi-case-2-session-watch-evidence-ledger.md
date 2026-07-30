@@ -243,3 +243,7 @@ Next rune: Run another scp-first Session Watch Lantern pass with the same
 handheld-first procedure, recording power source, whether charging is active,
 LED brightness, selected emulator/game, and side-switch shutdown behavior if
 the operator chooses to shut down afterward while the Relic is responsive.
+
+## Related work
+
+It reads alongside [GPi Case 2 Session Watch Lantern Design](gpi-case-2-session-watch-lantern-design.md), [GPi Case 2 Session Watch Field Run Procedure](gpi-case-2-session-watch-field-run-procedure.md), [GPi Case 2 Field Lantern Capture Procedure](gpi-case-2-field-lantern-capture-procedure.md), [Common Problems Mage Map](common-problems-mage-map.md), [Local Diagnostics Bundle Map](local-diagnostics-bundle-map.md) and [GPi Case 2 Recovery-First Field Procedure](gpi-case-2-recovery-first-field-procedure.md).

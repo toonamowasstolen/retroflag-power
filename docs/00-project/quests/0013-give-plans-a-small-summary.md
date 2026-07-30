@@ -11,9 +11,9 @@ audience:
   - Future Maintainers
 purpose: Record the small planner summary added for prepared dry-run plans.
 related:
-  - internal/planner
-  - internal/app
-  - docs/00-project/quests/0012-add-a-planner-snapshot-to-the-app.md
+  - ../../../internal/planner
+  - ../../../internal/app
+  - 0012-add-a-planner-snapshot-to-the-app.md
 last_updated: 2026-07-06
 ---
 
@@ -37,10 +37,10 @@ Implementation
 ## Outcome
 
 - `Plan.Summary()` now returns a small `PlanSummary` value for focused tests and
-  future app code.
+  future [app](../../../internal/app) code.
 - The summary reports whether the plan is dry-run, how many actions it carries,
   and whether it is noop-only.
-- The dry-run planner still prepares exactly one noop action.
+- The dry-run [planner](../../../internal/planner) still prepares exactly one noop action.
 - The zero-value plan has a boring empty summary.
 - App lifecycle tests can inspect the prepared plan summary without changing
   daemon behavior or log output.
@@ -61,5 +61,9 @@ Implementation
 
 ## Milestone Note
 
-This supports [M-0004 — Dry-Run Action Charm](../milestones.md#m-0004) but does
+This supports [M-0004 — Dry-Run Action Charm](../MILESTONES.md#m-0004) but does
 not create a new milestone.
+
+## Related work
+
+The work itself was carried out under [Add a Planner Snapshot to the App](0012-add-a-planner-snapshot-to-the-app.md).

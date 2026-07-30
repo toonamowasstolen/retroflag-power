@@ -12,10 +12,10 @@ audience:
   - Documentation Authors
 purpose: Add a small local checker for internal Markdown links and anchors.
 related:
-  - Makefile
-  - scripts/check-markdown-links.py
-  - docs/00-project/milestones.md
-  - docs/00-project/quests/0006-gather-the-checkpoints-into-one-ledger.md
+  - ../../../Makefile
+  - ../../../scripts/check-markdown-links.py
+  - ../MILESTONES.md
+  - 0006-gather-the-checkpoints-into-one-ledger.md
 last_updated: 2026-07-06
 ---
 
@@ -68,7 +68,7 @@ including the explicit stable Milestone anchors established by QUEST-0006.
 
 # 3. Implementation
 
-The Link Lantern lives at `scripts/check-markdown-links.py` and uses only the
+The Link Lantern lives at [`scripts/check-markdown-links.py`](../../../scripts/check-markdown-links.py) and uses only the
 Python 3 standard library. No package metadata or third-party dependency is
 required.
 
@@ -105,7 +105,7 @@ not depend on heading-slug approximation.
 - [x] Internal relative Markdown file links are verified.
 - [x] Explicit HTML anchors are verified.
 - [x] Common Markdown heading anchors are verified.
-- [x] Stable M-0001 through M-0004 citations pass.
+- [x] Stable [M-0001](../MILESTONES.md) through M-0004 citations pass.
 - [x] `make check-links` is documented in Workshop help.
 - [x] `make check` remains unchanged.
 - [x] No third-party dependency was added.
@@ -140,3 +140,7 @@ Completed before commit:
 The map has paths.
 
 The Lantern makes sure they still lead somewhere.
+
+## Related work
+
+The work itself was carried out under [Gather the Checkpoints into One Ledger](0006-gather-the-checkpoints-into-one-ledger.md). It reads alongside [Makefile](../../../Makefile).

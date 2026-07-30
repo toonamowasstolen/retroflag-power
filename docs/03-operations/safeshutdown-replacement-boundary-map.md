@@ -1,4 +1,5 @@
 ---
+id: OPS-SAFESHUTDOWN-REPLACEMENT-BOUNDARY-MAP-001
 title: SafeShutdown Replacement Boundary Map
 version: 0.1.0
 status: Draft
@@ -11,18 +12,18 @@ audience:
   - Hardware Porters
 purpose: Map the behavior retroflag-powerd must preserve before it can safely replace the stock RetroFlag SafeShutdown.py path on GPi Case 2 hardware.
 related:
-  - docs/00-project/project-direction-save-room-arcadia.md
-  - docs/04-architecture/arcadia-runtime-migration-path.md
-  - docs/02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
-  - docs/03-operations/gpio-read-only-plan.md
-  - docs/03-operations/gpi-case-gpio-probe-ledger.md
-  - docs/03-operations/local-diagnostics-bundle-map.md
-  - docs/03-operations/installer-migration-toolkit-map.md
-  - docs/03-operations/gpi-case-2-acceptance-checklist.md
-  - docs/00-project/quests/0048-map-the-safeshutdown-replacement-boundaries.md
-  - docs/00-project/quests/0051-map-the-local-diagnostics-bundle.md
-  - docs/00-project/quests/0052-map-the-installer-and-migration-toolkit.md
-  - docs/00-project/quests/0053-add-the-gpi-case-2-acceptance-checklist.md
+  - ../00-project/project-direction-save-room-arcadia.md
+  - ../04-architecture/arcadia-runtime-migration-path.md
+  - ../02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
+  - gpio-read-only-plan.md
+  - gpi-case-gpio-probe-ledger.md
+  - local-diagnostics-bundle-map.md
+  - installer-migration-toolkit-map.md
+  - gpi-case-2-acceptance-checklist.md
+  - ../00-project/quests/0048-map-the-safeshutdown-replacement-boundaries.md
+  - ../00-project/quests/0051-map-the-local-diagnostics-bundle.md
+  - ../00-project/quests/0052-map-the-installer-and-migration-toolkit.md
+  - ../00-project/quests/0053-add-the-gpi-case-2-acceptance-checklist.md
 last_updated: 2026-07-07
 ---
 
@@ -237,3 +238,7 @@ The conservative trail should look like this:
 
 This map keeps the quest pointed at replacement readiness without pretending
 the relic is ready to leave the satchel today.
+
+## Related work
+
+The work itself was carried out under [Map the SafeShutdown Replacement Boundaries](../00-project/quests/0048-map-the-safeshutdown-replacement-boundaries.md), [Map the Local Diagnostics Bundle](../00-project/quests/0051-map-the-local-diagnostics-bundle.md), [Map the Installer and Migration Toolkit](../00-project/quests/0052-map-the-installer-and-migration-toolkit.md) and [Add the GPi Case 2 Acceptance Checklist](../00-project/quests/0053-add-the-gpi-case-2-acceptance-checklist.md). It reads alongside [GPi Case 2 Hardware Findings and KMS Power Notes](../02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md), [GPIO Read-Only Plan](gpio-read-only-plan.md) and [GPi Case GPIO Probe Field Ledger](gpi-case-gpio-probe-ledger.md).

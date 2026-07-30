@@ -113,6 +113,16 @@ Every project should explain:
 - How to contribute safely.
 - How to recover when something goes wrong.
 
+In these projects those questions have fixed homes.
+
+[WHY.md](WHY.md) holds why it exists and who it serves.
+
+[PROJECT_CHARTER.md](PROJECT_CHARTER.md) holds what it promises and what it refuses.
+
+[PROJECT_MANIFEST.md](PROJECT_MANIFEST.md) holds what it is actually made of.
+
+A question with no home is a question that gets answered twice, differently.
+
 If future me has to reverse engineer my own intention, I failed to document enough.
 
 ---
@@ -460,6 +470,12 @@ Experience becomes memory.
 Do not skip the dream.
 
 Do not live there forever.
+
+[PROJECT_MEMORY.md](PROJECT_MEMORY.md) is where the dream waits its turn.
+
+Write an idea down the moment it arrives, before it has earned a better home.
+
+An idea that lives only in a conversation is already half lost.
 
 ---
 

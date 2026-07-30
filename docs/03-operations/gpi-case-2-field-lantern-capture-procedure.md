@@ -447,3 +447,7 @@ The intended trail is staged:
 
 The win for today is a smaller support trail: one inspected `.tar.gz`, no long
 terminal paste, and no accidental step into repair behavior.
+
+## Related work
+
+It reads alongside [GPi Case 2 True Boot Trace Lantern Design](gpi-case-2-true-boot-trace-lantern-design.md), [GPi Case 2 SafeShutdown Script Behavior Map](gpi-case-2-safeshutdown-script-behavior-map.md), [SafeShutdown Replacement Boundary Map](safeshutdown-replacement-boundary-map.md), [GPi Case 2 Hardware Findings and KMS Power Notes](../02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md), [GPi Case 2 Power Integrity Investigation Notes](../02-hardware/gpi-case-2-power-integrity-investigation-notes.md) and [GPi Case 2 Developer Access Paths](../02-hardware/gpi-case-2-developer-access-paths.md).

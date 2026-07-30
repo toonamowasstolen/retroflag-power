@@ -11,10 +11,10 @@ audience:
   - Future Maintainers
 purpose: Make the dry-run power intent path visible from the daemon command line without GPIO or real shutdown behavior.
 related:
-  - cmd/retroflag-powerd
-  - README.md
-  - docs/00-project/quests/0035-add-a-dry-run-power-intent-path.md
-  - docs/04-architecture/system-overview.md
+  - ../../../cmd/retroflag-powerd
+  - ../../../README.md
+  - 0035-add-a-dry-run-power-intent-path.md
+  - ../../04-architecture/system-overview.md
 last_updated: 2026-07-07
 ---
 
@@ -37,7 +37,7 @@ Implementation
 
 ## Outcome
 
-- Added `--dry-run-power-button` to `retroflag-powerd`.
+- Added `--dry-run-power-button` to [`retroflag-powerd`](../../../cmd/retroflag-powerd).
 - The flag starts the app lifecycle, waits for the daemon to reach ready, and
   processes the existing `power_button_pressed` dry-run intent.
 - The intent still travels through the app, planner, and executor path.
@@ -78,3 +78,7 @@ The daemon now has a small command-line lantern for the first power-shaped
 behavior. Developers can press the dry-run power-button charm from the terminal,
 watch the planner and executor path light up, and keep every real hardware and
 shutdown spell safely asleep.
+
+## Related work
+
+It rests on [README](../../../README.md) (the project overview). The work itself was carried out under [Add a Dry-Run Power Intent Path](0035-add-a-dry-run-power-intent-path.md). It reads alongside [System Overview](../../04-architecture/system-overview.md).

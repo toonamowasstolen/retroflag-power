@@ -11,14 +11,14 @@ audience:
   - Hardware Porters
 purpose: Define the official vocabulary for RetroFlag Power so documentation, code, events, interfaces, and user-facing messages model the hardware and software consistently.
 related:
-  - WHY.md
-  - PROJECT_MEMORY.md
-  - ENGINEERING_MANIFESTO.md
-  - PROJECT_MANIFEST.md
-  - PROJECT_CHARTER.md
-  - docs/00-project/milestones.md
-  - docs/00-project/roadmap.md
-  - docs/adr/0003-adopt-epoch-milestone-quest-model.md
+  - ../../WHY.md
+  - ../../PROJECT_MEMORY.md
+  - ../../ENGINEERING_MANIFESTO.md
+  - ../../PROJECT_MANIFEST.md
+  - ../../PROJECT_CHARTER.md
+  - ../00-project/MILESTONES.md
+  - ../00-project/ROADMAP.md
+  - ../adr/0003-adopt-epoch-milestone-quest-model.md
 last_updated: 2026-07-06
 ---
 
@@ -213,7 +213,7 @@ M-0002
 M-0003
 ```
 
-Verified Milestone facts belong in `docs/00-project/milestones.md`. Cite the
+Verified Milestone facts belong in [`docs/00-project/MILESTONES.md`](../00-project/MILESTONES.md). Cite the
 canonical entry instead of duplicating its evidence.
 
 ## Quest
@@ -236,7 +236,7 @@ to their ledger entries.
 The project's origin, principles, safety net, important unresolved ideas, and
 durable context.
 
-`PROJECT_MEMORY.md` is not the current progress log or verified Milestone
+[`PROJECT_MEMORY.md`](../../PROJECT_MEMORY.md) is not the current progress log or verified Milestone
 ledger.
 
 ---
@@ -1119,3 +1119,7 @@ A polished experience is the goal.
 Name things well.
 
 Build from there.
+
+## Related work
+
+It rests on [Why](../../WHY.md) (why this project exists), [Engineering Manifesto](../../ENGINEERING_MANIFESTO.md) (the engineering principles behind it), [Project Manifest](../../PROJECT_MANIFEST.md) (what it is made of) and [Project Charter](../../PROJECT_CHARTER.md) (what it promises). For where it sits in the project's arc, see [Project Roadmap](../00-project/ROADMAP.md) (the stage this belongs to). The decision behind it is recorded in [Adopt the Epoch, Milestone, and Quest Model](../adr/0003-adopt-epoch-milestone-quest-model.md).

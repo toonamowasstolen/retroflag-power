@@ -11,17 +11,17 @@ audience:
   - Future Maintainers
 purpose: Define the source-of-truth ritual for future RetroFlag Power quest work so agents keep the Engineering Documentation Codex current, safe, and warm.
 related:
-  - PROJECT_MANIFEST.md
-  - README.md
-  - docs/00-project/project-direction-save-room-arcadia.md
-  - docs/04-architecture/arcadia-runtime-migration-path.md
-  - docs/03-operations/safeshutdown-replacement-boundary-map.md
-  - docs/03-operations/installer-migration-toolkit-map.md
-  - docs/03-operations/local-diagnostics-bundle-map.md
-  - docs/03-operations/gpi-case-2-acceptance-checklist.md
-  - docs/03-operations/gpi-case-gpio-probe-ledger.md
-  - docs/00-project/quests/0054-add-the-edc-quest-operating-rules.md
-  - docs/00-project/quests/0056-add-the-claude-session-start-checklist.md
+  - ../../PROJECT_MANIFEST.md
+  - ../../README.md
+  - project-direction-save-room-arcadia.md
+  - ../04-architecture/arcadia-runtime-migration-path.md
+  - ../03-operations/safeshutdown-replacement-boundary-map.md
+  - ../03-operations/installer-migration-toolkit-map.md
+  - ../03-operations/local-diagnostics-bundle-map.md
+  - ../03-operations/gpi-case-2-acceptance-checklist.md
+  - ../03-operations/gpi-case-gpio-probe-ledger.md
+  - quests/0054-add-the-edc-quest-operating-rules.md
+  - quests/0056-add-the-claude-session-start-checklist.md
 last_updated: 2026-07-09
 ---
 
@@ -192,3 +192,7 @@ Likely source-of-truth docs for future agents:
 - [Local Diagnostics Bundle Map](../03-operations/local-diagnostics-bundle-map.md)
 - [GPi Case 2 Acceptance Checklist](../03-operations/gpi-case-2-acceptance-checklist.md)
 - [GPi Case GPIO Probe Field Ledger](../03-operations/gpi-case-gpio-probe-ledger.md)
+
+## Related work
+
+The work itself was carried out under [Add the EDC Quest Operating Rules](quests/0054-add-the-edc-quest-operating-rules.md) and [Add The Claude Session Start Checklist](quests/0056-add-the-claude-session-start-checklist.md).

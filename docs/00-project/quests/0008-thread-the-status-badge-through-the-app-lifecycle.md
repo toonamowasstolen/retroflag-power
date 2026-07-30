@@ -5,6 +5,7 @@ version: 0.1.0
 status: Implemented
 owner: Joshua Taft
 audience:
+purpose: Thread the status badge through the app lifecycle so the daemon can report what it is actually doing.
   - Project Maintainers
   - Contributors
   - AI Assistants
@@ -12,7 +13,7 @@ audience:
 epoch: Awakening
 quest_type: Implementation
 related:
-  - 5af99d2 Thread status through the app lifecycle
+  - ../MILESTONES.md
 last_updated: 2026-07-06
 ---
 
@@ -61,4 +62,4 @@ Implementation
 
 ## Milestone Note
 
-This supports M-0006 — Status Badge but does not create a new milestone.
+This supports [M-0006 — Status Badge](../MILESTONES.md#m-0006) but does not create a new milestone.

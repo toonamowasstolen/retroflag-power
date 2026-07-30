@@ -11,14 +11,14 @@ audience:
   - Future Maintainers
 purpose: Record RetroFlag Power's current Epoch, canonical seven-Epoch ladder, practical route, next gates, and future direction.
 related:
-  - WHY.md
-  - PROJECT_MEMORY.md
-  - PROJECT_MANIFEST.md
-  - PROJECT_CHARTER.md
-  - docs/00-project/milestones.md
-  - docs/adr/0003-adopt-epoch-milestone-quest-model.md
-  - docs/01-product/vision.md
-  - docs/13-reference/terminology.md
+  - ../../WHY.md
+  - ../../PROJECT_MEMORY.md
+  - ../../PROJECT_MANIFEST.md
+  - ../../PROJECT_CHARTER.md
+  - MILESTONES.md
+  - ../adr/0003-adopt-epoch-milestone-quest-model.md
+  - ../01-product/VISION.md
+  - ../13-reference/terminology.md
 last_updated: 2026-07-06
 ---
 
@@ -83,16 +83,16 @@ The first daemon breathes locally and is gaining the small tools needed for futu
 
 Artifacts already created or planned in this stage include:
 
-- WHY.md
-- PROJECT_MEMORY.md
+- [WHY.md](../../WHY.md)
+- [PROJECT_MEMORY.md](../../PROJECT_MEMORY.md)
 - ENGINEERING_MANIFESTO.md
-- PROJECT_MANIFEST.md
-- PROJECT_CHARTER.md
-- docs/13-reference/terminology.md
+- [PROJECT_MANIFEST.md](../../PROJECT_MANIFEST.md)
+- [PROJECT_CHARTER.md](../../PROJECT_CHARTER.md)
+- [docs/13-reference/terminology.md](../13-reference/terminology.md)
 - docs/13-reference/glossary.md
-- docs/00-project/milestones.md
-- docs/01-product/vision.md
-- docs/00-project/roadmap.md
+- docs/00-project/MILESTONES.md
+- [docs/01-product/VISION.md](../01-product/VISION.md)
+- docs/00-project/ROADMAP.md
 
 The project now has:
 
@@ -110,10 +110,10 @@ The project now has:
 
 Current verified progress:
 
-- [M-0001 — Daemon Nameplate](milestones.md#m-0001)
-- [M-0002 — Config Satchel](milestones.md#m-0002)
-- [M-0003 — Event Charms](milestones.md#m-0003)
-- [M-0004 — Dry-Run Action Charm](milestones.md#m-0004)
+- [M-0001 — Daemon Nameplate](MILESTONES.md#m-0001)
+- [M-0002 — Config Satchel](MILESTONES.md#m-0002)
+- [M-0003 — Event Charms](MILESTONES.md#m-0003)
+- [M-0004 — Dry-Run Action Charm](MILESTONES.md#m-0004)
 
 The canonical Milestone ledger owns the detailed evidence and exclusions. The
 current direction remains small internal boundaries before hardware behavior,
@@ -175,9 +175,9 @@ Mostly underway.
 - [x] PROJECT_CHARTER.md
 - [x] docs/13-reference/terminology.md
 - [x] docs/13-reference/glossary.md
-- [x] docs/00-project/milestones.md
-- [x] docs/01-product/vision.md
-- [x] docs/00-project/roadmap.md
+- [x] docs/00-project/MILESTONES.md
+- [x] docs/01-product/VISION.md
+- [x] docs/00-project/ROADMAP.md
 
 ## Done when
 
@@ -202,7 +202,7 @@ Create the first traceable requirements document.
 ## Artifact
 
 ```
-docs/00-project/requirements.md
+docs/00-project/REQUIREMENTS.md
 ```
 
 ## Purpose
@@ -446,8 +446,8 @@ Create templates for decisions and proposals.
 ## Artifacts
 
 ```
-docs/10-decisions/adr-template.md
-docs/11-rfc/rfc-template.md
+docs/10-decisions/ADR-TEMPLATE.md
+docs/11-rfc/RFC-TEMPLATE.md
 ```
 
 ## Purpose
@@ -689,11 +689,11 @@ When direction exists, begin Awakening.
 
 Recommended next artifacts after this roadmap:
 
-1. `docs/00-project/requirements.md`
+1. `docs/00-project/REQUIREMENTS.md`
 2. `docs/04-architecture/system-overview.md`
 3. `docs/02-hardware/gpi-case-2.md`
 4. `docs/05-development/ai-collaboration.md`
-5. `docs/10-decisions/adr-template.md` and `docs/11-rfc/rfc-template.md`
+5. `docs/10-decisions/ADR-TEMPLATE.md` and `docs/11-rfc/RFC-TEMPLATE.md`
 
 After these, strongly consider entering Epoch 1.
 
@@ -758,3 +758,7 @@ Move toward the first breath.
 The dream has a path.
 
 Now it has road signs.
+
+## Related work
+
+The decision behind it is recorded in [Adopt the Epoch, Milestone, and Quest Model](../adr/0003-adopt-epoch-milestone-quest-model.md).

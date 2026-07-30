@@ -68,7 +68,7 @@ explicitly says otherwise, and separate observed evidence from guesses.
 - Added a placeholder first entry marked `awaiting first real field run`
   instead of inventing handheld data.
 - Linked the Ledger from the Session Watch design, Session Watch field-run
-  procedure, README project map, Common Problems Mage map, and Local
+  procedure, README project map, [Common Problems Mage map](../../03-operations/common-problems-mage-map.md), and Local
   Diagnostics Bundle map.
 
 ## Boundary
@@ -123,3 +123,7 @@ The Session Watch Lantern now has a Ledger ready for real handheld evidence.
 The first entry waits for a true field run: one final script artifact, concise
 human observations, a humble interpretation bucket, and the next rune for the
 trail.
+
+## Related work
+
+The work itself was carried out under [Design the GPi Case 2 Session Watch Lantern](0081-design-gpi-case-2-session-watch-lantern.md), [Add the GPi Case 2 Session Watch Lantern Script Skeleton](0082-add-gpi-case-2-session-watch-lantern-script-skeleton.md) and [Add the GPi Case 2 Session Watch Field Run Procedure](0083-add-gpi-case-2-session-watch-field-run-procedure.md). It reads alongside [GPi Case 2 Session Watch Lantern Design](../../03-operations/gpi-case-2-session-watch-lantern-design.md), [GPi Case 2 Session Watch Field Run Procedure](../../03-operations/gpi-case-2-session-watch-field-run-procedure.md) and [Local Diagnostics Bundle Map](../../03-operations/local-diagnostics-bundle-map.md).

@@ -12,14 +12,14 @@ audience:
   - Documentation Authors
 purpose: Define a focused documentation cleanup sidequest to reconcile older primitive docs with the newer documentation structure, metadata standard, ADR format, and canonical folder layout without losing historical context.
 related:
-  - PROJECT_MEMORY.md
-  - README.md
-  - docs/00-project/documentation-structure-and-governance.md
-  - docs/00-project/roadmap.md
-  - docs/00-project/milestones.md
-  - docs/10-decisions/adr-template.md
-  - docs/adr/0001-use-systemd.md
-  - docs/adr/0002-use-small-context-driven-daemon-lifecycle.md
+  - ../../../PROJECT_MEMORY.md
+  - ../../../README.md
+  - ../documentation-structure-and-governance.md
+  - ../ROADMAP.md
+  - ../MILESTONES.md
+  - ../../10-decisions/ADR-TEMPLATE.md
+  - ../../adr/0001-use-systemd.md
+  - ../../adr/0002-use-small-context-driven-daemon-lifecycle.md
 last_updated: 2026-07-16
 ---
 
@@ -75,9 +75,9 @@ The goal is to sort the old scrolls, preserve anything useful, and reduce confus
 
 Feedback identified real documentation drift:
 
-- `docs/adr/0001-use-systemd.md` is primitive and lacks metadata.
-- `docs/adr/0002-use-small-context-driven-daemon-lifecycle.md` uses the richer ADR format.
-- `README.md` is tiny and points to stale `docs/roadmap.md`.
+- [`docs/adr/0001-use-systemd.md`](../../adr/0001-use-systemd.md) is primitive and lacks metadata.
+- [`docs/adr/0002-use-small-context-driven-daemon-lifecycle.md`](../../adr/0002-use-small-context-driven-daemon-lifecycle.md) uses the richer ADR format.
+- [`README.md`](../../../README.md) is tiny and points to stale `docs/roadmap.md`.
 - The repo may contain older broad docs that overlap with newer canonical docs.
 - The project has not finished migrating early bootstrap docs into the current structure.
 
@@ -135,7 +135,7 @@ This quest should:
 - state storage.
 - large documentation rewrites.
 - deleting old docs without preserving unique content.
-- changing the project roadmap direction without discussion.
+- changing the [project roadmap](../ROADMAP.md) direction without discussion.
 
 ---
 
@@ -145,13 +145,13 @@ Use these canonical locations unless a future ADR changes them:
 
 ```
 Project roadmap:
-  docs/00-project/roadmap.md
+  docs/00-project/ROADMAP.md
 
 Milestones:
-  docs/00-project/milestones.md
+  docs/00-project/MILESTONES.md
 
 Requirements:
-  docs/00-project/requirements.md
+  docs/00-project/REQUIREMENTS.md
 
 Documentation governance:
   docs/00-project/documentation-structure-and-governance.md
@@ -160,7 +160,7 @@ Quests:
   docs/00-project/quests/
 
 Product vision:
-  docs/01-product/vision.md
+  docs/01-product/VISION.md
 
 Reference hardware:
   docs/02-hardware/gpi-case-2.md
@@ -172,10 +172,10 @@ AI collaboration:
   docs/05-development/ai-collaboration.md
 
 ADR template:
-  docs/10-decisions/adr-template.md
+  docs/10-decisions/ADR-TEMPLATE.md
 
 RFC template:
-  docs/11-rfc/rfc-template.md
+  docs/11-rfc/RFC-TEMPLATE.md
 
 Actual ADRs:
   docs/adr/
@@ -207,10 +207,10 @@ It should likely link to:
 WHY.md
 PROJECT_MANIFEST.md
 PROJECT_CHARTER.md
-docs/00-project/roadmap.md
-docs/00-project/milestones.md
-docs/00-project/requirements.md
-docs/01-product/vision.md
+docs/00-project/ROADMAP.md
+docs/00-project/MILESTONES.md
+docs/00-project/REQUIREMENTS.md
+docs/01-product/VISION.md
 docs/04-architecture/system-overview.md
 docs/00-project/documentation-structure-and-governance.md
 ```
@@ -279,7 +279,7 @@ if the decision needs a deliberate pass before acceptance.
 Compare with:
 
 ```
-docs/00-project/roadmap.md
+docs/00-project/ROADMAP.md
 ```
 
 Decide whether `docs/roadmap.md` is:
@@ -298,7 +298,7 @@ Add metadata and mark it:
 ```
 status: Superseded
 superseded_by:
-  - docs/00-project/roadmap.md
+  - docs/00-project/ROADMAP.md
 ```
 
 Then keep a short note pointing to the canonical roadmap.
@@ -396,12 +396,12 @@ Primary files to inspect:
 
 Reference docs:
 - docs/00-project/documentation-structure-and-governance.md
-- docs/00-project/roadmap.md
-- docs/00-project/milestones.md
-- docs/00-project/requirements.md
+- docs/00-project/ROADMAP.md
+- docs/00-project/MILESTONES.md
+- docs/00-project/REQUIREMENTS.md
 - docs/04-architecture/system-overview.md
 - docs/05-development/ai-collaboration.md
-- docs/10-decisions/adr-template.md
+- docs/10-decisions/ADR-TEMPLATE.md
 - docs/adr/0002-use-small-context-driven-daemon-lifecycle.md
 
 Requirements:
@@ -485,7 +485,7 @@ still held — a lot had already changed:
   systemd-vs-`rc.local` is a real, still-open decision, not one that's been replaced by a newer doc.
 - **`README.md` had one real, still-open gap**: it already linked to most canonical docs (roadmap,
   requirements, system overview, ai-collaboration, the EDC quest operating rules) but was missing
-  [Project milestones](../milestones.md) and the
+  [Project milestones](../MILESTONES.md) and the
   [Documentation structure and governance guide](../documentation-structure-and-governance.md) —
   both confirmed still-current, non-superseded canonical docs. Added both links. This was the one
   actual change this pass made.
@@ -511,3 +511,7 @@ Sort carefully.
 Preserve history.
 
 Point to the canonical path.
+
+## Related work
+
+It rests on [Project Memory and Blueprint Capture](../../../PROJECT_MEMORY.md) (the running record of decisions and open questions). The decision behind it is recorded in [Architecture Decision Record Template](../../10-decisions/ADR-TEMPLATE.md).

@@ -1,0 +1,8 @@
+{
+  "name": "edc-template-scripts",
+  "private": true,
+  "description": "Standalone tooling scripts shipped with the EDC template, not part of any project's own app runtime.",
+  "dependencies": {
+    "github-slugger": "^2.0.0"
+  }
+}

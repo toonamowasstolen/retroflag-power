@@ -12,15 +12,15 @@ audience:
   - Hardware Porters
 purpose: Refine the local diagnostics bundle map with a concrete future skeleton while keeping bundle generation, network submission, hardware behavior, and installer work out of scope.
 related:
-  - docs/03-operations/local-diagnostics-bundle-map.md
-  - CLAUDE.md
-  - docs/00-project/edc-quest-operating-rules.md
-  - docs/04-architecture/arcadia-runtime-migration-path.md
-  - docs/03-operations/gpi-case-2-acceptance-checklist.md
-  - docs/03-operations/gpi-case-gpio-probe-ledger.md
-  - docs/03-operations/safeshutdown-replacement-boundary-map.md
-  - docs/02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
-  - docs/00-project/quests/0051-map-the-local-diagnostics-bundle.md
+  - ../../03-operations/local-diagnostics-bundle-map.md
+  - ../../../CLAUDE.md
+  - ../edc-quest-operating-rules.md
+  - ../../04-architecture/arcadia-runtime-migration-path.md
+  - ../../03-operations/gpi-case-2-acceptance-checklist.md
+  - ../../03-operations/gpi-case-gpio-probe-ledger.md
+  - ../../03-operations/safeshutdown-replacement-boundary-map.md
+  - ../../02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
+  - 0051-map-the-local-diagnostics-bundle.md
 last_updated: 2026-07-07
 ---
 
@@ -85,3 +85,7 @@ Documentation
 The diagnostics trail now has a clearer local skeleton: enough structure for a
 future implementation quest to follow, and enough safety rail to keep today's
 prototype read-only.
+
+## Related work
+
+The work itself was carried out under [Map the Local Diagnostics Bundle](0051-map-the-local-diagnostics-bundle.md). It reads alongside [Claude Code Instructions](../../../CLAUDE.md), [EDC Quest Operating Rules](../edc-quest-operating-rules.md), [Arcadia Runtime Migration Path](../../04-architecture/arcadia-runtime-migration-path.md), [GPi Case 2 Acceptance Checklist](../../03-operations/gpi-case-2-acceptance-checklist.md), [GPi Case GPIO Probe Field Ledger](../../03-operations/gpi-case-gpio-probe-ledger.md), [SafeShutdown Replacement Boundary Map](../../03-operations/safeshutdown-replacement-boundary-map.md) and [GPi Case 2 Hardware Findings and KMS Power Notes](../../02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md).

@@ -298,3 +298,7 @@ Later implementation quests may choose one layer at a time:
 
 Do not combine all layers in one first implementation. The first useful
 startup UX improvement is the one that can be safely backed out in the field.
+
+## Related work
+
+It reads alongside [GPi Case 2 Session Watch Field Run Procedure](gpi-case-2-session-watch-field-run-procedure.md), [GPi Case 2 Session Watch Evidence Ledger](gpi-case-2-session-watch-evidence-ledger.md) and [GPi Case 2 Hardware Findings and KMS Power Notes](../02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md).

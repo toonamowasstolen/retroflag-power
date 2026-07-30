@@ -12,13 +12,13 @@ audience:
   - Documentation Authors
 purpose: Gather duplicated Awakening checkpoint evidence into the canonical verified Milestone ledger.
 related:
-  - PROJECT_MEMORY.md
-  - docs/00-project/awakening-readiness.md
-  - docs/00-project/milestones.md
-  - docs/00-project/roadmap.md
-  - docs/00-project/quests/0004-chart-the-edc-map.md
-  - docs/00-project/quests/0005-correct-the-edc-compass.md
-  - docs/adr/0003-adopt-epoch-milestone-quest-model.md
+  - ../../../PROJECT_MEMORY.md
+  - ../awakening-readiness.md
+  - ../MILESTONES.md
+  - ../ROADMAP.md
+  - 0004-chart-the-edc-map.md
+  - 0005-correct-the-edc-compass.md
+  - ../../adr/0003-adopt-epoch-milestone-quest-model.md
 last_updated: 2026-07-06
 ---
 
@@ -39,7 +39,7 @@ Documentation consolidation and Milestone migration
 # 1. Objective
 
 Gather duplicated Awakening checkpoint prose into
-`docs/00-project/milestones.md`, the canonical verified Milestone ledger, and
+`docs/00-project/MILESTONES.md`, the canonical verified Milestone ledger, and
 replace the duplicate summaries with stable citations.
 
 ---
@@ -77,10 +77,10 @@ replace the duplicate summaries with stable citations.
 
 This Quest established:
 
-- [M-0001 — Daemon Nameplate](../milestones.md#m-0001)
-- [M-0002 — Config Satchel](../milestones.md#m-0002)
-- [M-0003 — Event Charms](../milestones.md#m-0003)
-- [M-0004 — Dry-Run Action Charm](../milestones.md#m-0004)
+- [M-0001 — Daemon Nameplate](../MILESTONES.md#m-0001)
+- [M-0002 — Config Satchel](../MILESTONES.md#m-0002)
+- [M-0003 — Event Charms](../MILESTONES.md#m-0003)
+- [M-0004 — Dry-Run Action Charm](../MILESTONES.md#m-0004)
 
 No dedicated Quest records existed for these small checkpoints. The Milestone
 entries say so rather than inventing historical work records.
@@ -133,3 +133,7 @@ Completed before commit:
 One ledger holds the proof.
 
 The rest of the map stays light enough to carry.
+
+## Related work
+
+It rests on [Project Memory and Blueprint Capture](../../../PROJECT_MEMORY.md) (the running record of decisions and open questions). For where it sits in the project's arc, see [Awakening Readiness Check](../awakening-readiness.md) (the readiness gate) and [Project Roadmap](../ROADMAP.md) (the stage this belongs to). The decision behind it is recorded in [Adopt the Epoch, Milestone, and Quest Model](../../adr/0003-adopt-epoch-milestone-quest-model.md). The work itself was carried out under [Chart the EDC Map](0004-chart-the-edc-map.md) and [Correct the EDC Compass](0005-correct-the-edc-compass.md).

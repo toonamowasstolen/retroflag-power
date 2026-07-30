@@ -12,19 +12,19 @@ audience:
   - Hardware Porters
 purpose: Map the cautious staged path from the current RetroFlag Power GPi Case 2 prototype toward the broader Arcadia Runtime direction without triggering a rename, install, service activation, or hardware behavior change.
 related:
-  - README.md
-  - PROJECT_MANIFEST.md
-  - docs/00-project/edc-quest-operating-rules.md
-  - docs/00-project/project-direction-save-room-arcadia.md
-  - docs/04-architecture/system-overview.md
-  - docs/03-operations/safeshutdown-replacement-boundary-map.md
-  - docs/03-operations/local-diagnostics-bundle-map.md
-  - docs/03-operations/installer-migration-toolkit-map.md
-  - docs/03-operations/gpi-case-2-acceptance-checklist.md
-  - docs/00-project/quests/0050-map-the-arcadia-runtime-migration-path.md
-  - docs/00-project/quests/0051-map-the-local-diagnostics-bundle.md
-  - docs/00-project/quests/0052-map-the-installer-and-migration-toolkit.md
-  - docs/00-project/quests/0053-add-the-gpi-case-2-acceptance-checklist.md
+  - ../../README.md
+  - ../../PROJECT_MANIFEST.md
+  - ../00-project/edc-quest-operating-rules.md
+  - ../00-project/project-direction-save-room-arcadia.md
+  - system-overview.md
+  - ../03-operations/safeshutdown-replacement-boundary-map.md
+  - ../03-operations/local-diagnostics-bundle-map.md
+  - ../03-operations/installer-migration-toolkit-map.md
+  - ../03-operations/gpi-case-2-acceptance-checklist.md
+  - ../00-project/quests/0050-map-the-arcadia-runtime-migration-path.md
+  - ../00-project/quests/0051-map-the-local-diagnostics-bundle.md
+  - ../00-project/quests/0052-map-the-installer-and-migration-toolkit.md
+  - ../00-project/quests/0053-add-the-gpi-case-2-acceptance-checklist.md
 last_updated: 2026-07-07
 ---
 
@@ -213,3 +213,7 @@ Useful future quests:
 The compass for now is simple: keep the current lantern honest, keep the
 prototype safe, and let the larger Arcadia Runtime trail open only when the
 field ledgers say it is ready.
+
+## Related work
+
+It rests on [README](../../README.md) (the project overview) and [Project Manifest](../../PROJECT_MANIFEST.md) (what it is made of). The work itself was carried out under [Map the Arcadia Runtime Migration Path](../00-project/quests/0050-map-the-arcadia-runtime-migration-path.md), [Map the Local Diagnostics Bundle](../00-project/quests/0051-map-the-local-diagnostics-bundle.md), [Map the Installer and Migration Toolkit](../00-project/quests/0052-map-the-installer-and-migration-toolkit.md) and [Add the GPi Case 2 Acceptance Checklist](../00-project/quests/0053-add-the-gpi-case-2-acceptance-checklist.md). It reads alongside [Save Room Tech and Arcadia Runtime Direction](../00-project/project-direction-save-room-arcadia.md), [System Overview](system-overview.md) and [SafeShutdown Replacement Boundary Map](../03-operations/safeshutdown-replacement-boundary-map.md).

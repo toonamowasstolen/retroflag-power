@@ -12,17 +12,17 @@ audience:
   - Hardware Porters
 purpose: Record the long-term naming, platform, privacy, and migration direction around Save Room Tech, Arcadia Runtime, and the current RetroFlag Power prototype.
 related:
-  - README.md
-  - PROJECT_MANIFEST.md
-  - docs/00-project/edc-quest-operating-rules.md
-  - docs/04-architecture/arcadia-runtime-migration-path.md
-  - docs/04-architecture/system-overview.md
-  - docs/03-operations/safeshutdown-replacement-boundary-map.md
-  - docs/03-operations/local-diagnostics-bundle-map.md
-  - docs/03-operations/installer-migration-toolkit-map.md
-  - docs/00-project/quests/0049-record-the-save-room-tech-and-arcadia-runtime-direction.md
-  - docs/00-project/quests/0051-map-the-local-diagnostics-bundle.md
-  - docs/00-project/quests/0052-map-the-installer-and-migration-toolkit.md
+  - ../../README.md
+  - ../../PROJECT_MANIFEST.md
+  - edc-quest-operating-rules.md
+  - ../04-architecture/arcadia-runtime-migration-path.md
+  - ../04-architecture/system-overview.md
+  - ../03-operations/safeshutdown-replacement-boundary-map.md
+  - ../03-operations/local-diagnostics-bundle-map.md
+  - ../03-operations/installer-migration-toolkit-map.md
+  - quests/0049-record-the-save-room-tech-and-arcadia-runtime-direction.md
+  - quests/0051-map-the-local-diagnostics-bundle.md
+  - quests/0052-map-the-installer-and-migration-toolkit.md
 last_updated: 2026-07-07
 ---
 
@@ -206,3 +206,7 @@ Until the project deliberately chooses a public name, maintainers should:
 The current compass is simple: build carefully under RetroFlag Power, map the
 field honestly, and let Save Room Tech and Arcadia Runtime remain the larger
 trail markers until the project is ready for them.
+
+## Related work
+
+It rests on [README](../../README.md) (the project overview) and [Project Manifest](../../PROJECT_MANIFEST.md) (what it is made of). The work itself was carried out under [Record the Save Room Tech and Arcadia Runtime Direction](quests/0049-record-the-save-room-tech-and-arcadia-runtime-direction.md), [Map the Local Diagnostics Bundle](quests/0051-map-the-local-diagnostics-bundle.md) and [Map the Installer and Migration Toolkit](quests/0052-map-the-installer-and-migration-toolkit.md). It reads alongside [System Overview](../04-architecture/system-overview.md) and [SafeShutdown Replacement Boundary Map](../03-operations/safeshutdown-replacement-boundary-map.md).

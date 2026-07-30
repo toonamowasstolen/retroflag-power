@@ -123,3 +123,7 @@ the Relic kept its display, SSH stayed alive, EmulationStation worked, the top
 button stayed untouched, and the Ledger came home. The next rune is a repeat
 run with power-source, charging, LED, selected emulator or game, and optional
 side-switch shutdown notes captured plainly.
+
+## Related work
+
+The work itself was carried out under [Design the GPi Case 2 Session Watch Lantern](0081-design-gpi-case-2-session-watch-lantern.md), [Add the GPi Case 2 Session Watch Lantern Script Skeleton](0082-add-gpi-case-2-session-watch-lantern-script-skeleton.md), [Add the GPi Case 2 Session Watch Field Run Procedure](0083-add-gpi-case-2-session-watch-field-run-procedure.md) and [Add the GPi Case 2 Session Watch Evidence Ledger](0084-add-gpi-case-2-session-watch-evidence-ledger.md). It reads alongside [GPi Case 2 Session Watch Evidence Ledger](../../03-operations/gpi-case-2-session-watch-evidence-ledger.md), [GPi Case 2 Session Watch Field Run Procedure](../../03-operations/gpi-case-2-session-watch-field-run-procedure.md) and [GPi Case 2 Session Watch Lantern Design](../../03-operations/gpi-case-2-session-watch-lantern-design.md).

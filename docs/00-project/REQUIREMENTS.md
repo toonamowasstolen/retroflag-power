@@ -11,14 +11,14 @@ audience:
   - Future Maintainers
 purpose: Define the initial traceable requirements for RetroFlag Power so implementation, tests, architecture, and documentation can be tied back to clear project needs.
 related:
-  - WHY.md
-  - PROJECT_MEMORY.md
-  - PROJECT_MANIFEST.md
-  - PROJECT_CHARTER.md
-  - docs/00-project/milestones.md
-  - docs/00-project/roadmap.md
-  - docs/01-product/vision.md
-  - docs/13-reference/terminology.md
+  - ../../WHY.md
+  - ../../PROJECT_MEMORY.md
+  - ../../PROJECT_MANIFEST.md
+  - ../../PROJECT_CHARTER.md
+  - MILESTONES.md
+  - ROADMAP.md
+  - ../01-product/VISION.md
+  - ../13-reference/terminology.md
 last_updated: 2026-07-03
 ---
 
@@ -131,8 +131,8 @@ Safe shutdown is the project's first responsibility and must preserve or improve
 
 Related:
 
-- PROJECT_CHARTER.md
-- docs/13-reference/terminology.md
+- [PROJECT_CHARTER.md](../../PROJECT_CHARTER.md)
+- [docs/13-reference/terminology.md](../13-reference/terminology.md)
 - ADR: systemd replacement
 - ADR: libgpiod direction
 
@@ -996,7 +996,7 @@ The project should move the handheld experience toward a console-like model.
 
 Rationale:
 
-The product vision is to reduce the feeling of managing a Linux computer.
+The [product vision](../01-product/VISION.md) is to reduce the feeling of managing a Linux computer.
 
 ## REQ-0801 — Resume continuity
 
@@ -1204,3 +1204,7 @@ Respect the hardware.
 Preserve the dream.
 
 Build the machine.
+
+## Related work
+
+It rests on [Why](../../WHY.md) (why this project exists), [Project Memory and Blueprint Capture](../../PROJECT_MEMORY.md) (the running record of decisions and open questions) and [Project Manifest](../../PROJECT_MANIFEST.md) (what it is made of). For where it sits in the project's arc, see [Verified Milestone Ledger](MILESTONES.md) (the checkpoint log) and [Project Roadmap](ROADMAP.md) (the stage this belongs to).

@@ -525,3 +525,7 @@ Keep the next pass calm and observational:
 
 The next badge is not opening the handheld. The next badge is knowing which
 door, if any, is real.
+
+## Related work
+
+It reads alongside [GPi Case 2 Hardware Findings and KMS Power Notes](gpi-case-2-hardware-findings-kms-power-notes.md), [GPi Case 2 Power Integrity Investigation Notes](gpi-case-2-power-integrity-investigation-notes.md), [GPi Case 2 Emergency Recovery Research Ledger](gpi-case-2-emergency-recovery-research-ledger.md), [GPi Case 2 Recovery-First Field Procedure](../03-operations/gpi-case-2-recovery-first-field-procedure.md), [GPi Case 2 Replacement Coverage Matrix](../03-operations/gpi-case-2-replacement-coverage-matrix.md), [GPi Case 2 SafeShutdown Script Behavior Map](../03-operations/gpi-case-2-safeshutdown-script-behavior-map.md), [GPi Case 2 Acceptance Checklist](../03-operations/gpi-case-2-acceptance-checklist.md), [SafeShutdown Replacement Boundary Map](../03-operations/safeshutdown-replacement-boundary-map.md) and [GPi Case GPIO Probe Field Ledger](../03-operations/gpi-case-gpio-probe-ledger.md).

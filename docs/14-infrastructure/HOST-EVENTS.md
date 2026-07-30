@@ -2,7 +2,7 @@
 id: INFRA-LOG-001
 title: Host & Infrastructure Event Ledger
 version: 0.1.0
-status: Draft
+status: Active
 owner: Joshua Taft
 audience:
   - Project Maintainers
@@ -11,9 +11,9 @@ audience:
   - Future Maintainers
 purpose: Provide the canonical ledger of host/infrastructure events, outside this repo entirely, that had a real, concrete effect on this project's data, uptime, environment, or deployment.
 related:
-  - PROJECT_MEMORY.md
-  - docs/00-project/milestones.md
-  - docs/00-project/documentation-structure-and-governance.md
+  - ../../PROJECT_MEMORY.md
+  - ../00-project/MILESTONES.md
+  - ../00-project/documentation-structure-and-governance.md
 last_updated: 2026-07-14
 ---
 
@@ -58,6 +58,7 @@ Every entry uses an explicit anchor:
 followed by:
 
 ```markdown
+<a id="infra-0001"></a>
 ## INFRA-0001 — Example Title
 ```
 
@@ -119,3 +120,7 @@ transport (an HTTPS-cloned checkout could not push even with a correctly configu
 key), and this container's image now bakes in a git identity (a fresh clone had none, so the
 very first commit attempt failed with "Author identity unknown"). Also added `gh` CLI to the
 image (`REQ-0008`) for future GitHub API operations this gateway can do itself.
+
+## Related work
+
+It rests on [Project Memory and Blueprint Capture](../../PROJECT_MEMORY.md) (the running record of decisions and open questions). For where it sits in the project's arc, see [Verified Milestone Ledger](../00-project/MILESTONES.md) (the checkpoint log). It reads alongside [Documentation Structure and Governance Guide](../00-project/documentation-structure-and-governance.md).

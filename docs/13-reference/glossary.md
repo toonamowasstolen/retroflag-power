@@ -12,13 +12,13 @@ audience:
   - Curious Users
 purpose: Provide a quick-reference dictionary for RetroFlag Power terminology so contributors can understand the project's shared language without reading the full terminology guide.
 related:
-  - docs/13-reference/terminology.md
-  - PROJECT_MEMORY.md
-  - PROJECT_CHARTER.md
-  - PROJECT_MANIFEST.md
-  - docs/00-project/milestones.md
-  - docs/00-project/roadmap.md
-  - docs/adr/0003-adopt-epoch-milestone-quest-model.md
+  - terminology.md
+  - ../../PROJECT_MEMORY.md
+  - ../../PROJECT_CHARTER.md
+  - ../../PROJECT_MANIFEST.md
+  - ../00-project/MILESTONES.md
+  - ../00-project/ROADMAP.md
+  - ../adr/0003-adopt-epoch-milestone-quest-model.md
 last_updated: 2026-07-06
 ---
 
@@ -30,7 +30,7 @@ This glossary is the quick-reference companion to the Terminology Guide.
 
 Use this document when you need a short definition.
 
-Use `docs/13-reference/terminology.md` when you need naming rules, examples, or guidance about which term to prefer.
+Use [`docs/13-reference/terminology.md`](terminology.md) when you need naming rules, examples, or guidance about which term to prefer.
 
 ---
 
@@ -584,10 +584,10 @@ A numbered, verified project checkpoint.
 Primary document:
 
 ```
-docs/00-project/milestones.md
+docs/00-project/MILESTONES.md
 ```
 
-Milestones use stable IDs such as `M-0001` and cite verification evidence.
+Milestones use stable IDs such as [`M-0001`](../00-project/MILESTONES.md) and cite verification evidence.
 
 ## Modular Monolith
 
@@ -1052,3 +1052,7 @@ If the word shapes how people understand the project, define it.
 The dream has words.
 
 Keep them clear.
+
+## Related work
+
+It rests on [Project Memory and Blueprint Capture](../../PROJECT_MEMORY.md) (the running record of decisions and open questions), [Project Charter](../../PROJECT_CHARTER.md) (what it promises) and [Project Manifest](../../PROJECT_MANIFEST.md) (what it is made of). For where it sits in the project's arc, see [Project Roadmap](../00-project/ROADMAP.md) (the stage this belongs to). The decision behind it is recorded in [Adopt the Epoch, Milestone, and Quest Model](../adr/0003-adopt-epoch-milestone-quest-model.md).

@@ -11,9 +11,9 @@ audience:
   - Future Maintainers
 purpose: Record the read-only app snapshot for its prepared dry-run plan.
 related:
-  - internal/app
-  - internal/planner
-  - docs/00-project/quests/0011-let-the-app-prepare-a-dry-run-plan.md
+  - ../../../internal/app
+  - ../../../internal/planner
+  - 0011-let-the-app-prepare-a-dry-run-plan.md
 last_updated: 2026-07-06
 ---
 
@@ -36,7 +36,7 @@ Implementation
 
 ## Outcome
 
-- `Plan()` reports whether the app has prepared a plan and returns its current
+- `Plan()` reports whether the [app](../../../internal/app) has prepared a plan and returns its current
   value as a read-only snapshot.
 - A newly constructed app reports that no plan is available.
 - Startup makes the dry-run plan available with its noop action and reason.
@@ -59,5 +59,9 @@ Implementation
 
 ## Milestone Note
 
-This supports [M-0004 — Dry-Run Action Charm](../milestones.md#m-0004) but does
+This supports [M-0004 — Dry-Run Action Charm](../MILESTONES.md#m-0004) but does
 not create a new milestone.
+
+## Related work
+
+The work itself was carried out under [Let the App Prepare a Dry-Run Plan](0011-let-the-app-prepare-a-dry-run-plan.md). It reads alongside [planner](../../../internal/planner).

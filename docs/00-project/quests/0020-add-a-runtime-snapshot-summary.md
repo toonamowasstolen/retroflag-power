@@ -11,12 +11,12 @@ audience:
   - Future Maintainers
 purpose: Record the tiny runtime snapshot summary for internal app diagnostics.
 related:
-  - internal/app
-  - internal/planner
-  - internal/executor
-  - docs/00-project/quests/0008-thread-the-status-badge-through-the-app-lifecycle.md
-  - docs/00-project/quests/0016-execute-the-prepared-dry-run-plan-inside-the-app.md
-  - docs/00-project/quests/0019-add-an-app-runtime-snapshot.md
+  - ../../../internal/app
+  - ../../../internal/planner
+  - ../../../internal/executor
+  - 0008-thread-the-status-badge-through-the-app-lifecycle.md
+  - 0016-execute-the-prepared-dry-run-plan-inside-the-app.md
+  - 0019-add-an-app-runtime-snapshot.md
 last_updated: 2026-07-06
 ---
 
@@ -40,7 +40,7 @@ Implementation
 ## Outcome
 
 - `RuntimeSnapshot.Summary()` now returns a small `RuntimeSnapshotSummary`
-  value for internal app diagnostics.
+  value for internal [app](../../../internal/app) diagnostics.
 - The summary exposes the current lifecycle state, plan presence, execution
   completion, execution success, captured execution error presence, and the
   dry-run noop-only plan/execution pairing.
@@ -48,7 +48,7 @@ Implementation
   `ExecutionSummary` values already carried by the runtime snapshot.
 - Focused app tests prove the summary before startup, after startup, and after
   shutdown.
-- Daemon logs, CLI behavior, lifecycle statuses, planner behavior, executor
+- Daemon logs, CLI behavior, lifecycle statuses, [planner](../../../internal/planner) behavior, [executor](../../../internal/executor)
   behavior, packaging, hardware behavior, and state storage remain unchanged.
 
 ## Validation
@@ -73,3 +73,7 @@ Implementation
 
 This supports the dry-run planning and execution path plus the Status Badge
 work. It does not create a new milestone.
+
+## Related work
+
+The work itself was carried out under [Thread the Status Badge Through the App Lifecycle](0008-thread-the-status-badge-through-the-app-lifecycle.md), [Execute the Prepared Dry-Run Plan Inside the App](0016-execute-the-prepared-dry-run-plan-inside-the-app.md) and [Add an App Runtime Snapshot](0019-add-an-app-runtime-snapshot.md).

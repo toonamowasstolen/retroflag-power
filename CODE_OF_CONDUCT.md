@@ -1,9 +1,11 @@
 ---
 id: COC-001
+title: Code of Conduct
 version: 1.0.0
 status: Accepted
 owner: Joshua Taft
 audience:
+purpose: State the behaviour expected of everyone who takes part in this project, and what happens when it is not met.
   - Project Maintainers
   - Contributors
   - AI Assistants
@@ -40,16 +42,16 @@ human engineers — this document holds both to the same standard, in every inte
   project, in any venue connected to it (issues, PRs, commit messages, any future community channel).
 - Deliberately misrepresenting what was tested, verified, or shipped — this project's entire
   discipline rests on Milestones pairing every claim with real evidence
-  (`docs/00-project/milestones.md`'s verification rules). A false claim here isn't just rude, it's a
+  (`docs/00-project/MILESTONES.md`'s verification rules). A false claim here isn't just rude, it's a
   direct violation of how this project works — the same rule whether a human or an AI session made
   the claim.
 - Retaliating against someone for reporting a concern in good faith.
 
 ## Enforcement
 
-The project owner (`PROJECT_CHARTER.md`'s stakeholder model) decides violation outcomes. An AI
+The project owner ([`PROJECT_CHARTER.md`](PROJECT_CHARTER.md)'s stakeholder model) decides violation outcomes. An AI
 session working in this repo doesn't get a vote on whether its own conduct crossed a line — that call
-belongs to the owner, same as any decision `docs/05-development/ai-collaboration.md` treats as
+belongs to the owner, same as any decision [`docs/05-development/ai-collaboration.md`](docs/05-development/ai-collaboration.md) treats as
 something AI must not do unilaterally.
 
 **The escalation path:**
@@ -67,3 +69,7 @@ something AI must not do unilaterally.
 
 This document is a durable artifact — a substantive change to it (not a typo fix) gets logged in
 `PROJECT_MEMORY.md`, same as any other foundational doc.
+
+## Related work
+
+It rests on [Contributing](CONTRIBUTING.md) (how to take part).

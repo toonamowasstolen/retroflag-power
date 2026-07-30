@@ -48,7 +48,7 @@ Documentation
   resume-wedge theory.
 - Added completion commit trail markers to the restored and confirmed recent
   quest files.
-- Updated the EDC quest operating rules so future Codex missions must carry an
+- Updated the [EDC quest operating rules](../edc-quest-operating-rules.md) so future Codex missions must carry an
   explicit quest number, quest file, validation results, and commit hash.
 
 ## Boundary
@@ -80,3 +80,7 @@ Documentation
 The Ledger is bright again from QUEST-0076 through QUEST-0080. The older map
 still has historic numbering gaps, but the recent GPi Case 2 Lantern run now
 has a clean row of trail markers.
+
+## Related work
+
+The work itself was carried out under [Add a Portable GPi Case 2 Bundle Collector Field Lantern Script](0076-add-a-portable-gpi-case-2-boot-power-trace-field-lantern-script.md), [Add a Human-Facing Field Lantern Script UX Standard](0077-add-a-human-facing-field-lantern-script-ux-standard.md), [Retrofit the GPi Case 2 Manual Lantern Script to the Human-Facing UX Standard](0078-retrofit-the-gpi-case-2-manual-lantern-script-to-the-human-facing-ux-standard.md) and [Record Successful GPi Case 2 Resume Evidence](0079-record-successful-gpi-case-2-resume-evidence.md).

@@ -12,28 +12,28 @@ audience:
   - Hardware Porters
 purpose: Map a future local-first diagnostics bundle for safe, redacted RetroFlag Power and Arcadia Runtime support information without submitting anything over the network.
 related:
-  - README.md
-  - docs/00-project/project-direction-save-room-arcadia.md
-  - docs/04-architecture/arcadia-runtime-migration-path.md
-  - docs/03-operations/safeshutdown-replacement-boundary-map.md
-  - docs/03-operations/gpi-case-2-field-lantern-capture-procedure.md
-  - docs/03-operations/gpi-case-2-boot-power-trace-capture-procedure.md
-  - docs/03-operations/gpi-case-2-boot-power-trace-lantern-map.md
-  - docs/03-operations/gpi-case-2-relic-welcome-scroll-design.md
-  - docs/03-operations/gpi-case-2-relic-welcome-scroll-login-wiring-design.md
-  - docs/03-operations/gpi-case-2-relic-welcome-scroll-preview-notes.md
-  - scripts/gpi-case2-install-relic-welcome-scroll-hook.sh
-  - scripts/gpi-case2-relic-welcome-scroll.sh
-  - docs/03-operations/gpi-case-2-session-watch-lantern-design.md
-  - docs/03-operations/gpi-case-2-session-watch-field-run-procedure.md
-  - docs/03-operations/gpi-case-2-session-watch-evidence-ledger.md
-  - scripts/gpi-case2-session-watch-lantern.sh
-  - docs/03-operations/installer-migration-toolkit-map.md
-  - docs/03-operations/gpi-case-2-acceptance-checklist.md
-  - docs/00-project/quests/0051-map-the-local-diagnostics-bundle.md
-  - docs/00-project/quests/0058-map-the-local-diagnostics-bundle-skeleton.md
-  - docs/00-project/quests/0052-map-the-installer-and-migration-toolkit.md
-  - docs/00-project/quests/0053-add-the-gpi-case-2-acceptance-checklist.md
+  - ../../README.md
+  - ../00-project/project-direction-save-room-arcadia.md
+  - ../04-architecture/arcadia-runtime-migration-path.md
+  - safeshutdown-replacement-boundary-map.md
+  - gpi-case-2-field-lantern-capture-procedure.md
+  - gpi-case-2-boot-power-trace-capture-procedure.md
+  - gpi-case-2-boot-power-trace-lantern-map.md
+  - gpi-case-2-relic-welcome-scroll-design.md
+  - gpi-case-2-relic-welcome-scroll-login-wiring-design.md
+  - gpi-case-2-relic-welcome-scroll-preview-notes.md
+  - ../../scripts/gpi-case2-install-relic-welcome-scroll-hook.sh
+  - ../../scripts/gpi-case2-relic-welcome-scroll.sh
+  - gpi-case-2-session-watch-lantern-design.md
+  - gpi-case-2-session-watch-field-run-procedure.md
+  - gpi-case-2-session-watch-evidence-ledger.md
+  - ../../scripts/gpi-case2-session-watch-lantern.sh
+  - installer-migration-toolkit-map.md
+  - gpi-case-2-acceptance-checklist.md
+  - ../00-project/quests/0051-map-the-local-diagnostics-bundle.md
+  - ../00-project/quests/0058-map-the-local-diagnostics-bundle-skeleton.md
+  - ../00-project/quests/0052-map-the-installer-and-migration-toolkit.md
+  - ../00-project/quests/0053-add-the-gpi-case-2-acceptance-checklist.md
 last_updated: 2026-07-09
 ---
 
@@ -463,3 +463,7 @@ This diagnostics map does not permit:
 
 The bundle should be a user-readable satchel first: local, redacted,
 previewable, and useful before any future dispatch trail exists.
+
+## Related work
+
+It rests on [README](../../README.md) (the project overview). The work itself was carried out under [Map the Local Diagnostics Bundle](../00-project/quests/0051-map-the-local-diagnostics-bundle.md), [Map the Local Diagnostics Bundle Skeleton](../00-project/quests/0058-map-the-local-diagnostics-bundle-skeleton.md), [Map the Installer and Migration Toolkit](../00-project/quests/0052-map-the-installer-and-migration-toolkit.md) and [Add the GPi Case 2 Acceptance Checklist](../00-project/quests/0053-add-the-gpi-case-2-acceptance-checklist.md). It reads alongside [Save Room Tech and Arcadia Runtime Direction](../00-project/project-direction-save-room-arcadia.md), [Arcadia Runtime Migration Path](../04-architecture/arcadia-runtime-migration-path.md) and [SafeShutdown Replacement Boundary Map](safeshutdown-replacement-boundary-map.md).

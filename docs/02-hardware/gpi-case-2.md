@@ -12,18 +12,18 @@ audience:
   - Future Maintainers
 purpose: Document the RetroFlag GPi Case 2 reference platform, known facts, current shutdown behavior, boot context, terminology, assumptions, risks, and validation needs for RetroFlag Power.
 related:
-  - WHY.md
-  - PROJECT_MEMORY.md
-  - PROJECT_CHARTER.md
-  - docs/00-project/requirements.md
-  - docs/00-project/roadmap.md
-  - docs/04-architecture/system-overview.md
-  - docs/13-reference/terminology.md
-  - docs/13-reference/glossary.md
-  - docs/02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
-  - docs/02-hardware/gpi-case-2-power-integrity-investigation-notes.md
-  - docs/02-hardware/gpi-case-2-emergency-recovery-research-ledger.md
-  - docs/02-hardware/gpi-case-2-developer-access-paths.md
+  - ../../WHY.md
+  - ../../PROJECT_MEMORY.md
+  - ../../PROJECT_CHARTER.md
+  - ../00-project/REQUIREMENTS.md
+  - ../00-project/ROADMAP.md
+  - ../04-architecture/system-overview.md
+  - ../13-reference/terminology.md
+  - ../13-reference/glossary.md
+  - gpi-case-2-hardware-findings-kms-power-notes.md
+  - gpi-case-2-power-integrity-investigation-notes.md
+  - gpi-case-2-emergency-recovery-research-ledger.md
+  - gpi-case-2-developer-access-paths.md
 last_updated: 2026-07-14
 ---
 
@@ -372,7 +372,7 @@ However, boot optimization must remain measured and cautious.
 Related requirement:
 
 ```
-REQ-0302 — Measure before optimizing
+[REQ-0302](../00-project/REQUIREMENTS.md) — Measure before optimizing
 ```
 
 ---
@@ -946,3 +946,7 @@ The reference hardware has taken the stand.
 The next step is not to guess.
 
 The next step is to validate.
+
+## Related work
+
+It rests on [Why](../../WHY.md) (why this project exists), [Project Memory and Blueprint Capture](../../PROJECT_MEMORY.md) (the running record of decisions and open questions) and [Project Charter](../../PROJECT_CHARTER.md) (what it promises). For where it sits in the project's arc, see [Project Roadmap](../00-project/ROADMAP.md) (the stage this belongs to). Vocabulary is fixed by [Terminology Guide](../13-reference/terminology.md) (which word to use) and [Glossary](../13-reference/glossary.md) (what the words mean). It reads alongside [System Overview](../04-architecture/system-overview.md).

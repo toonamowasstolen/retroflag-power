@@ -11,10 +11,10 @@ audience:
   - Future Maintainers
 purpose: Mark the current meaning of the app startup success badge before future startup failure paths crowd the map.
 related:
-  - docs/04-architecture/system-overview.md
-  - docs/00-project/quests/0027-add-an-app-startup-diagnostic-snapshot.md
-  - docs/00-project/quests/0028-document-runtime-vs-startup-diagnostics.md
-  - docs/00-project/quests/0029-add-an-app-startup-result-accessor.md
+  - ../../04-architecture/system-overview.md
+  - 0027-add-an-app-startup-diagnostic-snapshot.md
+  - 0028-document-runtime-vs-startup-diagnostics.md
+  - 0029-add-an-app-startup-result-accessor.md
 last_updated: 2026-07-06
 ---
 
@@ -37,7 +37,7 @@ Documentation
 
 ## Outcome
 
-- `docs/04-architecture/system-overview.md` now records that
+- [`docs/04-architecture/system-overview.md`](../../04-architecture/system-overview.md) now records that
   `App.StartupSucceeded()` is a simple current success badge.
 - The architecture note explains that the badge currently tracks whether
   startup reached the startup diagnostic capture point.
@@ -81,3 +81,7 @@ Documentation
 The startup success badge now has a clear label in the architecture spellbook,
 keeping future quests from mistaking diagnostic availability for a complete
 startup failure taxonomy.
+
+## Related work
+
+The work itself was carried out under [Add an App Startup Diagnostic Snapshot](0027-add-an-app-startup-diagnostic-snapshot.md), [Document Runtime vs Startup Diagnostics](0028-document-runtime-vs-startup-diagnostics.md) and [Add an App Startup Result Accessor](0029-add-an-app-startup-result-accessor.md).

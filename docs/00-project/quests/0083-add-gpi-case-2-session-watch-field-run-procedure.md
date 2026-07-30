@@ -72,7 +72,7 @@ otherwise.
   SSH-lost runs, and hard-freeze or RCU-stall-like runs.
 - Linked the procedure from README, the QUEST-0081 design trail, the
   QUEST-0082 script quest, the Session Watch design, the Field Lantern capture
-  procedure, the Common Problems Mage map, and the Local Diagnostics Bundle
+  procedure, the [Common Problems Mage map](../../03-operations/common-problems-mage-map.md), and the Local Diagnostics Bundle
   map.
 
 ## Boundary
@@ -126,3 +126,7 @@ The Session Watch Lantern now has a field-run Spellbook, not just a design and
 a script. A maintainer can run a bounded handheld watch, record the physical
 state of the Relic, retrieve one final Ledger, and keep clean evidence beside
 the future Common Problems Mage trail without stepping into repair behavior.
+
+## Related work
+
+The work itself was carried out under [Design the GPi Case 2 Session Watch Lantern](0081-design-gpi-case-2-session-watch-lantern.md) and [Add the GPi Case 2 Session Watch Lantern Script Skeleton](0082-add-gpi-case-2-session-watch-lantern-script-skeleton.md). It reads alongside [GPi Case 2 Session Watch Lantern Design](../../03-operations/gpi-case-2-session-watch-lantern-design.md), [GPi Case 2 Field Lantern Capture Procedure](../../03-operations/gpi-case-2-field-lantern-capture-procedure.md) and [Local Diagnostics Bundle Map](../../03-operations/local-diagnostics-bundle-map.md).

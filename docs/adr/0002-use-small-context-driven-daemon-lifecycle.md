@@ -11,11 +11,11 @@ audience:
   - Future Maintainers
 purpose: Record the decision to begin RetroFlag Power with a small context-driven Go daemon lifecycle using main, internal/app, and internal/logging boundaries before adding hardware, shutdown, resume, or state behavior.
 related:
-  - docs/00-project/awakening-readiness.md
-  - docs/00-project/requirements.md
-  - docs/04-architecture/system-overview.md
-  - docs/05-development/ai-collaboration.md
-  - docs/10-decisions/adr-template.md
+  - ../00-project/awakening-readiness.md
+  - ../00-project/REQUIREMENTS.md
+  - ../04-architecture/system-overview.md
+  - ../05-development/ai-collaboration.md
+  - ../10-decisions/ADR-TEMPLATE.md
 last_updated: 2026-07-03
 ---
 
@@ -37,7 +37,7 @@ Joshua Taft
 
 ## Related Requirements
 
-- REQ-0004 — Run as a supervised daemon
+- [REQ-0004](../00-project/REQUIREMENTS.md) — Run as a supervised daemon
 - REQ-0005 — Graceful stop
 - REQ-0006 — Structured startup logging
 - REQ-0403 — Clear errors
@@ -49,10 +49,10 @@ Joshua Taft
 
 ## Related Documents
 
-- docs/00-project/awakening-readiness.md
-- docs/00-project/requirements.md
-- docs/04-architecture/system-overview.md
-- docs/05-development/ai-collaboration.md
+- [docs/00-project/awakening-readiness.md](../00-project/awakening-readiness.md)
+- docs/00-project/REQUIREMENTS.md
+- [docs/04-architecture/system-overview.md](../04-architecture/system-overview.md)
+- [docs/05-development/ai-collaboration.md](../05-development/ai-collaboration.md)
 
 ---
 
@@ -407,3 +407,7 @@ This decision gives RetroFlag Power a small body, a clean breath, and enough bon
 The dream has entered the waking world.
 
 Now its first breath has a memory crystal.
+
+## Related work
+
+The decision behind it is recorded in [Architecture Decision Record Template](../10-decisions/ADR-TEMPLATE.md).

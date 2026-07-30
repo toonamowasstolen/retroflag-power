@@ -41,7 +41,7 @@ Documentation / Procedure
 Create the handheld-first, scp-first run procedure for the True GPi Case 2 Boot
 Trace Lantern. The procedure must match current field practice:
 
-- Copy `scripts/gpi-case2-true-boot-trace-lantern.sh` to
+- Copy [`scripts/gpi-case2-true-boot-trace-lantern.sh`](../../../scripts/gpi-case2-true-boot-trace-lantern.sh) to
   `retropi@gpi:/home/retropi/`.
 - Run from `/home/retropi/`.
 - Retrieve the final Boot Trace Ledger with `scp`.
@@ -124,3 +124,7 @@ The True Boot Trace Lantern now has a real field trail for the handheld Relic:
 scp the script, watch the physical startup, record the First Spark timing, run
 one bounded read-only trace, and bring home the final Ledger without changing
 the device.
+
+## Related work
+
+It reads alongside [GPi Case 2 True Boot Trace Lantern Design](../../03-operations/gpi-case-2-true-boot-trace-lantern-design.md), [GPi Case 2 First Spark / Boot Veil / Relic Welcome Scroll Design](../../03-operations/gpi-case-2-first-spark-boot-veil-welcome-scroll-design.md) and [GPi Case 2 Boot Power Trace Lantern Map](../../03-operations/gpi-case-2-boot-power-trace-lantern-map.md).

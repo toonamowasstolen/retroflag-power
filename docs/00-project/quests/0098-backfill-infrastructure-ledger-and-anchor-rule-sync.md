@@ -9,10 +9,10 @@ audience:
   - Contributors
   - AI Assistants
   - Future Maintainers
-purpose: Retroactively document, with a real quest and milestone, the docs/14-infrastructure/host-events.md addition and this project's conversion from an external reference clone to a regular EDC project on 2026-07-14 — this landed as a direct commit without a quest at the time.
+purpose: Retroactively document, with a real quest and milestone, the docs/14-infrastructure/HOST-EVENTS.md addition and this project's conversion from an external reference clone to a regular EDC project on 2026-07-14 — this landed as a direct commit without a quest at the time.
 related:
-  - ../milestones.md
-  - ../../14-infrastructure/host-events.md
+  - ../MILESTONES.md
+  - ../../14-infrastructure/HOST-EVENTS.md
   - ../../05-development/ai-collaboration.md
 last_updated: 2026-07-14
 ---
@@ -45,14 +45,14 @@ This repo was being treated as an external, read-only reference clone
 (`_reference_retroflag-power`) from the sibling EDC projects, even though it's the same owner's own
 project — the *origin* the EDC standard was retroactively generalized from. Converted to a regular
 project (folder renamed, no more `_reference_` treatment), gap-analyzed against the template and the
-three sibling projects, and given the same new `docs/14-infrastructure/host-events.md` category those
+three sibling projects, and given the same new [`docs/14-infrastructure/HOST-EVENTS.md`](../../14-infrastructure/HOST-EVENTS.md) category those
 projects just gained. Both landed as a direct commit at the time, without a quest — this quest
 backfills that record.
 
 # 2. Quest Objective
 
-Add the placeholder `docs/14-infrastructure/host-events.md`, sync the governance doc +
-`ai-collaboration.md` with the new category, and give the whole change a proper quest/milestone
+Add the placeholder `docs/14-infrastructure/HOST-EVENTS.md`, sync the governance doc +
+[`ai-collaboration.md`](../../05-development/ai-collaboration.md) with the new category, and give the whole change a proper quest/milestone
 trail.
 
 ---
@@ -61,7 +61,7 @@ trail.
 
 ## In Scope
 
-- `docs/14-infrastructure/host-events.md` created — placeholder only, no entries yet, adapted to this
+- `docs/14-infrastructure/HOST-EVENTS.md` created — placeholder only, no entries yet, adapted to this
   project's own voice (not a verbatim copy of the template's wording).
 - `docs/00-project/documentation-structure-and-governance.md`: new Section 40
   (`docs/14-infrastructure/`, Closing Rule bumped to 41) and new canonical-locations row.
@@ -80,10 +80,10 @@ trail.
 
 This quest is complete when:
 
-- [x] `docs/14-infrastructure/host-events.md` exists. **Done.**
+- [x] `docs/14-infrastructure/HOST-EVENTS.md` exists. **Done.**
 - [x] Governance doc and `ai-collaboration.md` synced with the new category. **Done.**
 - [x] Changes committed and pushed to `origin/main`. **Done** — Revision `03d2a61`.
-- [x] `docs/00-project/milestones.md` gets a new entry. **Done as M-0007.**
+- [x] [`docs/00-project/MILESTONES.md`](../MILESTONES.md) gets a new entry. **Done as M-0007.**
 
 ---
 

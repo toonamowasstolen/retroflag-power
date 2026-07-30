@@ -14,9 +14,9 @@ related:
   - ../../CLAUDE.md
   - ../../PROJECT_MANIFEST.md
   - ../../PROJECT_MEMORY.md
-  - docs/00-project/edc-quest-operating-rules.md
-  - docs/00-project/documentation-structure-and-governance.md
-  - docs/05-development/ai-collaboration.md
+  - edc-quest-operating-rules.md
+  - documentation-structure-and-governance.md
+  - ../05-development/ai-collaboration.md
 last_updated: 2026-07-07
 ---
 
@@ -72,3 +72,7 @@ Future quest reports should name:
 
 The victory should be named plainly. A small verified badge still belongs in
 the ledger.
+
+## Related work
+
+It rests on [Project Manifest](../../PROJECT_MANIFEST.md) (what it is made of) and [Project Memory and Blueprint Capture](../../PROJECT_MEMORY.md) (the running record of decisions and open questions). It reads alongside [Claude Code Instructions](../../CLAUDE.md), [EDC Quest Operating Rules](edc-quest-operating-rules.md), [Documentation Structure and Governance Guide](documentation-structure-and-governance.md) and [AI Collaboration Guide](../05-development/ai-collaboration.md).

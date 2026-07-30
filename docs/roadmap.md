@@ -10,19 +10,23 @@ audience:
   - Future Maintainers
 purpose: Preserve the original abbreviated release sequence as project history.
 related:
-  - docs/00-project/milestones.md
+  - 00-project/MILESTONES.md
 superseded_by:
-  - docs/00-project/roadmap.md
+  - docs/00-project/ROADMAP.md
 last_updated: 2026-07-03
 ---
 
 # Legacy Roadmap
 
 > Superseded by the canonical
-> [Project Roadmap](00-project/roadmap.md). The original outline remains below
+> [Project Roadmap](00-project/ROADMAP.md). The original outline remains below
 > for historical context.
 
 - v0.1 daemon
 - v0.2 GPIO abstraction
 - v0.3 edge detection
 - v1.0 stable
+
+## Related work
+
+For where it sits in the project's arc, see [Verified Milestone Ledger](00-project/MILESTONES.md) (the checkpoint log).

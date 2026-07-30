@@ -131,3 +131,7 @@ The Spellbook now has a startup-specific Lantern design that is honest about
 its reach. It captures the boot trail, names what went missing, keeps Session
 Watch as the later-runtime companion, and leaves all behavior-changing runes
 for future quests with their own safety gates.
+
+## Related work
+
+It reads alongside [GPi Case 2 Boot Power Trace Lantern Map](../../03-operations/gpi-case-2-boot-power-trace-lantern-map.md), [GPi Case 2 Boot Power Trace Capture Procedure](../../03-operations/gpi-case-2-boot-power-trace-capture-procedure.md), [GPi Case 2 Session Watch Lantern Design](../../03-operations/gpi-case-2-session-watch-lantern-design.md), [GPi Case 2 Session Watch Field Run Procedure](../../03-operations/gpi-case-2-session-watch-field-run-procedure.md) and [Human-Facing Field Lantern Script UX Standard](../../03-operations/human-facing-field-lantern-script-ux-standard.md).

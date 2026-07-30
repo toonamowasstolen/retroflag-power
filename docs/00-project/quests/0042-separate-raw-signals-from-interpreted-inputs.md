@@ -11,16 +11,16 @@ audience:
   - Future Maintainers
 purpose: Keep raw input observations distinct from interpreted switch and button meaning before future GPIO work begins.
 related:
-  - internal/input
-  - docs/03-operations/gpio-read-only-plan.md
-  - docs/04-architecture/system-overview.md
-  - docs/00-project/quests/0041-plan-the-gpio-read-only-path.md
+  - ../../../internal/input
+  - ../../03-operations/gpio-read-only-plan.md
+  - ../../04-architecture/system-overview.md
+  - 0041-plan-the-gpio-read-only-path.md
 last_updated: 2026-07-07
 ---
 
 # QUEST-0042 - Separate Raw Signals from Interpreted Inputs
 
-> Give the input lantern two lenses: one for the wire's raw glimmer, and one
+> Give the [input](../../../internal/input) lantern two lenses: one for the wire's raw glimmer, and one
 > for the meaning the configured map will name later.
 
 ## Quest Status
@@ -49,7 +49,7 @@ Implementation
   `ButtonReleased`, and `ButtonUnknown`.
 - Kept the existing fake power-button observer and dry-run power intent CLI
   behavior unchanged.
-- Updated the GPIO read-only plan and architecture map to show the layered route:
+- Updated the [GPIO read-only plan](../../03-operations/gpio-read-only-plan.md) and architecture map to show the layered route:
   raw signal, configured interpretation, latching switch or momentary button
   event, power intent, policy, plan, noop execution, and breadcrumbs.
 
@@ -81,3 +81,7 @@ GPIO work can record whether a line appears low, high, or unverified without
 pretending it already knows whether the player toggled a latching switch or
 pressed a momentary button. The power path remains dry-run, noop-only, and
 quietly deterministic.
+
+## Related work
+
+The work itself was carried out under [Plan the GPIO Read-Only Path](0041-plan-the-gpio-read-only-path.md). It reads alongside [System Overview](../../04-architecture/system-overview.md).

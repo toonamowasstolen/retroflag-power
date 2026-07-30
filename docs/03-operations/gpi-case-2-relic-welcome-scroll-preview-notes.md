@@ -181,3 +181,7 @@ Do not overclaim: this run proves the manually invoked preview works over the
 current scp-first SSH trail. It does not prove automatic login safety, MOTD
 safety, shell startup safety, long-session performance, sleep/resume behavior,
 shutdown behavior, GPIO behavior, display behavior, or boot behavior.
+
+## Related work
+
+It reads alongside [GPi Case 2 Relic Welcome Scroll Design](gpi-case-2-relic-welcome-scroll-design.md), [GPi Case 2 First Spark / Boot Veil / Relic Welcome Scroll Design](gpi-case-2-first-spark-boot-veil-welcome-scroll-design.md) and [Local Diagnostics Bundle Map](local-diagnostics-bundle-map.md).

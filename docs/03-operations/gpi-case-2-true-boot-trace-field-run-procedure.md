@@ -335,3 +335,7 @@ Before sharing:
   Ledger when present.
 - Keep the human First Spark notes beside the Ledger. The script cannot see
   the exact power-switch moment or the first visible display moment by itself.
+
+## Related work
+
+It reads alongside [GPi Case 2 True Boot Trace Lantern Design](gpi-case-2-true-boot-trace-lantern-design.md), [GPi Case 2 First Spark / Boot Veil / Relic Welcome Scroll Design](gpi-case-2-first-spark-boot-veil-welcome-scroll-design.md), [GPi Case 2 Boot Power Trace Lantern Map](gpi-case-2-boot-power-trace-lantern-map.md), [GPi Case 2 Session Watch Field Run Procedure](gpi-case-2-session-watch-field-run-procedure.md) and [Human-Facing Field Lantern Script UX Standard](human-facing-field-lantern-script-ux-standard.md).

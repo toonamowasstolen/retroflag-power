@@ -10,7 +10,7 @@ audience:
   - Future Maintainers
 purpose: Preserve the original one-line architecture sketch as project history.
 related:
-  - docs/00-project/requirements.md
+  - 00-project/REQUIREMENTS.md
 superseded_by:
   - docs/04-architecture/system-overview.md
 last_updated: 2026-07-03
@@ -25,3 +25,7 @@ last_updated: 2026-07-03
 ```text
 systemd -> daemon -> event bus -> handlers
 ```
+
+## Related work
+
+It reads alongside [Project Requirements](00-project/REQUIREMENTS.md).

@@ -11,15 +11,15 @@ audience:
   - Future Maintainers
 purpose: Preserve the pre-EDC eleven-stage milestone journey as historical planning context after large life stages were renamed Epochs.
 related:
-  - WHY.md
-  - PROJECT_MEMORY.md
-  - ENGINEERING_MANIFESTO.md
-  - PROJECT_MANIFEST.md
-  - PROJECT_CHARTER.md
-  - docs/00-project/roadmap.md
-  - docs/00-project/milestones.md
-  - docs/adr/0003-adopt-epoch-milestone-quest-model.md
-  - docs/13-reference/terminology.md
+  - ../../WHY.md
+  - ../../PROJECT_MEMORY.md
+  - ../../ENGINEERING_MANIFESTO.md
+  - ../../PROJECT_MANIFEST.md
+  - ../../PROJECT_CHARTER.md
+  - ../00-project/ROADMAP.md
+  - ../00-project/MILESTONES.md
+  - ../adr/0003-adopt-epoch-milestone-quest-model.md
+  - ../13-reference/terminology.md
 last_updated: 2026-07-06
 ---
 
@@ -32,11 +32,11 @@ last_updated: 2026-07-06
 Canonical current sources:
 
 - Epoch ladder and current direction:
-  `docs/00-project/roadmap.md`
+  [`docs/00-project/ROADMAP.md`](../00-project/ROADMAP.md)
 - Numbered verified Milestones:
-  `docs/00-project/milestones.md`
+  [`docs/00-project/MILESTONES.md`](../00-project/MILESTONES.md)
 - Vocabulary decision:
-  `docs/adr/0003-adopt-epoch-milestone-quest-model.md`
+  [`docs/adr/0003-adopt-epoch-milestone-quest-model.md`](../adr/0003-adopt-epoch-milestone-quest-model.md)
 
 ---
 
@@ -125,11 +125,11 @@ The repository contains enough documentation and shared language that future con
 
 ## Included work
 
-- WHY.md
-- PROJECT_MEMORY.md
-- ENGINEERING_MANIFESTO.md
-- PROJECT_MANIFEST.md
-- PROJECT_CHARTER.md
+- [WHY.md](../../WHY.md)
+- [PROJECT_MEMORY.md](../../PROJECT_MEMORY.md)
+- [ENGINEERING_MANIFESTO.md](../../ENGINEERING_MANIFESTO.md)
+- [PROJECT_MANIFEST.md](../../PROJECT_MANIFEST.md)
+- [PROJECT_CHARTER.md](../../PROJECT_CHARTER.md)
 - terminology guide
 - glossary
 - product vision
@@ -968,16 +968,16 @@ Current path through Milestone 0:
 - [x] ENGINEERING_MANIFESTO.md
 - [x] PROJECT_MANIFEST.md
 - [x] PROJECT_CHARTER.md
-- [x] docs/13-reference/terminology.md
+- [x] [docs/13-reference/terminology.md](../13-reference/terminology.md)
 - [ ] docs/13-reference/glossary.md
-- [ ] docs/01-product/vision.md
-- [ ] docs/00-project/roadmap.md
-- [ ] docs/00-project/requirements.md
+- [ ] docs/01-product/VISION.md
+- [ ] docs/00-project/ROADMAP.md
+- [ ] docs/00-project/REQUIREMENTS.md
 - [ ] docs/04-architecture/system-overview.md
 - [ ] docs/02-hardware/gpi-case-2.md
 - [ ] docs/05-development/ai-collaboration.md
-- [ ] docs/10-decisions/adr-template.md
-- [ ] docs/11-rfc/rfc-template.md
+- [ ] docs/10-decisions/ADR-TEMPLATE.md
+- [ ] docs/11-rfc/RFC-TEMPLATE.md
 
 Milestone 0 should not grow forever.
 

@@ -12,15 +12,15 @@ audience:
   - Hardware Porters
 purpose: Define the field-test gates required before RetroFlag Power replaces SafeShutdown.py, installs a daemon service, publishes a public installer, or broadens toward Arcadia Runtime.
 related:
-  - README.md
-  - docs/03-operations/safeshutdown-replacement-boundary-map.md
-  - docs/03-operations/installer-migration-toolkit-map.md
-  - docs/03-operations/local-diagnostics-bundle-map.md
-  - docs/04-architecture/arcadia-runtime-migration-path.md
-  - docs/02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
-  - docs/02-hardware/gpi-case-2-power-integrity-investigation-notes.md
-  - docs/00-project/quests/0053-add-the-gpi-case-2-acceptance-checklist.md
-  - docs/00-project/quests/0057-add-gpi-case-2-field-test-checklist-entries.md
+  - ../../README.md
+  - safeshutdown-replacement-boundary-map.md
+  - installer-migration-toolkit-map.md
+  - local-diagnostics-bundle-map.md
+  - ../04-architecture/arcadia-runtime-migration-path.md
+  - ../02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
+  - ../02-hardware/gpi-case-2-power-integrity-investigation-notes.md
+  - ../00-project/quests/0053-add-the-gpi-case-2-acceptance-checklist.md
+  - ../00-project/quests/0057-add-gpi-case-2-field-test-checklist-entries.md
 last_updated: 2026-07-09
 ---
 
@@ -279,3 +279,7 @@ Use this compact ledger for each field-test pass:
 
 The first honest value for an untested row is `Unknown`. The checklist becomes
 useful by showing what remains dark as clearly as what has been lit.
+
+## Related work
+
+It rests on [README](../../README.md) (the project overview). The work itself was carried out under [Add the GPi Case 2 Acceptance Checklist](../00-project/quests/0053-add-the-gpi-case-2-acceptance-checklist.md) and [Add GPi Case 2 Field Test Checklist Entries](../00-project/quests/0057-add-gpi-case-2-field-test-checklist-entries.md). It reads alongside [SafeShutdown Replacement Boundary Map](safeshutdown-replacement-boundary-map.md), [Installer and Migration Toolkit Map](installer-migration-toolkit-map.md), [Local Diagnostics Bundle Map](local-diagnostics-bundle-map.md), [Arcadia Runtime Migration Path](../04-architecture/arcadia-runtime-migration-path.md) and [GPi Case 2 Hardware Findings and KMS Power Notes](../02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md).

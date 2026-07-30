@@ -11,14 +11,14 @@ audience:
   - Future Maintainers
 purpose: Add the safe observer seam that lets future GPIO input become a dry-run power intent without touching real hardware yet.
 related:
-  - internal/input
-  - internal/app
-  - internal/config
-  - internal/planner
-  - internal/executor
-  - internal/events
-  - docs/04-architecture/system-overview.md
-  - docs/00-project/quests/0038-add-a-configurable-dry-run-power-policy.md
+  - ../../../internal/input
+  - ../../../internal/app
+  - ../../../internal/config
+  - ../../../internal/planner
+  - ../../../internal/executor
+  - ../../../internal/events
+  - ../../04-architecture/system-overview.md
+  - 0038-add-a-configurable-dry-run-power-policy.md
 last_updated: 2026-07-07
 ---
 
@@ -41,11 +41,11 @@ Implementation
 
 ## Outcome
 
-- Added an `internal/input` observer interface for project-level input events.
+- Added an [`internal/input`](../../../internal/input) observer interface for project-level input [events](../../../internal/events).
 - Added a fake observer that can emit a `PowerButtonPressed`-style event.
-- Added app processing for input events that maps the fake power-button event
+- Added [app](../../../internal/app) processing for input events that maps the fake power-button event
   into the existing `PowerButtonPressed` intent.
-- Reused the existing config policy, planner, executor, and event breadcrumb
+- Reused the existing [config](../../../internal/config) policy, [planner](../../../internal/planner), [executor](../../../internal/executor), and event breadcrumb
   flow.
 - Tests prove the fake observer event becomes the existing power intent, the
   configured noop policy is honored, the deterministic dry-run plan and
@@ -79,3 +79,6 @@ fake power-button event during tests, translate that event into the existing
 dry-run power intent, and leave the same clear breadcrumb ledger behind. The
 real hardware map remains folded for a future quest.
 
+## Related work
+
+The work itself was carried out under [Add a Configurable Dry-Run Power Policy](0038-add-a-configurable-dry-run-power-policy.md). It reads alongside [System Overview](../../04-architecture/system-overview.md).

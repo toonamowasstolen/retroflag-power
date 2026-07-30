@@ -11,9 +11,9 @@ audience:
   - Future Maintainers
 purpose: Record the formatter boundary for the runtime summary string before user-facing diagnostic lanterns arrive.
 related:
-  - docs/04-architecture/system-overview.md
-  - docs/00-project/quests/0020-add-a-runtime-snapshot-summary.md
-  - docs/00-project/quests/0021-add-a-runtime-summary-string.md
+  - ../../04-architecture/system-overview.md
+  - 0020-add-a-runtime-snapshot-summary.md
+  - 0021-add-a-runtime-summary-string.md
 last_updated: 2026-07-06
 ---
 
@@ -36,7 +36,7 @@ Documentation
 
 ## Outcome
 
-- `docs/04-architecture/system-overview.md` now records that
+- [`docs/04-architecture/system-overview.md`](../../04-architecture/system-overview.md) now records that
   `RuntimeSnapshotSummary.String()` is stable, compact, deterministic, and
   internal.
 - The guidance keeps the string test-friendly and machine-ish for internal
@@ -75,3 +75,7 @@ Documentation
 
 This preserves the runtime map's internal formatter boundary. It does not wire
 the summary string into any user-facing lantern.
+
+## Related work
+
+The work itself was carried out under [Add a Runtime Snapshot Summary](0020-add-a-runtime-snapshot-summary.md) and [Add a Runtime Summary String](0021-add-a-runtime-summary-string.md).

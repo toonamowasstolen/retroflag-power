@@ -11,17 +11,17 @@ audience:
   - Future Maintainers
 purpose: Prepare the first real GPi Case input work with a safe read-only hardware plan and a small observer code boundary.
 related:
-  - docs/03-operations/gpio-read-only-plan.md
-  - docs/02-hardware/gpi-case-2.md
-  - docs/04-architecture/system-overview.md
-  - internal/input
+  - ../../03-operations/gpio-read-only-plan.md
+  - ../../02-hardware/gpi-case-2.md
+  - ../../04-architecture/system-overview.md
+  - ../../../internal/input
 last_updated: 2026-07-07
 ---
 
 # QUEST-0041 - Plan the GPIO Read-Only Path
 
 > Mark the next hardware trail with a read-only lantern, so the first GPi Case
-> input quest can observe the relic without casting a power spell.
+> [input](../../../internal/input) quest can observe the relic without casting a power spell.
 
 ## Quest Status
 
@@ -74,3 +74,7 @@ Planning
 The map now shows the safe route from fake observer charm to future read-only
 hardware observation. The next quest can bring the GPi Case onto the workbench
 with a clear rule: watch first, write nothing, keep every power action noop.
+
+## Related work
+
+It reads alongside [GPIO Read-Only Plan](../../03-operations/gpio-read-only-plan.md), [GPi Case 2 Reference Hardware](../../02-hardware/gpi-case-2.md) and [System Overview](../../04-architecture/system-overview.md).

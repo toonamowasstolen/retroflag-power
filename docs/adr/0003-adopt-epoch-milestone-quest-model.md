@@ -11,14 +11,14 @@ audience:
   - Future Maintainers
 purpose: Record the EDC vocabulary and ownership model for project life stages, verified checkpoints, work records, current direction, and durable project memory.
 related:
-  - PROJECT_MEMORY.md
-  - PROJECT_MANIFEST.md
-  - docs/00-project/documentation-structure-and-governance.md
-  - docs/00-project/milestones.md
-  - docs/00-project/roadmap.md
-  - docs/00-project/quests/0004-chart-the-edc-map.md
-  - docs/00-project/quests/0005-correct-the-edc-compass.md
-  - docs/13-reference/terminology.md
+  - ../../PROJECT_MEMORY.md
+  - ../../PROJECT_MANIFEST.md
+  - ../00-project/documentation-structure-and-governance.md
+  - ../00-project/MILESTONES.md
+  - ../00-project/ROADMAP.md
+  - ../00-project/quests/0004-chart-the-edc-map.md
+  - ../00-project/quests/0005-correct-the-edc-compass.md
+  - ../13-reference/terminology.md
 last_updated: 2026-07-06
 ---
 
@@ -40,12 +40,12 @@ Joshua Taft
 
 ## Related Documents
 
-- `docs/00-project/quests/0004-chart-the-edc-map.md`
-- `docs/00-project/quests/0005-correct-the-edc-compass.md`
-- `docs/00-project/roadmap.md`
-- `docs/00-project/milestones.md`
-- `docs/00-project/documentation-structure-and-governance.md`
-- `PROJECT_MEMORY.md`
+- [`docs/00-project/quests/0004-chart-the-edc-map.md`](../00-project/quests/0004-chart-the-edc-map.md)
+- [`docs/00-project/quests/0005-correct-the-edc-compass.md`](../00-project/quests/0005-correct-the-edc-compass.md)
+- [`docs/00-project/ROADMAP.md`](../00-project/ROADMAP.md)
+- [`docs/00-project/MILESTONES.md`](../00-project/MILESTONES.md)
+- [`docs/00-project/documentation-structure-and-governance.md`](../00-project/documentation-structure-and-governance.md)
+- [`PROJECT_MEMORY.md`](../../PROJECT_MEMORY.md)
 
 ---
 
@@ -102,7 +102,7 @@ M-0002
 M-0003
 ```
 
-The canonical ledger is `docs/00-project/milestones.md`.
+The canonical ledger is `docs/00-project/MILESTONES.md`.
 
 Milestone entries require explicit anchors such as:
 
@@ -239,7 +239,7 @@ stable M-IDs are assigned.
 1. Adopt vocabulary and ownership rules in governance and reference docs.
 2. Make the seven-Epoch ladder canonical in the Roadmap.
 3. Preserve the former eleven-stage journey in the archive.
-4. Repurpose `docs/00-project/milestones.md` as the verified ledger.
+4. Repurpose `docs/00-project/MILESTONES.md` as the verified ledger.
 5. Leave duplicated checkpoint prose in place during this Quest.
 6. Use QUEST-0006 to create reviewed Milestone entries and remove duplication.
 7. Update remaining historical terminology when touching affected documents.
@@ -267,3 +267,7 @@ If this model creates confusion, supersede this ADR with a new decision. Do not
 silently reuse Epoch, Milestone, or Quest for different concepts.
 
 Stable Milestone IDs must never be reassigned after publication.
+
+## Related work
+
+It rests on [Project Manifest](../../PROJECT_MANIFEST.md) (what it is made of). Vocabulary is fixed by [Terminology Guide](../13-reference/terminology.md) (which word to use).

@@ -76,3 +76,7 @@ Documentation
 Human-facing manual Lanterns now have a shared terminal UX Spellbook. Long
 captures should show their work, name their satchel, report their duration,
 and keep safety messages plain enough for the Ledger.
+
+## Related work
+
+It reads alongside [GPi Case 2 Boot Power Trace Capture Procedure](../../03-operations/gpi-case-2-boot-power-trace-capture-procedure.md), [GPi Case 2 Boot Power Trace Lantern Map](../../03-operations/gpi-case-2-boot-power-trace-lantern-map.md) and [GPi Case 2 Field Lantern Capture Procedure](../../03-operations/gpi-case-2-field-lantern-capture-procedure.md).

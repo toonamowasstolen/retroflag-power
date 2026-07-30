@@ -400,3 +400,7 @@ design lives in
 
 The strongest verified win is a small one: a timestamped local bundle that can
 be inspected without touching GPIO, shutdown, installers, or the power path.
+
+## Related work
+
+It reads alongside [Common Problems Mage Map](common-problems-mage-map.md), [Local Diagnostics Bundle Map](local-diagnostics-bundle-map.md), [GPi Case 2 Power Integrity Investigation Notes](../02-hardware/gpi-case-2-power-integrity-investigation-notes.md) and [GPi Case 2 Hardware Findings and KMS Power Notes](../02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md).

@@ -11,12 +11,12 @@ audience:
   - Future Maintainers
 purpose: Define the first implementation quest after the daemon's first breath, focused on reviewing and preparing the future systemd heartbeat path without activating shutdown behavior or touching hardware.
 related:
-  - docs/00-project/awakening-readiness.md
-  - docs/00-project/milestones.md
-  - docs/00-project/roadmap.md
-  - docs/00-project/requirements.md
-  - docs/04-architecture/system-overview.md
-  - docs/adr/0002-use-small-context-driven-daemon-lifecycle.md
+  - ../awakening-readiness.md
+  - ../MILESTONES.md
+  - ../ROADMAP.md
+  - ../REQUIREMENTS.md
+  - ../../04-architecture/system-overview.md
+  - ../../adr/0002-use-small-context-driven-daemon-lifecycle.md
 last_updated: 2026-07-03
 ---
 
@@ -213,7 +213,7 @@ Makefile
 cmd/retroflag-powerd/main.go
 internal/app/app.go
 internal/logging/logging.go
-docs/00-project/requirements.md
+docs/00-project/REQUIREMENTS.md
 docs/04-architecture/system-overview.md
 docs/00-project/awakening-readiness.md
 ```
@@ -380,3 +380,7 @@ A daemon that survives service supervision will have a heartbeat.
 Prepare the toolkit.
 
 Do not pull the lever yet.
+
+## Related work
+
+For where it sits in the project's arc, see [Awakening Readiness Check](../awakening-readiness.md) (the readiness gate), [Verified Milestone Ledger](../MILESTONES.md) (the checkpoint log) and [Project Roadmap](../ROADMAP.md) (the stage this belongs to). The decision behind it is recorded in [Use a Small Context-Driven Daemon Lifecycle](../../adr/0002-use-small-context-driven-daemon-lifecycle.md). It reads alongside [Project Requirements](../REQUIREMENTS.md) and [System Overview](../../04-architecture/system-overview.md).

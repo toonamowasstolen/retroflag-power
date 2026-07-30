@@ -84,3 +84,7 @@ Documentation
 The GPi Case 2 power-save trail now has a clear red flag: recovery must be
 proved before any replacement runtime or field workflow depends on software
 shutdown remaining available.
+
+## Related work
+
+The work itself was carried out under [Add GPi Case 2 Field Test Checklist Entries](0057-add-gpi-case-2-field-test-checklist-entries.md) and [Map the SafeShutdown Replacement Boundaries](0048-map-the-safeshutdown-replacement-boundaries.md). It reads alongside [GPi Case 2 Hardware Findings and KMS Power Notes](../../02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md), [GPi Case 2 Acceptance Checklist](../../03-operations/gpi-case-2-acceptance-checklist.md) and [SafeShutdown Replacement Boundary Map](../../03-operations/safeshutdown-replacement-boundary-map.md).

@@ -11,12 +11,12 @@ audience:
   - Future Maintainers
 purpose: Mark the ordering between the startup result badge and startup diagnostic snapshot before future failure paths add more map detail.
 related:
-  - docs/04-architecture/system-overview.md
-  - docs/00-project/quests/0027-add-an-app-startup-diagnostic-snapshot.md
-  - docs/00-project/quests/0028-document-runtime-vs-startup-diagnostics.md
-  - docs/00-project/quests/0029-add-an-app-startup-result-accessor.md
-  - docs/00-project/quests/0030-document-startup-success-meaning.md
-  - docs/00-project/quests/0031-add-a-tiny-startup-result-type.md
+  - ../../04-architecture/system-overview.md
+  - 0027-add-an-app-startup-diagnostic-snapshot.md
+  - 0028-document-runtime-vs-startup-diagnostics.md
+  - 0029-add-an-app-startup-result-accessor.md
+  - 0030-document-startup-success-meaning.md
+  - 0031-add-a-tiny-startup-result-type.md
 last_updated: 2026-07-06
 ---
 
@@ -39,7 +39,7 @@ Documentation
 
 ## Outcome
 
-- `docs/04-architecture/system-overview.md` now records that
+- [`docs/04-architecture/system-overview.md`](../../04-architecture/system-overview.md) now records that
   `App.StartupResult()` is the small startup-completion badge.
 - The architecture note clarifies that `App.StartupDiagnostic()` is the
   captured startup-complete diagnostic snapshot.
@@ -85,3 +85,7 @@ Documentation
 The startup result badge and diagnostic lantern now have their ordering written
 in the architecture spellbook. Future startup failure work has a clearer place
 to add detail if diagnostic capture ever becomes its own fallible step.
+
+## Related work
+
+The work itself was carried out under [Add an App Startup Diagnostic Snapshot](0027-add-an-app-startup-diagnostic-snapshot.md), [Document Runtime vs Startup Diagnostics](0028-document-runtime-vs-startup-diagnostics.md), [Add an App Startup Result Accessor](0029-add-an-app-startup-result-accessor.md), [Document Startup Success Meaning](0030-document-startup-success-meaning.md) and [Add a Tiny Startup Result Type](0031-add-a-tiny-startup-result-type.md).

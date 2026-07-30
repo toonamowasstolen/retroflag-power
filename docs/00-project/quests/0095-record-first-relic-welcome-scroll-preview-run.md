@@ -69,7 +69,7 @@ UX.
   cleanliness, operator notes, evidence status, candidate improvements, and
   the next rune.
 - Linked the preview notes from the Relic Welcome Scroll design, First Spark /
-  Boot Veil / Welcome Scroll design, and Local Diagnostics Bundle Map.
+  Boot Veil / Welcome Scroll design, and [Local Diagnostics Bundle Map](../../03-operations/local-diagnostics-bundle-map.md).
 
 ## Boundary
 
@@ -122,3 +122,7 @@ The first Welcome Scroll preview is in the Ledger. The Relic showed the art
 path, plain path, and no-color path quickly over the scp-first trail, while
 the script remains a manual satchel tool and not a login, MOTD, service, boot,
 GPIO, display, shutdown, sleep, or resume change.
+
+## Related work
+
+The work itself was carried out under [Design the Relic Welcome Scroll](0093-design-relic-welcome-scroll.md) and [Add the Relic Welcome Scroll Preview Script](0094-add-relic-welcome-scroll-preview-script.md). It reads alongside [GPi Case 2 Relic Welcome Scroll Design](../../03-operations/gpi-case-2-relic-welcome-scroll-design.md) and [GPi Case 2 First Spark / Boot Veil / Relic Welcome Scroll Design](../../03-operations/gpi-case-2-first-spark-boot-veil-welcome-scroll-design.md). The script involved is [`gpi-case2-relic-welcome-scroll.sh`](../../../scripts/gpi-case2-relic-welcome-scroll.sh).

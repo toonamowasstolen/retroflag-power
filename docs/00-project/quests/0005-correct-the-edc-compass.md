@@ -12,15 +12,15 @@ audience:
   - Documentation Authors
 purpose: Adopt the Epoch, Milestone, Quest, Roadmap, and Project Memory vocabulary and ownership model after the QUEST-0004 audit.
 related:
-  - PROJECT_MEMORY.md
-  - PROJECT_MANIFEST.md
-  - docs/00-project/documentation-structure-and-governance.md
-  - docs/00-project/milestones.md
-  - docs/00-project/roadmap.md
-  - docs/00-project/quests/0004-chart-the-edc-map.md
-  - docs/13-reference/terminology.md
-  - docs/13-reference/glossary.md
-  - docs/adr/0003-adopt-epoch-milestone-quest-model.md
+  - ../../../PROJECT_MEMORY.md
+  - ../../../PROJECT_MANIFEST.md
+  - ../documentation-structure-and-governance.md
+  - ../MILESTONES.md
+  - ../ROADMAP.md
+  - 0004-chart-the-edc-map.md
+  - ../../13-reference/terminology.md
+  - ../../13-reference/glossary.md
+  - ../../adr/0003-adopt-epoch-milestone-quest-model.md
 last_updated: 2026-07-06
 ---
 
@@ -90,7 +90,7 @@ The Roadmap is canonical for the ladder, current Epoch, and direction.
 
 ## Milestone ledger
 
-`docs/00-project/milestones.md` is canonical for numbered, verified checkpoint
+[`docs/00-project/MILESTONES.md`](../MILESTONES.md) is canonical for numbered, verified checkpoint
 facts.
 
 No Milestones were created by this Quest. QUEST-0006 will review existing
@@ -129,13 +129,13 @@ M-IDs.
 - [x] ADR-0003 records the vocabulary decision.
 - [x] One seven-Epoch ladder is canonical.
 - [x] The eleven-stage journey is preserved but non-canonical.
-- [x] `docs/00-project/milestones.md` is a verified ledger scaffold.
+- [x] `docs/00-project/MILESTONES.md` is a verified ledger scaffold.
 - [x] No M-0001 through M-0004 entries were created.
 - [x] Governance defines all five EDC concepts.
 - [x] Governance requires stable Milestone anchors.
 - [x] Governance requires cross-linked ADRs for durable Milestone reasoning.
 - [x] ADR and RFC record/template locations are explicit.
-- [x] Terminology and glossary definitions agree.
+- [x] Terminology and [glossary](../../13-reference/glossary.md) definitions agree.
 - [x] Project Memory is explicitly not the progress log.
 - [x] Existing checkpoint prose was not moved.
 - [x] No production code or packaging changed.
@@ -171,3 +171,7 @@ Epochs tell the journey.
 Milestones prove progress.
 
 Quests do the work.
+
+## Related work
+
+It rests on [Project Memory and Blueprint Capture](../../../PROJECT_MEMORY.md) (the running record of decisions and open questions) and [Project Manifest](../../../PROJECT_MANIFEST.md) (what it is made of). For where it sits in the project's arc, see [Project Roadmap](../ROADMAP.md) (the stage this belongs to). Vocabulary is fixed by [Terminology Guide](../../13-reference/terminology.md) (which word to use). The decision behind it is recorded in [Adopt the Epoch, Milestone, and Quest Model](../../adr/0003-adopt-epoch-milestone-quest-model.md). The work itself was carried out under [Chart the EDC Map](0004-chart-the-edc-map.md). It reads alongside [Documentation Structure and Governance Guide](../documentation-structure-and-governance.md).

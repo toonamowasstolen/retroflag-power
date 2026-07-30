@@ -12,14 +12,14 @@ audience:
   - Hardware Porters
 purpose: Map a future local-first, reversible installer and migration toolkit for safely inspecting, backing up, planning, applying, uninstalling, and restoring RetroFlag Power and future Arcadia Runtime field kits.
 related:
-  - README.md
-  - docs/00-project/project-direction-save-room-arcadia.md
-  - docs/04-architecture/arcadia-runtime-migration-path.md
-  - docs/03-operations/local-diagnostics-bundle-map.md
-  - docs/03-operations/safeshutdown-replacement-boundary-map.md
-  - docs/03-operations/gpi-case-2-acceptance-checklist.md
-  - docs/00-project/quests/0052-map-the-installer-and-migration-toolkit.md
-  - docs/00-project/quests/0053-add-the-gpi-case-2-acceptance-checklist.md
+  - ../../README.md
+  - ../00-project/project-direction-save-room-arcadia.md
+  - ../04-architecture/arcadia-runtime-migration-path.md
+  - local-diagnostics-bundle-map.md
+  - safeshutdown-replacement-boundary-map.md
+  - gpi-case-2-acceptance-checklist.md
+  - ../00-project/quests/0052-map-the-installer-and-migration-toolkit.md
+  - ../00-project/quests/0053-add-the-gpi-case-2-acceptance-checklist.md
 last_updated: 2026-07-07
 ---
 
@@ -210,3 +210,7 @@ This installer map does not permit:
 The future toolkit should be a reversible compass before it is a wrench: local
 inspection first, visible plan second, confirmed apply third, and a readable
 restore ledger always.
+
+## Related work
+
+It rests on [README](../../README.md) (the project overview). The work itself was carried out under [Map the Installer and Migration Toolkit](../00-project/quests/0052-map-the-installer-and-migration-toolkit.md) and [Add the GPi Case 2 Acceptance Checklist](../00-project/quests/0053-add-the-gpi-case-2-acceptance-checklist.md). It reads alongside [Save Room Tech and Arcadia Runtime Direction](../00-project/project-direction-save-room-arcadia.md) and [Arcadia Runtime Migration Path](../04-architecture/arcadia-runtime-migration-path.md).

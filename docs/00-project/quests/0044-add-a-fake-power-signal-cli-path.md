@@ -11,20 +11,20 @@ audience:
   - Future Maintainers
 purpose: Make the configured latching power switch interpreter visible from the daemon command line with fake raw signal input.
 related:
-  - cmd/retroflag-powerd
-  - internal/config
-  - internal/input
-  - internal/app
-  - README.md
-  - docs/03-operations/gpio-read-only-plan.md
-  - docs/04-architecture/system-overview.md
-  - docs/00-project/quests/0043-add-a-latching-power-switch-interpreter.md
+  - ../../../cmd/retroflag-powerd
+  - ../../../internal/config
+  - ../../../internal/input
+  - ../../../internal/app
+  - ../../../README.md
+  - ../../03-operations/gpio-read-only-plan.md
+  - ../../04-architecture/system-overview.md
+  - 0043-add-a-latching-power-switch-interpreter.md
 last_updated: 2026-07-07
 ---
 
 # QUEST-0044 - Add a Fake Power Signal CLI Path
 
-> Place the raw-signal lantern on the command line, then let the configured
+> Place the raw-signal lantern on the command line, then let the [config](../../../internal/config)ured
 > switch charm decide whether the trail reaches the noop power ledger.
 
 ## Quest Status
@@ -41,9 +41,9 @@ Implementation
 
 ## Outcome
 
-- Added `--fake-power-signal <low|high|unverified>` to `retroflag-powerd`.
-- Added default configured power input and latching power switch interpreter
-  options to app config.
+- Added `--fake-power-signal <low|high|unverified>` to [`retroflag-powerd`](../../../cmd/retroflag-powerd).
+- Added default configured power [input](../../../internal/input) and latching power switch interpreter
+  options to [app](../../../internal/app) config.
 - Added dev CLI options for the configured latching switch map:
   `--power-switch-active-signal <low|high>` and
   `--power-switch-active-state <off|on>`.
@@ -57,7 +57,7 @@ Implementation
 - Invalid fake signal input fails clearly before the app starts.
 - Kept the existing `--dry-run-power-button` and
   `--fake-power-button-observer` paths working.
-- Updated the README, architecture map, and GPIO read-only plan with the new
+- Updated the README, architecture map, and [GPIO read-only plan](../../03-operations/gpio-read-only-plan.md) with the new
   fake raw signal command.
 
 ## Validation
@@ -95,3 +95,7 @@ The daemon now carries a raw-signal charm in the workshop satchel. Developers
 can feed low, high, or unverified into the configured latching switch map, see
 the interpretation plainly, and verify that only `SwitchOff` walks into the
 dry-run/noop power ledger.
+
+## Related work
+
+It rests on [README](../../../README.md) (the project overview). The work itself was carried out under [Add a Latching Power Switch Interpreter](0043-add-a-latching-power-switch-interpreter.md). It reads alongside [System Overview](../../04-architecture/system-overview.md).

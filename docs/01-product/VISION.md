@@ -11,13 +11,13 @@ audience:
   - Curious Users
 purpose: Define the desired product experience for RetroFlag Power so implementation decisions stay aligned with the goal of making Raspberry Pi handhelds feel more like polished gaming consoles.
 related:
-  - WHY.md
-  - PROJECT_MEMORY.md
-  - PROJECT_MANIFEST.md
-  - PROJECT_CHARTER.md
-  - docs/00-project/milestones.md
-  - docs/13-reference/terminology.md
-  - docs/13-reference/glossary.md
+  - ../../WHY.md
+  - ../../PROJECT_MEMORY.md
+  - ../../PROJECT_MANIFEST.md
+  - ../../PROJECT_CHARTER.md
+  - ../00-project/MILESTONES.md
+  - ../13-reference/terminology.md
+  - ../13-reference/glossary.md
 last_updated: 2026-07-03
 ---
 
@@ -688,3 +688,7 @@ Flip the Power Switch.
 
 Continue the adventure.
 ```
+
+## Related work
+
+It rests on [Why](../../WHY.md) (why this project exists), [Project Memory and Blueprint Capture](../../PROJECT_MEMORY.md) (the running record of decisions and open questions), [Project Manifest](../../PROJECT_MANIFEST.md) (what it is made of) and [Project Charter](../../PROJECT_CHARTER.md) (what it promises). For where it sits in the project's arc, see [Verified Milestone Ledger](../00-project/MILESTONES.md) (the checkpoint log). Vocabulary is fixed by [Terminology Guide](../13-reference/terminology.md) (which word to use) and [Glossary](../13-reference/glossary.md) (what the words mean).

@@ -2,7 +2,7 @@
 id: MEMORY-001
 title: Project Memory and Blueprint Capture
 version: 0.2.0
-status: Draft
+status: Active
 owner: Joshua Taft
 audience:
   - Project Maintainers
@@ -14,8 +14,8 @@ related:
   - PROJECT_MANIFEST.md
   - PROJECT_CHARTER.md
   - ENGINEERING_MANIFESTO.md
-  - docs/00-project/roadmap.md
-  - docs/00-project/milestones.md
+  - docs/00-project/ROADMAP.md
+  - docs/00-project/MILESTONES.md
   - docs/adr/0003-adopt-epoch-milestone-quest-model.md
   - docs/13-reference/terminology.md
 last_updated: 2026-07-06
@@ -89,7 +89,7 @@ It captures the core tension of the project:
 
 A personal document should be created:
 
-`ENGINEERING_MANIFESTO.md`
+[`ENGINEERING_MANIFESTO.md`](ENGINEERING_MANIFESTO.md)
 
 This document belongs to Joshua as much as to any specific repository.
 
@@ -229,9 +229,9 @@ It is discovering its purpose, values, architecture, and identity.
 
 Primary artifacts:
 
-- WHY.md
-- PROJECT_MANIFEST.md
-- PROJECT_CHARTER.md
+- [WHY.md](WHY.md)
+- [PROJECT_MANIFEST.md](PROJECT_MANIFEST.md)
+- [PROJECT_CHARTER.md](PROJECT_CHARTER.md)
 - ENGINEERING_MANIFESTO.md
 - Requirements
 - Terminology
@@ -252,10 +252,10 @@ Primary artifacts:
 
 Verified Awakening progress is recorded in the canonical Milestone ledger:
 
-- [M-0001 — Daemon Nameplate](docs/00-project/milestones.md#m-0001)
-- [M-0002 — Config Satchel](docs/00-project/milestones.md#m-0002)
-- [M-0003 — Event Charms](docs/00-project/milestones.md#m-0003)
-- [M-0004 — Dry-Run Action Charm](docs/00-project/milestones.md#m-0004)
+- [M-0001 — Daemon Nameplate](docs/00-project/MILESTONES.md#m-0001)
+- [M-0002 — Config Satchel](docs/00-project/MILESTONES.md#m-0002)
+- [M-0003 — Event Charms](docs/00-project/MILESTONES.md#m-0003)
+- [M-0004 — Dry-Run Action Charm](docs/00-project/MILESTONES.md#m-0004)
 
 The ledger preserves verification evidence and explicit exclusions. Project
 Memory retains the broader safety boundary: no hardware control, shutdown
@@ -1649,8 +1649,8 @@ To avoid losing context while moving one file at a time, create artifacts in thi
 3. ENGINEERING_MANIFESTO.md
 4. PROJECT_MANIFEST.md
 5. PROJECT_CHARTER.md
-6. docs/13-reference/terminology.md
-7. docs/01-product/vision.md
+6. [docs/13-reference/terminology.md](docs/13-reference/terminology.md)
+7. docs/01-product/VISION.md
 8. docs/01-product/goals.md
 9. docs/01-product/personas.md
 10. docs/01-product/user-stories.md
@@ -1672,8 +1672,8 @@ To avoid losing context while moving one file at a time, create artifacts in thi
 26. docs/07-design/style-guide.md
 27. docs/08-performance/boot-performance.md
 28. docs/09-research/index.md
-29. docs/10-decisions/adr-template.md
-30. docs/11-rfc/rfc-template.md
+29. docs/10-decisions/ADR-TEMPLATE.md
+30. docs/11-rfc/RFC-TEMPLATE.md
 
 This order may change, but the memory document should remain the safety net.
 
@@ -1734,3 +1734,7 @@ When an idea graduates into a proper document, it should remain referenced here 
 The purpose of this file is simple:
 
 > Make sure nothing important from the dream is lost before the project wakes up.
+
+## Related work
+
+For where it sits in the project's arc, see [Project Roadmap](docs/00-project/ROADMAP.md) (the stage this belongs to). The decision behind it is recorded in [Adopt the Epoch, Milestone, and Quest Model](docs/adr/0003-adopt-epoch-milestone-quest-model.md).

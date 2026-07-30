@@ -11,9 +11,9 @@ audience:
   - Future Maintainers
 purpose: Preserve the early direction to use systemd rather than rc.local while the decision is reviewed and expanded into the current ADR format.
 related:
-  - docs/00-project/requirements.md
-  - docs/04-architecture/system-overview.md
-  - docs/10-decisions/adr-template.md
+  - ../00-project/REQUIREMENTS.md
+  - ../04-architecture/system-overview.md
+  - ../10-decisions/ADR-TEMPLATE.md
 last_updated: 2026-07-03
 ---
 
@@ -35,4 +35,8 @@ Use systemd instead of `rc.local`.
 
 Before this ADR is accepted, document its context, alternatives, consequences,
 validation plan, and safe migration boundary using the
-[ADR template](../10-decisions/adr-template.md).
+[ADR template](../10-decisions/ADR-TEMPLATE.md).
+
+## Related work
+
+It reads alongside [Project Requirements](../00-project/REQUIREMENTS.md) and [System Overview](../04-architecture/system-overview.md).

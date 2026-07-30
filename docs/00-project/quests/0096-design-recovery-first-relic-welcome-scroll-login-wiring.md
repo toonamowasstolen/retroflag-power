@@ -104,7 +104,7 @@ and the Relic should not require an attached keyboard.
 - [x] The Relic Welcome Scroll preview notes link to the wiring design.
 - [x] The First Spark / Boot Veil / Welcome Scroll design links to the wiring
   design.
-- [x] The Local Diagnostics Bundle Map links to the wiring design.
+- [x] The [Local Diagnostics Bundle Map](../../03-operations/local-diagnostics-bundle-map.md) links to the wiring design.
 
 ## Validation
 
@@ -125,3 +125,7 @@ The Welcome Scroll now has a recovery-first login wiring map, but the Relic's
 SSH doorway remains unchanged. Future work can test one guarded user-level
 hook at a time while keeping `scp`, command-mode SSH, and handheld recovery
 quiet.
+
+## Related work
+
+The work itself was carried out under [Design the Relic Welcome Scroll](0093-design-relic-welcome-scroll.md), [Add the Relic Welcome Scroll Preview Script](0094-add-relic-welcome-scroll-preview-script.md) and [Record the First Relic Welcome Scroll Preview Run](0095-record-first-relic-welcome-scroll-preview-run.md). It reads alongside [GPi Case 2 Relic Welcome Scroll Design](../../03-operations/gpi-case-2-relic-welcome-scroll-design.md), [GPi Case 2 Relic Welcome Scroll Preview Notes](../../03-operations/gpi-case-2-relic-welcome-scroll-preview-notes.md) and [GPi Case 2 First Spark / Boot Veil / Relic Welcome Scroll Design](../../03-operations/gpi-case-2-first-spark-boot-veil-welcome-scroll-design.md). The script involved is [`gpi-case2-relic-welcome-scroll.sh`](../../../scripts/gpi-case2-relic-welcome-scroll.sh).

@@ -326,3 +326,7 @@ When paused, update the relevant ledger before resuming:
 The field win here is not forcing the device back into testing. The win is
 keeping enough evidence alive that the next quest can move with a steadier
 lantern.
+
+## Related work
+
+It reads alongside [SafeShutdown Replacement Boundary Map](safeshutdown-replacement-boundary-map.md), [GPi Case GPIO Probe Field Ledger](gpi-case-gpio-probe-ledger.md) and [GPi Case 2 Hardware Findings and KMS Power Notes](../02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md).
