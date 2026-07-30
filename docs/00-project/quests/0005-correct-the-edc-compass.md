@@ -12,15 +12,15 @@ audience:
   - Documentation Authors
 purpose: Adopt the Epoch, Milestone, Quest, Roadmap, and Project Memory vocabulary and ownership model after the QUEST-0004 audit.
 related:
-  - PROJECT_MEMORY.md
-  - PROJECT_MANIFEST.md
-  - docs/00-project/documentation-structure-and-governance.md
-  - docs/00-project/MILESTONES.md
-  - docs/00-project/ROADMAP.md
-  - docs/00-project/quests/0004-chart-the-edc-map.md
-  - docs/13-reference/terminology.md
-  - docs/13-reference/glossary.md
-  - docs/adr/0003-adopt-epoch-milestone-quest-model.md
+  - ../../../PROJECT_MEMORY.md
+  - ../../../PROJECT_MANIFEST.md
+  - ../documentation-structure-and-governance.md
+  - ../MILESTONES.md
+  - ../ROADMAP.md
+  - 0004-chart-the-edc-map.md
+  - ../../13-reference/terminology.md
+  - ../../13-reference/glossary.md
+  - ../../adr/0003-adopt-epoch-milestone-quest-model.md
 last_updated: 2026-07-06
 ---
 
@@ -90,7 +90,7 @@ The Roadmap is canonical for the ladder, current Epoch, and direction.
 
 ## Milestone ledger
 
-`docs/00-project/MILESTONES.md` is canonical for numbered, verified checkpoint
+[`docs/00-project/MILESTONES.md`](../MILESTONES.md) is canonical for numbered, verified checkpoint
 facts.
 
 No Milestones were created by this Quest. QUEST-0006 will review existing

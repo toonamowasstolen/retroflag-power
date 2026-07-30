@@ -12,15 +12,15 @@ audience:
   - Hardware Porters
 purpose: Refine the local diagnostics bundle map with a concrete future skeleton while keeping bundle generation, network submission, hardware behavior, and installer work out of scope.
 related:
-  - docs/03-operations/local-diagnostics-bundle-map.md
-  - CLAUDE.md
-  - docs/00-project/edc-quest-operating-rules.md
-  - docs/04-architecture/arcadia-runtime-migration-path.md
-  - docs/03-operations/gpi-case-2-acceptance-checklist.md
-  - docs/03-operations/gpi-case-gpio-probe-ledger.md
-  - docs/03-operations/safeshutdown-replacement-boundary-map.md
-  - docs/02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
-  - docs/00-project/quests/0051-map-the-local-diagnostics-bundle.md
+  - ../../03-operations/local-diagnostics-bundle-map.md
+  - ../../../CLAUDE.md
+  - ../edc-quest-operating-rules.md
+  - ../../04-architecture/arcadia-runtime-migration-path.md
+  - ../../03-operations/gpi-case-2-acceptance-checklist.md
+  - ../../03-operations/gpi-case-gpio-probe-ledger.md
+  - ../../03-operations/safeshutdown-replacement-boundary-map.md
+  - ../../02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
+  - 0051-map-the-local-diagnostics-bundle.md
 last_updated: 2026-07-07
 ---
 

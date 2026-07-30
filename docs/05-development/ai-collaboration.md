@@ -11,17 +11,17 @@ audience:
   - Future Maintainers
 purpose: Define how human contributors and AI assistants should collaborate on RetroFlag Power so the project can move quickly without losing context, quality, safety, or momentum.
 related:
-  - WHY.md
-  - PROJECT_MEMORY.md
-  - ENGINEERING_MANIFESTO.md
-  - PROJECT_MANIFEST.md
-  - PROJECT_CHARTER.md
-  - docs/00-project/MILESTONES.md
-  - docs/00-project/ROADMAP.md
-  - docs/00-project/REQUIREMENTS.md
-  - docs/04-architecture/system-overview.md
-  - docs/02-hardware/gpi-case-2.md
-  - docs/14-infrastructure/HOST-EVENTS.md
+  - ../../WHY.md
+  - ../../PROJECT_MEMORY.md
+  - ../../ENGINEERING_MANIFESTO.md
+  - ../../PROJECT_MANIFEST.md
+  - ../../PROJECT_CHARTER.md
+  - ../00-project/MILESTONES.md
+  - ../00-project/ROADMAP.md
+  - ../00-project/REQUIREMENTS.md
+  - ../04-architecture/system-overview.md
+  - ../02-hardware/gpi-case-2.md
+  - ../14-infrastructure/HOST-EVENTS.md
 last_updated: 2026-07-14
 ---
 
@@ -252,7 +252,7 @@ Example:
 
 ```
 Files:
-docs/00-project/ROADMAP.md
+[docs/00-project/ROADMAP.md](../00-project/ROADMAP.md)
 
 Commit:
 Place road signs in the dream.
@@ -298,7 +298,7 @@ The final response should include:
 
 # 9. Memory Rule
 
-`PROJECT_MEMORY.md` is the safety net.
+[`PROJECT_MEMORY.md`](../../PROJECT_MEMORY.md) is the safety net.
 
 Use it to preserve important ideas until they have proper homes.
 
@@ -382,7 +382,7 @@ When implementation begins, AI should connect work back to requirements.
 Examples:
 
 ```
-Implements: REQ-0005
+Implements: [REQ-0005](../00-project/REQUIREMENTS.md)
 Related: REQ-0605
 ```
 
@@ -624,7 +624,7 @@ Before finalizing an artifact or code change, AI should check:
 - Does it protect safe shutdown?
 - Does it leave a small victory?
 - Does host/infra work outside this repo (a reboot, a storage rebuild, a backup change) need an
-  entry in `docs/14-infrastructure/HOST-EVENTS.md`? If it touched this project's data, uptime, or
+  entry in [`docs/14-infrastructure/HOST-EVENTS.md`](../14-infrastructure/HOST-EVENTS.md)? If it touched this project's data, uptime, or
   environment, log it there rather than letting it live only on the infra side.
 
 ---

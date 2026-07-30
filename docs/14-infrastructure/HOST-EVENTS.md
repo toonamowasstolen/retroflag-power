@@ -2,7 +2,7 @@
 id: INFRA-LOG-001
 title: Host & Infrastructure Event Ledger
 version: 0.1.0
-status: Draft
+status: Active
 owner: Joshua Taft
 audience:
   - Project Maintainers
@@ -11,9 +11,9 @@ audience:
   - Future Maintainers
 purpose: Provide the canonical ledger of host/infrastructure events, outside this repo entirely, that had a real, concrete effect on this project's data, uptime, environment, or deployment.
 related:
-  - PROJECT_MEMORY.md
-  - docs/00-project/MILESTONES.md
-  - docs/00-project/documentation-structure-and-governance.md
+  - ../../PROJECT_MEMORY.md
+  - ../00-project/MILESTONES.md
+  - ../00-project/documentation-structure-and-governance.md
 last_updated: 2026-07-14
 ---
 
@@ -58,6 +58,7 @@ Every entry uses an explicit anchor:
 followed by:
 
 ```markdown
+<a id="infra-0001"></a>
 ## INFRA-0001 — Example Title
 ```
 

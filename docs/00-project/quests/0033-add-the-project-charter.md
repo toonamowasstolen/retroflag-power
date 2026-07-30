@@ -11,10 +11,10 @@ audience:
   - Future Maintainers
 purpose: Preserve the RetroFlag Power project spirit and working principles in the root project charter.
 related:
-  - PROJECT_CHARTER.md
-  - PROJECT_MANIFEST.md
-  - ENGINEERING_MANIFESTO.md
-  - docs/00-project/quests/
+  - ../../../PROJECT_CHARTER.md
+  - ../../../PROJECT_MANIFEST.md
+  - ../../../ENGINEERING_MANIFESTO.md
+  - /
 last_updated: 2026-07-07
 ---
 
@@ -38,7 +38,7 @@ Documentation
 
 ## Outcome
 
-- Root `PROJECT_CHARTER.md` now records the project working spirit in explicit
+- Root [[[`PROJECT_CHARTER.md`](../../../PROJECT_CHARTER.md)](/)](../../../PROJECT_CHARTER.md) now records the project working spirit in explicit
   adventurer-toolkit language.
 - The charter names the daily principles: small verified wins, short quests,
   plain maintainable code, flavor in project artifacts, careful hardware work,

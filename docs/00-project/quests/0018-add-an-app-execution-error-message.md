@@ -11,16 +11,16 @@ audience:
   - Future Maintainers
 purpose: Record the small execution status message exposed for internal inspection.
 related:
-  - internal/app
-  - internal/executor
-  - docs/00-project/quests/0017-preserve-app-execution-errors-internally.md
+  - ../../../internal/app
+  - ../../../internal/executor
+  - 0017-preserve-app-execution-errors-internally.md
 last_updated: 2026-07-06
 ---
 
 # QUEST-0018 — Add an App Execution Error Message
 
 > Add a small label to the execution badge: when the dry-run lantern finds an
-> executor error, the app can now show the plain error message in its internal
+> [executor](../../../internal/executor) error, the [app](../../../internal/app) can now show the plain error message in its internal
 > satchel.
 
 ## Quest Status

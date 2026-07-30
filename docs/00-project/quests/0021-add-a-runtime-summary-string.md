@@ -11,9 +11,9 @@ audience:
   - Future Maintainers
 purpose: Record the compact runtime summary string for future internal diagnostics.
 related:
-  - internal/app
-  - docs/00-project/quests/0019-add-an-app-runtime-snapshot.md
-  - docs/00-project/quests/0020-add-a-runtime-snapshot-summary.md
+  - ../../../internal/app
+  - 0019-add-an-app-runtime-snapshot.md
+  - 0020-add-a-runtime-snapshot-summary.md
 last_updated: 2026-07-06
 ---
 
@@ -41,7 +41,7 @@ Implementation
 - The string includes the lifecycle state, plan presence, execution completion,
   execution success, captured execution error presence, and the dry-run
   noop-only pairing status.
-- Focused app tests cover the summary string before startup, after startup, and
+- Focused [app](../../../internal/app) tests cover the summary string before startup, after startup, and
   after shutdown.
 - Daemon logs, CLI output, lifecycle behavior, planner behavior, executor
   behavior, packaging, hardware behavior, and state storage remain unchanged.

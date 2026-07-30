@@ -11,11 +11,11 @@ audience:
   - Future Maintainers
 purpose: Add the first configured interpretation layer from raw signal states to latching power switch states without reading real GPIO.
 related:
-  - internal/input
-  - internal/app
-  - docs/03-operations/gpio-read-only-plan.md
-  - docs/04-architecture/system-overview.md
-  - docs/00-project/quests/0042-separate-raw-signals-from-interpreted-inputs.md
+  - ../../../internal/input
+  - ../../../internal/app
+  - ../../03-operations/gpio-read-only-plan.md
+  - ../../04-architecture/system-overview.md
+  - 0042-separate-raw-signals-from-interpreted-inputs.md
 last_updated: 2026-07-07
 ---
 
@@ -77,7 +77,7 @@ Implementation
 
 ## Milestone Note
 
-The input field kit now carries its first configured interpretation charm.
+The [input](../../../internal/input) field kit now carries its first configured interpretation charm.
 Raw low and high observations still stay plain until a caller declares both the
 active signal and the active switch state. Once declared, `SwitchOff` can walk
 the dry-run/noop power path and leave breadcrumbs without touching hardware.

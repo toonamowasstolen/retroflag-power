@@ -12,13 +12,13 @@ audience:
   - Documentation Authors
 purpose: Audit the current RetroFlag Power documentation model, terminology, progress ownership, duplication, and citation patterns before changing the EDC structure.
 related:
-  - PROJECT_MEMORY.md
-  - docs/00-project/documentation-structure-and-governance.md
-  - docs/00-project/MILESTONES.md
-  - docs/00-project/ROADMAP.md
-  - docs/00-project/awakening-readiness.md
-  - docs/00-project/quests/
-  - docs/adr/0003-adopt-epoch-milestone-quest-model.md
+  - ../../../PROJECT_MEMORY.md
+  - ../documentation-structure-and-governance.md
+  - ../MILESTONES.md
+  - ../ROADMAP.md
+  - ../awakening-readiness.md
+  - /
+  - ../../adr/0003-adopt-epoch-milestone-quest-model.md
 last_updated: 2026-07-06
 ---
 
@@ -44,7 +44,7 @@ made.
 This quest does not:
 
 - rewrite the EDC model
-- rename `Milestone` to `Epoch`
+- rename [`Milestone`](/) to `Epoch`
 - redefine `Milestone`
 - move checkpoint prose
 - create a checkpoint ledger
@@ -63,14 +63,14 @@ guidance.
 
 Primary progress documents:
 
-- `PROJECT_MEMORY.md`
-- `docs/00-project/ROADMAP.md`
-- `docs/00-project/awakening-readiness.md`
-- `docs/00-project/MILESTONES.md`
+- [`PROJECT_MEMORY.md`](../../../PROJECT_MEMORY.md)
+- [`docs/00-project/ROADMAP.md`](../ROADMAP.md)
+- [`docs/00-project/awakening-readiness.md`](../awakening-readiness.md)
+- [`docs/00-project/MILESTONES.md`](../MILESTONES.md)
 
 Governance and record locations:
 
-- `docs/00-project/documentation-structure-and-governance.md`
+- [`docs/00-project/documentation-structure-and-governance.md`](../documentation-structure-and-governance.md)
 - `docs/00-project/quests/`
 
 The audit searched headings, metadata relationships, prose references, progress

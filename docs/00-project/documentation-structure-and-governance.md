@@ -12,15 +12,15 @@ audience:
   - Documentation Authors
 purpose: Define how RetroFlag Power documentation is organized, how metadata headers work, what each folder and document is for, how ADR/RFC templates should be used, and how progress, status, TODOs, and completion should be tracked.
 related:
-  - PROJECT_MEMORY.md
-  - PROJECT_CHARTER.md
-  - docs/00-project/ROADMAP.md
-  - docs/00-project/MILESTONES.md
-  - docs/00-project/REQUIREMENTS.md
-  - docs/05-development/ai-collaboration.md
-  - docs/10-decisions/ADR-TEMPLATE.md
-  - docs/11-rfc/RFC-TEMPLATE.md
-  - docs/adr/0003-adopt-epoch-milestone-quest-model.md
+  - ../../PROJECT_MEMORY.md
+  - ../../PROJECT_CHARTER.md
+  - ROADMAP.md
+  - MILESTONES.md
+  - REQUIREMENTS.md
+  - ../05-development/ai-collaboration.md
+  - ../10-decisions/ADR-TEMPLATE.md
+  - ../11-rfc/RFC-TEMPLATE.md
+  - ../adr/0003-adopt-epoch-milestone-quest-model.md
 last_updated: 2026-07-06
 ---
 
@@ -738,7 +738,7 @@ Should contain:
 
 Should not become a roadmap or technical spec.
 
-### `PROJECT_MEMORY.md`
+### [`PROJECT_MEMORY.md`](../../PROJECT_MEMORY.md)
 
 The safety net.
 
@@ -786,7 +786,7 @@ Should contain:
 
 Should not contain detailed requirements or file-by-file implementation.
 
-### `PROJECT_CHARTER.md`
+### [`PROJECT_CHARTER.md`](../../PROJECT_CHARTER.md)
 
 The formal project agreement.
 
@@ -812,7 +812,7 @@ Use for documents that guide the project as a project.
 
 ## Expected files
 
-### `docs/00-project/MILESTONES.md`
+### [`docs/00-project/MILESTONES.md`](MILESTONES.md)
 
 The canonical ledger of numbered, verified checkpoints.
 
@@ -833,7 +833,7 @@ verified prose.
 If a future contributor would reasonably ask why a Milestone was implemented
 that way, create an ADR in `docs/adr/` and cross-link it with the Milestone.
 
-### `docs/00-project/ROADMAP.md`
+### [`docs/00-project/ROADMAP.md`](ROADMAP.md)
 
 The canonical current state, seven-Epoch ladder, and practical route through
 upcoming work.
@@ -849,7 +849,7 @@ Should contain:
 
 Should be updated when the route changes.
 
-### `docs/00-project/REQUIREMENTS.md`
+### [`docs/00-project/REQUIREMENTS.md`](REQUIREMENTS.md)
 
 Traceable project requirements.
 
@@ -1100,7 +1100,7 @@ Development workflow and contributor guidance.
 
 ## Expected files
 
-### `docs/05-development/ai-collaboration.md`
+### [`docs/05-development/ai-collaboration.md`](../05-development/ai-collaboration.md)
 
 How AI and humans work together.
 
@@ -1242,7 +1242,7 @@ Decision process and templates.
 
 ## Expected file
 
-### `docs/10-decisions/ADR-TEMPLATE.md`
+### [`docs/10-decisions/ADR-TEMPLATE.md`](../10-decisions/ADR-TEMPLATE.md)
 
 The ADR template.
 
@@ -1275,7 +1275,7 @@ Proposal process and templates.
 
 ## Expected file
 
-### `docs/11-rfc/RFC-TEMPLATE.md`
+### [`docs/11-rfc/RFC-TEMPLATE.md`](../11-rfc/RFC-TEMPLATE.md)
 
 The RFC template.
 

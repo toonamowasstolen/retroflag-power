@@ -10,7 +10,7 @@ audience:
   - Future Maintainers
 purpose: Preserve the original abbreviated release sequence as project history.
 related:
-  - docs/00-project/MILESTONES.md
+  - 00-project/MILESTONES.md
 superseded_by:
   - docs/00-project/ROADMAP.md
 last_updated: 2026-07-03

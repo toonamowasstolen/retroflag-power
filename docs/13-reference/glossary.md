@@ -12,13 +12,13 @@ audience:
   - Curious Users
 purpose: Provide a quick-reference dictionary for RetroFlag Power terminology so contributors can understand the project's shared language without reading the full terminology guide.
 related:
-  - docs/13-reference/terminology.md
-  - PROJECT_MEMORY.md
-  - PROJECT_CHARTER.md
-  - PROJECT_MANIFEST.md
-  - docs/00-project/MILESTONES.md
-  - docs/00-project/ROADMAP.md
-  - docs/adr/0003-adopt-epoch-milestone-quest-model.md
+  - terminology.md
+  - ../../PROJECT_MEMORY.md
+  - ../../PROJECT_CHARTER.md
+  - ../../PROJECT_MANIFEST.md
+  - ../00-project/MILESTONES.md
+  - ../00-project/ROADMAP.md
+  - ../adr/0003-adopt-epoch-milestone-quest-model.md
 last_updated: 2026-07-06
 ---
 
@@ -30,7 +30,7 @@ This glossary is the quick-reference companion to the Terminology Guide.
 
 Use this document when you need a short definition.
 
-Use `docs/13-reference/terminology.md` when you need naming rules, examples, or guidance about which term to prefer.
+Use [`docs/13-reference/terminology.md`](terminology.md) when you need naming rules, examples, or guidance about which term to prefer.
 
 ---
 
@@ -587,7 +587,7 @@ Primary document:
 docs/00-project/MILESTONES.md
 ```
 
-Milestones use stable IDs such as `M-0001` and cite verification evidence.
+Milestones use stable IDs such as [`M-0001`](../00-project/MILESTONES.md) and cite verification evidence.
 
 ## Modular Monolith
 

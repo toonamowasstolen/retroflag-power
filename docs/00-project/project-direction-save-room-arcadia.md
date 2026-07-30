@@ -12,17 +12,17 @@ audience:
   - Hardware Porters
 purpose: Record the long-term naming, platform, privacy, and migration direction around Save Room Tech, Arcadia Runtime, and the current RetroFlag Power prototype.
 related:
-  - README.md
-  - PROJECT_MANIFEST.md
-  - docs/00-project/edc-quest-operating-rules.md
-  - docs/04-architecture/arcadia-runtime-migration-path.md
-  - docs/04-architecture/system-overview.md
-  - docs/03-operations/safeshutdown-replacement-boundary-map.md
-  - docs/03-operations/local-diagnostics-bundle-map.md
-  - docs/03-operations/installer-migration-toolkit-map.md
-  - docs/00-project/quests/0049-record-the-save-room-tech-and-arcadia-runtime-direction.md
-  - docs/00-project/quests/0051-map-the-local-diagnostics-bundle.md
-  - docs/00-project/quests/0052-map-the-installer-and-migration-toolkit.md
+  - ../../README.md
+  - ../../PROJECT_MANIFEST.md
+  - edc-quest-operating-rules.md
+  - ../04-architecture/arcadia-runtime-migration-path.md
+  - ../04-architecture/system-overview.md
+  - ../03-operations/safeshutdown-replacement-boundary-map.md
+  - ../03-operations/local-diagnostics-bundle-map.md
+  - ../03-operations/installer-migration-toolkit-map.md
+  - quests/0049-record-the-save-room-tech-and-arcadia-runtime-direction.md
+  - quests/0051-map-the-local-diagnostics-bundle.md
+  - quests/0052-map-the-installer-and-migration-toolkit.md
 last_updated: 2026-07-07
 ---
 

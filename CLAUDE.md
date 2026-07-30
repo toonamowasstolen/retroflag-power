@@ -59,7 +59,7 @@ After editing:
 
 ## Memory Rule
 
-Do not append everything to `PROJECT_MEMORY.md`.
+Do not append everything to [`PROJECT_MEMORY.md`](PROJECT_MEMORY.md).
 
 Store durable discoveries in the most specific EDC home:
 

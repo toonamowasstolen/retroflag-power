@@ -11,16 +11,16 @@ audience:
   - Future Maintainers
 purpose: Record the small app lifecycle step that executes the prepared dry-run plan internally.
 related:
-  - internal/app
-  - internal/executor
-  - internal/planner
-  - docs/00-project/quests/0015-give-executor-results-a-small-summary.md
+  - ../../../internal/app
+  - ../../../internal/executor
+  - ../../../internal/planner
+  - 0015-give-executor-results-a-small-summary.md
 last_updated: 2026-07-06
 ---
 
 # QUEST-0016 — Execute the Prepared Dry-Run Plan Inside the App
 
-> Let the app lift the dry-run lantern one step farther: prepare the noop plan,
+> Let the [app](../../../internal/app) lift the dry-run lantern one step farther: prepare the noop plan,
 > execute it internally, and keep the tiny result badge available for tests.
 
 ## Quest Status
@@ -37,7 +37,7 @@ Implementation
 
 ## Outcome
 
-- `App` now owns an internal executor alongside its planner.
+- `App` now owns an internal [executor](../../../internal/executor) alongside its [planner](../../../internal/planner).
 - Startup prepares the existing dry-run noop plan, executes it with the internal
   executor, and stores the result.
 - `ExecutionSummary()` exposes a read-only summary for focused app tests.

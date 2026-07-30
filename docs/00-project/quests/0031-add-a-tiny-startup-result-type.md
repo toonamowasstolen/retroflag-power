@@ -11,10 +11,10 @@ audience:
   - Future Maintainers
 purpose: Give startup success its own small badge before future failure paths add more map detail.
 related:
-  - internal/app
-  - docs/00-project/quests/0027-add-an-app-startup-diagnostic-snapshot.md
-  - docs/00-project/quests/0029-add-an-app-startup-result-accessor.md
-  - docs/00-project/quests/0030-document-startup-success-meaning.md
+  - ../../../internal/app
+  - 0027-add-an-app-startup-diagnostic-snapshot.md
+  - 0029-add-an-app-startup-result-accessor.md
+  - 0030-document-startup-success-meaning.md
 last_updated: 2026-07-07
 ---
 
@@ -46,7 +46,7 @@ Implementation
 - Startup diagnostic availability remains unchanged.
 - Successful startup sets the result to completed and succeeded at the ready
   point.
-- Focused app tests prove the zero result before startup, the successful result
+- Focused [app](../../../internal/app) tests prove the zero result before startup, the successful result
   after startup, the preserved successful result after shutdown, and the
   `StartupSucceeded()` match against `StartupResult().Succeeded`.
 

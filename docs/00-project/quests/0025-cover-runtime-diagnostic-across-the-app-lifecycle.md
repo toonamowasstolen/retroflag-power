@@ -11,16 +11,16 @@ audience:
   - Future Maintainers
 purpose: Prove the runtime diagnostic stays aligned with the app runtime summary across lifecycle checkpoints.
 related:
-  - internal/app
-  - docs/00-project/quests/0020-add-a-runtime-snapshot-summary.md
-  - docs/00-project/quests/0023-add-an-app-runtime-summary-accessor.md
-  - docs/00-project/quests/0024-add-a-runtime-diagnostic-value.md
+  - ../../../internal/app
+  - 0020-add-a-runtime-snapshot-summary.md
+  - 0023-add-an-app-runtime-summary-accessor.md
+  - 0024-add-a-runtime-diagnostic-value.md
 last_updated: 2026-07-06
 ---
 
 # QUEST-0025 - Cover Runtime Diagnostic Across the App Lifecycle
 
-> Keep the runtime diagnostic badge beside the app summary lantern through the
+> Keep the runtime diagnostic badge beside the [app](../../../internal/app) summary lantern through the
 > startup and shutdown map points.
 
 ## Quest Status

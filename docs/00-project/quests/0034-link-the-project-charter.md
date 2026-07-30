@@ -11,10 +11,10 @@ audience:
   - Future Maintainers
 purpose: Make the project charter easy to discover from the main documentation paths.
 related:
-  - README.md
-  - PROJECT_CHARTER.md
-  - docs/00-project/documentation-structure-and-governance.md
-  - docs/00-project/quests/0033-add-the-project-charter.md
+  - ../../../README.md
+  - ../../../PROJECT_CHARTER.md
+  - ../documentation-structure-and-governance.md
+  - 0033-add-the-project-charter.md
 last_updated: 2026-07-07
 ---
 
@@ -37,11 +37,11 @@ Documentation
 
 ## Outcome
 
-- `README.md` now links to `PROJECT_CHARTER.md` from the Project Documentation
+- [`README.md`](../../../README.md) now links to [`PROJECT_CHARTER.md`](../../../PROJECT_CHARTER.md) from the Project Documentation
   section.
 - The README describes the charter as the campfire compass for RetroFlag
   Power's working style, quest rhythm, hardware caution, and project voice.
-- `docs/00-project/documentation-structure-and-governance.md` now lists
+- [`docs/00-project/documentation-structure-and-governance.md`](../documentation-structure-and-governance.md) now lists
   `PROJECT_CHARTER.md` in the recommended canonical locations.
 
 ## Validation

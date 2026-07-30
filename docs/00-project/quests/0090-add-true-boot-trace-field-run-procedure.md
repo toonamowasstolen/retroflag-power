@@ -41,7 +41,7 @@ Documentation / Procedure
 Create the handheld-first, scp-first run procedure for the True GPi Case 2 Boot
 Trace Lantern. The procedure must match current field practice:
 
-- Copy `scripts/gpi-case2-true-boot-trace-lantern.sh` to
+- Copy [`scripts/gpi-case2-true-boot-trace-lantern.sh`](../../../scripts/gpi-case2-true-boot-trace-lantern.sh) to
   `retropi@gpi:/home/retropi/`.
 - Run from `/home/retropi/`.
 - Retrieve the final Boot Trace Ledger with `scp`.

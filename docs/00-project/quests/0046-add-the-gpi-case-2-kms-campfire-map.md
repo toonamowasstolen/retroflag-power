@@ -12,9 +12,9 @@ audience:
   - Hardware Porters
 purpose: Preserve the verified GPi Case 2 KMS, GPIO, input, and power findings as a hardware campfire map for future quests.
 related:
-  - docs/02-hardware/gpi-case-2.md
-  - docs/02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
-  - docs/00-project/quests/0045-add-a-hardware-read-only-gpio-probe-command.md
+  - ../../02-hardware/gpi-case-2.md
+  - ../../02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
+  - 0045-add-a-hardware-read-only-gpio-probe-command.md
 last_updated: 2026-07-07
 ---
 

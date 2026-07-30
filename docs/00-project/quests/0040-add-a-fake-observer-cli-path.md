@@ -11,13 +11,13 @@ audience:
   - Future Maintainers
 purpose: Make the fake power-button observer path runnable from the daemon command line without touching real GPIO.
 related:
-  - cmd/retroflag-powerd
-  - internal/input
-  - internal/app
-  - internal/events
-  - README.md
-  - docs/04-architecture/system-overview.md
-  - docs/00-project/quests/0039-add-a-gpio-observer-interface.md
+  - ../../../cmd/retroflag-powerd
+  - ../../../internal/input
+  - ../../../internal/app
+  - ../../../internal/events
+  - ../../../README.md
+  - ../../04-architecture/system-overview.md
+  - 0039-add-a-gpio-observer-interface.md
 last_updated: 2026-07-07
 ---
 
@@ -41,10 +41,10 @@ Implementation
 
 ## Outcome
 
-- Added `--fake-power-button-observer` to `retroflag-powerd`.
-- The flag starts the app lifecycle, waits for the daemon to reach ready, emits
+- Added `--fake-power-button-observer` to [`retroflag-powerd`](../../../cmd/retroflag-powerd).
+- The flag starts the [app](../../../internal/app) lifecycle, waits for the daemon to reach ready, emits
   one fake `power_button_pressed` observer event, and routes it through the app
-  input observer path.
+  [input](../../../internal/input) observer path.
 - The event follows the existing power intent, config policy, planner,
   executor, and event breadcrumb flow.
 - The command prints a compact deterministic noop result plus the event

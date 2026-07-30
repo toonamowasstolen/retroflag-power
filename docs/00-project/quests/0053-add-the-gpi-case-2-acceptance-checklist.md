@@ -12,12 +12,12 @@ audience:
   - Hardware Porters
 purpose: Add a documentation-only acceptance checklist for GPi Case 2 readiness before SafeShutdown.py replacement, service install, public installer release, or Arcadia Runtime migration.
 related:
-  - docs/03-operations/gpi-case-2-acceptance-checklist.md
-  - README.md
-  - docs/03-operations/safeshutdown-replacement-boundary-map.md
-  - docs/03-operations/installer-migration-toolkit-map.md
-  - docs/03-operations/local-diagnostics-bundle-map.md
-  - docs/04-architecture/arcadia-runtime-migration-path.md
+  - ../../03-operations/gpi-case-2-acceptance-checklist.md
+  - ../../../README.md
+  - ../../03-operations/safeshutdown-replacement-boundary-map.md
+  - ../../03-operations/installer-migration-toolkit-map.md
+  - ../../03-operations/local-diagnostics-bundle-map.md
+  - ../../04-architecture/arcadia-runtime-migration-path.md
 last_updated: 2026-07-07
 ---
 
@@ -77,11 +77,11 @@ Documentation
 - Added a compact field ledger table template for date, device, OS/kernel,
   mode, test area, expected result, observed result, pass/fail/unknown, and
   notes.
-- Linked the checklist from `README.md`,
-  `docs/03-operations/safeshutdown-replacement-boundary-map.md`,
-  `docs/03-operations/installer-migration-toolkit-map.md`,
-  `docs/03-operations/local-diagnostics-bundle-map.md`, and
-  `docs/04-architecture/arcadia-runtime-migration-path.md`.
+- Linked the checklist from [`README.md`](../../../README.md),
+  [`docs/03-operations/safeshutdown-replacement-boundary-map.md`](../../03-operations/safeshutdown-replacement-boundary-map.md),
+  [`docs/03-operations/installer-migration-toolkit-map.md`](../../03-operations/installer-migration-toolkit-map.md),
+  [`docs/03-operations/local-diagnostics-bundle-map.md`](../../03-operations/local-diagnostics-bundle-map.md), and
+  [`docs/04-architecture/arcadia-runtime-migration-path.md`](../../04-architecture/arcadia-runtime-migration-path.md).
 
 ## Validation
 

@@ -1,3 +1,17 @@
+---
+id: README-001
+title: README
+version: 1.0.0
+status: Active
+owner: Joshua Taft
+audience:
+  - Everyone
+purpose: Introduce the project and send a newcomer to the right document within a minute of arriving.
+related:
+  - PROJECT_MANIFEST.md
+last_updated: 2026-07-30
+---
+
 # RetroFlag Power
 
 RetroFlag Power is a modern Go daemon project for evolving RetroFlag power

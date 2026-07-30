@@ -12,13 +12,13 @@ audience:
   - Documentation Authors
 purpose: Gather duplicated Awakening checkpoint evidence into the canonical verified Milestone ledger.
 related:
-  - PROJECT_MEMORY.md
-  - docs/00-project/awakening-readiness.md
-  - docs/00-project/MILESTONES.md
-  - docs/00-project/ROADMAP.md
-  - docs/00-project/quests/0004-chart-the-edc-map.md
-  - docs/00-project/quests/0005-correct-the-edc-compass.md
-  - docs/adr/0003-adopt-epoch-milestone-quest-model.md
+  - ../../../PROJECT_MEMORY.md
+  - ../awakening-readiness.md
+  - ../MILESTONES.md
+  - ../ROADMAP.md
+  - 0004-chart-the-edc-map.md
+  - 0005-correct-the-edc-compass.md
+  - ../../adr/0003-adopt-epoch-milestone-quest-model.md
 last_updated: 2026-07-06
 ---
 

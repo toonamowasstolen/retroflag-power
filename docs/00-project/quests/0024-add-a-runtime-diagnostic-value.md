@@ -11,11 +11,11 @@ audience:
   - Future Maintainers
 purpose: Add a small runtime diagnostic value as a future internal formatting boundary.
 related:
-  - internal/app
-  - docs/00-project/quests/0020-add-a-runtime-snapshot-summary.md
-  - docs/00-project/quests/0021-add-a-runtime-summary-string.md
-  - docs/00-project/quests/0022-record-runtime-summary-formatter-guidance.md
-  - docs/00-project/quests/0023-add-an-app-runtime-summary-accessor.md
+  - ../../../internal/app
+  - 0020-add-a-runtime-snapshot-summary.md
+  - 0021-add-a-runtime-summary-string.md
+  - 0022-record-runtime-summary-formatter-guidance.md
+  - 0023-add-an-app-runtime-summary-accessor.md
 last_updated: 2026-07-06
 ---
 
@@ -43,7 +43,7 @@ Implementation
   `App.RuntimeSummary()`.
 - `RuntimeDiagnostic.String()` delegates directly to
   `RuntimeSnapshotSummary.String()`.
-- Focused app tests prove the diagnostic summary matches `App.RuntimeSummary()`
+- Focused [app](../../../internal/app) tests prove the diagnostic summary matches `App.RuntimeSummary()`
   and that the diagnostic string matches the summary string.
 - Daemon logs, CLI output, lifecycle behavior, planner behavior, executor
   behavior, friendly formatting, packaging, hardware behavior, and state

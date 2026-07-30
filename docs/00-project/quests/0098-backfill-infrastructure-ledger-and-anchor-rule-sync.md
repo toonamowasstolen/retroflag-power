@@ -45,14 +45,14 @@ This repo was being treated as an external, read-only reference clone
 (`_reference_retroflag-power`) from the sibling EDC projects, even though it's the same owner's own
 project — the *origin* the EDC standard was retroactively generalized from. Converted to a regular
 project (folder renamed, no more `_reference_` treatment), gap-analyzed against the template and the
-three sibling projects, and given the same new `docs/14-infrastructure/HOST-EVENTS.md` category those
+three sibling projects, and given the same new [`docs/14-infrastructure/HOST-EVENTS.md`](../../14-infrastructure/HOST-EVENTS.md) category those
 projects just gained. Both landed as a direct commit at the time, without a quest — this quest
 backfills that record.
 
 # 2. Quest Objective
 
 Add the placeholder `docs/14-infrastructure/HOST-EVENTS.md`, sync the governance doc +
-`ai-collaboration.md` with the new category, and give the whole change a proper quest/milestone
+[`ai-collaboration.md`](../../05-development/ai-collaboration.md) with the new category, and give the whole change a proper quest/milestone
 trail.
 
 ---
@@ -83,7 +83,7 @@ This quest is complete when:
 - [x] `docs/14-infrastructure/HOST-EVENTS.md` exists. **Done.**
 - [x] Governance doc and `ai-collaboration.md` synced with the new category. **Done.**
 - [x] Changes committed and pushed to `origin/main`. **Done** — Revision `03d2a61`.
-- [x] `docs/00-project/MILESTONES.md` gets a new entry. **Done as M-0007.**
+- [x] [`docs/00-project/MILESTONES.md`](../MILESTONES.md) gets a new entry. **Done as M-0007.**
 
 ---
 

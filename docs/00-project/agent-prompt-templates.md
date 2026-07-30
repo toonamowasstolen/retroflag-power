@@ -14,9 +14,9 @@ related:
   - ../../CLAUDE.md
   - ../../PROJECT_MANIFEST.md
   - ../../PROJECT_MEMORY.md
-  - docs/00-project/edc-quest-operating-rules.md
-  - docs/00-project/documentation-structure-and-governance.md
-  - docs/05-development/ai-collaboration.md
+  - edc-quest-operating-rules.md
+  - documentation-structure-and-governance.md
+  - ../05-development/ai-collaboration.md
 last_updated: 2026-07-07
 ---
 

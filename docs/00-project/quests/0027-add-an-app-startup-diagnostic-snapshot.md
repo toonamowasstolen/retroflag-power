@@ -11,17 +11,17 @@ audience:
   - Future Maintainers
 purpose: Store a tiny internal startup diagnostic snapshot for future log and CLI lanterns.
 related:
-  - internal/app
-  - docs/00-project/quests/0023-add-an-app-runtime-summary-accessor.md
-  - docs/00-project/quests/0024-add-a-runtime-diagnostic-value.md
-  - docs/00-project/quests/0025-cover-runtime-diagnostic-across-the-app-lifecycle.md
-  - docs/00-project/quests/0026-make-runtime-diagnostic-shutdown-coverage-explicit.md
+  - ../../../internal/app
+  - 0023-add-an-app-runtime-summary-accessor.md
+  - 0024-add-a-runtime-diagnostic-value.md
+  - 0025-cover-runtime-diagnostic-across-the-app-lifecycle.md
+  - 0026-make-runtime-diagnostic-shutdown-coverage-explicit.md
 last_updated: 2026-07-06
 ---
 
 # QUEST-0027 - Add an App Startup Diagnostic Snapshot
 
-> Tuck the ready-time diagnostic charm into the app satchel so future lanterns
+> Tuck the ready-time diagnostic charm into the [app](../../../internal/app) satchel so future lanterns
 > can read the startup badge without waking any user-facing output yet.
 
 ## Quest Status

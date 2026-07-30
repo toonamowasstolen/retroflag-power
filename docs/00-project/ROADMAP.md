@@ -11,14 +11,14 @@ audience:
   - Future Maintainers
 purpose: Record RetroFlag Power's current Epoch, canonical seven-Epoch ladder, practical route, next gates, and future direction.
 related:
-  - WHY.md
-  - PROJECT_MEMORY.md
-  - PROJECT_MANIFEST.md
-  - PROJECT_CHARTER.md
-  - docs/00-project/MILESTONES.md
-  - docs/adr/0003-adopt-epoch-milestone-quest-model.md
-  - docs/01-product/VISION.md
-  - docs/13-reference/terminology.md
+  - ../../WHY.md
+  - ../../PROJECT_MEMORY.md
+  - ../../PROJECT_MANIFEST.md
+  - ../../PROJECT_CHARTER.md
+  - MILESTONES.md
+  - ../adr/0003-adopt-epoch-milestone-quest-model.md
+  - ../01-product/VISION.md
+  - ../13-reference/terminology.md
 last_updated: 2026-07-06
 ---
 
@@ -83,15 +83,15 @@ The first daemon breathes locally and is gaining the small tools needed for futu
 
 Artifacts already created or planned in this stage include:
 
-- WHY.md
-- PROJECT_MEMORY.md
+- [WHY.md](../../WHY.md)
+- [PROJECT_MEMORY.md](../../PROJECT_MEMORY.md)
 - ENGINEERING_MANIFESTO.md
-- PROJECT_MANIFEST.md
-- PROJECT_CHARTER.md
-- docs/13-reference/terminology.md
+- [PROJECT_MANIFEST.md](../../PROJECT_MANIFEST.md)
+- [PROJECT_CHARTER.md](../../PROJECT_CHARTER.md)
+- [docs/13-reference/terminology.md](../13-reference/terminology.md)
 - docs/13-reference/glossary.md
 - docs/00-project/MILESTONES.md
-- docs/01-product/VISION.md
+- [docs/01-product/VISION.md](../01-product/VISION.md)
 - docs/00-project/ROADMAP.md
 
 The project now has:

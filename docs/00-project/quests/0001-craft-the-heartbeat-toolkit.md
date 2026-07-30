@@ -11,12 +11,12 @@ audience:
   - Future Maintainers
 purpose: Define the first implementation quest after the daemon's first breath, focused on reviewing and preparing the future systemd heartbeat path without activating shutdown behavior or touching hardware.
 related:
-  - docs/00-project/awakening-readiness.md
-  - docs/00-project/MILESTONES.md
-  - docs/00-project/ROADMAP.md
-  - docs/00-project/REQUIREMENTS.md
-  - docs/04-architecture/system-overview.md
-  - docs/adr/0002-use-small-context-driven-daemon-lifecycle.md
+  - ../awakening-readiness.md
+  - ../MILESTONES.md
+  - ../ROADMAP.md
+  - ../REQUIREMENTS.md
+  - ../../04-architecture/system-overview.md
+  - ../../adr/0002-use-small-context-driven-daemon-lifecycle.md
 last_updated: 2026-07-03
 ---
 

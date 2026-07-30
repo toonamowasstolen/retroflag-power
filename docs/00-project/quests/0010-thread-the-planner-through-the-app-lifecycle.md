@@ -11,9 +11,9 @@ audience:
   - Future Maintainers
 purpose: Record the small app-owned planner boundary added without changing daemon behavior.
 related:
-  - internal/app
-  - internal/planner
-  - docs/00-project/quests/0009-add-a-dry-run-planner-skeleton.md
+  - ../../../internal/app
+  - ../../../internal/planner
+  - 0009-add-a-dry-run-planner-skeleton.md
 last_updated: 2026-07-06
 ---
 
@@ -35,8 +35,8 @@ Implementation
 
 ## Outcome
 
-- `App` now owns a planner created during construction.
-- `Planner()` makes the app-owned planner available for focused tests and future
+- `App` now owns a [planner](../../../internal/planner) created during construction.
+- `Planner()` makes the [app](../../../internal/app)-owned planner available for focused tests and future
   lifecycle work.
 - The planner remains dry-run only and creates noop plans.
 - Existing lifecycle behavior and log output remain unchanged.

@@ -39,8 +39,8 @@ Joshua Taft
 
 # 1. Quest Summary
 
-The 2026-07-14 EDC gap analysis found this project had no `CODE_OF_CONDUCT.md` at all, and
-`CONTRIBUTING.md` was a 3-line stub — notably thinner than `control4-platform`/`driverworks-tooling`/
+The 2026-07-14 EDC gap analysis found this project had no [`CODE_OF_CONDUCT.md`](../../../CODE_OF_CONDUCT.md) at all, and
+[`CONTRIBUTING.md`](../../../CONTRIBUTING.md) was a 3-line stub — notably thinner than `control4-platform`/`driverworks-tooling`/
 `master-driver`, which each got real governance scaffolding in an earlier pass. Ported the pattern
 over, adapted to this project's actual context — a solo/AI-collaborative hardware project, not a
 client-facing business — rather than copying the siblings' corporate framing verbatim.
@@ -82,7 +82,7 @@ This quest is complete when:
 - [x] `CONTRIBUTING.md` expanded beyond the 3-line stub, referencing only files that actually exist in
   this repo. **Done.**
 - [x] `python3 scripts/check-markdown-links.py` reports 0 broken links. **Done.**
-- [x] `docs/00-project/MILESTONES.md` gets a new entry. **Done as M-0009.**
+- [x] [`docs/00-project/MILESTONES.md`](../MILESTONES.md) gets a new entry. **Done as M-0009.**
 
 ---
 

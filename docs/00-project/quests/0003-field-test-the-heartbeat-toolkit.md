@@ -12,12 +12,12 @@ audience:
   - Hardware Validators
 purpose: Define a future reference-hardware validation quest for manually testing the prepared systemd service toolkit on the GPi Case 2 without replacing the existing shutdown path.
 related:
-  - docs/00-project/quests/0001-craft-the-heartbeat-toolkit.md
-  - docs/00-project/REQUIREMENTS.md
-  - docs/02-hardware/gpi-case-2.md
-  - docs/04-architecture/system-overview.md
-  - docs/adr/0001-use-systemd.md
-  - docs/adr/0002-use-small-context-driven-daemon-lifecycle.md
+  - 0001-craft-the-heartbeat-toolkit.md
+  - ../REQUIREMENTS.md
+  - ../../02-hardware/gpi-case-2.md
+  - ../../04-architecture/system-overview.md
+  - ../../adr/0001-use-systemd.md
+  - ../../adr/0002-use-small-context-driven-daemon-lifecycle.md
 last_updated: 2026-07-03
 ---
 

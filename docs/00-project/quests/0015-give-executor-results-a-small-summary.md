@@ -11,14 +11,14 @@ audience:
   - Future Maintainers
 purpose: Record the small executor result summary added for dry-run inspection.
 related:
-  - internal/executor
-  - docs/00-project/quests/0014-add-an-internal-plan-executor-skeleton.md
+  - ../../../internal/executor
+  - 0014-add-an-internal-plan-executor-skeleton.md
 last_updated: 2026-07-06
 ---
 
 # QUEST-0015 — Give Executor Results a Small Summary
 
-> Add a tiny ledger charm to executor results, enough to inspect the handled
+> Add a tiny ledger charm to [executor](../../../internal/executor) results, enough to inspect the handled
 > work without waking any real-world relics.
 
 ## Quest Status

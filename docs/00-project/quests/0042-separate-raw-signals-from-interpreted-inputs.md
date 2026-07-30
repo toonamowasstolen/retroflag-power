@@ -11,16 +11,16 @@ audience:
   - Future Maintainers
 purpose: Keep raw input observations distinct from interpreted switch and button meaning before future GPIO work begins.
 related:
-  - internal/input
-  - docs/03-operations/gpio-read-only-plan.md
-  - docs/04-architecture/system-overview.md
-  - docs/00-project/quests/0041-plan-the-gpio-read-only-path.md
+  - ../../../internal/input
+  - ../../03-operations/gpio-read-only-plan.md
+  - ../../04-architecture/system-overview.md
+  - 0041-plan-the-gpio-read-only-path.md
 last_updated: 2026-07-07
 ---
 
 # QUEST-0042 - Separate Raw Signals from Interpreted Inputs
 
-> Give the input lantern two lenses: one for the wire's raw glimmer, and one
+> Give the [input](../../../internal/input) lantern two lenses: one for the wire's raw glimmer, and one
 > for the meaning the configured map will name later.
 
 ## Quest Status

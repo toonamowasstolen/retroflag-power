@@ -12,14 +12,14 @@ audience:
   - Documentation Authors
 purpose: Define a focused documentation cleanup sidequest to reconcile older primitive docs with the newer documentation structure, metadata standard, ADR format, and canonical folder layout without losing historical context.
 related:
-  - PROJECT_MEMORY.md
-  - README.md
-  - docs/00-project/documentation-structure-and-governance.md
-  - docs/00-project/ROADMAP.md
-  - docs/00-project/MILESTONES.md
-  - docs/10-decisions/ADR-TEMPLATE.md
-  - docs/adr/0001-use-systemd.md
-  - docs/adr/0002-use-small-context-driven-daemon-lifecycle.md
+  - ../../../PROJECT_MEMORY.md
+  - ../../../README.md
+  - ../documentation-structure-and-governance.md
+  - ../ROADMAP.md
+  - ../MILESTONES.md
+  - ../../10-decisions/ADR-TEMPLATE.md
+  - ../../adr/0001-use-systemd.md
+  - ../../adr/0002-use-small-context-driven-daemon-lifecycle.md
 last_updated: 2026-07-16
 ---
 
@@ -75,9 +75,9 @@ The goal is to sort the old scrolls, preserve anything useful, and reduce confus
 
 Feedback identified real documentation drift:
 
-- `docs/adr/0001-use-systemd.md` is primitive and lacks metadata.
-- `docs/adr/0002-use-small-context-driven-daemon-lifecycle.md` uses the richer ADR format.
-- `README.md` is tiny and points to stale `docs/roadmap.md`.
+- [`docs/adr/0001-use-systemd.md`](../../adr/0001-use-systemd.md) is primitive and lacks metadata.
+- [`docs/adr/0002-use-small-context-driven-daemon-lifecycle.md`](../../adr/0002-use-small-context-driven-daemon-lifecycle.md) uses the richer ADR format.
+- [`README.md`](../../../README.md) is tiny and points to stale `docs/roadmap.md`.
 - The repo may contain older broad docs that overlap with newer canonical docs.
 - The project has not finished migrating early bootstrap docs into the current structure.
 

@@ -2,7 +2,7 @@
 id: ADR-TEMPLATE-001
 title: Architecture Decision Record Template
 version: 0.1.0
-status: Draft
+status: Accepted
 owner: Joshua Taft
 audience:
   - Project Maintainers
@@ -11,10 +11,10 @@ audience:
   - Future Maintainers
 purpose: Provide a lightweight template for recording important architecture and project decisions in RetroFlag Power.
 related:
-  - docs/00-project/REQUIREMENTS.md
-  - docs/00-project/ROADMAP.md
-  - docs/04-architecture/system-overview.md
-  - docs/05-development/ai-collaboration.md
+  - ../00-project/REQUIREMENTS.md
+  - ../00-project/ROADMAP.md
+  - ../04-architecture/system-overview.md
+  - ../05-development/ai-collaboration.md
 last_updated: 2026-07-03
 ---
 
@@ -45,7 +45,7 @@ Joshua Taft
 
 ## Related Requirements
 
-- REQ-0000
+- [REQ-0000](../00-project/REQUIREMENTS.md)
 
 ## Related Documents
 

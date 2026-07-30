@@ -11,9 +11,9 @@ audience:
   - Future Maintainers
 purpose: Preserve the early direction to use systemd rather than rc.local while the decision is reviewed and expanded into the current ADR format.
 related:
-  - docs/00-project/REQUIREMENTS.md
-  - docs/04-architecture/system-overview.md
-  - docs/10-decisions/ADR-TEMPLATE.md
+  - ../00-project/REQUIREMENTS.md
+  - ../04-architecture/system-overview.md
+  - ../10-decisions/ADR-TEMPLATE.md
 last_updated: 2026-07-03
 ---
 

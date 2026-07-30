@@ -11,9 +11,9 @@ audience:
   - Future Maintainers
 purpose: Record startup preparation of the app-owned dry-run plan.
 related:
-  - internal/app
-  - internal/planner
-  - docs/00-project/quests/0010-thread-the-planner-through-the-app-lifecycle.md
+  - ../../../internal/app
+  - ../../../internal/planner
+  - 0010-thread-the-planner-through-the-app-lifecycle.md
 last_updated: 2026-07-06
 ---
 
@@ -36,7 +36,7 @@ Implementation
 
 ## Outcome
 
-- App startup now asks the app-owned planner to prepare and store a plan before
+- App startup now asks the [app](../../../internal/app)-owned [planner](../../../internal/planner) to prepare and store a plan before
   the daemon reaches ready.
 - The prepared plan remains dry-run only and carries a noop action.
 - Focused tests prove plan preparation and the ready, stopping, and stopped

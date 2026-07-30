@@ -11,13 +11,13 @@ audience:
   - Future Maintainers
 purpose: Add the smallest safe CLI doorway for future local diagnostics without collecting diagnostics yet.
 related:
-  - CLAUDE.md
-  - docs/00-project/edc-quest-operating-rules.md
-  - docs/03-operations/local-diagnostics-bundle-map.md
-  - docs/03-operations/gpi-case-2-acceptance-checklist.md
-  - docs/03-operations/gpi-case-gpio-probe-ledger.md
-  - docs/03-operations/safeshutdown-replacement-boundary-map.md
-  - docs/04-architecture/arcadia-runtime-migration-path.md
+  - ../../../CLAUDE.md
+  - ../edc-quest-operating-rules.md
+  - ../../03-operations/local-diagnostics-bundle-map.md
+  - ../../03-operations/gpi-case-2-acceptance-checklist.md
+  - ../../03-operations/gpi-case-gpio-probe-ledger.md
+  - ../../03-operations/safeshutdown-replacement-boundary-map.md
+  - ../../04-architecture/arcadia-runtime-migration-path.md
 last_updated: 2026-07-07
 ---
 

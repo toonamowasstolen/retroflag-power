@@ -12,14 +12,14 @@ audience:
   - Hardware Porters
 purpose: Map a future local-first, reversible installer and migration toolkit for safely inspecting, backing up, planning, applying, uninstalling, and restoring RetroFlag Power and future Arcadia Runtime field kits.
 related:
-  - README.md
-  - docs/00-project/project-direction-save-room-arcadia.md
-  - docs/04-architecture/arcadia-runtime-migration-path.md
-  - docs/03-operations/local-diagnostics-bundle-map.md
-  - docs/03-operations/safeshutdown-replacement-boundary-map.md
-  - docs/03-operations/gpi-case-2-acceptance-checklist.md
-  - docs/00-project/quests/0052-map-the-installer-and-migration-toolkit.md
-  - docs/00-project/quests/0053-add-the-gpi-case-2-acceptance-checklist.md
+  - ../../README.md
+  - ../00-project/project-direction-save-room-arcadia.md
+  - ../04-architecture/arcadia-runtime-migration-path.md
+  - local-diagnostics-bundle-map.md
+  - safeshutdown-replacement-boundary-map.md
+  - gpi-case-2-acceptance-checklist.md
+  - ../00-project/quests/0052-map-the-installer-and-migration-toolkit.md
+  - ../00-project/quests/0053-add-the-gpi-case-2-acceptance-checklist.md
 last_updated: 2026-07-07
 ---
 

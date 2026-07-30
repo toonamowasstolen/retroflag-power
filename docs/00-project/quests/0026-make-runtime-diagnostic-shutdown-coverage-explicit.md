@@ -11,10 +11,10 @@ audience:
   - Future Maintainers
 purpose: Make the shutdown boundary for the runtime diagnostic explicit instead of relying on nearby summary lanterns.
 related:
-  - internal/app
-  - docs/00-project/quests/0023-add-an-app-runtime-summary-accessor.md
-  - docs/00-project/quests/0024-add-a-runtime-diagnostic-value.md
-  - docs/00-project/quests/0025-cover-runtime-diagnostic-across-the-app-lifecycle.md
+  - ../../../internal/app
+  - 0023-add-an-app-runtime-summary-accessor.md
+  - 0024-add-a-runtime-diagnostic-value.md
+  - 0025-cover-runtime-diagnostic-across-the-app-lifecycle.md
 last_updated: 2026-07-06
 ---
 

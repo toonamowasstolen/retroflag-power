@@ -11,14 +11,14 @@ audience:
   - Future Maintainers
 purpose: Record the EDC vocabulary and ownership model for project life stages, verified checkpoints, work records, current direction, and durable project memory.
 related:
-  - PROJECT_MEMORY.md
-  - PROJECT_MANIFEST.md
-  - docs/00-project/documentation-structure-and-governance.md
-  - docs/00-project/MILESTONES.md
-  - docs/00-project/ROADMAP.md
-  - docs/00-project/quests/0004-chart-the-edc-map.md
-  - docs/00-project/quests/0005-correct-the-edc-compass.md
-  - docs/13-reference/terminology.md
+  - ../../PROJECT_MEMORY.md
+  - ../../PROJECT_MANIFEST.md
+  - ../00-project/documentation-structure-and-governance.md
+  - ../00-project/MILESTONES.md
+  - ../00-project/ROADMAP.md
+  - ../00-project/quests/0004-chart-the-edc-map.md
+  - ../00-project/quests/0005-correct-the-edc-compass.md
+  - ../13-reference/terminology.md
 last_updated: 2026-07-06
 ---
 
@@ -40,12 +40,12 @@ Joshua Taft
 
 ## Related Documents
 
-- `docs/00-project/quests/0004-chart-the-edc-map.md`
-- `docs/00-project/quests/0005-correct-the-edc-compass.md`
-- `docs/00-project/ROADMAP.md`
-- `docs/00-project/MILESTONES.md`
-- `docs/00-project/documentation-structure-and-governance.md`
-- `PROJECT_MEMORY.md`
+- [`docs/00-project/quests/0004-chart-the-edc-map.md`](../00-project/quests/0004-chart-the-edc-map.md)
+- [`docs/00-project/quests/0005-correct-the-edc-compass.md`](../00-project/quests/0005-correct-the-edc-compass.md)
+- [`docs/00-project/ROADMAP.md`](../00-project/ROADMAP.md)
+- [`docs/00-project/MILESTONES.md`](../00-project/MILESTONES.md)
+- [`docs/00-project/documentation-structure-and-governance.md`](../00-project/documentation-structure-and-governance.md)
+- [`PROJECT_MEMORY.md`](../../PROJECT_MEMORY.md)
 
 ---
 

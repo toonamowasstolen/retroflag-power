@@ -12,18 +12,18 @@ audience:
   - Future Maintainers
 purpose: Document the RetroFlag GPi Case 2 reference platform, known facts, current shutdown behavior, boot context, terminology, assumptions, risks, and validation needs for RetroFlag Power.
 related:
-  - WHY.md
-  - PROJECT_MEMORY.md
-  - PROJECT_CHARTER.md
-  - docs/00-project/REQUIREMENTS.md
-  - docs/00-project/ROADMAP.md
-  - docs/04-architecture/system-overview.md
-  - docs/13-reference/terminology.md
-  - docs/13-reference/glossary.md
-  - docs/02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
-  - docs/02-hardware/gpi-case-2-power-integrity-investigation-notes.md
-  - docs/02-hardware/gpi-case-2-emergency-recovery-research-ledger.md
-  - docs/02-hardware/gpi-case-2-developer-access-paths.md
+  - ../../WHY.md
+  - ../../PROJECT_MEMORY.md
+  - ../../PROJECT_CHARTER.md
+  - ../00-project/REQUIREMENTS.md
+  - ../00-project/ROADMAP.md
+  - ../04-architecture/system-overview.md
+  - ../13-reference/terminology.md
+  - ../13-reference/glossary.md
+  - gpi-case-2-hardware-findings-kms-power-notes.md
+  - gpi-case-2-power-integrity-investigation-notes.md
+  - gpi-case-2-emergency-recovery-research-ledger.md
+  - gpi-case-2-developer-access-paths.md
 last_updated: 2026-07-14
 ---
 
@@ -372,7 +372,7 @@ However, boot optimization must remain measured and cautious.
 Related requirement:
 
 ```
-REQ-0302 — Measure before optimizing
+[REQ-0302](../00-project/REQUIREMENTS.md) — Measure before optimizing
 ```
 
 ---

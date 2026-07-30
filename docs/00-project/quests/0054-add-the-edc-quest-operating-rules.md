@@ -11,11 +11,11 @@ audience:
   - Future Maintainers
 purpose: Add a documentation-only rulebook that makes the Engineering Documentation Codex the source of truth for future Codex and Claude quest work.
 related:
-  - docs/00-project/edc-quest-operating-rules.md
-  - README.md
-  - PROJECT_MANIFEST.md
-  - docs/00-project/project-direction-save-room-arcadia.md
-  - docs/04-architecture/arcadia-runtime-migration-path.md
+  - ../edc-quest-operating-rules.md
+  - ../../../README.md
+  - ../../../PROJECT_MANIFEST.md
+  - ../project-direction-save-room-arcadia.md
+  - ../../04-architecture/arcadia-runtime-migration-path.md
 last_updated: 2026-07-07
 ---
 
@@ -61,9 +61,9 @@ Documentation
 - Added a source-doc link map for the manifest, README, direction maps,
   SafeShutdown boundary map, installer map, diagnostics map, acceptance
   checklist, and GPIO probe ledger.
-- Linked the new operating rules from `README.md`, `PROJECT_MANIFEST.md`,
-  `docs/00-project/project-direction-save-room-arcadia.md`, and
-  `docs/04-architecture/arcadia-runtime-migration-path.md`.
+- Linked the new operating rules from [`README.md`](../../../README.md), [`PROJECT_MANIFEST.md`](../../../PROJECT_MANIFEST.md),
+  [`docs/00-project/project-direction-save-room-arcadia.md`](../project-direction-save-room-arcadia.md), and
+  [`docs/04-architecture/arcadia-runtime-migration-path.md`](../../04-architecture/arcadia-runtime-migration-path.md).
 
 ## Validation
 

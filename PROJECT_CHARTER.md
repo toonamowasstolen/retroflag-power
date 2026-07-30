@@ -726,10 +726,10 @@ Capture the project's purpose, philosophy, language, constraints, and blueprint 
 
 Key artifacts:
 
-- WHY.md
-- PROJECT_MEMORY.md
-- ENGINEERING_MANIFESTO.md
-- PROJECT_MANIFEST.md
+- [WHY.md](WHY.md)
+- [PROJECT_MEMORY.md](PROJECT_MEMORY.md)
+- [ENGINEERING_MANIFESTO.md](ENGINEERING_MANIFESTO.md)
+- [PROJECT_MANIFEST.md](PROJECT_MANIFEST.md)
 - PROJECT_CHARTER.md
 - Terminology
 - Glossary

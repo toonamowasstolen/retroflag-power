@@ -1,4 +1,5 @@
 ---
+id: OPS-GPIO-READ-ONLY-PLAN-001
 title: GPIO Read-Only Plan
 version: 0.1.0
 status: Draft
@@ -10,15 +11,15 @@ audience:
   - Future Maintainers
 purpose: Plan the first safe RetroFlag Power step toward real GPi Case input without changing hardware state.
 related:
-  - docs/02-hardware/gpi-case-2.md
-  - docs/04-architecture/system-overview.md
-  - docs/00-project/quests/0041-plan-the-gpio-read-only-path.md
-  - docs/00-project/quests/0042-separate-raw-signals-from-interpreted-inputs.md
-  - docs/00-project/quests/0043-add-a-latching-power-switch-interpreter.md
-  - docs/00-project/quests/0045-add-a-hardware-read-only-gpio-probe-command.md
-  - docs/03-operations/gpi-case-gpio-probe-ledger.md
-  - docs/03-operations/safeshutdown-replacement-boundary-map.md
-  - internal/input
+  - ../02-hardware/gpi-case-2.md
+  - ../04-architecture/system-overview.md
+  - ../00-project/quests/0041-plan-the-gpio-read-only-path.md
+  - ../00-project/quests/0042-separate-raw-signals-from-interpreted-inputs.md
+  - ../00-project/quests/0043-add-a-latching-power-switch-interpreter.md
+  - ../00-project/quests/0045-add-a-hardware-read-only-gpio-probe-command.md
+  - gpi-case-gpio-probe-ledger.md
+  - safeshutdown-replacement-boundary-map.md
+  - ../../internal/input
 last_updated: 2026-07-07
 ---
 
@@ -57,7 +58,7 @@ go run ./cmd/retroflag-powerd --fake-power-button-observer
 go run ./cmd/retroflag-powerd --fake-power-signal low
 ```
 
-The fake observer command emits one fake `power_button_pressed` input event,
+The fake observer command emits one fake `power_button_pressed` [input](../../internal/input) event,
 maps it to the existing power-button intent, applies the current
 `power_button_action` policy, builds a deterministic plan, executes only the
 noop action, and prints the breadcrumb ledger. The fake raw signal command

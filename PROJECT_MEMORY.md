@@ -2,7 +2,7 @@
 id: MEMORY-001
 title: Project Memory and Blueprint Capture
 version: 0.2.0
-status: Draft
+status: Active
 owner: Joshua Taft
 audience:
   - Project Maintainers
@@ -89,7 +89,7 @@ It captures the core tension of the project:
 
 A personal document should be created:
 
-`ENGINEERING_MANIFESTO.md`
+[`ENGINEERING_MANIFESTO.md`](ENGINEERING_MANIFESTO.md)
 
 This document belongs to Joshua as much as to any specific repository.
 
@@ -229,9 +229,9 @@ It is discovering its purpose, values, architecture, and identity.
 
 Primary artifacts:
 
-- WHY.md
-- PROJECT_MANIFEST.md
-- PROJECT_CHARTER.md
+- [WHY.md](WHY.md)
+- [PROJECT_MANIFEST.md](PROJECT_MANIFEST.md)
+- [PROJECT_CHARTER.md](PROJECT_CHARTER.md)
 - ENGINEERING_MANIFESTO.md
 - Requirements
 - Terminology
@@ -1649,7 +1649,7 @@ To avoid losing context while moving one file at a time, create artifacts in thi
 3. ENGINEERING_MANIFESTO.md
 4. PROJECT_MANIFEST.md
 5. PROJECT_CHARTER.md
-6. docs/13-reference/terminology.md
+6. [docs/13-reference/terminology.md](docs/13-reference/terminology.md)
 7. docs/01-product/VISION.md
 8. docs/01-product/goals.md
 9. docs/01-product/personas.md

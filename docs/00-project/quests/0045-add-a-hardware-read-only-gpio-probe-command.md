@@ -12,12 +12,12 @@ audience:
   - Hardware Porters
 purpose: Give the daemon its first real hardware-facing read-only GPIO lantern for reporting raw signal state only.
 related:
-  - cmd/retroflag-powerd
-  - internal/gpio
-  - internal/input
-  - README.md
-  - docs/03-operations/gpio-read-only-plan.md
-  - docs/00-project/quests/0044-add-a-fake-power-signal-cli-path.md
+  - ../../../cmd/retroflag-powerd
+  - ../../../internal/gpio
+  - ../../../internal/input
+  - ../../../README.md
+  - ../../03-operations/gpio-read-only-plan.md
+  - 0044-add-a-fake-power-signal-cli-path.md
 last_updated: 2026-07-07
 ---
 
@@ -40,10 +40,10 @@ Implementation
 
 ## Outcome
 
-- Added `--probe-gpio-signal <pin>` to `retroflag-powerd`.
-- Added `internal/gpio` as a small read-only probe boundary.
+- Added `--probe-gpio-signal <pin>` to [`retroflag-powerd`](../../../cmd/retroflag-powerd).
+- Added [`internal/gpio`](../../../internal/gpio) as a small read-only probe boundary.
 - On Linux, the probe attempts read-only signal checks from already exposed
-  GPIO value sources and `gpioget` input reads, then falls back safely.
+  GPIO value sources and `gpioget` [input](../../../internal/input) reads, then falls back safely.
 - On unsupported platforms or uncertain reads, the probe reports
   `SignalUnverified` deterministically.
 - The command prints raw signal vocabulary only: `SignalLow`, `SignalHigh`, or

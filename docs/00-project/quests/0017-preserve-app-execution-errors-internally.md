@@ -11,16 +11,16 @@ audience:
   - Future Maintainers
 purpose: Record the app startup execution error badge kept for internal inspection.
 related:
-  - internal/app
-  - internal/executor
-  - docs/00-project/quests/0016-execute-the-prepared-dry-run-plan-inside-the-app.md
+  - ../../../internal/app
+  - ../../../internal/executor
+  - 0016-execute-the-prepared-dry-run-plan-inside-the-app.md
 last_updated: 2026-07-06
 ---
 
 # QUEST-0017 — Preserve App Execution Errors Internally
 
-> Keep the startup execution ledger honest: when the app lifts the dry-run
-> lantern, it now keeps the executor error badge too, even when that badge is
+> Keep the startup execution ledger honest: when the [app](../../../internal/app) lifts the dry-run
+> lantern, it now keeps the [executor](../../../internal/executor) error badge too, even when that badge is
 > empty.
 
 ## Quest Status

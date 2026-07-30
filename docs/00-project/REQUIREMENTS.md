@@ -11,14 +11,14 @@ audience:
   - Future Maintainers
 purpose: Define the initial traceable requirements for RetroFlag Power so implementation, tests, architecture, and documentation can be tied back to clear project needs.
 related:
-  - WHY.md
-  - PROJECT_MEMORY.md
-  - PROJECT_MANIFEST.md
-  - PROJECT_CHARTER.md
-  - docs/00-project/MILESTONES.md
-  - docs/00-project/ROADMAP.md
-  - docs/01-product/VISION.md
-  - docs/13-reference/terminology.md
+  - ../../WHY.md
+  - ../../PROJECT_MEMORY.md
+  - ../../PROJECT_MANIFEST.md
+  - ../../PROJECT_CHARTER.md
+  - MILESTONES.md
+  - ROADMAP.md
+  - ../01-product/VISION.md
+  - ../13-reference/terminology.md
 last_updated: 2026-07-03
 ---
 
@@ -131,8 +131,8 @@ Safe shutdown is the project's first responsibility and must preserve or improve
 
 Related:
 
-- PROJECT_CHARTER.md
-- docs/13-reference/terminology.md
+- [PROJECT_CHARTER.md](../../PROJECT_CHARTER.md)
+- [docs/13-reference/terminology.md](../13-reference/terminology.md)
 - ADR: systemd replacement
 - ADR: libgpiod direction
 

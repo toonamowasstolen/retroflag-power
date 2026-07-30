@@ -11,15 +11,15 @@ audience:
   - Future Maintainers
 purpose: Add one tiny read-only startup success badge for future daemon, log, and CLI lanterns.
 related:
-  - internal/app
-  - docs/00-project/quests/0027-add-an-app-startup-diagnostic-snapshot.md
-  - docs/00-project/quests/0028-document-runtime-vs-startup-diagnostics.md
+  - ../../../internal/app
+  - 0027-add-an-app-startup-diagnostic-snapshot.md
+  - 0028-document-runtime-vs-startup-diagnostics.md
 last_updated: 2026-07-06
 ---
 
 # QUEST-0029 - Add an App Startup Result Accessor
 
-> Place a small startup success charm in the app satchel so future lanterns can
+> Place a small startup success charm in the [app](../../../internal/app) satchel so future lanterns can
 > ask whether the ready-time quest completed without printing anything yet.
 
 ## Quest Status

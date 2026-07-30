@@ -173,7 +173,7 @@ RetroFlag Power uses distinct names for distinct scales of work:
 - Project Memory preserves origin, principles, safety context, and important
   memory; it is not the progress log.
 
-Verified Milestone facts belong in `docs/00-project/MILESTONES.md`. Other
+Verified Milestone facts belong in [`docs/00-project/MILESTONES.md`](docs/00-project/MILESTONES.md). Other
 documents should cite them instead of copying their evidence.
 
 ## Momentum matters

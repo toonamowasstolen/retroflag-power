@@ -12,10 +12,10 @@ audience:
   - Hardware Porters
 purpose: Add a documentation-only replacement boundary map for the behavior retroflag-powerd must preserve before it can safely replace the stock RetroFlag SafeShutdown.py path on GPi Case 2 hardware.
 related:
-  - docs/03-operations/safeshutdown-replacement-boundary-map.md
-  - docs/02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
-  - docs/03-operations/gpio-read-only-plan.md
-  - docs/03-operations/gpi-case-gpio-probe-ledger.md
+  - ../../03-operations/safeshutdown-replacement-boundary-map.md
+  - ../../02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
+  - ../../03-operations/gpio-read-only-plan.md
+  - ../../03-operations/gpi-case-gpio-probe-ledger.md
 last_updated: 2026-07-07
 ---
 

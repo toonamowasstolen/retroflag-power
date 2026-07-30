@@ -1,9 +1,11 @@
 ---
 id: COC-001
+title: Code of Conduct
 version: 1.0.0
 status: Accepted
 owner: Joshua Taft
 audience:
+purpose: State the behaviour expected of everyone who takes part in this project, and what happens when it is not met.
   - Project Maintainers
   - Contributors
   - AI Assistants
@@ -47,9 +49,9 @@ human engineers — this document holds both to the same standard, in every inte
 
 ## Enforcement
 
-The project owner (`PROJECT_CHARTER.md`'s stakeholder model) decides violation outcomes. An AI
+The project owner ([`PROJECT_CHARTER.md`](PROJECT_CHARTER.md)'s stakeholder model) decides violation outcomes. An AI
 session working in this repo doesn't get a vote on whether its own conduct crossed a line — that call
-belongs to the owner, same as any decision `docs/05-development/ai-collaboration.md` treats as
+belongs to the owner, same as any decision [`docs/05-development/ai-collaboration.md`](docs/05-development/ai-collaboration.md) treats as
 something AI must not do unilaterally.
 
 **The escalation path:**

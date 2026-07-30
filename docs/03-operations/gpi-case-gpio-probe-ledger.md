@@ -1,4 +1,5 @@
 ---
+id: OPS-GPI-CASE-GPIO-PROBE-LEDGER-001
 title: GPi Case GPIO Probe Field Ledger
 version: 0.1.0
 status: Draft
@@ -11,10 +12,10 @@ audience:
   - Hardware Porters
 purpose: Record manual read-only GPi Case GPIO probe observations before any raw signal is interpreted as switch meaning.
 related:
-  - docs/03-operations/gpio-read-only-plan.md
-  - docs/03-operations/safeshutdown-replacement-boundary-map.md
-  - docs/02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
-  - docs/00-project/quests/0047-add-a-gpi-case-gpio-probe-field-ledger.md
+  - gpio-read-only-plan.md
+  - safeshutdown-replacement-boundary-map.md
+  - ../02-hardware/gpi-case-2-hardware-findings-kms-power-notes.md
+  - ../00-project/quests/0047-add-a-gpi-case-gpio-probe-field-ledger.md
 last_updated: 2026-07-07
 ---
 

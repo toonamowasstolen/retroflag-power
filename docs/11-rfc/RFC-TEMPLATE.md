@@ -2,7 +2,7 @@
 id: RFC-TEMPLATE-001
 title: Request for Comments Template
 version: 0.1.0
-status: Draft
+status: Accepted
 owner: Joshua Taft
 audience:
   - Project Maintainers
@@ -11,11 +11,11 @@ audience:
   - Future Maintainers
 purpose: Provide a lightweight template for proposing and discussing meaningful changes before they become accepted decisions or implementation work in RetroFlag Power.
 related:
-  - docs/00-project/REQUIREMENTS.md
-  - docs/00-project/ROADMAP.md
-  - docs/04-architecture/system-overview.md
-  - docs/05-development/ai-collaboration.md
-  - docs/10-decisions/ADR-TEMPLATE.md
+  - ../00-project/REQUIREMENTS.md
+  - ../00-project/ROADMAP.md
+  - ../04-architecture/system-overview.md
+  - ../05-development/ai-collaboration.md
+  - ../10-decisions/ADR-TEMPLATE.md
 last_updated: 2026-07-03
 ---
 
@@ -46,7 +46,7 @@ Joshua Taft
 
 ## Related Requirements
 
-- REQ-0000
+- [REQ-0000](../00-project/REQUIREMENTS.md)
 
 ## Related Documents
 

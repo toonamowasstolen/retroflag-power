@@ -11,13 +11,13 @@ audience:
   - Curious Users
 purpose: Define the desired product experience for RetroFlag Power so implementation decisions stay aligned with the goal of making Raspberry Pi handhelds feel more like polished gaming consoles.
 related:
-  - WHY.md
-  - PROJECT_MEMORY.md
-  - PROJECT_MANIFEST.md
-  - PROJECT_CHARTER.md
-  - docs/00-project/MILESTONES.md
-  - docs/13-reference/terminology.md
-  - docs/13-reference/glossary.md
+  - ../../WHY.md
+  - ../../PROJECT_MEMORY.md
+  - ../../PROJECT_MANIFEST.md
+  - ../../PROJECT_CHARTER.md
+  - ../00-project/MILESTONES.md
+  - ../13-reference/terminology.md
+  - ../13-reference/glossary.md
 last_updated: 2026-07-03
 ---
 

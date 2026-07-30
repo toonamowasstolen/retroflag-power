@@ -1,9 +1,11 @@
 ---
 id: CONTRIB-001
+title: Contributing
 version: 1.0.0
 status: Accepted
 owner: Joshua Taft
 audience:
+purpose: Explain how to get a change into this project without having to guess at the local conventions first.
   - Contributors
 related:
   - docs/05-development/ai-collaboration.md
@@ -37,7 +39,7 @@ to look back later at "why did we do this and what did we skip," make it a Quest
 ## Verification, not "should work"
 
 A Milestone only records a checkpoint after real evidence verifies it —
-`docs/00-project/MILESTONES.md`'s own rule. Whoever authors a change is responsible for actually
+[`docs/00-project/MILESTONES.md`](docs/00-project/MILESTONES.md)'s own rule. Whoever authors a change is responsible for actually
 running it (`make check`, `make check-links`, a real command against real hardware where that
 applies) and citing the real result, not asserting it should pass. This is the same discipline for a
 human contributor and an AI session alike.

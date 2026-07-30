@@ -11,13 +11,13 @@ audience:
   - Future Maintainers
 purpose: Provide the canonical ledger of numbered, verified RetroFlag Power checkpoints with stable anchors and evidence.
 related:
-  - PROJECT_MEMORY.md
-  - docs/00-project/ROADMAP.md
-  - docs/00-project/quests/
-  - docs/00-project/quests/0006-gather-the-checkpoints-into-one-ledger.md
-  - docs/00-project/quests/0007-add-the-link-lantern.md
-  - docs/adr/0003-adopt-epoch-milestone-quest-model.md
-  - docs/13-reference/terminology.md
+  - ../../PROJECT_MEMORY.md
+  - ROADMAP.md
+  - quests/
+  - quests/0006-gather-the-checkpoints-into-one-ledger.md
+  - quests/0007-add-the-link-lantern.md
+  - ../adr/0003-adopt-epoch-milestone-quest-model.md
+  - ../13-reference/terminology.md
 supersedes:
   - docs/99-archive/project-milestones-pre-edc.md
 last_updated: 2026-07-06
@@ -77,6 +77,7 @@ Every entry uses an explicit anchor:
 followed by:
 
 ```markdown
+<a id="m-0001"></a>
 ## M-0001 — Example Title
 ```
 
@@ -532,7 +533,7 @@ Verified on: 2026-07-14
 `internal/logging.New()` was dead code — never called anywhere; the real logger was built inline in
 `main.go`, twice. Wired `logging.New` (now accepting an `io.Writer`) into both call sites, and added
 a one-time ASCII startup banner (plain, no color) printed only on real daemon startup — moving the
-"ASCII terminal welcome screen" aspiration from `PROJECT_MEMORY.md`'s idea list to real, at the
+"ASCII terminal welcome screen" aspiration from [`PROJECT_MEMORY.md`](../../PROJECT_MEMORY.md)'s idea list to real, at the
 smallest scope that does so honestly.
 
 ### Verified
@@ -560,6 +561,7 @@ smallest scope that does so honestly.
 
 <a id="m-0011"></a>
 
+<a id="m-0011"></a>
 ## M-0011 — Sorted the old scrolls (closed a Draft quest parked since 2026-07-03)
 
 Epoch: Awakening
@@ -575,7 +577,7 @@ quest's 2026-07-03 description of them. Four of five were already fully done —
 `docs/architecture.md`, and `docs/development.md` each already had metadata, `status: Superseded`,
 a `superseded_by` pointer, and preserved original content; `docs/adr/0001-use-systemd.md` already
 had metadata and an honest `Draft`/"Review Needed" treatment. Almost certainly handled incidentally
-by later EDC-standardization quests without this one ever being explicitly closed. `README.md` had
+by later EDC-standardization [quests](quests/) without this one ever being explicitly closed. `README.md` had
 one real gap — missing links to `docs/00-project/MILESTONES.md` and
 `docs/00-project/documentation-structure-and-governance.md`, both confirmed still-current — added
 both.

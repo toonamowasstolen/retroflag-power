@@ -51,7 +51,7 @@ was also a second `README.md` — a direct violation of this project's own one-R
 # 2. Quest Objective
 
 Merge `docs/03-hardware`'s 4 real findings docs into the canonical `docs/02-hardware/`, remove the
-duplicate README (folding its index content into `gpi-case-2.md` instead), let `docs/03-operations`
+duplicate README (folding its index content into [`gpi-case-2.md`](../../02-hardware/gpi-case-2.md) instead), let `docs/03-operations`
 own "03" uncontested, and update the governance doc's Section 11 to describe what's actually there.
 
 ---
@@ -95,7 +95,7 @@ This quest is complete when:
 - [x] `python3 scripts/check-markdown-links.py` reports 0 broken links, run *after* every path
   change. **Done** — "Link Lantern checked 280 internal links across 150 Markdown files," exit 0.
 - [x] Governance-doc Section 11 describes `docs/03-operations/` accurately. **Done.**
-- [x] `docs/00-project/MILESTONES.md` gets a new entry. **Done as M-0008.**
+- [x] [`docs/00-project/MILESTONES.md`](../MILESTONES.md) gets a new entry. **Done as M-0008.**
 
 ---
 
