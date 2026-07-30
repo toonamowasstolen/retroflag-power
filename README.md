@@ -24,11 +24,16 @@ everything else afterwards.
 
 ## Current Status
 
-The project is in Milestone 1 — Awakening. The daemon can build, run, log its
-lifecycle, wait for SIGINT or SIGTERM, and exit cleanly.
+The project is in **Epoch 1 — Awakening** (see
+[EPOCHS.md](EPOCHS.md) for what that means, and
+[docs/00-project/ROADMAP.md](docs/00-project/ROADMAP.md) for where it sits
+today). The daemon builds, runs, prints a startup banner, logs its
+lifecycle, waits for SIGINT or SIGTERM, and exits cleanly. It can also read
+a candidate GPIO pin on request via `--probe-gpio-signal` — strictly
+read-only, and it never drives a line.
 
-It does not yet control GPIO, execute shutdown, replace `SafeShutdown.py`, or
-activate a systemd service.
+It does not yet act on GPIO, execute a shutdown, replace
+`SafeShutdown.py`, or run as a systemd service.
 
 ## Goals
 
