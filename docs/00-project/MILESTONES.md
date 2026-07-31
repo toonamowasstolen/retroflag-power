@@ -560,8 +560,6 @@ smallest scope that does so honestly.
 [0101-give-the-daemon-a-startup-banner](quests/0101-give-the-daemon-a-startup-banner.md)
 
 <a id="m-0011"></a>
-
-<a id="m-0011"></a>
 ## M-0011 — Sorted the old scrolls (closed a Draft quest parked since 2026-07-03)
 
 Epoch: Awakening
@@ -608,6 +606,40 @@ both.
 For where it sits in the project's arc, see [Project Roadmap](ROADMAP.md) (the stage this belongs to). Vocabulary is fixed by [Terminology Guide](../13-reference/terminology.md) (which word to use). The decision behind it is recorded in [Adopt the Epoch, Milestone, and Quest Model](../adr/0003-adopt-epoch-milestone-quest-model.md). The work itself was carried out under [Gather the Checkpoints into One Ledger](quests/0006-gather-the-checkpoints-into-one-ledger.md).
 
 ---
+
+<a id="m-0013"></a>
+## M-0013 — Documented the test suite nobody could read
+
+**Epoch:** Awakening (`QUEST-0103`)
+**Status:** Verified — merged to `main` 2026-07-30
+**Date:** 2026-07-30
+
+108 test functions across 15 files, an active CI workflow, a three-layer `make check`, and no
+`docs/06-testing/` at all. The template's worked example for this project, written 2026-07-03, said
+plainly it was "a planning template to copy into that project's own `docs/06-testing/` once it
+exists". The project existed; the copy never got made.
+
+Three documents now do: a strategy grounded in a real `go test -cover ./...` run rather than
+projection, the handheld archetype carried in from the template, and that 2026-07-03 plan graded
+against the code actually written.
+
+Two coverage figures needed explaining rather than fixing. `internal/gpio` sits at 31.9% because its
+linux half reads `/sys/class/gpio`, `/sys/kernel/debug/gpio` and `gpiod` — unreachable off the
+device, which is exactly where the archetype puts the permanent manual gate. `internal/power` is
+0.0% and nine lines long. Everything else is 88.8% to 100%.
+
+The finding that matters most: `internal/executor` returns `ErrUnsupportedPlan` for anything that is
+not a dry-run noop, and `internal/actions` defines only `TypeNoop`. Deliberate and correct — but it
+means a fully green suite proves the pipeline routes and plans, and proves nothing about powering a
+device down. That sentence now sits beside the green tick.
+
+Verify: `node scripts/edc-lint.js .` → `PASS — 0 error(s)`; `make check` green; coverage
+reproducible with `go test -cover ./...`.
+
+Notable: grading the old plan was worth more than replacing it. Its predicted `PowerControl`
+interface would have shipped `readBattery()` and `setBacklight()` for capabilities that appear
+nowhere in the Go source — Manifesto principle 13's warning, committed in the act of following it.
+Also named and not fixed: 70 requirements, zero test traceability.
 
 <a id="m-0012"></a>
 ## M-0012 — Joined the family EDC standard: 879 lint findings to zero
