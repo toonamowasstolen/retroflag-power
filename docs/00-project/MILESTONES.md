@@ -606,3 +606,31 @@ both.
 ## Related work
 
 For where it sits in the project's arc, see [Project Roadmap](ROADMAP.md) (the stage this belongs to). Vocabulary is fixed by [Terminology Guide](../13-reference/terminology.md) (which word to use). The decision behind it is recorded in [Adopt the Epoch, Milestone, and Quest Model](../adr/0003-adopt-epoch-milestone-quest-model.md). The work itself was carried out under [Gather the Checkpoints into One Ledger](quests/0006-gather-the-checkpoints-into-one-ledger.md).
+
+---
+
+<a id="m-0012"></a>
+## M-0012 — Joined the family EDC standard: 879 lint findings to zero
+
+**Epoch:** Awakening (`QUEST-0102`)
+**Status:** Verified — merged to `main` 2026-07-30
+**Date:** 2026-07-30
+
+The shared EDC lint scripts had never run against this project. First measurement was 879 findings;
+the count is now zero, and internal links checked rose from 294 to 1,081 with none broken.
+
+522 of those were dead `related:` paths written repository-root-relative — the convention this
+project used before the standard settled on file-relative, and the one the governance doc itself
+still wrongly described until the same pass corrected it. Converted by exact resolution against the
+repository root, never by matching basenames: this project has many files sharing a name, and a
+guess would have mis-pointed them silently.
+
+Also gained the four root artifacts every sibling already had — `PRODUCT_PHILOSOPHY.md`,
+`EPOCHS.md`, `LICENSE_POLICY.md`, `METADATA_HEADER.md` — and raised seven canonical documents to
+UPPERCASE via `git mv`, 234 references following them.
+
+Verify: `node scripts/edc-lint.js .` → `PASS — 0 error(s)`; `git log --follow` still traces the
+renamed files.
+
+Notable: the README claimed no GPIO capability at all, when `--probe-gpio-signal` had already
+shipped. The audit was looking for broken links and found a stale product claim.
