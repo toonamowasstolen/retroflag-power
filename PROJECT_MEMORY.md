@@ -1723,7 +1723,30 @@ This checklist should be reviewed periodically.
 
 ---
 
-# 38. Closing Note
+# 38. A Lantern for Stale Branches
+
+Found 2026-08-19, sweeping this camp alongside `control4-platform` and
+`driverworks-tooling`: three branches sitting here for weeks —
+`docs/archive-external-findings-2026-07`, `docs/edc-audit-2026-07`,
+`docs/testing-strategy-2026-07` — every one of them already fully folded
+into `main`. Not abandoned work, just work that got carried home a
+different way and never had its old trail marker taken down.
+
+`.githooks/pre-push` now stands watch at the gate: every time a push
+reaches `main`, it checks whatever other branches are still camped here
+and flags any whose full contents already live in `main`'s current
+files. A nudge, not a barrier — it never blocks the push, only leaves a
+note. See the hook's own header for how it tells "already carried home"
+from "still on the trail" (a real sibling incident in `control4-platform`
+found a case where the naive check would have gotten this backwards).
+
+Not automatic after a fresh clone — `core.hooksPath` is local git
+config, never committed. One-time setup: `git config core.hooksPath
+.githooks`.
+
+---
+
+# 39. Closing Note
 
 This file is not the final documentation.
 

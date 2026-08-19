@@ -1,0 +1,107 @@
+#!/bin/sh
+# Pre-push redundant-branch check.
+#
+# Why this exists: 2026-08-19, a session went looking for stale feature branches across this
+# project, control4-platform, driverworks-tooling and master-driver and found every single one
+# already fully redundant -- their content had been re-applied directly to main under different
+# commits in later sessions, and the original branches just sat there afterward looking unmerged
+# forever (git's own ancestor-check can't tell "already superseded" from "still needed"; only a
+# content comparison can). One sibling case, control4-platform's feat/site-version-pinning, would
+# have been a real regression if merged blind -- main's independent re-implementation had since
+# gained a security fix the branch never saw. See this project's PROJECT_MEMORY.md, section 38,
+# for this project's own three.
+#
+# WHY CONTENT-MATCHING, NOT A TREE MERGE: the first version of this hook tried `git merge-tree`
+# (does merging the branch onto main produce a tree identical to main?), and against
+# driverworks-tooling's sibling incident it missed the exact case that mattered most -- a file
+# that had grown so much on main since the branch forked that the 3-way merge hit a real context
+# conflict on file structure alone, even though the branch's own added lines were already present
+# verbatim. A tree merge answers "would this merge cleanly and add nothing", which isn't the
+# actual question; "does everything this branch added already exist in main" is. So: for each
+# file the branch touches, take its added lines (diff against the branch's own merge-base, so
+# unrelated context doesn't count) and check each non-trivial one for a literal match in main's
+# current version of that file. All non-trivial added lines matching, across every file the
+# branch touches, is the signal -- not a merge succeeding.
+#
+# Necessarily a heuristic, not a proof (a coincidental generic line could match something
+# unrelated) -- hence "non-trivial" (a length floor) and "every file, every line" (one miss clears
+# the branch). Deliberately informational, never blocking, and prints what it found so a false
+# positive is obvious on inspection rather than silently trusted.
+#
+# One-time setup after a fresh clone (not automatic -- core.hooksPath is local git config, never
+# committed): `git config core.hooksPath .githooks` (see GIT_WORKFLOW.md).
+
+MIN_LINE_LEN=20
+
+pushed_main_sha=""
+while read -r _local_ref local_sha remote_ref _remote_sha; do
+  if [ "$remote_ref" = "refs/heads/main" ] && [ "$local_sha" != "0000000000000000000000000000000000000000" ]; then
+    pushed_main_sha="$local_sha"
+  fi
+done
+
+[ -z "$pushed_main_sha" ] && exit 0
+
+tmpdir=$(mktemp -d) || exit 0
+trap 'rm -rf "$tmpdir"' EXIT
+
+redundant=""
+for b in $(git for-each-ref --format='%(refname:short)' refs/heads/); do
+  [ "$b" = "main" ] && continue
+  b_sha=$(git rev-parse "refs/heads/$b" 2>/dev/null) || continue
+  [ "$b_sha" = "$pushed_main_sha" ] && continue
+  git merge-base --is-ancestor "$b_sha" "$pushed_main_sha" 2>/dev/null && continue
+
+  base=$(git merge-base "$b_sha" "$pushed_main_sha" 2>/dev/null) || continue
+  [ "$base" = "$b_sha" ] && continue
+
+  checked_any=0
+  all_found=1
+  git diff --name-only "$base" "$b_sha" > "$tmpdir/files"
+  while read -r file; do
+    [ -z "$file" ] && continue
+    # A file the branch deletes, or one that doesn't exist on main at all, is a real change no
+    # content check can wave off -- bail on this branch rather than mis-check it.
+    git cat-file -e "${pushed_main_sha}:${file}" 2>/dev/null || { all_found=0; break; }
+
+    git diff --unified=0 "$base" "$b_sha" -- "$file" > "$tmpdir/diff" 2>/dev/null
+    git show "${pushed_main_sha}:${file}" > "$tmpdir/main_version" 2>/dev/null
+
+    while read -r line; do
+      case "$line" in
+        '+++'*) continue ;;
+        '+'*)
+          content=$(printf '%s' "$line" | cut -c2-)
+          trimmed=$(printf '%s' "$content" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+          [ "${#trimmed}" -lt "$MIN_LINE_LEN" ] && continue
+          checked_any=1
+          if ! grep -qF -- "$trimmed" "$tmpdir/main_version" 2>/dev/null; then
+            all_found=0
+          fi
+          ;;
+      esac
+      [ "$all_found" = 0 ] && break
+    done < "$tmpdir/diff"
+
+    [ "$all_found" = 0 ] && break
+  done < "$tmpdir/files"
+
+  if [ "$all_found" = 1 ] && [ "$checked_any" = 1 ]; then
+    redundant="$redundant $b"
+  fi
+done
+
+if [ -n "$redundant" ]; then
+  echo ""
+  echo "pre-push notice: local branch(es) below look redundant with the main you're pushing"
+  echo "-- every substantial line each one adds already appears in main's current files:"
+  for b in $redundant; do
+    echo "  - $b"
+  done
+  echo ""
+  echo "Heuristic, not proof -- worth a look, not an instruction. If genuinely done, sweep them:"
+  echo "  git branch -D <name>   git push origin --delete <name>"
+  echo ""
+fi
+
+exit 0
